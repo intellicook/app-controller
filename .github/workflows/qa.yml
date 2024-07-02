@@ -1,13 +1,9 @@
 name: Quality Assurance
 
-on:
-  push:
-    branches: [ "main", "ci-and-qa" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push, pull_request]
 
 jobs:
-  build:
+  quality_assurance:
 
     runs-on: windows-latest
 
