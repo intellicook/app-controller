@@ -1,6 +1,6 @@
 # App Controller
 
-The connector between backend components and the frontend.
+The controller that connects backend components and the frontend.
 
 ## Development Setup
 
@@ -10,7 +10,15 @@ The project uses ASP.NET Core on C# 12 and .NET 8.0.
 
 2. If you use an IDE that support solution file, you can find the solution file `AppController.sln` in the root.
 
-3. Install Husky.Net to enable pre-commit hooks, which can help check if your formatting will pass the CI on GitHub.
+3. Run the following commands to install the Husky.Net pre-commit hooks, which can help check if your formatting will pass the CI on GitHub.
+
+   ```bash
+   # Restore the tools defined in .config/dotnet-tools.json
+   dotnet tool restore
+   
+   # Install the Husky.Net git hooks
+   dotnet husky install
+   ```
 
 ## Making Code Changes
 
