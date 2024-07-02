@@ -1,6 +1,6 @@
 name: Quality Assurance
 
-on: [push, pull_request]
+on: push
 
 jobs:
   quality_assurance:
