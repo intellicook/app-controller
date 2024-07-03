@@ -1,9 +1,22 @@
+using AppController.Contexts;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var appControllerContextConnectionString = builder.Configuration.GetConnectionString(nameof(AppControllerContext));
+if (string.IsNullOrEmpty(appControllerContextConnectionString))
+{
+    throw new InvalidOperationException($"Could not find a connection string named '{nameof(AppControllerContext)}'");
+}
 
 // Add services to the container.
 
+builder.Services.AddDbContext<AppControllerContext>(o => { o.UseSqlServer(appControllerContextConnectionString); });
+builder.Services.AddHealthChecks()
+    .AddSqlServer(appControllerContextConnectionString)
+    .AddDbContextCheck<AppControllerContext>();
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -14,6 +27,20 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<AppControllerContext>();
+    context.Database.EnsureCreated();
 }
 
 app.UseHttpsRedirection();
