@@ -18,8 +18,4 @@
         <ProjectReference Include="..\IntelliCook.AppController.Infrastructure\IntelliCook.AppController.Infrastructure.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Models\Health\"/>
-    </ItemGroup>
-
 </Project>

@@ -1,14 +1,17 @@
 using IntelliCook.AppController.API.Extensions;
 using IntelliCook.AppController.Infrastructure.Contexts;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddAppControllerDatabaseOptions(builder.Configuration);
 builder.Services.AddAppControllerContext(builder.Configuration);
-builder.Services.AddHealthChecks().AddAppControllerHealthChecks(builder.Configuration);
+builder.Services.AddHealthChecks()
+    .AddAppControllerHealthChecks(builder.Configuration);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

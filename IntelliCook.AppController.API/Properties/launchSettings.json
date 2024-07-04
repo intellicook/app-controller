@@ -21,7 +21,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Http In Memory Database": {
+    "Http In Memory": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
@@ -32,7 +32,7 @@
         "Database__UseInMemory": "true"
       }
     },
-    "Https In Memory Database": {
+    "Https In Memory": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

@@ -1,7 +1,8 @@
-using System.Net;
+using IntelliCook.AppController.API.Models.Health;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using System.Net;
 
 namespace IntelliCook.AppController.API.Controllers;
 
@@ -11,21 +12,23 @@ namespace IntelliCook.AppController.API.Controllers;
 public class HealthController(HealthCheckService healthCheckService) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult> Get()
+    public async Task<ActionResult<HealthGetResponseModel>> Get()
     {
         var report = await healthCheckService.CheckHealthAsync();
-        var result = new
+        var result = new HealthGetResponseModel
         {
-            status = report.Status.ToString(),
-            checks = report.Entries.Select(e => new
+            Status = report.Status.ToHealthStatusModel(),
+            Checks = report.Entries.Select(entry => new HealthCheckModel
             {
-                name = e.Key,
-                status = e.Value.Status.ToString(),
-                description = e.Value.Description?.ToString()
+                Name = entry.Key,
+                Status = entry.Value.Status.ToHealthStatusModel()
             })
         };
-        return report.Status == HealthStatus.Healthy
-            ? Ok(result)
-            : StatusCode((int)HttpStatusCode.ServiceUnavailable, result);
+
+        return result.Status switch
+        {
+            HealthStatusModel.Healthy => Ok(result),
+            _ => StatusCode((int)HttpStatusCode.ServiceUnavailable, result)
+        };
     }
 }
