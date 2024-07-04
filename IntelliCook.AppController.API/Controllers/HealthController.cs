@@ -3,19 +3,17 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace AppController.Controllers;
+namespace IntelliCook.AppController.API.Controllers;
 
 [Route("[controller]")]
 [ApiController]
 [AllowAnonymous]
 public class HealthController(HealthCheckService healthCheckService) : ControllerBase
 {
-    private readonly HealthCheckService _healthCheckService = healthCheckService;
-
     [HttpGet]
     public async Task<ActionResult> Get()
     {
-        var report = await _healthCheckService.CheckHealthAsync();
+        var report = await healthCheckService.CheckHealthAsync();
         var result = new
         {
             status = report.Status.ToString(),

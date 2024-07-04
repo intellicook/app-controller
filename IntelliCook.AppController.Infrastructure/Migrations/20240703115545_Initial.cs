@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace AppController.Migrations
+namespace IntelliCook.AppController.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

@@ -1,11 +1,12 @@
-using AppController.Contexts;
-using AppController.Extensions;
+using IntelliCook.AppController.API.Extensions;
+using IntelliCook.AppController.Infrastructure.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
+builder.Services.AddAppControllerDatabaseOptions(builder.Configuration);
 builder.Services.AddAppControllerContext(builder.Configuration);
-builder.Services.AddAppControllerContextHealthChecks(builder.Configuration);
+builder.Services.AddHealthChecks().AddAppControllerHealthChecks(builder.Configuration);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

@@ -1,10 +1,10 @@
 # App Controller
 
-The controller that connects backend components and the frontend.
+The controller service that connects backend components and the frontend.
 
 ## Development Setup
 
-The project uses [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) on C# 12 and .NET 8.0, and [Entity Framework Core 8](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore). Since I am using JetBrains Rider, I will be able to provide more instructions for setting up the project in Rider.
+The service uses [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) on C# 12 and .NET 8.0, and [Entity Framework Core 8](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore). Since I am using JetBrains Rider, I will be able to provide more instructions for setting up the project in Rider.
 
 1. Clone the repository.
 
@@ -19,12 +19,12 @@ The project uses [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) 
    # Install the Husky.Net git hooks
    dotnet husky install
    ```
-   
+
 4. You have 2 options for running the database:
 
-   - Use [Microsoft SQL Server Express LocalDB](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb), which will be closer to the production environment. You will need to run the migrations to create the database schema.
+    - Use [Microsoft SQL Server Express LocalDB](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb), which will be closer to the production environment. You will need to run the migrations to create the database schema.
 
-   - Use In-Memory Database, which is easier to set up and use for development. To enable it, the `USE_IN_MEMORY_DATABASE` environment variable have to be set to `true`, which should already be done for you in the "Http/Https In Memory Database" configurations in the [AppController/Properties/launchSettings.json](AppController/Properties/launchSettings.json) file.
+    - Use In-Memory Database, which is easier to set up and use for development. To enable it, the `Database__UseInMemory` environment variable or `Database:UseInMemory` variable in [IntelliCook.AppController.API/appsettings.json](IntelliCook.AppController.API/appsettings.json) have to be set to `true`, which should already be done for you in the "Http/Https In Memory Database" configurations in the [AppController/Properties/launchSettings.json](AppController/Properties/launchSettings.json) file.
 
 ## Making Code Changes
 
@@ -33,7 +33,7 @@ Important things to note when making code changes:
 - All code changes made to the main branch must be done from a pull request, the branch name should use `kebab-case`.
 
 - The GitHub workflows on the pull request must be passed before being able to merge into main.
-  
+
 - The formatting are defined in [.editorconfig](./.editorconfig).
 
 - Always use the `dotnet-ef` tool to create migrations and update the database schema, so that the migration files are consistent.

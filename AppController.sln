@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppController", "AppController\AppController.csproj", "{EB25DA75-1662-48AB-823E-D9D059B555FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliCook.AppController.API", "IntelliCook.AppController.API\IntelliCook.AppController.API.csproj", "{EB25DA75-1662-48AB-823E-D9D059B555FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliCook.AppController.Domain", "IntelliCook.AppController.Domain\IntelliCook.AppController.Domain.csproj", "{784A41AF-8438-4863-9851-9F20B3042146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliCook.AppController.Infrastructure", "IntelliCook.AppController.Infrastructure\IntelliCook.AppController.Infrastructure.csproj", "{41EC6BED-188C-4E1D-A86B-342F0C3EAFA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntelliCook.AppController.API.UnitTests", "IntelliCook.AppController.API.UnitTests\IntelliCook.AppController.API.UnitTests.csproj", "{B280591D-E012-4A15-BAA5-B29C2466E256}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +24,17 @@ Global
 		{EB25DA75-1662-48AB-823E-D9D059B555FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB25DA75-1662-48AB-823E-D9D059B555FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB25DA75-1662-48AB-823E-D9D059B555FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784A41AF-8438-4863-9851-9F20B3042146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784A41AF-8438-4863-9851-9F20B3042146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784A41AF-8438-4863-9851-9F20B3042146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784A41AF-8438-4863-9851-9F20B3042146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41EC6BED-188C-4E1D-A86B-342F0C3EAFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41EC6BED-188C-4E1D-A86B-342F0C3EAFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41EC6BED-188C-4E1D-A86B-342F0C3EAFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41EC6BED-188C-4E1D-A86B-342F0C3EAFA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B280591D-E012-4A15-BAA5-B29C2466E256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B280591D-E012-4A15-BAA5-B29C2466E256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B280591D-E012-4A15-BAA5-B29C2466E256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B280591D-E012-4A15-BAA5-B29C2466E256}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
