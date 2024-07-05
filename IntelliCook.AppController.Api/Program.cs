@@ -1,4 +1,4 @@
-using IntelliCook.AppController.API.Extensions;
+using IntelliCook.AppController.Api.Extensions;
 using IntelliCook.AppController.Infrastructure.Contexts;
 using System.Text.Json.Serialization;
 
@@ -44,3 +44,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public abstract partial class Program
+{
+}

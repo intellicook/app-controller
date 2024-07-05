@@ -1,4 +1,4 @@
-namespace IntelliCook.AppController.API.Models.Health;
+namespace IntelliCook.AppController.Api.Models.Health;
 
 public class HealthGetResponseModel
 {

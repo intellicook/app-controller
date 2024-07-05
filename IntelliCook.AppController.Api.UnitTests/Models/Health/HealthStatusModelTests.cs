@@ -1,7 +1,8 @@
-using IntelliCook.AppController.API.Models.Health;
+using FluentAssertions;
+using IntelliCook.AppController.Api.Models.Health;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace IntelliCook.AppController.API.UnitTests.Models.Health;
+namespace IntelliCook.AppController.Api.UnitTests.Models.Health;
 
 public class HealthStatusModelTests
 {
@@ -14,15 +15,24 @@ public class HealthStatusModelTests
         HealthStatusModel expectedHealthStatusModel
     )
     {
+        // Act
         var result = healthStatus.ToHealthStatusModel();
-        Assert.Equal(expectedHealthStatusModel, result);
+
+        // Assert
+        result.Should().Be(expectedHealthStatusModel);
     }
 
     [Fact]
     public void ToHealthStatusModel_InvalidHealthStatus_ThrowsArgumentOutOfRangeException()
     {
+        // Arrange
         const HealthStatus healthStatus = (HealthStatus)int.MaxValue;
-        Assert.Throws<ArgumentOutOfRangeException>(() => healthStatus.ToHealthStatusModel());
+
+        // Act
+        var act = () => healthStatus.ToHealthStatusModel();
+
+        // Assert
+        act.Should().Throw<ArgumentOutOfRangeException>();
     }
 
     [Theory]
@@ -34,14 +44,23 @@ public class HealthStatusModelTests
         HealthStatus expectedHealthStatus
     )
     {
+        // Act
         var result = healthStatusModel.ToHealthStatus();
-        Assert.Equal(expectedHealthStatus, result);
+
+        // Assert
+        result.Should().Be(expectedHealthStatus);
     }
 
     [Fact]
     public void ToHealthStatus_InvalidHealthStatusModel_ThrowsArgumentOutOfRangeException()
     {
+        // Arrange
         const HealthStatusModel healthStatusModel = (HealthStatusModel)int.MaxValue;
-        Assert.Throws<ArgumentOutOfRangeException>(() => healthStatusModel.ToHealthStatus());
+
+        // Act
+        var act = () => healthStatusModel.ToHealthStatus();
+
+        // Assert
+        act.Should().Throw<ArgumentOutOfRangeException>();
     }
 }

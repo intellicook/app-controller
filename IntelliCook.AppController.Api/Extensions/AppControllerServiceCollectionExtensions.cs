@@ -1,8 +1,8 @@
-using IntelliCook.AppController.API.Options;
+using IntelliCook.AppController.Api.Options;
 using IntelliCook.AppController.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace IntelliCook.AppController.API.Extensions;
+namespace IntelliCook.AppController.Api.Extensions;
 
 public static class AppControllerServiceCollectionExtensions
 {

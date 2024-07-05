@@ -1,4 +1,4 @@
-namespace IntelliCook.AppController.API.Options;
+namespace IntelliCook.AppController.Api.Options;
 
 public class DatabaseOptions
 {

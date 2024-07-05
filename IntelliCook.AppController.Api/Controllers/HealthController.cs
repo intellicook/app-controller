@@ -1,10 +1,10 @@
-using IntelliCook.AppController.API.Models.Health;
+using IntelliCook.AppController.Api.Models.Health;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Net;
 
-namespace IntelliCook.AppController.API.Controllers;
+namespace IntelliCook.AppController.Api.Controllers;
 
 [Route("[controller]")]
 [ApiController]

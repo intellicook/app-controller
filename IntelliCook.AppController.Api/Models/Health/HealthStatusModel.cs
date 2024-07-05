@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace IntelliCook.AppController.API.Models.Health;
+namespace IntelliCook.AppController.Api.Models.Health;
 
 public enum HealthStatusModel
 {
