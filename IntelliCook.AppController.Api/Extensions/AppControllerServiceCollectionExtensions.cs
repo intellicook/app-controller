@@ -6,45 +6,39 @@ namespace IntelliCook.AppController.Api.Extensions;
 
 public static class AppControllerServiceCollectionExtensions
 {
-    public static IServiceCollection AddAppControllerDatabaseOptions(
+    public static IServiceCollection AddAppControllerOptions<TOptions>(
         this IServiceCollection serviceCollection,
         IConfiguration configuration
-    )
+    ) where
+        TOptions : class, IOptionsBase
     {
-        return serviceCollection.Configure<DatabaseOptions>(configuration.GetSection(DatabaseOptions.SectionKey));
+        return serviceCollection.Configure<TOptions>(configuration.GetSection(TOptions.SectionKey));
     }
 
     public static IServiceCollection AddAppControllerContext(
         this IServiceCollection serviceCollection,
-        IConfiguration configuration
+        DatabaseOptions options
     )
     {
-        var databaseOptions = GetDatabaseOptions(configuration);
-        return serviceCollection.AddDbContext<AppControllerContext>(databaseOptions.UseInMemory switch
+        return serviceCollection.AddDbContext<AppControllerContext>(options.UseInMemory switch
         {
-            true => o => o.UseInMemoryDatabase(databaseOptions.Name),
-            _ => o => o.UseSqlServer(databaseOptions.ConnectionString)
+            true => o => o.UseInMemoryDatabase(options.Name),
+            _ => o => o.UseSqlServer(options.ConnectionString)
         });
     }
 
     public static IHealthChecksBuilder AddAppControllerHealthChecks(
         this IHealthChecksBuilder healthChecksBuilder,
-        IConfiguration configuration
+        DatabaseOptions options
     )
     {
-        var databaseOptions = GetDatabaseOptions(configuration);
-        return databaseOptions.UseInMemory switch
+        return options.UseInMemory switch
         {
             true => healthChecksBuilder
                 .AddDbContextCheck<AppControllerContext>(),
             _ => healthChecksBuilder
-                .AddSqlServer(databaseOptions.ConnectionString, name: "SqlServer")
+                .AddSqlServer(options.ConnectionString, name: "SqlServer")
                 .AddDbContextCheck<AppControllerContext>()
         };
-    }
-
-    private static DatabaseOptions GetDatabaseOptions(IConfiguration configuration)
-    {
-        return configuration.GetSection(DatabaseOptions.SectionKey).Get<DatabaseOptions>() ?? new DatabaseOptions();
     }
 }

@@ -1,10 +1,10 @@
 namespace IntelliCook.AppController.Api.Options;
 
-public class DatabaseOptions
+public class DatabaseOptions : IOptionsBase
 {
-    public const string SectionKey = "Database";
+    public static string SectionKey => "Database";
 
-    public string Name { get; init; } = string.Empty;
+    public required string Name { get; init; }
     public string ConnectionString { get; init; } = string.Empty;
     public bool UseInMemory { get; init; }
 }

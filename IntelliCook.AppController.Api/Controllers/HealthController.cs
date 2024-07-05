@@ -11,6 +11,10 @@ namespace IntelliCook.AppController.Api.Controllers;
 [AllowAnonymous]
 public class HealthController(HealthCheckService healthCheckService) : ControllerBase
 {
+    /// <summary>
+    /// Checks the health of App Controller and its components.
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public async Task<ActionResult<HealthGetResponseModel>> Get()
     {
