@@ -24,7 +24,7 @@ The service uses [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) 
 
     - Use [Microsoft SQL Server Express LocalDB](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb), which will be closer to the production environment. You will need to run the migrations to create the database schema.
 
-    - Use In-Memory Database, which is easier to set up and use for development. To enable it, the `Database__UseInMemory` environment variable or `Database:UseInMemory` variable in [IntelliCook.AppController.API/appsettings.json](IntelliCook.AppController.API/appsettings.json) have to be set to `true`, which should already be done for you in the "Http/Https In Memory Database" configurations in the [AppController/Properties/launchSettings.json](AppController/Properties/launchSettings.json) file.
+    - Use In-Memory Database, which is easier to set up and use for development. To enable it, the `Database__UseInMemory` environment variable or `Database:UseInMemory` variable in [IntelliCook.AppController.Api/appsettings.json](IntelliCook.AppController.Api/appsettings.json) have to be set to `true`, which should already be done for you in the "Http/Https In Memory Database" configurations in the [AppController/Properties/launchSettings.json](AppController/Properties/launchSettings.json) file.
 
 ## Making Code Changes
 
