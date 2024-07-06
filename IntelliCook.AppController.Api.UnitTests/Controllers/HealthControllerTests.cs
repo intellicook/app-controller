@@ -18,13 +18,16 @@ public class HealthControllerTests
         _healthController = new HealthController(_healthCheckServiceMock.Object);
     }
 
+    #region Get
+
     public static IEnumerable<object[]> Get_Healthy_ReturnsOkActionResult_TestData()
     {
         yield return
         [
             new List<(string name, HealthStatus healthStatus)>
             {
-                ("Check1", HealthStatus.Healthy), ("Check2", HealthStatus.Healthy)
+                ("Check1", HealthStatus.Healthy),
+                ("Check2", HealthStatus.Healthy)
             },
             HealthStatusModel.Healthy
         ];
@@ -146,6 +149,8 @@ public class HealthControllerTests
             Status = s.healthStatus.ToHealthStatusModel()
         }));
     }
+
+    #endregion
 
     private static HealthReport GetHealthReport(IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses)
     {

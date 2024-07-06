@@ -24,7 +24,7 @@ The service uses [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) 
 
     - Use [Microsoft SQL Server Express LocalDB](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb), which will be closer to the production environment. You will need to run the migrations to create the database schema.
 
-    - Use In-Memory Database, which is easier to set up and use for development. To enable it, the `Database__UseInMemory` environment variable or `Database:UseInMemory` variable in [IntelliCook.AppController.Api/appsettings.json](IntelliCook.AppController.Api/appsettings.json) have to be set to `true`, which should already be done for you in the "Http/Https In Memory Database" configurations in the [AppController/Properties/launchSettings.json](AppController/Properties/launchSettings.json) file.
+    - Use In-Memory Database, which is easier to set up and use for development. To enable it, the `Database__UseInMemory` environment variable or `Database:UseInMemory` variable in [IntelliCook.AppController.Api/appsettings.json](IntelliCook.AppController.Api/appsettings.json) have to be set to `true`, which should already be done for you in the "Http/Https In Memory Database" configurations in the [IntelliCook.AppController.Api/Properties/launchSettings.json](IntelliCook.AppController.Api/Properties/launchSettings.json) file.
 
 ## Making Code Changes
 
@@ -37,3 +37,11 @@ Important things to note when making code changes:
 - The formatting are defined in [.editorconfig](./.editorconfig).
 
 - Always use the `dotnet-ef` tool to create migrations and update the database schema, so that the migration files are consistent.
+
+## Tests
+
+The service uses [xUnit](https://xunit.net/) for unit tests and [Moq](https://github.com/devlooped/moq) for mocking. The followings are the test projects:
+
+- [IntelliCook.AppController.Api.UnitTests](IntelliCook.AppController.Api.UnitTests): Unit tests for the API.
+
+- [IntelliCook.AppController.Api.E2ETests](IntelliCook.AppController.Api.E2ETests): End-to-end tests for the API, which runs the in-memory database to test the API from an HTTP client.

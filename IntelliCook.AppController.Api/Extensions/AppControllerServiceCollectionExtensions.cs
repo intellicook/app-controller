@@ -12,7 +12,7 @@ public static class AppControllerServiceCollectionExtensions
     ) where
         TOptions : class, IOptionsBase
     {
-        return serviceCollection.Configure<TOptions>(configuration.GetSection(TOptions.SectionKey));
+        return serviceCollection.Configure<TOptions>(configuration.GetValidatedSection<TOptions>());
     }
 
     public static IServiceCollection AddAppControllerContext(
@@ -25,20 +25,5 @@ public static class AppControllerServiceCollectionExtensions
             true => o => o.UseInMemoryDatabase(options.Name),
             _ => o => o.UseSqlServer(options.ConnectionString)
         });
-    }
-
-    public static IHealthChecksBuilder AddAppControllerHealthChecks(
-        this IHealthChecksBuilder healthChecksBuilder,
-        DatabaseOptions options
-    )
-    {
-        return options.UseInMemory switch
-        {
-            true => healthChecksBuilder
-                .AddDbContextCheck<AppControllerContext>(),
-            _ => healthChecksBuilder
-                .AddSqlServer(options.ConnectionString, name: "SqlServer")
-                .AddDbContextCheck<AppControllerContext>()
-        };
     }
 }

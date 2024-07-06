@@ -6,19 +6,38 @@ public class ApiOptions : IOptionsBase
 {
     public static string SectionKey => "Api";
 
-    public required string Title { get; init; }
+    public string Title { get; init; } = null!;
+    public string Description { get; init; } = null!;
+    public int MajorVersion { get; init; }
+    public int MinorVersion { get; init; }
 
-    public required string Description { get; init; }
+    public string VersionString => $"v{MajorVersion}.{MinorVersion}";
 
-    [Range(0, int.MaxValue, ErrorMessage = "Major version number must be non-negative")]
-    public required int MajorVersion { get; init; }
-
-    [Range(0, int.MaxValue, ErrorMessage = "Minor version number must be non-negative")]
-    public required int MinorVersion { get; init; }
-
-    public string VersionString => MinorVersion switch
+    public void Validate()
     {
-        0 => $"v{MajorVersion}",
-        _ => $"v{MajorVersion}.{MinorVersion}"
-    };
+        if (Title is null)
+        {
+            throw new InvalidOperationException("Title is required");
+        }
+
+        if (Description is null)
+        {
+            throw new InvalidOperationException("Description is required");
+        }
+
+        if (MajorVersion < 0)
+        {
+            throw new InvalidOperationException("MajorVersion must be greater than or equal to 0");
+        }
+
+        if (MinorVersion < 0)
+        {
+            throw new InvalidOperationException("MinorVersion must be greater than or equal to 0");
+        }
+
+        if (MajorVersion == 0 && MinorVersion == 0)
+        {
+            throw new InvalidOperationException("MajorVersion or MinorVersion must be greater than 0");
+        }
+    }
 }

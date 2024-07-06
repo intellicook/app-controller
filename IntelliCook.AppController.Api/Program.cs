@@ -1,6 +1,7 @@
 using IntelliCook.AppController.Api.Extensions;
 using IntelliCook.AppController.Api.Options;
 using IntelliCook.AppController.Infrastructure.Contexts;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -18,7 +19,7 @@ builder.Services.AddAppControllerContext(databaseOptions);
 builder.Services.AddHealthChecks()
     .AddAppControllerHealthChecks(databaseOptions);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.AddControllers()
+builder.Services.AddControllers(o => o.Filters.Add(new ProducesAttribute("application/json")))
     .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(o =>

@@ -6,6 +6,8 @@ namespace IntelliCook.AppController.Api.UnitTests.Models.Health;
 
 public class HealthStatusModelTests
 {
+    #region ToHealthStatusModel
+
     [Theory]
     [InlineData(HealthStatus.Healthy, HealthStatusModel.Healthy)]
     [InlineData(HealthStatus.Degraded, HealthStatusModel.Degraded)]
@@ -35,6 +37,10 @@ public class HealthStatusModelTests
         act.Should().Throw<ArgumentOutOfRangeException>();
     }
 
+    #endregion
+
+    #region ToHealthStatus
+
     [Theory]
     [InlineData(HealthStatusModel.Healthy, HealthStatus.Healthy)]
     [InlineData(HealthStatusModel.Degraded, HealthStatus.Degraded)]
@@ -63,4 +69,6 @@ public class HealthStatusModelTests
         // Assert
         act.Should().Throw<ArgumentOutOfRangeException>();
     }
+
+    #endregion
 }
