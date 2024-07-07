@@ -8,23 +8,16 @@ using Microsoft.OpenApi.Readers;
 
 namespace IntelliCook.AppController.Api.E2ETests.QualityAssurance;
 
-[Collection("Client")]
-public class OpenApiTests
+[Collection(nameof(ClientFixture))]
+public class OpenApiTests(ClientFixture fixture)
 {
-    private readonly ClientFixture _fixture;
-    private readonly ApiOptions _apiOptions;
-
-    public OpenApiTests(ClientFixture fixture)
-    {
-        _fixture = fixture;
-        _apiOptions = _fixture.Factory.Services.GetRequiredService<IOptions<ApiOptions>>().Value;
-    }
+    private readonly ApiOptions _apiOptions = fixture.Factory.Services.GetRequiredService<IOptions<ApiOptions>>().Value;
 
     [Fact]
     public void Endpoints_HaveSummary()
     {
         // Arrange
-        var client = _fixture.Client;
+        var client = fixture.Client;
 
         // Act
         var document = GetOpenApiDocument(client);

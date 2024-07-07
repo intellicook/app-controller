@@ -20,7 +20,7 @@ public class HealthControllerTests
 
     #region Get
 
-    public static IEnumerable<object[]> Get_Healthy_ReturnsOkActionResult_TestData()
+    public static IEnumerable<object[]> Get_Healthy_ReturnsOkObjectResult_TestData()
     {
         yield return
         [
@@ -44,8 +44,8 @@ public class HealthControllerTests
     }
 
     [Theory]
-    [MemberData(nameof(Get_Healthy_ReturnsOkActionResult_TestData))]
-    public async void Get_Healthy_ReturnsOkActionResult(
+    [MemberData(nameof(Get_Healthy_ReturnsOkObjectResult_TestData))]
+    public async void Get_Healthy_ReturnsOkObjectResult(
         IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
         HealthStatusModel expectedStatus
     )
@@ -156,9 +156,9 @@ public class HealthControllerTests
     {
         return new HealthReport(
             statuses.ToDictionary(
-                t => t.name,
-                t => new HealthReportEntry(
-                    t.healthStatus,
+                s => s.name,
+                s => new HealthReportEntry(
+                    s.healthStatus,
                     null,
                     TimeSpan.FromMilliseconds(1),
                     null,

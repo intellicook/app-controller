@@ -68,6 +68,4 @@ app.MapControllers();
 
 app.Run();
 
-public abstract partial class Program
-{
-}
+public abstract partial class Program;
