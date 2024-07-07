@@ -6,7 +6,7 @@ namespace IntelliCook.AppController.Api.E2ETests.Fixtures;
 public class ClientFixture : IDisposable
 {
     public WebApplicationFactory<Program> Factory { get; }
-    public HttpClient Client { get; init; }
+    public HttpClient Client { get; }
 
     public ClientFixture()
     {
@@ -26,7 +26,5 @@ public class ClientFixture : IDisposable
     }
 }
 
-[CollectionDefinition("Client")]
-public class ClientCollection : ICollectionFixture<ClientFixture>
-{
-}
+[CollectionDefinition(nameof(ClientFixture))]
+public class ClientCollection : ICollectionFixture<ClientFixture>;
