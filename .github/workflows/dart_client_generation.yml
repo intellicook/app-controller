@@ -29,11 +29,16 @@ jobs:
       run: dotnet build --configuration Release
     - name: Restore tools
       run: dotnet tool restore
+    - name: Checkout Dart client branch
+      uses: actions/checkout@v4
+      with:
+        ref: dart-client
+        path: app-controller-client
     - name: Generate OpenAPI file
       run: |
         dotnet swagger tofile `
-          --output openapi.json `
-          ".\IntelliCook.AppController.Api\bin\Release\net8.0\IntelliCook.AppController.Api.dll" `
+          --output ../app-controller-client/openapi.json `
+          ./IntelliCook.AppController.Api/bin/Release/net8.0/IntelliCook.AppController.Api.dll `
           v0.1
     - name: Setup Dart
       uses: dart-lang/setup-dart@v1
@@ -44,20 +49,16 @@ jobs:
         java-version: '11'
     - name: Activate OpenAPI Generator
       run: dart pub global activate openapi_generator_cli
-    - name: Checkout Dart client branch
-      uses: actions/checkout@v4
-      with:
-        ref: dart-client
-        path: app-controller-client
     - name: Remove old files
       working-directory: app-controller-client
       run: git rm -r '*'
     - name: Generate Dart client
+      working-directory: app-controller-client
       run: |
         openapi-generator generate `
           -i openapi.json `
           -g dart-dio `
-          -o ../app-controller-client/ `
+          -o ./ `
           -p pubName="app_controller_client" `
           -p pubLibrary="app_controller_client.api"
     - name: Commit and push
@@ -67,7 +68,7 @@ jobs:
         git config --global user.email "username@users.noreply.github.com"
         git add .
         git status
-        git commit --verbose -m "Dart Client"
+        git commit --verbose -m "Dart client ${{ github.sha }}"
         git status
         git push --verbose
         
