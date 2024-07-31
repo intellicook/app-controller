@@ -1,0 +1,94 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "IntelliCook App Controller API",
+    "description": "The controller service that connects backend components and the frontend.",
+    "version": "v0.1"
+  },
+  "paths": {
+    "/Health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Checks the health of App Controller and its components.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthGetResponseModel"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthGetResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Api/Temporary": {
+      "get": {
+        "tags": [
+          "Temporary"
+        ],
+        "summary": "Get method for temporary testing purposes.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HealthCheckModel": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/HealthStatusModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HealthGetResponseModel": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/HealthStatusModel"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HealthCheckModel"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HealthStatusModel": {
+        "enum": [
+          "Healthy",
+          "Degraded",
+          "Unhealthy"
+        ],
+        "type": "string"
+      }
+    }
+  }
+}
