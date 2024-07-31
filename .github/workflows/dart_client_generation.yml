@@ -13,7 +13,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./app_controller
+        working-directory: ./app-controller
     
     steps:
     - uses: actions/checkout@v4
@@ -35,9 +35,8 @@ jobs:
       uses: dart-lang/setup-dart@v1
     - name: Activate OpenAPI Generator
       run: dart pub global activate openapi_generator_cli
-    - name: Checkout dart-client branch
-      working-directory: ./app_controller_client
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+      working-directory: ./app-controller-client
       with:
         ref: dart-client
     - name: Remove old files
