@@ -2,7 +2,7 @@ name: Dart Client Generation
 
 on:
   workflow_run:
-    workflows: [Quality Assurance]
+    workflows: ["Quality Assurance"]
     types: [completed]
     branches: ["main"]
 
@@ -39,8 +39,7 @@ jobs:
       working-directory: ./app-controller-client
       with:
         ref: dart-client
-    - name: Remove old files
-      run: git rm -r '*'
+      run: Remove-Item .\* -Recurse -Force
     - name: Generate Dart client
       run: |
         openapi-generator generate \
