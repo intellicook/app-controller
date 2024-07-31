@@ -29,9 +29,9 @@ jobs:
       run: dotnet build --configuration Release
     - name: Generate OpenAPI file
       run: |
-        dotnet swagger tofile \
-          --output openapi.json \
-          ".\IntelliCook.AppController.Api\bin\Release\net8.0\IntelliCook.AppController.Api.dll" \
+        dotnet swagger tofile `
+          --output openapi.json `
+          ".\IntelliCook.AppController.Api\bin\Release\net8.0\IntelliCook.AppController.Api.dll" `
           v0.1
     - name: Setup Dart
       uses: dart-lang/setup-dart@v1
@@ -46,11 +46,11 @@ jobs:
       run: git rm -r '*'
     - name: Generate Dart client
       run: |
-        openapi-generator generate \
-          -i openapi.json \
-          -g dart-dio \
-          -o ../app_controller_client/ \
-          -p pubName="app_controller_client" \
+        openapi-generator generate `
+          -i openapi.json `
+          -g dart-dio `
+          -o ../app-controller-client/ `
+          -p pubName="app_controller_client" `
           -p pubLibrary="app_controller_client.api"
     - name: Commit and push
       working-directory: app-controller-client
