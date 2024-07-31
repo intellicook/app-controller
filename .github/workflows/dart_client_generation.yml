@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: [Quality Assurance]
     types: [completed]
-    branches: ["dart-client-generation"]
+    branches: [main, dart-client-generation]
 
 jobs:
   dart_client_generation:
