@@ -2,7 +2,7 @@ name: Dart Client Generation
 
 on:
   workflow_run:
-    workflows: ["Quality Assurance"]
+    workflows: [Quality Assurance]
     types: [completed]
     branches: ["dart-client-generation"]
 
