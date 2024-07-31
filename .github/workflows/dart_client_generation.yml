@@ -2,7 +2,7 @@ name: Dart Client Generation
 
 on:
   workflow_run:
-    workflows: [Quality Assurance]
+    workflows: ["Quality Assurance"]
     types: [completed]
     branches: ["main"]
 
@@ -13,12 +13,10 @@ jobs:
     
     defaults:
       run:
-        working-directory: app-controller
+        working-directory: ./app-controller
     
     steps:
     - uses: actions/checkout@v4
-      with:
-        path: app-controller
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -38,12 +36,10 @@ jobs:
     - name: Activate OpenAPI Generator
       run: dart pub global activate openapi_generator_cli
     - uses: actions/checkout@v4
+      working-directory: ./app-controller-client
       with:
         ref: dart-client
-        path: app-controller-client
-    - name: Remove old files
-      working-directory: app-controller-client
-      run: git rm -r '*'
+      run: Remove-Item .\* -Recurse -Force
     - name: Generate Dart client
       run: |
         openapi-generator generate \
@@ -53,7 +49,7 @@ jobs:
           -p pubName="app_controller_client" \
           -p pubLibrary="app_controller_client.api"
     - name: Commit and push
-      working-directory: app-controller-client
+      working-directory: ./app_controller_client
       run: |
         git config --global user.name "Dart Client Generation"
         git config --global user.email "username@users.noreply.github.com"
