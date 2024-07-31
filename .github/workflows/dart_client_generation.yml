@@ -27,6 +27,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release
+    - name: Restore tools
+      run: dotnet tool restore
     - name: Generate OpenAPI file
       run: |
         dotnet swagger tofile `
