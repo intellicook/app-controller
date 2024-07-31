@@ -37,9 +37,14 @@ jobs:
           v0.1
     - name: Setup Dart
       uses: dart-lang/setup-dart@v1
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
     - name: Activate OpenAPI Generator
       run: dart pub global activate openapi_generator_cli
-    - uses: actions/checkout@v4
+    - name: Checkout Dart client branch
+      uses: actions/checkout@v4
       with:
         ref: dart-client
         path: app-controller-client
