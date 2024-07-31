@@ -41,7 +41,8 @@ jobs:
       working-directory: ./app-controller-client
       with:
         ref: dart-client
-      run: Remove-Item .\* -Recurse -Force
+    - name: Remove old files
+      run: git rm -r '*'
     - name: Generate Dart client
       run: |
         openapi-generator generate `
