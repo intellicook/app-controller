@@ -34,6 +34,9 @@ jobs:
       with:
         ref: dart-client
         path: app-controller-client
+    - name: Remove old files
+      working-directory: app-controller-client
+      run: git rm -r '*'
     - name: Generate OpenAPI file
       run: |
         dotnet swagger tofile `
@@ -49,9 +52,6 @@ jobs:
         java-version: '11'
     - name: Activate OpenAPI Generator
       run: dart pub global activate openapi_generator_cli
-    - name: Remove old files
-      working-directory: app-controller-client
-      run: git rm -r '*'
     - name: Generate Dart client
       working-directory: app-controller-client
       run: |
