@@ -61,6 +61,7 @@ jobs:
           -o ./ `
           -p pubName="app_controller_client" `
           -p pubLibrary="app_controller_client.api"
+        dart run build_runner build --delete-conflicting-outputs
     - name: Commit and push
       working-directory: app-controller-client
       run: |
