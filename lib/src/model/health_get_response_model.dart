@@ -19,11 +19,11 @@ part 'health_get_response_model.g.dart';
 @BuiltValue()
 abstract class HealthGetResponseModel implements Built<HealthGetResponseModel, HealthGetResponseModelBuilder> {
   @BuiltValueField(wireName: r'status')
-  HealthStatusModel? get status;
+  HealthStatusModel get status;
   // enum statusEnum {  Healthy,  Degraded,  Unhealthy,  };
 
   @BuiltValueField(wireName: r'checks')
-  BuiltList<HealthCheckModel>? get checks;
+  BuiltList<HealthCheckModel> get checks;
 
   HealthGetResponseModel._();
 
@@ -48,20 +48,16 @@ class _$HealthGetResponseModelSerializer implements PrimitiveSerializer<HealthGe
     HealthGetResponseModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(HealthStatusModel),
-      );
-    }
-    if (object.checks != null) {
-      yield r'checks';
-      yield serializers.serialize(
-        object.checks,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(HealthCheckModel)]),
-      );
-    }
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(HealthStatusModel),
+    );
+    yield r'checks';
+    yield serializers.serialize(
+      object.checks,
+      specifiedType: const FullType(BuiltList, [FullType(HealthCheckModel)]),
+    );
   }
 
   @override
@@ -95,9 +91,8 @@ class _$HealthGetResponseModelSerializer implements PrimitiveSerializer<HealthGe
         case r'checks':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(HealthCheckModel)]),
-          ) as BuiltList<HealthCheckModel>?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(BuiltList, [FullType(HealthCheckModel)]),
+          ) as BuiltList<HealthCheckModel>;
           result.checks.replace(valueDes);
           break;
         default:

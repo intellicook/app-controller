@@ -8,15 +8,19 @@ part of 'health_check_model.dart';
 
 class _$HealthCheckModel extends HealthCheckModel {
   @override
-  final String? name;
+  final String name;
   @override
-  final HealthStatusModel? status;
+  final HealthStatusModel status;
 
   factory _$HealthCheckModel(
           [void Function(HealthCheckModelBuilder)? updates]) =>
       (new HealthCheckModelBuilder()..update(updates))._build();
 
-  _$HealthCheckModel._({this.name, this.status}) : super._();
+  _$HealthCheckModel._({required this.name, required this.status}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'HealthCheckModel', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        status, r'HealthCheckModel', 'status');
+  }
 
   @override
   HealthCheckModel rebuild(void Function(HealthCheckModelBuilder) updates) =>
@@ -93,8 +97,12 @@ class HealthCheckModelBuilder
   HealthCheckModel build() => _build();
 
   _$HealthCheckModel _build() {
-    final _$result =
-        _$v ?? new _$HealthCheckModel._(name: name, status: status);
+    final _$result = _$v ??
+        new _$HealthCheckModel._(
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'HealthCheckModel', 'name'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'HealthCheckModel', 'status'));
     replace(_$result);
     return _$result;
   }

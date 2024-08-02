@@ -8,15 +8,21 @@ part of 'health_get_response_model.dart';
 
 class _$HealthGetResponseModel extends HealthGetResponseModel {
   @override
-  final HealthStatusModel? status;
+  final HealthStatusModel status;
   @override
-  final BuiltList<HealthCheckModel>? checks;
+  final BuiltList<HealthCheckModel> checks;
 
   factory _$HealthGetResponseModel(
           [void Function(HealthGetResponseModelBuilder)? updates]) =>
       (new HealthGetResponseModelBuilder()..update(updates))._build();
 
-  _$HealthGetResponseModel._({this.status, this.checks}) : super._();
+  _$HealthGetResponseModel._({required this.status, required this.checks})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        status, r'HealthGetResponseModel', 'status');
+    BuiltValueNullFieldError.checkNotNull(
+        checks, r'HealthGetResponseModel', 'checks');
+  }
 
   @override
   HealthGetResponseModel rebuild(
@@ -74,7 +80,7 @@ class HealthGetResponseModelBuilder
     final $v = _$v;
     if ($v != null) {
       _status = $v.status;
-      _checks = $v.checks?.toBuilder();
+      _checks = $v.checks.toBuilder();
       _$v = null;
     }
     return this;
@@ -99,12 +105,14 @@ class HealthGetResponseModelBuilder
     try {
       _$result = _$v ??
           new _$HealthGetResponseModel._(
-              status: status, checks: _checks?.build());
+              status: BuiltValueNullFieldError.checkNotNull(
+                  status, r'HealthGetResponseModel', 'status'),
+              checks: checks.build());
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'checks';
-        _checks?.build();
+        checks.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'HealthGetResponseModel', _$failedField, e.toString());

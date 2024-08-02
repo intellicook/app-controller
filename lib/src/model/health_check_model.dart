@@ -17,10 +17,10 @@ part 'health_check_model.g.dart';
 @BuiltValue()
 abstract class HealthCheckModel implements Built<HealthCheckModel, HealthCheckModelBuilder> {
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   @BuiltValueField(wireName: r'status')
-  HealthStatusModel? get status;
+  HealthStatusModel get status;
   // enum statusEnum {  Healthy,  Degraded,  Unhealthy,  };
 
   HealthCheckModel._();
@@ -46,20 +46,16 @@ class _$HealthCheckModelSerializer implements PrimitiveSerializer<HealthCheckMod
     HealthCheckModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(HealthStatusModel),
-      );
-    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(HealthStatusModel),
+    );
   }
 
   @override
@@ -86,9 +82,8 @@ class _$HealthCheckModelSerializer implements PrimitiveSerializer<HealthCheckMod
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
+            specifiedType: const FullType(String),
+          ) as String;
           result.name = valueDes;
           break;
         case r'status':

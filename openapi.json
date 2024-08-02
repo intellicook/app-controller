@@ -53,11 +53,15 @@
   "components": {
     "schemas": {
       "HealthCheckModel": {
+        "required": [
+          "name",
+          "status"
+        ],
         "type": "object",
         "properties": {
           "name": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/HealthStatusModel"
@@ -66,6 +70,10 @@
         "additionalProperties": false
       },
       "HealthGetResponseModel": {
+        "required": [
+          "checks",
+          "status"
+        ],
         "type": "object",
         "properties": {
           "status": {
@@ -75,8 +83,7 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/HealthCheckModel"
-            },
-            "nullable": true
+            }
           }
         },
         "additionalProperties": false
