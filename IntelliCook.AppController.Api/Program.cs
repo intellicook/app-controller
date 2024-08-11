@@ -8,7 +8,7 @@ startup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
-startup.Configure(app, app.Environment);
+startup.Configure(app);
 
 app.Run();
 

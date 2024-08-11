@@ -1,26 +1,26 @@
 using FluentAssertions;
 using IntelliCook.AppController.Api.E2ETests.Fixtures;
 using IntelliCook.AppController.Api.Models.Health;
-using IntelliCook.AppController.Infrastructure.Contexts;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Moq;
 using System.Net;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace IntelliCook.AppController.Api.E2ETests.Endpoints;
 
 [Collection(nameof(ClientFixture))]
 public class HealthControllerTests
 {
-    private const string Path = "/health";
+    private const string Path = "/Health";
     private readonly HttpClient _client;
+    private readonly ClientFixture _fixture;
     private readonly Mock<HealthCheckService> _healthCheckServiceMock = new();
 
     public HealthControllerTests(ClientFixture fixture)
     {
+        _fixture = fixture;
         _client = fixture.Factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureTestServices(services =>
@@ -77,11 +77,7 @@ public class HealthControllerTests
         var content = await response.Content.ReadAsStringAsync();
         content.Should().NotBeNullOrEmpty();
 
-        var health = JsonSerializer.Deserialize<HealthGetResponseModel>(content, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true,
-            Converters = { new JsonStringEnumConverter() }
-        });
+        var health = JsonSerializer.Deserialize<HealthGetResponseModel>(content, _fixture.SerializerOptions);
         health.Should().NotBeNull();
         health!.Status.Should().Be(expectedStatus);
         health.Checks.Should().BeEquivalentTo(statuses.Select(s => new HealthCheckModel
@@ -158,11 +154,7 @@ public class HealthControllerTests
         var content = await response.Content.ReadAsStringAsync();
         content.Should().NotBeNullOrEmpty();
 
-        var health = JsonSerializer.Deserialize<HealthGetResponseModel>(content, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true,
-            Converters = { new JsonStringEnumConverter() }
-        });
+        var health = JsonSerializer.Deserialize<HealthGetResponseModel>(content, _fixture.SerializerOptions);
         health.Should().NotBeNull();
         health!.Status.Should().Be(expectedStatus);
         health.Checks.Should().BeEquivalentTo(statuses.Select(s => new HealthCheckModel
