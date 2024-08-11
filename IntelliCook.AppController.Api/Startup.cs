@@ -52,7 +52,7 @@ public class Startup
         });
     }
 
-    public void Configure(WebApplication app, IWebHostEnvironment env)
+    public void Configure(WebApplication app)
     {
         // Ensure database is created
         using (var scope = app.Services.CreateScope())
@@ -64,7 +64,7 @@ public class Startup
         }
 
         // Configure the HTTP request pipeline
-        if (env.IsDevelopment())
+        if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI(o =>
