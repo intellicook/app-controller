@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace IntelliCook.AppController.Api.Options;
 
-public class ApiOptions : IOptionsBase
+public class ApiOptions : IAppControllerOptions
 {
     public static string SectionKey => "Api";
 

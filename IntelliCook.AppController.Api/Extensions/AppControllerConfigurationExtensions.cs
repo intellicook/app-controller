@@ -5,7 +5,7 @@ namespace IntelliCook.AppController.Api.Extensions;
 public static class AppControllerConfigurationExtensions
 {
     public static IConfigurationSection GetValidatedSection<TOptions>(this IConfiguration configuration)
-        where TOptions : IOptionsBase
+        where TOptions : IAppControllerOptions
     {
         var section = configuration.GetSection(TOptions.SectionKey);
 
@@ -30,7 +30,7 @@ public static class AppControllerConfigurationExtensions
     }
 
     public static TOptions GetAppControllerOptions<TOptions>(this IConfiguration configuration)
-        where TOptions : IOptionsBase
+        where TOptions : IAppControllerOptions
     {
         return configuration.GetValidatedSection<TOptions>().Get<TOptions>()!;
     }

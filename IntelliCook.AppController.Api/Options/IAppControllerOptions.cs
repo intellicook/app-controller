@@ -1,6 +1,6 @@
 namespace IntelliCook.AppController.Api.Options;
 
-public interface IOptionsBase
+public interface IAppControllerOptions
 {
     public static abstract string SectionKey { get; }
 

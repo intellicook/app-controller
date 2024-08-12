@@ -10,7 +10,7 @@ public static class AppControllerServiceCollectionExtensions
         this IServiceCollection serviceCollection,
         IConfiguration configuration
     ) where
-        TOptions : class, IOptionsBase
+        TOptions : class, IAppControllerOptions
     {
         return serviceCollection.Configure<TOptions>(configuration.GetValidatedSection<TOptions>());
     }
