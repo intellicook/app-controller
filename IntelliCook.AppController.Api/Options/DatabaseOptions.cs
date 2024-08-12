@@ -1,6 +1,6 @@
 namespace IntelliCook.AppController.Api.Options;
 
-public class DatabaseOptions : IOptionsBase
+public class DatabaseOptions : IAppControllerOptions
 {
     public static string SectionKey => "Database";
 
