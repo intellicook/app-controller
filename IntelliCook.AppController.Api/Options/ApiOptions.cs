@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace IntelliCook.AppController.Api.Options;
 
 public class ApiOptions : IAppControllerOptions

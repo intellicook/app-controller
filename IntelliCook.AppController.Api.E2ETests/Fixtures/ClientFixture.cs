@@ -1,5 +1,9 @@
 using IntelliCook.AppController.Api.Options;
+using IntelliCook.Auth.Client;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -15,8 +19,13 @@ public class ClientFixture : IDisposable
         );
 
         Factory = new WebApplicationFactory<Program>();
-        Client = Factory.CreateClient();
+        Client = Factory.WithWebHostBuilder(builder =>
+        {
+            builder.ConfigureTestServices(ConfigureDefaultTestServices);
+        }).CreateClient();
     }
+
+    public Mock<IAuthClient> AuthClientMock { get; } = new();
 
     public WebApplicationFactory<Program> Factory { get; }
     public HttpClient Client { get; }
@@ -33,6 +42,11 @@ public class ClientFixture : IDisposable
         GC.SuppressFinalize(this);
         Client.Dispose();
         Factory.Dispose();
+    }
+
+    public void ConfigureDefaultTestServices(IServiceCollection services)
+    {
+        services.AddScoped<IAuthClient>(_ => AuthClientMock.Object);
     }
 }
 

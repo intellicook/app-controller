@@ -1,20 +1,25 @@
 using FluentAssertions;
 using IntelliCook.AppController.Api.Controllers;
+using IntelliCook.AppController.Api.Extensions;
 using IntelliCook.AppController.Api.Models.Health;
+using IntelliCook.Auth.Client;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Moq;
+using System.Collections;
+using System.Net;
 
 namespace IntelliCook.AppController.Api.UnitTests.Controllers;
 
 public class HealthControllerTests
 {
     private readonly HealthController _healthController;
+    private readonly Mock<IAuthClient> _authClientMock = new();
     private readonly Mock<HealthCheckService> _healthCheckServiceMock = new();
 
     public HealthControllerTests()
     {
-        _healthController = new HealthController(_healthCheckServiceMock.Object);
+        _healthController = new HealthController(_healthCheckServiceMock.Object, _authClientMock.Object);
     }
 
     #region Get
@@ -25,20 +30,54 @@ public class HealthControllerTests
         [
             new List<(string name, HealthStatus healthStatus)>
             {
-                ("Check1", HealthStatus.Healthy),
-                ("Check2", HealthStatus.Healthy)
+                ("Check 1", HealthStatus.Healthy),
+                ("Check 2", HealthStatus.Healthy)
             },
-            HealthStatusModel.Healthy
+            HealthStatusModel.Healthy,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                    },
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 2",
+                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                    }
+                }
+            }
         ];
         yield return
         [
-            new List<(string name, HealthStatus healthStatus)> { ("Check1", HealthStatus.Healthy) },
-            HealthStatusModel.Healthy
+            new List<(string name, HealthStatus healthStatus)> { ("Check 1", HealthStatus.Healthy) },
+            HealthStatusModel.Healthy,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                    }
+                }
+            }
         ];
         yield return
         [
             Enumerable.Empty<(string name, HealthStatus healthStatus)>(),
-            HealthStatusModel.Healthy
+            HealthStatusModel.Healthy,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = Enumerable.Empty<Auth.Contract.Health.HealthCheckModel>()
+            }
         ];
     }
 
@@ -46,12 +85,20 @@ public class HealthControllerTests
     [MemberData(nameof(Get_Healthy_ReturnsOkObjectResult_TestData))]
     public async void Get_Healthy_ReturnsOkObjectResult(
         IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
-        HealthStatusModel expectedStatus
+        HealthStatusModel expectedAppControllerStatus,
+        Auth.Contract.Health.HealthGetResponseModel authResponse
     )
     {
         // Arrange
         var report = GetHealthReport(statuses);
 
+        _authClientMock
+            .Setup(m => m.GetHealth())
+            .ReturnsAsync(
+                IAuthClient
+                    .Result<Auth.Contract.Health.HealthGetResponseModel, Auth.Contract.Health.HealthGetResponseModel>
+                    .FromValue(HttpStatusCode.OK, authResponse)
+            );
         _healthCheckServiceMock
             .Setup(m => m.CheckHealthAsync(null, new CancellationToken()))
             .ReturnsAsync(report);
@@ -61,14 +108,21 @@ public class HealthControllerTests
 
         // Assert
         var response = result.Should().BeOfType<OkObjectResult>().Which
-            .Value.Should().BeOfType<HealthGetResponseModel>().Subject;
+            .Value.Should().BeAssignableTo<IEnumerable<HealthGetResponseModel>>().Subject;
 
-        response.Status.Should().Be(expectedStatus);
-        response.Checks.Should().BeEquivalentTo(statuses.Select(s => new HealthCheckModel
+        response.Should().BeEquivalentTo(new[]
         {
-            Name = s.name,
-            Status = s.healthStatus.ToHealthStatusModel()
-        }));
+            new HealthGetResponseModel
+            {
+                Status = expectedAppControllerStatus,
+                Checks = statuses.Select(s => new HealthCheckModel
+                {
+                    Name = s.name,
+                    Status = s.healthStatus.ToHealthStatusModel()
+                })
+            },
+            authResponse.ToHealthGetResponseModel()
+        });
     }
 
     public static IEnumerable<object[]> Get_UnhealthyOrDegraded_ReturnsServiceUnavailableObjectResult_TestData()
@@ -77,41 +131,141 @@ public class HealthControllerTests
         [
             new List<(string name, HealthStatus healthStatus)>
             {
-                ("Check1", HealthStatus.Unhealthy), ("Check2", HealthStatus.Healthy)
+                ("Check 1", HealthStatus.Unhealthy), ("Check 2", HealthStatus.Healthy)
             },
-            HealthStatusModel.Unhealthy
+            HealthStatusModel.Unhealthy,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                    },
+                }
+            }
         ];
         yield return
         [
             new List<(string name, HealthStatus healthStatus)>
             {
-                ("Check1", HealthStatus.Degraded), ("Check2", HealthStatus.Healthy)
+                ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Healthy)
             },
-            HealthStatusModel.Degraded
+            HealthStatusModel.Degraded,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                    },
+                }
+            }
         ];
         yield return
         [
             new List<(string name, HealthStatus healthStatus)>
             {
-                ("Check1", HealthStatus.Degraded), ("Check2", HealthStatus.Unhealthy)
+                ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Unhealthy)
             },
-            HealthStatusModel.Unhealthy
+            HealthStatusModel.Unhealthy,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                    },
+                }
+            }
         ];
         yield return
         [
             new List<(string name, HealthStatus healthStatus)>
             {
-                ("Check1", HealthStatus.Degraded), ("Check2", HealthStatus.Degraded)
+                ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Degraded)
             },
-            HealthStatusModel.Degraded
+            HealthStatusModel.Degraded,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                    },
+                }
+            }
         ];
         yield return
         [
             new List<(string name, HealthStatus healthStatus)>
             {
-                ("Check1", HealthStatus.Unhealthy), ("Check2", HealthStatus.Unhealthy)
+                ("Check 1", HealthStatus.Unhealthy), ("Check 2", HealthStatus.Unhealthy)
             },
-            HealthStatusModel.Unhealthy
+            HealthStatusModel.Unhealthy,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                    },
+                }
+            }
+        ];
+        yield return
+        [
+            new List<(string name, HealthStatus healthStatus)>
+            {
+                ("Check 1", HealthStatus.Healthy), ("Check 2", HealthStatus.Healthy)
+            },
+            HealthStatusModel.Healthy,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Unhealthy,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Unhealthy
+                    },
+                }
+            }
+        ];
+        yield return
+        [
+            new List<(string name, HealthStatus healthStatus)>
+            {
+                ("Check 1", HealthStatus.Healthy), ("Check 2", HealthStatus.Healthy)
+            },
+            HealthStatusModel.Healthy,
+            new Auth.Contract.Health.HealthGetResponseModel
+            {
+                Status = Auth.Contract.Health.HealthStatusModel.Degraded,
+                Checks = new[]
+                {
+                    new Auth.Contract.Health.HealthCheckModel
+                    {
+                        Name = "Auth check 1",
+                        Status = Auth.Contract.Health.HealthStatusModel.Degraded
+                    },
+                }
+            }
         ];
     }
 
@@ -119,12 +273,24 @@ public class HealthControllerTests
     [MemberData(nameof(Get_UnhealthyOrDegraded_ReturnsServiceUnavailableObjectResult_TestData))]
     public async void Get_UnhealthyOrDegraded_ReturnsServiceUnavailableObjectResult(
         IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
-        HealthStatusModel expectedStatus
+        HealthStatusModel expectedAppControllerStatus,
+        Auth.Contract.Health.HealthGetResponseModel authResponse
     )
     {
         // Arrange
         var report = GetHealthReport(statuses);
 
+        _authClientMock
+            .Setup(m => m.GetHealth())
+            .ReturnsAsync(authResponse.Status switch
+            {
+                Auth.Contract.Health.HealthStatusModel.Healthy => IAuthClient
+                    .Result<Auth.Contract.Health.HealthGetResponseModel, Auth.Contract.Health.HealthGetResponseModel>
+                    .FromValue(HttpStatusCode.OK, authResponse),
+                _ => IAuthClient
+                    .Result<Auth.Contract.Health.HealthGetResponseModel, Auth.Contract.Health.HealthGetResponseModel>
+                    .FromError(HttpStatusCode.ServiceUnavailable, authResponse),
+            });
         _healthCheckServiceMock
             .Setup(m => m.CheckHealthAsync(null, new CancellationToken()))
             .ReturnsAsync(report);
@@ -134,14 +300,21 @@ public class HealthControllerTests
 
         // Assert
         var response = result.Should().BeOfType<ObjectResult>().Which
-            .Value.Should().BeOfType<HealthGetResponseModel>().Subject;
+            .Value.Should().BeAssignableTo<IEnumerable<HealthGetResponseModel>>().Subject;
 
-        response.Status.Should().Be(expectedStatus);
-        response.Checks.Should().BeEquivalentTo(statuses.Select(s => new HealthCheckModel
+        response.Should().BeEquivalentTo(new[]
         {
-            Name = s.name,
-            Status = s.healthStatus.ToHealthStatusModel()
-        }));
+            new HealthGetResponseModel
+            {
+                Status = expectedAppControllerStatus,
+                Checks = statuses.Select(s => new HealthCheckModel
+                {
+                    Name = s.name,
+                    Status = s.healthStatus.ToHealthStatusModel()
+                })
+            },
+            authResponse.ToHealthGetResponseModel()
+        });
     }
 
     #endregion

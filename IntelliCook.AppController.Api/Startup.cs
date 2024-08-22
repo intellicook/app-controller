@@ -1,6 +1,7 @@
 using IntelliCook.AppController.Api.Extensions;
 using IntelliCook.AppController.Api.Options;
 using IntelliCook.AppController.Infrastructure.Contexts;
+using IntelliCook.Auth.Client;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -13,6 +14,7 @@ public class Startup
     private IConfiguration Configuration { get; }
     private ApiOptions ApiOptions { get; }
     private DatabaseOptions DatabaseOptions { get; }
+    private AuthOptions AuthOptions { get; }
 
     public Startup(IConfiguration configuration)
     {
@@ -25,6 +27,7 @@ public class Startup
 
         ApiOptions = Configuration.GetAppControllerOptions<ApiOptions>();
         DatabaseOptions = Configuration.GetAppControllerOptions<DatabaseOptions>();
+        AuthOptions = Configuration.GetAppControllerOptions<AuthOptions>();
     }
 
     public void ConfigureServices(IServiceCollection services)
@@ -32,6 +35,7 @@ public class Startup
         services.AddAppControllerOptions<DatabaseOptions>(Configuration);
         services.AddAppControllerOptions<ApiOptions>(Configuration);
         services.AddAppControllerContext(DatabaseOptions);
+        services.AddHttpContextAccessor();
         services.AddHealthChecks()
             .AddAppControllerHealthChecks(DatabaseOptions);
         services.AddDatabaseDeveloperPageExceptionFilter();
@@ -50,6 +54,8 @@ public class Startup
             var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             o.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
+
+        services.AddAuthClient(AuthOptions);
     }
 
     public void Configure(WebApplication app)
