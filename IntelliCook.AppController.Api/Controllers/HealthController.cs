@@ -27,6 +27,7 @@ public class HealthController(HealthCheckService healthCheckService, IAuthClient
         // App Controller health
         result.Add(new HealthGetResponseModel
         {
+            Service = HealthServiceModel.AppController,
             Status = report.Status.ToHealthStatusModel(),
             Checks = report.Entries.Select(entry => new HealthCheckModel
             {
@@ -36,7 +37,7 @@ public class HealthController(HealthCheckService healthCheckService, IAuthClient
         });
 
         // Auth health
-        var authResponse = await authClient.GetHealth();
+        var authResponse = await authClient.GetHealthAsync();
         result.Add(authResponse.StatusCode switch
         {
             HttpStatusCode.OK => authResponse.Value.ToHealthGetResponseModel(),
@@ -44,6 +45,7 @@ public class HealthController(HealthCheckService healthCheckService, IAuthClient
                 authResponse.Error.ToHealthGetResponseModel(),
             _ => new HealthGetResponseModel
             {
+                Service = HealthServiceModel.Auth,
                 Status = HealthStatusModel.Unhealthy,
                 Checks = []
             }

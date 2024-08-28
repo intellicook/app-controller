@@ -29,6 +29,7 @@ public static class AuthContractExtensions
     {
         return new HealthGetResponseModel
         {
+            Service = HealthServiceModel.Auth,
             Status = model.Status.ToHealthStatusModel(),
             Checks = model.Checks.Select(ToHealthCheckModel)
         };

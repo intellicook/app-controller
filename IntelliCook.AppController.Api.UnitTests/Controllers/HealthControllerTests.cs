@@ -93,7 +93,7 @@ public class HealthControllerTests
         var report = GetHealthReport(statuses);
 
         _authClientMock
-            .Setup(m => m.GetHealth())
+            .Setup(m => m.GetHealthAsync())
             .ReturnsAsync(
                 IAuthClient
                     .Result<Auth.Contract.Health.HealthGetResponseModel, Auth.Contract.Health.HealthGetResponseModel>
@@ -114,6 +114,7 @@ public class HealthControllerTests
         {
             new HealthGetResponseModel
             {
+                Service = HealthServiceModel.AppController,
                 Status = expectedAppControllerStatus,
                 Checks = statuses.Select(s => new HealthCheckModel
                 {
@@ -281,7 +282,7 @@ public class HealthControllerTests
         var report = GetHealthReport(statuses);
 
         _authClientMock
-            .Setup(m => m.GetHealth())
+            .Setup(m => m.GetHealthAsync())
             .ReturnsAsync(authResponse.Status switch
             {
                 Auth.Contract.Health.HealthStatusModel.Healthy => IAuthClient
@@ -306,6 +307,7 @@ public class HealthControllerTests
         {
             new HealthGetResponseModel
             {
+                Service = HealthServiceModel.AppController,
                 Status = expectedAppControllerStatus,
                 Checks = statuses.Select(s => new HealthCheckModel
                 {

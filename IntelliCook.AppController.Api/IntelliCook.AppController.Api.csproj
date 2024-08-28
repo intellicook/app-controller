@@ -8,7 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="8.0.2"/>
-        <PackageReference Include="intellicook.auth.client" Version="2024.8.19.1308"/>
+        <PackageReference Include="intellicook.auth.client" Version="2024.8.28.1031" />
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.6"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
           <PrivateAssets>all</PrivateAssets>
