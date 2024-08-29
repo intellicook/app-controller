@@ -8,6 +8,7 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:app_controller_client/src/model/health_get_response_model.dart';
+import 'package:built_collection/built_collection.dart';
 
 class HealthApi {
 
@@ -28,9 +29,9 @@ class HealthApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [HealthGetResponseModel] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<HealthGetResponseModel>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<HealthGetResponseModel>> healthGet({ 
+  Future<Response<BuiltList<HealthGetResponseModel>>> healthGet({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -59,14 +60,14 @@ class HealthApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    HealthGetResponseModel? _responseData;
+    BuiltList<HealthGetResponseModel>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(HealthGetResponseModel),
-      ) as HealthGetResponseModel;
+        specifiedType: const FullType(BuiltList, [FullType(HealthGetResponseModel)]),
+      ) as BuiltList<HealthGetResponseModel>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -78,7 +79,7 @@ class HealthApi {
       );
     }
 
-    return Response<HealthGetResponseModel>(
+    return Response<BuiltList<HealthGetResponseModel>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

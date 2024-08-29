@@ -16,6 +16,7 @@ import 'package:app_controller_client/src/model/date.dart';
 
 import 'package:app_controller_client/src/model/health_check_model.dart';
 import 'package:app_controller_client/src/model/health_get_response_model.dart';
+import 'package:app_controller_client/src/model/health_service_model.dart';
 import 'package:app_controller_client/src/model/health_status_model.dart';
 
 part 'serializers.g.dart';
@@ -23,9 +24,14 @@ part 'serializers.g.dart';
 @SerializersFor([
   HealthCheckModel,
   HealthGetResponseModel,
+  HealthServiceModel,
   HealthStatusModel,
 ])
 Serializers serializers = (_$serializers.toBuilder()
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(HealthGetResponseModel)]),
+        () => ListBuilder<HealthGetResponseModel>(),
+      )
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())

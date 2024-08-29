@@ -71,6 +71,7 @@ Class | Method | HTTP request | Description
 
  - [HealthCheckModel](doc/HealthCheckModel.md)
  - [HealthGetResponseModel](doc/HealthGetResponseModel.md)
+ - [HealthServiceModel](doc/HealthServiceModel.md)
  - [HealthStatusModel](doc/HealthStatusModel.md)
 
 

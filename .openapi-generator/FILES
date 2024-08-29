@@ -5,6 +5,7 @@ analysis_options.yaml
 doc/HealthApi.md
 doc/HealthCheckModel.md
 doc/HealthGetResponseModel.md
+doc/HealthServiceModel.md
 doc/HealthStatusModel.md
 doc/TemporaryApi.md
 lib/app_controller_client.dart
@@ -21,11 +22,13 @@ lib/src/date_serializer.dart
 lib/src/model/date.dart
 lib/src/model/health_check_model.dart
 lib/src/model/health_get_response_model.dart
+lib/src/model/health_service_model.dart
 lib/src/model/health_status_model.dart
 lib/src/serializers.dart
 pubspec.yaml
 test/health_api_test.dart
 test/health_check_model_test.dart
 test/health_get_response_model_test.dart
+test/health_service_model_test.dart
 test/health_status_model_test.dart
 test/temporary_api_test.dart

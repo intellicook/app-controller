@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(HealthGetResponseModel, () {
+    // HealthServiceModel service
+    test('to test the property `service`', () async {
+      // TODO
+    });
+
     // HealthStatusModel status
     test('to test the property `status`', () async {
       // TODO

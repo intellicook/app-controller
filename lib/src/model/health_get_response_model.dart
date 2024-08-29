@@ -6,6 +6,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:app_controller_client/src/model/health_status_model.dart';
 import 'package:app_controller_client/src/model/health_check_model.dart';
+import 'package:app_controller_client/src/model/health_service_model.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,10 +15,15 @@ part 'health_get_response_model.g.dart';
 /// HealthGetResponseModel
 ///
 /// Properties:
+/// * [service] 
 /// * [status] 
 /// * [checks] 
 @BuiltValue()
 abstract class HealthGetResponseModel implements Built<HealthGetResponseModel, HealthGetResponseModelBuilder> {
+  @BuiltValueField(wireName: r'service')
+  HealthServiceModel get service;
+  // enum serviceEnum {  AppController,  Auth,  };
+
   @BuiltValueField(wireName: r'status')
   HealthStatusModel get status;
   // enum statusEnum {  Healthy,  Degraded,  Unhealthy,  };
@@ -48,6 +54,11 @@ class _$HealthGetResponseModelSerializer implements PrimitiveSerializer<HealthGe
     HealthGetResponseModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'service';
+    yield serializers.serialize(
+      object.service,
+      specifiedType: const FullType(HealthServiceModel),
+    );
     yield r'status';
     yield serializers.serialize(
       object.status,
@@ -81,6 +92,13 @@ class _$HealthGetResponseModelSerializer implements PrimitiveSerializer<HealthGe
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'service':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(HealthServiceModel),
+          ) as HealthServiceModel;
+          result.service = valueDes;
+          break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,

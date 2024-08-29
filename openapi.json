@@ -18,7 +18,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HealthGetResponseModel"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HealthGetResponseModel"
+                  }
                 }
               }
             }
@@ -28,7 +31,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HealthGetResponseModel"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HealthGetResponseModel"
+                  }
                 }
               }
             }
@@ -72,10 +78,14 @@
       "HealthGetResponseModel": {
         "required": [
           "checks",
+          "service",
           "status"
         ],
         "type": "object",
         "properties": {
+          "service": {
+            "$ref": "#/components/schemas/HealthServiceModel"
+          },
           "status": {
             "$ref": "#/components/schemas/HealthStatusModel"
           },
@@ -87,6 +97,13 @@
           }
         },
         "additionalProperties": false
+      },
+      "HealthServiceModel": {
+        "enum": [
+          "AppController",
+          "Auth"
+        ],
+        "type": "string"
       },
       "HealthStatusModel": {
         "enum": [

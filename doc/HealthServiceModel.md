@@ -1,4 +1,4 @@
-# app_controller_client.model.HealthGetResponseModel
+# app_controller_client.model.HealthServiceModel
 
 ## Load the model package
 ```dart
@@ -8,9 +8,6 @@ import 'package:app_controller_client/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service** | [**HealthServiceModel**](HealthServiceModel.md) |  | 
-**status** | [**HealthStatusModel**](HealthStatusModel.md) |  | 
-**checks** | [**BuiltList&lt;HealthCheckModel&gt;**](HealthCheckModel.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

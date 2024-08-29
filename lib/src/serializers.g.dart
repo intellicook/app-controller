@@ -9,6 +9,7 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(HealthCheckModel.serializer)
       ..add(HealthGetResponseModel.serializer)
+      ..add(HealthServiceModel.serializer)
       ..add(HealthStatusModel.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(HealthCheckModel)]),

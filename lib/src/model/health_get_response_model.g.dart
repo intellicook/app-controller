@@ -8,6 +8,8 @@ part of 'health_get_response_model.dart';
 
 class _$HealthGetResponseModel extends HealthGetResponseModel {
   @override
+  final HealthServiceModel service;
+  @override
   final HealthStatusModel status;
   @override
   final BuiltList<HealthCheckModel> checks;
@@ -16,8 +18,11 @@ class _$HealthGetResponseModel extends HealthGetResponseModel {
           [void Function(HealthGetResponseModelBuilder)? updates]) =>
       (new HealthGetResponseModelBuilder()..update(updates))._build();
 
-  _$HealthGetResponseModel._({required this.status, required this.checks})
+  _$HealthGetResponseModel._(
+      {required this.service, required this.status, required this.checks})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        service, r'HealthGetResponseModel', 'service');
     BuiltValueNullFieldError.checkNotNull(
         status, r'HealthGetResponseModel', 'status');
     BuiltValueNullFieldError.checkNotNull(
@@ -37,6 +42,7 @@ class _$HealthGetResponseModel extends HealthGetResponseModel {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is HealthGetResponseModel &&
+        service == other.service &&
         status == other.status &&
         checks == other.checks;
   }
@@ -44,6 +50,7 @@ class _$HealthGetResponseModel extends HealthGetResponseModel {
   @override
   int get hashCode {
     var _$hash = 0;
+    _$hash = $jc(_$hash, service.hashCode);
     _$hash = $jc(_$hash, status.hashCode);
     _$hash = $jc(_$hash, checks.hashCode);
     _$hash = $jf(_$hash);
@@ -53,6 +60,7 @@ class _$HealthGetResponseModel extends HealthGetResponseModel {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'HealthGetResponseModel')
+          ..add('service', service)
           ..add('status', status)
           ..add('checks', checks))
         .toString();
@@ -62,6 +70,10 @@ class _$HealthGetResponseModel extends HealthGetResponseModel {
 class HealthGetResponseModelBuilder
     implements Builder<HealthGetResponseModel, HealthGetResponseModelBuilder> {
   _$HealthGetResponseModel? _$v;
+
+  HealthServiceModel? _service;
+  HealthServiceModel? get service => _$this._service;
+  set service(HealthServiceModel? service) => _$this._service = service;
 
   HealthStatusModel? _status;
   HealthStatusModel? get status => _$this._status;
@@ -79,6 +91,7 @@ class HealthGetResponseModelBuilder
   HealthGetResponseModelBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _service = $v.service;
       _status = $v.status;
       _checks = $v.checks.toBuilder();
       _$v = null;
@@ -105,6 +118,8 @@ class HealthGetResponseModelBuilder
     try {
       _$result = _$v ??
           new _$HealthGetResponseModel._(
+              service: BuiltValueNullFieldError.checkNotNull(
+                  service, r'HealthGetResponseModel', 'service'),
               status: BuiltValueNullFieldError.checkNotNull(
                   status, r'HealthGetResponseModel', 'status'),
               checks: checks.build());

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **healthGet**
-> HealthGetResponseModel healthGet()
+> BuiltList<HealthGetResponseModel> healthGet()
 
 Checks the health of App Controller and its components.
 
@@ -36,7 +36,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**HealthGetResponseModel**](HealthGetResponseModel.md)
+[**BuiltList&lt;HealthGetResponseModel&gt;**](HealthGetResponseModel.md)
 
 ### Authorization
 

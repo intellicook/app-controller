@@ -9,7 +9,7 @@ void main() {
   group(HealthApi, () {
     // Checks the health of App Controller and its components.
     //
-    //Future<HealthGetResponseModel> healthGet() async
+    //Future<BuiltList<HealthGetResponseModel>> healthGet() async
     test('test healthGet', () async {
       // TODO
     });
