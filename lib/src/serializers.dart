@@ -18,6 +18,10 @@ import 'package:app_controller_client/src/model/health_check_model.dart';
 import 'package:app_controller_client/src/model/health_get_response_model.dart';
 import 'package:app_controller_client/src/model/health_service_model.dart';
 import 'package:app_controller_client/src/model/health_status_model.dart';
+import 'package:app_controller_client/src/model/login_post_request_model.dart';
+import 'package:app_controller_client/src/model/login_post_response_model.dart';
+import 'package:app_controller_client/src/model/register_post_request_model.dart';
+import 'package:app_controller_client/src/model/validation_problem_details.dart';
 
 part 'serializers.g.dart';
 
@@ -26,6 +30,10 @@ part 'serializers.g.dart';
   HealthGetResponseModel,
   HealthServiceModel,
   HealthStatusModel,
+  LoginPostRequestModel,
+  LoginPostResponseModel,
+  RegisterPostRequestModel,
+  ValidationProblemDetails,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

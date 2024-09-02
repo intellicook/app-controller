@@ -46,13 +46,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:app_controller_client/app_controller_client.dart';
 
 
-final api = AppControllerClient().getHealthApi();
+final api = AppControllerClient().getAuthApi();
+final LoginPostRequestModel loginPostRequestModel = ; // LoginPostRequestModel | 
 
 try {
-    final response = await api.healthGet();
+    final response = await api.authLoginPost(loginPostRequestModel);
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling HealthApi->healthGet: $e\n");
+    print("Exception when calling AuthApi->authLoginPost: $e\n");
 }
 
 ```
@@ -63,6 +64,8 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*AuthApi*](doc/AuthApi.md) | [**authLoginPost**](doc/AuthApi.md#authloginpost) | **POST** /Auth/Login | Logs in a user.
+[*AuthApi*](doc/AuthApi.md) | [**authRegisterPost**](doc/AuthApi.md#authregisterpost) | **POST** /Auth/Register | Registers a new user.
 [*HealthApi*](doc/HealthApi.md) | [**healthGet**](doc/HealthApi.md#healthget) | **GET** /Health | Checks the health of App Controller and its components.
 [*TemporaryApi*](doc/TemporaryApi.md) | [**apiTemporaryGet**](doc/TemporaryApi.md#apitemporaryget) | **GET** /Api/Temporary | Get method for temporary testing purposes.
 
@@ -73,11 +76,19 @@ Class | Method | HTTP request | Description
  - [HealthGetResponseModel](doc/HealthGetResponseModel.md)
  - [HealthServiceModel](doc/HealthServiceModel.md)
  - [HealthStatusModel](doc/HealthStatusModel.md)
+ - [LoginPostRequestModel](doc/LoginPostRequestModel.md)
+ - [LoginPostResponseModel](doc/LoginPostResponseModel.md)
+ - [RegisterPostRequestModel](doc/RegisterPostRequestModel.md)
+ - [ValidationProblemDetails](doc/ValidationProblemDetails.md)
 
 
 ## Documentation For Authorization
 
-Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+### Bearer
+
+- **Type**: HTTP Bearer Token authentication (JWT)
 
 
 ## Author
