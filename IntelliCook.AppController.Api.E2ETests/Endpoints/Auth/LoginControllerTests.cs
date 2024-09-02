@@ -70,6 +70,11 @@ public class LoginControllerTests
 
         var error = JsonSerializer.Deserialize<LoginPostResponseModel>(content, _fixture.SerializerOptions);
         error.Should().BeEquivalentTo(result.Value);
+
+        _authClientMock.Verify(x => x.PostAuthLoginAsync(It.Is<LoginPostRequestModel>(r =>
+            r.Username == request.Username &&
+            r.Password == request.Password
+        )), Times.Once);
     }
 
     [Fact]
@@ -108,6 +113,11 @@ public class LoginControllerTests
 
         var error = JsonSerializer.Deserialize<ValidationProblemDetails>(content, _fixture.SerializerOptions);
         error.Should().BeEquivalentTo(result.Error);
+
+        _authClientMock.Verify(x => x.PostAuthLoginAsync(It.Is<LoginPostRequestModel>(r =>
+            r.Username == request.Username &&
+            r.Password == request.Password
+        )), Times.Once);
     }
 
     #endregion
