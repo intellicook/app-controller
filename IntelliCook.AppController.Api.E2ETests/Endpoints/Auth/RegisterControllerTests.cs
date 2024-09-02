@@ -62,6 +62,13 @@ public class RegisterControllerTests
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
+
+        _authClientMock.Verify(x => x.PostAuthRegisterAsync(It.Is<RegisterPostRequestModel>(r =>
+            r.Name == request.Name &&
+            r.Username == request.Username &&
+            r.Email == request.Email &&
+            r.Password == request.Password
+        )), Times.Once);
     }
 
     [Fact]
@@ -101,6 +108,13 @@ public class RegisterControllerTests
 
         var error = JsonSerializer.Deserialize<ValidationProblemDetails>(content, _fixture.SerializerOptions);
         error.Should().BeEquivalentTo(result.Error);
+
+        _authClientMock.Verify(x => x.PostAuthRegisterAsync(It.Is<RegisterPostRequestModel>(r =>
+            r.Name == request.Name &&
+            r.Username == request.Username &&
+            r.Email == request.Email &&
+            r.Password == request.Password
+        )), Times.Once);
     }
 
     #endregion
