@@ -2,7 +2,6 @@ using FluentAssertions;
 using IntelliCook.AppController.Api.Controllers.Auth;
 using IntelliCook.Auth.Client;
 using IntelliCook.Auth.Contract.Auth.Login;
-using IntelliCook.Auth.Contract.Auth.Register;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Net;

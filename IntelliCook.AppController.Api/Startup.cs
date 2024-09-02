@@ -61,6 +61,21 @@ public class Startup
                 Type = SecuritySchemeType.Http
             });
 
+            o.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
+                }
+            });
+
             var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             o.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
