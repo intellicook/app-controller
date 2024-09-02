@@ -6,7 +6,6 @@ using IntelliCook.Auth.Client;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Moq;
-using System.Collections;
 using System.Net;
 
 namespace IntelliCook.AppController.Api.UnitTests.Controllers;
@@ -34,20 +33,20 @@ public class HealthControllerTests
                 ("Check 2", HealthStatus.Healthy)
             },
             HealthStatusModel.Healthy,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
                     },
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 2",
-                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
                     }
                 }
             }
@@ -56,15 +55,15 @@ public class HealthControllerTests
         [
             new List<(string name, HealthStatus healthStatus)> { ("Check 1", HealthStatus.Healthy) },
             HealthStatusModel.Healthy,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
                     }
                 }
             }
@@ -73,10 +72,10 @@ public class HealthControllerTests
         [
             Enumerable.Empty<(string name, HealthStatus healthStatus)>(),
             HealthStatusModel.Healthy,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
-                Checks = Enumerable.Empty<Auth.Contract.Health.HealthCheckModel>()
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
+                Checks = Enumerable.Empty<IntelliCook.Auth.Contract.Health.HealthCheckModel>()
             }
         ];
     }
@@ -86,7 +85,7 @@ public class HealthControllerTests
     public async void Get_Healthy_ReturnsOkObjectResult(
         IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
         HealthStatusModel expectedAppControllerStatus,
-        Auth.Contract.Health.HealthGetResponseModel authResponse
+        IntelliCook.Auth.Contract.Health.HealthGetResponseModel authResponse
     )
     {
         // Arrange
@@ -96,7 +95,7 @@ public class HealthControllerTests
             .Setup(m => m.GetHealthAsync())
             .ReturnsAsync(
                 IAuthClient
-                    .Result<Auth.Contract.Health.HealthGetResponseModel, Auth.Contract.Health.HealthGetResponseModel>
+                    .Result<IntelliCook.Auth.Contract.Health.HealthGetResponseModel, IntelliCook.Auth.Contract.Health.HealthGetResponseModel>
                     .FromValue(HttpStatusCode.OK, authResponse)
             );
         _healthCheckServiceMock
@@ -135,15 +134,15 @@ public class HealthControllerTests
                 ("Check 1", HealthStatus.Unhealthy), ("Check 2", HealthStatus.Healthy)
             },
             HealthStatusModel.Unhealthy,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
                     },
                 }
             }
@@ -155,15 +154,15 @@ public class HealthControllerTests
                 ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Healthy)
             },
             HealthStatusModel.Degraded,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
                     },
                 }
             }
@@ -175,15 +174,15 @@ public class HealthControllerTests
                 ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Unhealthy)
             },
             HealthStatusModel.Unhealthy,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
                     },
                 }
             }
@@ -195,15 +194,15 @@ public class HealthControllerTests
                 ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Degraded)
             },
             HealthStatusModel.Degraded,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
                     },
                 }
             }
@@ -215,15 +214,15 @@ public class HealthControllerTests
                 ("Check 1", HealthStatus.Unhealthy), ("Check 2", HealthStatus.Unhealthy)
             },
             HealthStatusModel.Unhealthy,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Healthy,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Healthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
                     },
                 }
             }
@@ -235,15 +234,15 @@ public class HealthControllerTests
                 ("Check 1", HealthStatus.Healthy), ("Check 2", HealthStatus.Healthy)
             },
             HealthStatusModel.Healthy,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Unhealthy,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Unhealthy,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Unhealthy
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Unhealthy
                     },
                 }
             }
@@ -255,15 +254,15 @@ public class HealthControllerTests
                 ("Check 1", HealthStatus.Healthy), ("Check 2", HealthStatus.Healthy)
             },
             HealthStatusModel.Healthy,
-            new Auth.Contract.Health.HealthGetResponseModel
+            new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
-                Status = Auth.Contract.Health.HealthStatusModel.Degraded,
+                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Degraded,
                 Checks = new[]
                 {
-                    new Auth.Contract.Health.HealthCheckModel
+                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
                     {
                         Name = "Auth check 1",
-                        Status = Auth.Contract.Health.HealthStatusModel.Degraded
+                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Degraded
                     },
                 }
             }
@@ -275,7 +274,7 @@ public class HealthControllerTests
     public async void Get_UnhealthyOrDegraded_ReturnsServiceUnavailableObjectResult(
         IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
         HealthStatusModel expectedAppControllerStatus,
-        Auth.Contract.Health.HealthGetResponseModel authResponse
+        IntelliCook.Auth.Contract.Health.HealthGetResponseModel authResponse
     )
     {
         // Arrange
@@ -285,11 +284,11 @@ public class HealthControllerTests
             .Setup(m => m.GetHealthAsync())
             .ReturnsAsync(authResponse.Status switch
             {
-                Auth.Contract.Health.HealthStatusModel.Healthy => IAuthClient
-                    .Result<Auth.Contract.Health.HealthGetResponseModel, Auth.Contract.Health.HealthGetResponseModel>
+                IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy => IAuthClient
+                    .Result<IntelliCook.Auth.Contract.Health.HealthGetResponseModel, IntelliCook.Auth.Contract.Health.HealthGetResponseModel>
                     .FromValue(HttpStatusCode.OK, authResponse),
                 _ => IAuthClient
-                    .Result<Auth.Contract.Health.HealthGetResponseModel, Auth.Contract.Health.HealthGetResponseModel>
+                    .Result<IntelliCook.Auth.Contract.Health.HealthGetResponseModel, IntelliCook.Auth.Contract.Health.HealthGetResponseModel>
                     .FromError(HttpStatusCode.ServiceUnavailable, authResponse),
             });
         _healthCheckServiceMock

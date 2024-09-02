@@ -51,6 +51,16 @@ public class Startup
                 Description = ApiOptions.Description
             });
 
+            o.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Bearer",
+                BearerFormat = "JWT",
+                Scheme = "bearer",
+                Description = "Specify the authorization token.",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.Http
+            });
+
             var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             o.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
@@ -76,6 +86,7 @@ public class Startup
             app.UseSwaggerUI(o =>
             {
                 o.SwaggerEndpoint($"/swagger/{ApiOptions.VersionString}/swagger.json", ApiOptions.VersionString);
+                o.EnablePersistAuthorization();
             });
             app.UseDeveloperExceptionPage();
         }
