@@ -13,7 +13,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(HealthStatusModel.serializer)
       ..add(LoginPostRequestModel.serializer)
       ..add(LoginPostResponseModel.serializer)
+      ..add(ProblemDetails.serializer)
       ..add(RegisterPostRequestModel.serializer)
+      ..add(UserGetResponseModel.serializer)
+      ..add(UserPasswordPutRequestModel.serializer)
+      ..add(UserPutRequestModel.serializer)
+      ..add(UserRoleModel.serializer)
       ..add(ValidationProblemDetails.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(HealthCheckModel)]),

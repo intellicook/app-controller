@@ -68,6 +68,10 @@ Class | Method | HTTP request | Description
 [*AuthApi*](doc/AuthApi.md) | [**authRegisterPost**](doc/AuthApi.md#authregisterpost) | **POST** /Auth/Register | Registers a new user.
 [*HealthApi*](doc/HealthApi.md) | [**healthGet**](doc/HealthApi.md#healthget) | **GET** /Health | Checks the health of App Controller and its components.
 [*TemporaryApi*](doc/TemporaryApi.md) | [**apiTemporaryGet**](doc/TemporaryApi.md#apitemporaryget) | **GET** /Api/Temporary | Get method for temporary testing purposes.
+[*UserApi*](doc/UserApi.md) | [**userMeDelete**](doc/UserApi.md#usermedelete) | **DELETE** /User/Me | Deletes the current user.
+[*UserApi*](doc/UserApi.md) | [**userMeGet**](doc/UserApi.md#usermeget) | **GET** /User/Me | Gets the current user.
+[*UserApi*](doc/UserApi.md) | [**userMePasswordPut**](doc/UserApi.md#usermepasswordput) | **PUT** /User/Me/Password | Updates the current user&#39;s password.
+[*UserApi*](doc/UserApi.md) | [**userMePut**](doc/UserApi.md#usermeput) | **PUT** /User/Me | Updates the current user.
 
 
 ## Documentation For Models
@@ -78,7 +82,12 @@ Class | Method | HTTP request | Description
  - [HealthStatusModel](doc/HealthStatusModel.md)
  - [LoginPostRequestModel](doc/LoginPostRequestModel.md)
  - [LoginPostResponseModel](doc/LoginPostResponseModel.md)
+ - [ProblemDetails](doc/ProblemDetails.md)
  - [RegisterPostRequestModel](doc/RegisterPostRequestModel.md)
+ - [UserGetResponseModel](doc/UserGetResponseModel.md)
+ - [UserPasswordPutRequestModel](doc/UserPasswordPutRequestModel.md)
+ - [UserPutRequestModel](doc/UserPutRequestModel.md)
+ - [UserRoleModel](doc/UserRoleModel.md)
  - [ValidationProblemDetails](doc/ValidationProblemDetails.md)
 
 

@@ -12,6 +12,7 @@ import 'package:app_controller_client/src/auth/oauth.dart';
 import 'package:app_controller_client/src/api/auth_api.dart';
 import 'package:app_controller_client/src/api/health_api.dart';
 import 'package:app_controller_client/src/api/temporary_api.dart';
+import 'package:app_controller_client/src/api/user_api.dart';
 
 class AppControllerClient {
   static const String basePath = r'http://localhost';
@@ -83,5 +84,11 @@ class AppControllerClient {
   /// by doing that all interceptors will not be executed
   TemporaryApi getTemporaryApi() {
     return TemporaryApi(dio, serializers);
+  }
+
+  /// Get UserApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  UserApi getUserApi() {
+    return UserApi(dio, serializers);
   }
 }

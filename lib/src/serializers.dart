@@ -20,7 +20,12 @@ import 'package:app_controller_client/src/model/health_service_model.dart';
 import 'package:app_controller_client/src/model/health_status_model.dart';
 import 'package:app_controller_client/src/model/login_post_request_model.dart';
 import 'package:app_controller_client/src/model/login_post_response_model.dart';
+import 'package:app_controller_client/src/model/problem_details.dart';
 import 'package:app_controller_client/src/model/register_post_request_model.dart';
+import 'package:app_controller_client/src/model/user_get_response_model.dart';
+import 'package:app_controller_client/src/model/user_password_put_request_model.dart';
+import 'package:app_controller_client/src/model/user_put_request_model.dart';
+import 'package:app_controller_client/src/model/user_role_model.dart';
 import 'package:app_controller_client/src/model/validation_problem_details.dart';
 
 part 'serializers.g.dart';
@@ -32,7 +37,12 @@ part 'serializers.g.dart';
   HealthStatusModel,
   LoginPostRequestModel,
   LoginPostResponseModel,
+  ProblemDetails,
   RegisterPostRequestModel,
+  UserGetResponseModel,
+  UserPasswordPutRequestModel,
+  UserPutRequestModel,
+  UserRoleModel,
   ValidationProblemDetails,
 ])
 Serializers serializers = (_$serializers.toBuilder()
