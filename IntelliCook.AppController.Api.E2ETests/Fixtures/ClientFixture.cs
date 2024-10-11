@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using RecipeSearchClient = IntelliCook.RecipeSearch.Client.RecipeSearchService.RecipeSearchServiceClient;
 
 namespace IntelliCook.AppController.Api.E2ETests.Fixtures;
 
@@ -26,6 +27,7 @@ public class ClientFixture : IDisposable
     }
 
     public Mock<IAuthClient> AuthClientMock { get; } = new();
+    public Mock<RecipeSearchClient> RecipeSearchClientMock { get; } = new();
 
     public WebApplicationFactory<Program> Factory { get; }
     public HttpClient Client { get; }
@@ -46,7 +48,8 @@ public class ClientFixture : IDisposable
 
     public void ConfigureDefaultTestServices(IServiceCollection services)
     {
-        services.AddScoped<IAuthClient>(_ => AuthClientMock.Object);
+        services.AddScoped(_ => AuthClientMock.Object);
+        services.AddScoped(_ => RecipeSearchClientMock.Object);
     }
 }
 

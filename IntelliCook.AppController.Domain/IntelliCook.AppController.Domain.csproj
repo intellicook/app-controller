@@ -10,12 +10,4 @@
       <ProjectReference Include="..\IntelliCook.AppController.Infrastructure\IntelliCook.AppController.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="intellicook.auth.client" Version="2024.9.1.244" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Auth\" />
-    </ItemGroup>
-
 </Project>

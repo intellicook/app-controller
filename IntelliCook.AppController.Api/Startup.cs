@@ -15,6 +15,7 @@ public class Startup
     private ApiOptions ApiOptions { get; }
     private DatabaseOptions DatabaseOptions { get; }
     private AuthOptions AuthOptions { get; }
+    private RecipeSearchOptions RecipeSearchOptions { get; }
 
     public Startup(IConfiguration configuration)
     {
@@ -28,6 +29,7 @@ public class Startup
         ApiOptions = Configuration.GetAppControllerOptions<ApiOptions>();
         DatabaseOptions = Configuration.GetAppControllerOptions<DatabaseOptions>();
         AuthOptions = Configuration.GetAppControllerOptions<AuthOptions>();
+        RecipeSearchOptions = Configuration.GetAppControllerOptions<RecipeSearchOptions>();
     }
 
     public void ConfigureServices(IServiceCollection services)
@@ -80,7 +82,9 @@ public class Startup
             o.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
 
+        // Microservice clients
         services.AddAuthClient(AuthOptions);
+        services.AddRecipeSearchClient(RecipeSearchOptions);
     }
 
     public void Configure(WebApplication app)
