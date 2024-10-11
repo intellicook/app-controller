@@ -14,7 +14,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Add Auth Source
-      run: dotnet nuget update source "intellicook-auth-github" `
+      run: dotnet nuget update source "intellicook-github" `
         --source "https://nuget.pkg.github.com/intellicook/index.json" `
         --username "username@users.noreply.github.com" `
         --password ${{ secrets.INTELLICOOK_PAT_BY_LIO }} `
