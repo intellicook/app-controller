@@ -370,7 +370,8 @@
       "HealthServiceModel": {
         "enum": [
           "AppController",
-          "Auth"
+          "Auth",
+          "RecipeSearch"
         ],
         "type": "string"
       },

@@ -9,6 +9,8 @@ part of 'health_service_model.dart';
 const HealthServiceModel _$appController =
     const HealthServiceModel._('appController');
 const HealthServiceModel _$auth = const HealthServiceModel._('auth');
+const HealthServiceModel _$recipeSearch =
+    const HealthServiceModel._('recipeSearch');
 
 HealthServiceModel _$valueOf(String name) {
   switch (name) {
@@ -16,6 +18,8 @@ HealthServiceModel _$valueOf(String name) {
       return _$appController;
     case 'auth':
       return _$auth;
+    case 'recipeSearch':
+      return _$recipeSearch;
     default:
       throw new ArgumentError(name);
   }
@@ -25,12 +29,14 @@ final BuiltSet<HealthServiceModel> _$values =
     new BuiltSet<HealthServiceModel>(const <HealthServiceModel>[
   _$appController,
   _$auth,
+  _$recipeSearch,
 ]);
 
 class _$HealthServiceModelMeta {
   const _$HealthServiceModelMeta();
   HealthServiceModel get appController => _$appController;
   HealthServiceModel get auth => _$auth;
+  HealthServiceModel get recipeSearch => _$recipeSearch;
   HealthServiceModel valueOf(String name) => _$valueOf(name);
   BuiltSet<HealthServiceModel> get values => _$values;
 }
@@ -49,10 +55,12 @@ class _$HealthServiceModelSerializer
   static const Map<String, Object> _toWire = const <String, Object>{
     'appController': 'AppController',
     'auth': 'Auth',
+    'recipeSearch': 'RecipeSearch',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'AppController': 'appController',
     'Auth': 'auth',
+    'RecipeSearch': 'recipeSearch',
   };
 
   @override

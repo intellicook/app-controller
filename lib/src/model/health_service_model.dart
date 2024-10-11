@@ -15,6 +15,8 @@ class HealthServiceModel extends EnumClass {
   static const HealthServiceModel appController = _$appController;
   @BuiltValueEnumConst(wireName: r'Auth')
   static const HealthServiceModel auth = _$auth;
+  @BuiltValueEnumConst(wireName: r'RecipeSearch')
+  static const HealthServiceModel recipeSearch = _$recipeSearch;
 
   static Serializer<HealthServiceModel> get serializer => _$healthServiceModelSerializer;
 
