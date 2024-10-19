@@ -100,7 +100,13 @@ public class MeControllerTests
             Username = "Username",
             Email = "Email@Email.com"
         };
-        var result = IAuthClient.Result.FromValue(HttpStatusCode.NoContent);
+        var responseModel = new UserPutResponseModel
+        {
+            AccessToken = "Token"
+        };
+        var result = IAuthClient.Result<UserPutResponseModel>.FromValue(
+            HttpStatusCode.OK, responseModel
+        );
 
         _authClientMock
             .Setup(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>
@@ -115,6 +121,11 @@ public class MeControllerTests
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
+        var content = await response.Content.ReadAsStringAsync();
+        content.Should().NotBeNullOrEmpty();
+
+        var error = JsonSerializer.Deserialize<UserPutResponseModel>(content, _fixture.SerializerOptions);
+        error.Should().BeEquivalentTo(result.Value);
 
         _authClientMock.Verify(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>
             r.Name == request.Name &&
@@ -134,11 +145,14 @@ public class MeControllerTests
             Email = "Email@Email.com"
         };
         const HttpStatusCode status = HttpStatusCode.BadRequest;
-        var result = IAuthClient.Result.FromError(status, new IntelliCook.Auth.Contract.ValidationProblemDetails
-        {
-            Status = (int)status,
-            Detail = "Error"
-        });
+        var result = IAuthClient.Result<UserPutResponseModel>.FromError(
+            status,
+            new IntelliCook.Auth.Contract.ValidationProblemDetails
+            {
+                Status = (int)status,
+                Detail = "Error"
+            }
+        );
 
         _authClientMock
             .Setup(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>

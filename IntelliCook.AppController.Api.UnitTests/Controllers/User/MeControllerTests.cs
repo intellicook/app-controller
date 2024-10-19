@@ -86,7 +86,11 @@ public class MeControllerTests
     {
         // Arrange
         var request = new UserPutRequestModel();
-        var result = IAuthClient.Result.FromValue(HttpStatusCode.NoContent);
+        var responseModel = new UserPutResponseModel
+        {
+            AccessToken = "Token"
+        };
+        var result = IAuthClient.Result<UserPutResponseModel>.FromValue(HttpStatusCode.OK, responseModel);
 
         _authClientMock
             .Setup(x => x.PutUserMeAsync(request))
@@ -96,7 +100,7 @@ public class MeControllerTests
         var response = await _meController.Put(request);
 
         // Assert
-        response.Should().BeEquivalentTo(new ObjectResult(null)
+        response.Should().BeEquivalentTo(new ObjectResult(result.Value)
         {
             StatusCode = (int)result.StatusCode
         });
@@ -113,7 +117,7 @@ public class MeControllerTests
             Status = (int)status,
             Detail = "Error"
         };
-        var result = IAuthClient.Result.FromError(
+        var result = IAuthClient.Result<UserPutResponseModel>.FromError(
             status, error
         );
 
