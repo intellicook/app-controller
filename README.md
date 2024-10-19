@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
  - [UserGetResponseModel](doc/UserGetResponseModel.md)
  - [UserPasswordPutRequestModel](doc/UserPasswordPutRequestModel.md)
  - [UserPutRequestModel](doc/UserPutRequestModel.md)
+ - [UserPutResponseModel](doc/UserPutResponseModel.md)
  - [UserRoleModel](doc/UserRoleModel.md)
  - [ValidationProblemDetails](doc/ValidationProblemDetails.md)
 

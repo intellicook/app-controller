@@ -11,6 +11,7 @@ import 'package:app_controller_client/src/model/problem_details.dart';
 import 'package:app_controller_client/src/model/user_get_response_model.dart';
 import 'package:app_controller_client/src/model/user_password_put_request_model.dart';
 import 'package:app_controller_client/src/model/user_put_request_model.dart';
+import 'package:app_controller_client/src/model/user_put_response_model.dart';
 import 'package:app_controller_client/src/model/validation_problem_details.dart';
 
 class UserApi {
@@ -236,9 +237,9 @@ class UserApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future]
+  /// Returns a [Future] containing a [Response] with a [UserPutResponseModel] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> userMePut({ 
+  Future<Response<UserPutResponseModel>> userMePut({ 
     UserPutRequestModel? userPutRequestModel,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -294,7 +295,35 @@ class UserApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    return _response;
+    UserPutResponseModel? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(UserPutResponseModel),
+      ) as UserPutResponseModel;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<UserPutResponseModel>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
   }
 
 }

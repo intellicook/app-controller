@@ -18,6 +18,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UserGetResponseModel.serializer)
       ..add(UserPasswordPutRequestModel.serializer)
       ..add(UserPutRequestModel.serializer)
+      ..add(UserPutResponseModel.serializer)
       ..add(UserRoleModel.serializer)
       ..add(ValidationProblemDetails.serializer)
       ..addBuilderFactory(

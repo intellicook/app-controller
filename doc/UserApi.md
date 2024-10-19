@@ -129,7 +129,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **userMePut**
-> userMePut(userPutRequestModel)
+> UserPutResponseModel userMePut(userPutRequestModel)
 
 Updates the current user.
 
@@ -141,7 +141,8 @@ final api = AppControllerClient().getUserApi();
 final UserPutRequestModel userPutRequestModel = ; // UserPutRequestModel | 
 
 try {
-    api.userMePut(userPutRequestModel);
+    final response = api.userMePut(userPutRequestModel);
+    print(response);
 } catch on DioException (e) {
     print('Exception when calling UserApi->userMePut: $e\n');
 }
@@ -155,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UserPutResponseModel**](UserPutResponseModel.md)
 
 ### Authorization
 

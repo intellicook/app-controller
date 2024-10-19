@@ -25,5 +25,6 @@ export 'package:app_controller_client/src/model/register_post_request_model.dart
 export 'package:app_controller_client/src/model/user_get_response_model.dart';
 export 'package:app_controller_client/src/model/user_password_put_request_model.dart';
 export 'package:app_controller_client/src/model/user_put_request_model.dart';
+export 'package:app_controller_client/src/model/user_put_response_model.dart';
 export 'package:app_controller_client/src/model/user_role_model.dart';
 export 'package:app_controller_client/src/model/validation_problem_details.dart';

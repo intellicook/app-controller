@@ -30,7 +30,7 @@ void main() {
 
     // Updates the current user.
     //
-    //Future userMePut({ UserPutRequestModel userPutRequestModel }) async
+    //Future<UserPutResponseModel> userMePut({ UserPutRequestModel userPutRequestModel }) async
     test('test userMePut', () async {
       // TODO
     });

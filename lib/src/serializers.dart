@@ -25,6 +25,7 @@ import 'package:app_controller_client/src/model/register_post_request_model.dart
 import 'package:app_controller_client/src/model/user_get_response_model.dart';
 import 'package:app_controller_client/src/model/user_password_put_request_model.dart';
 import 'package:app_controller_client/src/model/user_put_request_model.dart';
+import 'package:app_controller_client/src/model/user_put_response_model.dart';
 import 'package:app_controller_client/src/model/user_role_model.dart';
 import 'package:app_controller_client/src/model/validation_problem_details.dart';
 
@@ -42,6 +43,7 @@ part 'serializers.g.dart';
   UserGetResponseModel,
   UserPasswordPutRequestModel,
   UserPutRequestModel,
+  UserPutResponseModel,
   UserRoleModel,
   ValidationProblemDetails,
 ])
