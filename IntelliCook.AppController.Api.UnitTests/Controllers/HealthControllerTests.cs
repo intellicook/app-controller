@@ -10,6 +10,7 @@ using Moq;
 using System.Net;
 using HealthStatus = Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus;
 using RecipeSearchClient = IntelliCook.RecipeSearch.Client.RecipeSearchService.RecipeSearchServiceClient;
+using RecipeSearchService = IntelliCook.RecipeSearch.Client;
 
 namespace IntelliCook.AppController.Api.UnitTests.Controllers;
 
@@ -51,21 +52,21 @@ public class HealthControllerTests
                     }
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Healthy,
+                Status = RecipeSearchService.HealthStatus.Healthy,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Healthy
+                    Status = RecipeSearchService.HealthStatus.Healthy
                 },
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 2",
-                    Status = RecipeSearch.Client.HealthStatus.Healthy
+                    Status = RecipeSearchService.HealthStatus.Healthy
                 }
             });
             yield return
@@ -93,16 +94,16 @@ public class HealthControllerTests
                     }
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Healthy,
+                Status = RecipeSearchService.HealthStatus.Healthy,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Healthy
+                    Status = RecipeSearchService.HealthStatus.Healthy
                 }
             });
             yield return
@@ -122,9 +123,9 @@ public class HealthControllerTests
                 Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
                 Checks = Enumerable.Empty<IntelliCook.Auth.Contract.Health.HealthCheckModel>()
             },
-            new RecipeSearch.Client.HealthResponse
+            new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Healthy,
+                Status = RecipeSearchService.HealthStatus.Healthy,
             }
         ];
     }
@@ -135,7 +136,7 @@ public class HealthControllerTests
         IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
         HealthStatusModel expectedAppControllerStatus,
         IntelliCook.Auth.Contract.Health.HealthGetResponseModel authResponse,
-        RecipeSearch.Client.HealthResponse recipeSearchResponse
+        RecipeSearchService.HealthResponse recipeSearchResponse
     )
     {
         // Arrange
@@ -149,8 +150,8 @@ public class HealthControllerTests
                     .FromValue(HttpStatusCode.OK, authResponse)
             );
         _recipeSearchClientMock
-            .Setup(m => m.GetHealthAsync(new RecipeSearch.Client.HealthRequest(), null, null, default))
-            .Returns(new AsyncUnaryCall<RecipeSearch.Client.HealthResponse>(
+            .Setup(m => m.GetHealthAsync(new RecipeSearchService.HealthRequest(), null, null, default))
+            .Returns(new AsyncUnaryCall<RecipeSearchService.HealthResponse>(
                 Task.FromResult(recipeSearchResponse),
                 Task.FromResult(new Metadata()),
                 () => Status.DefaultSuccess,
@@ -200,16 +201,16 @@ public class HealthControllerTests
                     },
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Healthy,
+                Status = RecipeSearchService.HealthStatus.Healthy,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Healthy
+                    Status = RecipeSearchService.HealthStatus.Healthy
                 }
             });
             yield return
@@ -236,16 +237,16 @@ public class HealthControllerTests
                     },
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Healthy,
+                Status = RecipeSearchService.HealthStatus.Healthy,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Healthy
+                    Status = RecipeSearchService.HealthStatus.Healthy
                 }
             });
             yield return
@@ -272,16 +273,16 @@ public class HealthControllerTests
                     },
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Healthy,
+                Status = RecipeSearchService.HealthStatus.Healthy,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Healthy
+                    Status = RecipeSearchService.HealthStatus.Healthy
                 }
             });
             yield return
@@ -308,16 +309,16 @@ public class HealthControllerTests
                     },
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Healthy,
+                Status = RecipeSearchService.HealthStatus.Healthy,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Healthy
+                    Status = RecipeSearchService.HealthStatus.Healthy
                 }
             });
             yield return
@@ -344,16 +345,16 @@ public class HealthControllerTests
                     },
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Healthy,
+                Status = RecipeSearchService.HealthStatus.Healthy,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Healthy
+                    Status = RecipeSearchService.HealthStatus.Healthy
                 }
             });
             yield return
@@ -380,16 +381,16 @@ public class HealthControllerTests
                     },
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Unhealthy,
+                Status = RecipeSearchService.HealthStatus.Unhealthy,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Unhealthy
+                    Status = RecipeSearchService.HealthStatus.Unhealthy
                 }
             });
             yield return
@@ -416,16 +417,16 @@ public class HealthControllerTests
                     },
                 }
             };
-            var recipeSearchResponse = new RecipeSearch.Client.HealthResponse
+            var recipeSearchResponse = new RecipeSearchService.HealthResponse
             {
-                Status = RecipeSearch.Client.HealthStatus.Degraded,
+                Status = RecipeSearchService.HealthStatus.Degraded,
             };
             recipeSearchResponse.Checks.AddRange(new[]
             {
-                new RecipeSearch.Client.HealthCheck
+                new RecipeSearchService.HealthCheck
                 {
                     Name = "RecipeSearch check 1",
-                    Status = RecipeSearch.Client.HealthStatus.Degraded
+                    Status = RecipeSearchService.HealthStatus.Degraded
                 }
             });
             yield return
@@ -447,7 +448,7 @@ public class HealthControllerTests
         IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
         HealthStatusModel expectedAppControllerStatus,
         IntelliCook.Auth.Contract.Health.HealthGetResponseModel authResponse,
-        RecipeSearch.Client.HealthResponse recipeSearchResponse
+        RecipeSearchService.HealthResponse recipeSearchResponse
     )
     {
         // Arrange
@@ -465,8 +466,8 @@ public class HealthControllerTests
                     .FromError(HttpStatusCode.ServiceUnavailable, authResponse),
             });
         _recipeSearchClientMock
-            .Setup(m => m.GetHealthAsync(new RecipeSearch.Client.HealthRequest(), null, null, default))
-            .Returns(new AsyncUnaryCall<RecipeSearch.Client.HealthResponse>(
+            .Setup(m => m.GetHealthAsync(new RecipeSearchService.HealthRequest(), null, null, default))
+            .Returns(new AsyncUnaryCall<RecipeSearchService.HealthResponse>(
                 Task.FromResult(recipeSearchResponse),
                 Task.FromResult(new Metadata()),
                 () => Status.DefaultSuccess,

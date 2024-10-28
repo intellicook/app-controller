@@ -4,11 +4,13 @@ using IntelliCook.Auth.Client;
 using IntelliCook.RecipeSearch.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ProblemDetails = IntelliCook.AppController.Api.Models.ProblemDetails;
+using ValidationProblemDetails = IntelliCook.AppController.Api.Models.ValidationProblemDetails;
 
 namespace IntelliCook.AppController.Api.Controllers.RecipeSearch;
 
 [Tags("RecipeSearch")]
-[Route("User/[controller]")]
+[Route("RecipeSearch/[controller]")]
 [ApiController]
 [AllowAnonymous]
 public class SearchRecipesByIngredientsController(
