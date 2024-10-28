@@ -1,4 +1,5 @@
 using IntelliCook.AppController.Api.Extensions;
+using IntelliCook.AppController.Api.Middlewares;
 using IntelliCook.AppController.Api.Options;
 using IntelliCook.AppController.Infrastructure.Contexts;
 using IntelliCook.Auth.Client;
@@ -117,6 +118,7 @@ public class Startup
 
         app.UseHttpsRedirection();
         app.UseAuthorization();
+        app.UseMiddleware<RpcExceptionHandlerMiddleware>();
         app.MapControllers();
     }
 
