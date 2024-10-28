@@ -11,7 +11,11 @@ doc/HealthStatusModel.md
 doc/LoginPostRequestModel.md
 doc/LoginPostResponseModel.md
 doc/ProblemDetails.md
+doc/RecipeSearchApi.md
 doc/RegisterPostRequestModel.md
+doc/SearchRecipesByIngredientsPostRequestModel.md
+doc/SearchRecipesByIngredientsPostResponseModel.md
+doc/SearchRecipesByIngredientsRecipeModel.md
 doc/TemporaryApi.md
 doc/UserApi.md
 doc/UserGetResponseModel.md
@@ -24,6 +28,7 @@ lib/app_controller_client.dart
 lib/src/api.dart
 lib/src/api/auth_api.dart
 lib/src/api/health_api.dart
+lib/src/api/recipe_search_api.dart
 lib/src/api/temporary_api.dart
 lib/src/api/user_api.dart
 lib/src/api_util.dart
@@ -42,6 +47,9 @@ lib/src/model/login_post_request_model.dart
 lib/src/model/login_post_response_model.dart
 lib/src/model/problem_details.dart
 lib/src/model/register_post_request_model.dart
+lib/src/model/search_recipes_by_ingredients_post_request_model.dart
+lib/src/model/search_recipes_by_ingredients_post_response_model.dart
+lib/src/model/search_recipes_by_ingredients_recipe_model.dart
 lib/src/model/user_get_response_model.dart
 lib/src/model/user_password_put_request_model.dart
 lib/src/model/user_put_request_model.dart
@@ -59,7 +67,11 @@ test/health_status_model_test.dart
 test/login_post_request_model_test.dart
 test/login_post_response_model_test.dart
 test/problem_details_test.dart
+test/recipe_search_api_test.dart
 test/register_post_request_model_test.dart
+test/search_recipes_by_ingredients_post_request_model_test.dart
+test/search_recipes_by_ingredients_post_response_model_test.dart
+test/search_recipes_by_ingredients_recipe_model_test.dart
 test/temporary_api_test.dart
 test/user_api_test.dart
 test/user_get_response_model_test.dart

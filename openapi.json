@@ -126,6 +126,68 @@
         }
       }
     },
+    "/RecipeSearch/SearchRecipesByIngredients": {
+      "post": {
+        "tags": [
+          "RecipeSearch"
+        ],
+        "summary": "Search recipes by ingredients.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRecipesByIngredientsPostRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRecipesByIngredientsPostRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRecipesByIngredientsPostRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchRecipesByIngredientsPostResponseModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Api/Temporary": {
       "get": {
         "tags": [
@@ -482,6 +544,67 @@
           "password": {
             "minLength": 8,
             "pattern": "^(?=.*[a-z]{1,})(?=.*[A-Z]{1,})(?=.*[0-9]{1,}).+$",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchRecipesByIngredientsPostRequestModel": {
+        "required": [
+          "ingredients"
+        ],
+        "type": "object",
+        "properties": {
+          "ingredients": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "limit": {
+            "maximum": 4294967295,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchRecipesByIngredientsPostResponseModel": {
+        "required": [
+          "recipes"
+        ],
+        "type": "object",
+        "properties": {
+          "recipes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchRecipesByIngredientsRecipeModel"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchRecipesByIngredientsRecipeModel": {
+        "required": [
+          "distance",
+          "id",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "distance": {
+            "type": "number",
+            "format": "float"
+          },
+          "name": {
+            "minLength": 1,
             "type": "string"
           }
         },
