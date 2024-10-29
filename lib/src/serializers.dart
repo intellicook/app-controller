@@ -21,6 +21,7 @@ import 'package:app_controller_client/src/model/health_status_model.dart';
 import 'package:app_controller_client/src/model/login_post_request_model.dart';
 import 'package:app_controller_client/src/model/login_post_response_model.dart';
 import 'package:app_controller_client/src/model/problem_details.dart';
+import 'package:app_controller_client/src/model/recipe_get_response_model.dart';
 import 'package:app_controller_client/src/model/register_post_request_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_request_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_response_model.dart';
@@ -42,6 +43,7 @@ part 'serializers.g.dart';
   LoginPostRequestModel,
   LoginPostResponseModel,
   ProblemDetails,
+  RecipeGetResponseModel,
   RegisterPostRequestModel,
   SearchRecipesByIngredientsPostRequestModel,
   SearchRecipesByIngredientsPostResponseModel,

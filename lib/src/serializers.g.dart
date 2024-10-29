@@ -14,6 +14,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(LoginPostRequestModel.serializer)
       ..add(LoginPostResponseModel.serializer)
       ..add(ProblemDetails.serializer)
+      ..add(RecipeGetResponseModel.serializer)
       ..add(RegisterPostRequestModel.serializer)
       ..add(SearchRecipesByIngredientsPostRequestModel.serializer)
       ..add(SearchRecipesByIngredientsPostResponseModel.serializer)
@@ -31,6 +32,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(SearchRecipesByIngredientsRecipeModel)]),
           () => new ListBuilder<SearchRecipesByIngredientsRecipeModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

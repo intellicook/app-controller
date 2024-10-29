@@ -7,6 +7,13 @@ void main() {
   final instance = AppControllerClient().getRecipeSearchApi();
 
   group(RecipeSearchApi, () {
+    // Get recipe by ID.
+    //
+    //Future<RecipeGetResponseModel> recipeSearchRecipeIdGet(int id) async
+    test('test recipeSearchRecipeIdGet', () async {
+      // TODO
+    });
+
     // Search recipes by ingredients.
     //
     //Future<SearchRecipesByIngredientsPostResponseModel> recipeSearchSearchRecipesByIngredientsPost({ SearchRecipesByIngredientsPostRequestModel searchRecipesByIngredientsPostRequestModel }) async

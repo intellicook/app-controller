@@ -67,6 +67,7 @@ Class | Method | HTTP request | Description
 [*AuthApi*](doc/AuthApi.md) | [**authLoginPost**](doc/AuthApi.md#authloginpost) | **POST** /Auth/Login | Logs in a user.
 [*AuthApi*](doc/AuthApi.md) | [**authRegisterPost**](doc/AuthApi.md#authregisterpost) | **POST** /Auth/Register | Registers a new user.
 [*HealthApi*](doc/HealthApi.md) | [**healthGet**](doc/HealthApi.md#healthget) | **GET** /Health | Checks the health of App Controller and its components.
+[*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchRecipeIdGet**](doc/RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchSearchRecipesByIngredientsPost**](doc/RecipeSearchApi.md#recipesearchsearchrecipesbyingredientspost) | **POST** /RecipeSearch/SearchRecipesByIngredients | Search recipes by ingredients.
 [*TemporaryApi*](doc/TemporaryApi.md) | [**apiTemporaryGet**](doc/TemporaryApi.md#apitemporaryget) | **GET** /Api/Temporary | Get method for temporary testing purposes.
 [*UserApi*](doc/UserApi.md) | [**userMeDelete**](doc/UserApi.md#usermedelete) | **DELETE** /User/Me | Deletes the current user.
@@ -84,6 +85,7 @@ Class | Method | HTTP request | Description
  - [LoginPostRequestModel](doc/LoginPostRequestModel.md)
  - [LoginPostResponseModel](doc/LoginPostResponseModel.md)
  - [ProblemDetails](doc/ProblemDetails.md)
+ - [RecipeGetResponseModel](doc/RecipeGetResponseModel.md)
  - [RegisterPostRequestModel](doc/RegisterPostRequestModel.md)
  - [SearchRecipesByIngredientsPostRequestModel](doc/SearchRecipesByIngredientsPostRequestModel.md)
  - [SearchRecipesByIngredientsPostResponseModel](doc/SearchRecipesByIngredientsPostResponseModel.md)
