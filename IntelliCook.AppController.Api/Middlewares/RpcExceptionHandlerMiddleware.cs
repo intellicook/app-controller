@@ -1,6 +1,7 @@
 using Grpc.Core;
 using IntelliCook.AppController.Api.Models;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace IntelliCook.AppController.Api.Middlewares;
 
@@ -26,8 +27,9 @@ public class RpcExceptionHandlerMiddleware(
     {
         var statusCode = ex.StatusCode switch
         {
-            StatusCode.Unauthenticated => StatusCodes.Status401Unauthorized,
             StatusCode.InvalidArgument => StatusCodes.Status400BadRequest,
+            StatusCode.Unauthenticated => StatusCodes.Status401Unauthorized,
+            StatusCode.NotFound => StatusCodes.Status404NotFound,
             _ => StatusCodes.Status500InternalServerError,
         };
 
@@ -36,9 +38,9 @@ public class RpcExceptionHandlerMiddleware(
 
         var problemDetails = new ProblemDetails
         {
-            Title = ex.Status.Detail,
+            Title = Regex.Replace(ex.StatusCode.ToString(), "(\\B[A-Z])", " $1"),
             Status = statusCode,
-            Detail = ex.Message
+            Detail = ex.Status.Detail
         };
 
         var json = JsonSerializer.Serialize(problemDetails);
