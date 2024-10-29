@@ -1,21 +1,24 @@
 using IntelliCook.AppController.Api.Models.Health;
+using IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
+using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipesByIngredients;
+using IntelliCook.RecipeSearch.Client;
 
 namespace IntelliCook.AppController.Api.Extensions;
 
 public static class RecipeSearchContractExtensions
 {
-    public static HealthStatusModel ToHealthStatusModel(this RecipeSearch.Client.HealthStatus model)
+    public static HealthStatusModel ToHealthStatusModel(this HealthStatus model)
     {
         return model switch
         {
-            RecipeSearch.Client.HealthStatus.Healthy => HealthStatusModel.Healthy,
-            RecipeSearch.Client.HealthStatus.Degraded => HealthStatusModel.Degraded,
-            RecipeSearch.Client.HealthStatus.Unhealthy => HealthStatusModel.Unhealthy,
+            HealthStatus.Healthy => HealthStatusModel.Healthy,
+            HealthStatus.Degraded => HealthStatusModel.Degraded,
+            HealthStatus.Unhealthy => HealthStatusModel.Unhealthy,
             _ => throw new ArgumentOutOfRangeException(nameof(model), model, null)
         };
     }
 
-    public static HealthCheckModel ToHealthCheckModel(this RecipeSearch.Client.HealthCheck model)
+    public static HealthCheckModel ToHealthCheckModel(this HealthCheck model)
     {
         return new HealthCheckModel
         {
@@ -25,13 +28,47 @@ public static class RecipeSearchContractExtensions
     }
 
     public static HealthGetResponseModel ToHealthGetResponseModel(
-        this RecipeSearch.Client.HealthResponse model)
+        this HealthResponse model)
     {
         return new HealthGetResponseModel
         {
             Service = HealthServiceModel.RecipeSearch,
             Status = model.Status.ToHealthStatusModel(),
             Checks = model.Checks.Select(ToHealthCheckModel)
+        };
+    }
+
+    public static SearchRecipesByIngredientsPostResponseModel ToPostResponseModel(
+        this SearchRecipesByIngredientsResponse response
+    )
+    {
+        return new SearchRecipesByIngredientsPostResponseModel
+        {
+            Recipes = response.Recipes.Select(r => r.ToRecipeModel())
+        };
+    }
+
+    public static SearchRecipesByIngredientsRecipeModel ToRecipeModel(
+        this SearchRecipesByIngredientsRecipe recipe
+    )
+    {
+        return new SearchRecipesByIngredientsRecipeModel
+        {
+            Id = recipe.Id,
+            Distance = recipe.Distance,
+            Name = recipe.Name
+        };
+    }
+
+    public static RecipeGetResponseModel ToGetResponseModel(
+        this RecipeResponse response
+    )
+    {
+        return new RecipeGetResponseModel
+        {
+            Name = response.Name,
+            Ingredients = response.Ingredients,
+            Instructions = response.Instructions
         };
     }
 }
