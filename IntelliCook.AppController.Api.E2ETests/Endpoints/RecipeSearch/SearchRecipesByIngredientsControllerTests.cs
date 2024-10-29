@@ -6,7 +6,6 @@ using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipesByIngredien
 using IntelliCook.Auth.Client;
 using IntelliCook.Auth.Contract.User;
 using IntelliCook.RecipeSearch.Client;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Net;
 using System.Net.Http.Json;
