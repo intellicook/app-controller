@@ -4,7 +4,7 @@ The controller service that connects backend components and the frontend.
 
 ## Development Setup
 
-The service uses [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) on C# 12 and .NET 8.0, and [Entity Framework Core 8](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore). Since I am using JetBrains Rider, I will be able to provide more instructions for setting up the project in Rider.
+The service uses [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) on C# 12 and .NET 8.0. Since I am using JetBrains Rider, I will be able to provide more instructions for setting up the project in Rider.
 
 1. Clone the repository.
 
@@ -20,11 +20,16 @@ The service uses [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) 
    dotnet husky install
    ```
 
-4. You have 2 options for running the database:
+## Docker
 
-    - Use [Microsoft SQL Server Express LocalDB](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/sql-server-express-localdb), which will be closer to the production environment. You will need to run the migrations to create the database schema.
+Apart from running directly on the host machine, you can run it in [Docker](https://www.docker.com) and [Docker Compose](https://docs.docker.com/compose).
 
-    - Use In-Memory Database, which is easier to set up and use for development. To enable it, the `Database__UseInMemory` environment variable or `Database:UseInMemory` variable in [IntelliCook.AppController.Api/appsettings.json](IntelliCook.AppController.Api/appsettings.json) have to be set to `true`, which should already be done for you in the "Http/Https In Memory Database" configurations in the [IntelliCook.AppController.Api/Properties/launchSettings.json](IntelliCook.AppController.Api/Properties/launchSettings.json) file.
+Before starting anything, you have to define the environment variables in the `.env` file. You can copy the `.env.example` file and fill in the values.
+```bash
+cp .env.example .env
+```
+
+The only value you need to change is `Build__GithubPat`.
 
 ## Making Code Changes
 

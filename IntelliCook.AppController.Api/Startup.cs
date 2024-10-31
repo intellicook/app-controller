@@ -1,7 +1,6 @@
 using IntelliCook.AppController.Api.Extensions;
 using IntelliCook.AppController.Api.Middlewares;
 using IntelliCook.AppController.Api.Options;
-using IntelliCook.AppController.Infrastructure.Contexts;
 using IntelliCook.Auth.Client;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
@@ -14,7 +13,6 @@ public class Startup
 {
     private IConfiguration Configuration { get; }
     private ApiOptions ApiOptions { get; }
-    private DatabaseOptions DatabaseOptions { get; }
     private AuthOptions AuthOptions { get; }
     private RecipeSearchOptions RecipeSearchOptions { get; }
 
@@ -28,19 +26,14 @@ public class Startup
         }
 
         ApiOptions = Configuration.GetAppControllerOptions<ApiOptions>();
-        DatabaseOptions = Configuration.GetAppControllerOptions<DatabaseOptions>();
         AuthOptions = Configuration.GetAppControllerOptions<AuthOptions>();
         RecipeSearchOptions = Configuration.GetAppControllerOptions<RecipeSearchOptions>();
     }
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAppControllerOptions<DatabaseOptions>(Configuration);
         services.AddAppControllerOptions<ApiOptions>(Configuration);
-        services.AddAppControllerContext(DatabaseOptions);
         services.AddHttpContextAccessor();
-        services.AddHealthChecks()
-            .AddAppControllerHealthChecks(DatabaseOptions);
         services.AddDatabaseDeveloperPageExceptionFilter();
         services.AddControllers(o => o.Filters.Add(new ProducesAttribute("application/json")))
             .AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
@@ -90,15 +83,6 @@ public class Startup
 
     public void Configure(WebApplication app)
     {
-        // Ensure database is created
-        using (var scope = app.Services.CreateScope())
-        {
-            var services = scope.ServiceProvider;
-
-            var context = services.GetRequiredService<AppControllerContext>();
-            context.Database.EnsureCreated();
-        }
-
         // Configure the HTTP request pipeline
         if (app.Environment.IsDevelopment())
         {

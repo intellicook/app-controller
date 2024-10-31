@@ -1,7 +1,5 @@
 using IntelliCook.AppController.Api.Options;
-using IntelliCook.AppController.Infrastructure.Contexts;
 using IntelliCook.RecipeSearch.Client;
-using Microsoft.EntityFrameworkCore;
 
 namespace IntelliCook.AppController.Api.Extensions;
 
@@ -14,18 +12,6 @@ public static class AppControllerServiceCollectionExtensions
         TOptions : class, IAppControllerOptions
     {
         return services.Configure<TOptions>(configuration.GetValidatedSection<TOptions>());
-    }
-
-    public static IServiceCollection AddAppControllerContext(
-        this IServiceCollection services,
-        DatabaseOptions options
-    )
-    {
-        return services.AddDbContext<AppControllerContext>(options.UseInMemory switch
-        {
-            true => o => o.UseInMemoryDatabase(options.Name),
-            _ => o => o.UseSqlServer(options.ConnectionString)
-        });
     }
 
     public static IServiceCollection AddRecipeSearchClient(
