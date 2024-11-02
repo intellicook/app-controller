@@ -22,7 +22,7 @@ part 'health_get_response_model.g.dart';
 abstract class HealthGetResponseModel implements Built<HealthGetResponseModel, HealthGetResponseModelBuilder> {
   @BuiltValueField(wireName: r'service')
   HealthServiceModel get service;
-  // enum serviceEnum {  AppController,  Auth,  RecipeSearch,  };
+  // enum serviceEnum {  Auth,  RecipeSearch,  };
 
   @BuiltValueField(wireName: r'status')
   HealthStatusModel get status;

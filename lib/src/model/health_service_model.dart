@@ -11,8 +11,6 @@ part 'health_service_model.g.dart';
 
 class HealthServiceModel extends EnumClass {
 
-  @BuiltValueEnumConst(wireName: r'AppController')
-  static const HealthServiceModel appController = _$appController;
   @BuiltValueEnumConst(wireName: r'Auth')
   static const HealthServiceModel auth = _$auth;
   @BuiltValueEnumConst(wireName: r'RecipeSearch')
