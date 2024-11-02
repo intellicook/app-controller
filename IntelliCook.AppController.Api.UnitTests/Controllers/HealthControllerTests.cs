@@ -24,7 +24,6 @@ public class HealthControllerTests
     public HealthControllerTests()
     {
         _healthController = new HealthController(
-            _healthCheckServiceMock.Object,
             _authClientMock.Object,
             _recipeSearchClientMock.Object
         );
@@ -71,12 +70,6 @@ public class HealthControllerTests
             });
             yield return
             [
-                new List<(string name, HealthStatus healthStatus)>
-                {
-                    ("Check 1", HealthStatus.Healthy),
-                    ("Check 2", HealthStatus.Healthy)
-                },
-                HealthStatusModel.Healthy,
                 authResponse,
                 recipeSearchResponse
             ];
@@ -108,16 +101,12 @@ public class HealthControllerTests
             });
             yield return
             [
-                new List<(string name, HealthStatus healthStatus)> { ("Check 1", HealthStatus.Healthy) },
-                HealthStatusModel.Healthy,
                 authResponse,
                 recipeSearchResponse
             ];
         }
         yield return
         [
-            Enumerable.Empty<(string name, HealthStatus healthStatus)>(),
-            HealthStatusModel.Healthy,
             new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
                 Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
@@ -133,15 +122,11 @@ public class HealthControllerTests
     [Theory]
     [MemberData(nameof(Get_Healthy_ReturnsOkObjectResult_TestData))]
     public async void Get_Healthy_ReturnsOkObjectResult(
-        IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
-        HealthStatusModel expectedAppControllerStatus,
         IntelliCook.Auth.Contract.Health.HealthGetResponseModel authResponse,
         RecipeSearchService.HealthResponse recipeSearchResponse
     )
     {
         // Arrange
-        var report = GetHealthReport(statuses);
-
         _authClientMock
             .Setup(m => m.GetHealthAsync())
             .ReturnsAsync(
@@ -158,9 +143,6 @@ public class HealthControllerTests
                 () => new Metadata(),
                 () => { }
             ));
-        _healthCheckServiceMock
-            .Setup(m => m.CheckHealthAsync(null, new CancellationToken()))
-            .ReturnsAsync(report);
 
         // Act
         var result = await _healthController.Get();
@@ -171,16 +153,6 @@ public class HealthControllerTests
 
         response.Should().BeEquivalentTo(new[]
         {
-            new HealthGetResponseModel
-            {
-                Service = HealthServiceModel.AppController,
-                Status = expectedAppControllerStatus,
-                Checks = statuses.Select(s => new HealthCheckModel
-                {
-                    Name = s.name,
-                    Status = s.healthStatus.ToHealthStatusModel()
-                })
-            },
             authResponse.ToHealthGetResponseModel(),
             recipeSearchResponse.ToHealthGetResponseModel()
         });
@@ -188,186 +160,6 @@ public class HealthControllerTests
 
     public static IEnumerable<object[]> Get_UnhealthyOrDegraded_ReturnsServiceUnavailableObjectResult_TestData()
     {
-        {
-            var authResponse = new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
-            {
-                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
-                Checks = new[]
-                {
-                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
-                    {
-                        Name = "Auth check 1",
-                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
-                    },
-                }
-            };
-            var recipeSearchResponse = new RecipeSearchService.HealthResponse
-            {
-                Status = RecipeSearchService.HealthStatus.Healthy,
-            };
-            recipeSearchResponse.Checks.AddRange(new[]
-            {
-                new RecipeSearchService.HealthCheck
-                {
-                    Name = "RecipeSearch check 1",
-                    Status = RecipeSearchService.HealthStatus.Healthy
-                }
-            });
-            yield return
-            [
-                new List<(string name, HealthStatus healthStatus)>
-                {
-                    ("Check 1", HealthStatus.Unhealthy), ("Check 2", HealthStatus.Healthy)
-                },
-                HealthStatusModel.Unhealthy,
-                authResponse,
-                recipeSearchResponse
-            ];
-        }
-        {
-            var authResponse = new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
-            {
-                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
-                Checks = new[]
-                {
-                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
-                    {
-                        Name = "Auth check 1",
-                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
-                    },
-                }
-            };
-            var recipeSearchResponse = new RecipeSearchService.HealthResponse
-            {
-                Status = RecipeSearchService.HealthStatus.Healthy,
-            };
-            recipeSearchResponse.Checks.AddRange(new[]
-            {
-                new RecipeSearchService.HealthCheck
-                {
-                    Name = "RecipeSearch check 1",
-                    Status = RecipeSearchService.HealthStatus.Healthy
-                }
-            });
-            yield return
-            [
-                new List<(string name, HealthStatus healthStatus)>
-                {
-                    ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Healthy)
-                },
-                HealthStatusModel.Degraded,
-                authResponse,
-                recipeSearchResponse
-            ];
-        }
-        {
-            var authResponse = new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
-            {
-                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
-                Checks = new[]
-                {
-                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
-                    {
-                        Name = "Auth check 1",
-                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
-                    },
-                }
-            };
-            var recipeSearchResponse = new RecipeSearchService.HealthResponse
-            {
-                Status = RecipeSearchService.HealthStatus.Healthy,
-            };
-            recipeSearchResponse.Checks.AddRange(new[]
-            {
-                new RecipeSearchService.HealthCheck
-                {
-                    Name = "RecipeSearch check 1",
-                    Status = RecipeSearchService.HealthStatus.Healthy
-                }
-            });
-            yield return
-            [
-                new List<(string name, HealthStatus healthStatus)>
-                {
-                    ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Unhealthy)
-                },
-                HealthStatusModel.Unhealthy,
-                authResponse,
-                recipeSearchResponse
-            ];
-        }
-        {
-            var authResponse = new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
-            {
-                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
-                Checks = new[]
-                {
-                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
-                    {
-                        Name = "Auth check 1",
-                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
-                    },
-                }
-            };
-            var recipeSearchResponse = new RecipeSearchService.HealthResponse
-            {
-                Status = RecipeSearchService.HealthStatus.Healthy,
-            };
-            recipeSearchResponse.Checks.AddRange(new[]
-            {
-                new RecipeSearchService.HealthCheck
-                {
-                    Name = "RecipeSearch check 1",
-                    Status = RecipeSearchService.HealthStatus.Healthy
-                }
-            });
-            yield return
-            [
-                new List<(string name, HealthStatus healthStatus)>
-                {
-                    ("Check 1", HealthStatus.Degraded), ("Check 2", HealthStatus.Degraded)
-                },
-                HealthStatusModel.Degraded,
-                authResponse,
-                recipeSearchResponse
-            ];
-        }
-        {
-            var authResponse = new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
-            {
-                Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy,
-                Checks = new[]
-                {
-                    new IntelliCook.Auth.Contract.Health.HealthCheckModel
-                    {
-                        Name = "Auth check 1",
-                        Status = IntelliCook.Auth.Contract.Health.HealthStatusModel.Healthy
-                    },
-                }
-            };
-            var recipeSearchResponse = new RecipeSearchService.HealthResponse
-            {
-                Status = RecipeSearchService.HealthStatus.Healthy,
-            };
-            recipeSearchResponse.Checks.AddRange(new[]
-            {
-                new RecipeSearchService.HealthCheck
-                {
-                    Name = "RecipeSearch check 1",
-                    Status = RecipeSearchService.HealthStatus.Healthy
-                }
-            });
-            yield return
-            [
-                new List<(string name, HealthStatus healthStatus)>
-                {
-                    ("Check 1", HealthStatus.Unhealthy), ("Check 2", HealthStatus.Unhealthy)
-                },
-                HealthStatusModel.Unhealthy,
-                authResponse,
-                recipeSearchResponse
-            ];
-        }
         {
             var authResponse = new IntelliCook.Auth.Contract.Health.HealthGetResponseModel
             {
@@ -395,11 +187,6 @@ public class HealthControllerTests
             });
             yield return
             [
-                new List<(string name, HealthStatus healthStatus)>
-                {
-                    ("Check 1", HealthStatus.Healthy), ("Check 2", HealthStatus.Healthy)
-                },
-                HealthStatusModel.Healthy,
                 authResponse,
                 recipeSearchResponse
             ];
@@ -431,11 +218,6 @@ public class HealthControllerTests
             });
             yield return
             [
-                new List<(string name, HealthStatus healthStatus)>
-                {
-                    ("Check 1", HealthStatus.Healthy), ("Check 2", HealthStatus.Healthy)
-                },
-                HealthStatusModel.Healthy,
                 authResponse,
                 recipeSearchResponse
             ];
@@ -445,15 +227,11 @@ public class HealthControllerTests
     [Theory]
     [MemberData(nameof(Get_UnhealthyOrDegraded_ReturnsServiceUnavailableObjectResult_TestData))]
     public async void Get_UnhealthyOrDegraded_ReturnsServiceUnavailableObjectResult(
-        IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses,
-        HealthStatusModel expectedAppControllerStatus,
         IntelliCook.Auth.Contract.Health.HealthGetResponseModel authResponse,
         RecipeSearchService.HealthResponse recipeSearchResponse
     )
     {
         // Arrange
-        var report = GetHealthReport(statuses);
-
         _authClientMock
             .Setup(m => m.GetHealthAsync())
             .ReturnsAsync(authResponse.Status switch
@@ -474,9 +252,6 @@ public class HealthControllerTests
                 () => new Metadata(),
                 () => { }
             ));
-        _healthCheckServiceMock
-            .Setup(m => m.CheckHealthAsync(null, new CancellationToken()))
-            .ReturnsAsync(report);
 
         // Act
         var result = await _healthController.Get();
@@ -487,37 +262,10 @@ public class HealthControllerTests
 
         response.Should().BeEquivalentTo(new[]
         {
-            new HealthGetResponseModel
-            {
-                Service = HealthServiceModel.AppController,
-                Status = expectedAppControllerStatus,
-                Checks = statuses.Select(s => new HealthCheckModel
-                {
-                    Name = s.name,
-                    Status = s.healthStatus.ToHealthStatusModel()
-                })
-            },
             authResponse.ToHealthGetResponseModel(),
             recipeSearchResponse.ToHealthGetResponseModel()
         });
     }
 
     #endregion
-
-    private static HealthReport GetHealthReport(IReadOnlyCollection<(string name, HealthStatus healthStatus)> statuses)
-    {
-        return new HealthReport(
-            statuses.ToDictionary(
-                s => s.name,
-                s => new HealthReportEntry(
-                    s.healthStatus,
-                    null,
-                    TimeSpan.FromMilliseconds(1),
-                    null,
-                    null
-                )
-            ),
-            TimeSpan.FromMilliseconds(3)
-        );
-    }
 }
