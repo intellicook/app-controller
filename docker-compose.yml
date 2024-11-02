@@ -1,0 +1,13 @@
+﻿services:
+  api:
+    image: intellicook.appcontroller.api
+    build:
+      context: .
+      dockerfile: IntelliCook.AppController.Api/Dockerfile
+      args:
+        GITHUB_PAT: ${Build__GithubPat}
+    ports:
+      - 2501:8080
+      - 2502:8081
+    env_file:
+      - .env

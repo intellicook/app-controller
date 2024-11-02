@@ -14,11 +14,6 @@ public class ClientFixture : IDisposable
 {
     public ClientFixture()
     {
-        Environment.SetEnvironmentVariable(
-            $"{DatabaseOptions.SectionKey}:{nameof(DatabaseOptions.UseInMemory)}",
-            "true"
-        );
-
         Factory = new WebApplicationFactory<Program>();
         Client = Factory.WithWebHostBuilder(builder =>
         {

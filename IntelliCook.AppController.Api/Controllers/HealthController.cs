@@ -14,7 +14,6 @@ namespace IntelliCook.AppController.Api.Controllers;
 [ApiController]
 [AllowAnonymous]
 public class HealthController(
-    HealthCheckService healthCheckService,
     IAuthClient authClient,
     RecipeSearchService.RecipeSearchServiceClient recipeSearchClient
 ) : ControllerBase
@@ -27,20 +26,7 @@ public class HealthController(
     [ProducesResponseType(typeof(IEnumerable<HealthGetResponseModel>), StatusCodes.Status503ServiceUnavailable)]
     public async Task<IActionResult> Get()
     {
-        var report = await healthCheckService.CheckHealthAsync();
         var result = new List<HealthGetResponseModel>();
-
-        // App Controller health
-        result.Add(new HealthGetResponseModel
-        {
-            Service = HealthServiceModel.AppController,
-            Status = report.Status.ToHealthStatusModel(),
-            Checks = report.Entries.Select(entry => new HealthCheckModel
-            {
-                Name = entry.Key,
-                Status = entry.Value.Status.ToHealthStatusModel()
-            })
-        });
 
         // Auth health
         IAuthClient.Result<
