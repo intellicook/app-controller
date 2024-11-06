@@ -9,9 +9,51 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**recipeSearchChatByRecipePost**](RecipeSearchApi.md#recipesearchchatbyrecipepost) | **POST** /RecipeSearch/ChatByRecipe | Chat about a specific recipe.
 [**recipeSearchRecipeIdGet**](RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
 [**recipeSearchSearchRecipesByIngredientsPost**](RecipeSearchApi.md#recipesearchsearchrecipesbyingredientspost) | **POST** /RecipeSearch/SearchRecipesByIngredients | Search recipes by ingredients.
 
+
+# **recipeSearchChatByRecipePost**
+> ChatByRecipePostResponseModel recipeSearchChatByRecipePost(chatByRecipePostRequestModel)
+
+Chat about a specific recipe.
+
+### Example
+```dart
+import 'package:app_controller_client/api.dart';
+
+final api = AppControllerClient().getRecipeSearchApi();
+final ChatByRecipePostRequestModel chatByRecipePostRequestModel = ; // ChatByRecipePostRequestModel | 
+
+try {
+    final response = api.recipeSearchChatByRecipePost(chatByRecipePostRequestModel);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling RecipeSearchApi->recipeSearchChatByRecipePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatByRecipePostRequestModel** | [**ChatByRecipePostRequestModel**](ChatByRecipePostRequestModel.md)|  | [optional] 
+
+### Return type
+
+[**ChatByRecipePostResponseModel**](ChatByRecipePostResponseModel.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **recipeSearchRecipeIdGet**
 > RecipeGetResponseModel recipeSearchRecipeIdGet(id)

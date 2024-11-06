@@ -3,6 +3,10 @@
 README.md
 analysis_options.yaml
 doc/AuthApi.md
+doc/ChatByRecipeMessageModel.md
+doc/ChatByRecipePostRequestModel.md
+doc/ChatByRecipePostResponseModel.md
+doc/ChatByRecipeRoleModel.md
 doc/HealthApi.md
 doc/HealthCheckModel.md
 doc/HealthGetResponseModel.md
@@ -39,6 +43,10 @@ lib/src/auth/basic_auth.dart
 lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
+lib/src/model/chat_by_recipe_message_model.dart
+lib/src/model/chat_by_recipe_post_request_model.dart
+lib/src/model/chat_by_recipe_post_response_model.dart
+lib/src/model/chat_by_recipe_role_model.dart
 lib/src/model/date.dart
 lib/src/model/health_check_model.dart
 lib/src/model/health_get_response_model.dart
@@ -61,6 +69,10 @@ lib/src/model/validation_problem_details.dart
 lib/src/serializers.dart
 pubspec.yaml
 test/auth_api_test.dart
+test/chat_by_recipe_message_model_test.dart
+test/chat_by_recipe_post_request_model_test.dart
+test/chat_by_recipe_post_response_model_test.dart
+test/chat_by_recipe_role_model_test.dart
 test/health_api_test.dart
 test/health_check_model_test.dart
 test/health_get_response_model_test.dart

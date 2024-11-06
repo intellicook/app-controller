@@ -7,6 +7,13 @@ void main() {
   final instance = AppControllerClient().getRecipeSearchApi();
 
   group(RecipeSearchApi, () {
+    // Chat about a specific recipe.
+    //
+    //Future<ChatByRecipePostResponseModel> recipeSearchChatByRecipePost({ ChatByRecipePostRequestModel chatByRecipePostRequestModel }) async
+    test('test recipeSearchChatByRecipePost', () async {
+      // TODO
+    });
+
     // Get recipe by ID.
     //
     //Future<RecipeGetResponseModel> recipeSearchRecipeIdGet(int id) async

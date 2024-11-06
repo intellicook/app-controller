@@ -15,6 +15,10 @@ export 'package:app_controller_client/src/api/recipe_search_api.dart';
 export 'package:app_controller_client/src/api/temporary_api.dart';
 export 'package:app_controller_client/src/api/user_api.dart';
 
+export 'package:app_controller_client/src/model/chat_by_recipe_message_model.dart';
+export 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
+export 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
+export 'package:app_controller_client/src/model/chat_by_recipe_role_model.dart';
 export 'package:app_controller_client/src/model/health_check_model.dart';
 export 'package:app_controller_client/src/model/health_get_response_model.dart';
 export 'package:app_controller_client/src/model/health_service_model.dart';

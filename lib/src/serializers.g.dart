@@ -7,6 +7,10 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(ChatByRecipeMessageModel.serializer)
+      ..add(ChatByRecipePostRequestModel.serializer)
+      ..add(ChatByRecipePostResponseModel.serializer)
+      ..add(ChatByRecipeRoleModel.serializer)
       ..add(HealthCheckModel.serializer)
       ..add(HealthGetResponseModel.serializer)
       ..add(HealthServiceModel.serializer)
@@ -25,6 +29,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UserPutResponseModel.serializer)
       ..add(UserRoleModel.serializer)
       ..add(ValidationProblemDetails.serializer)
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(ChatByRecipeMessageModel)]),
+          () => new ListBuilder<ChatByRecipeMessageModel>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(HealthCheckModel)]),
           () => new ListBuilder<HealthCheckModel>())

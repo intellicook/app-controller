@@ -14,6 +14,10 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:app_controller_client/src/date_serializer.dart';
 import 'package:app_controller_client/src/model/date.dart';
 
+import 'package:app_controller_client/src/model/chat_by_recipe_message_model.dart';
+import 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
+import 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
+import 'package:app_controller_client/src/model/chat_by_recipe_role_model.dart';
 import 'package:app_controller_client/src/model/health_check_model.dart';
 import 'package:app_controller_client/src/model/health_get_response_model.dart';
 import 'package:app_controller_client/src/model/health_service_model.dart';
@@ -36,6 +40,10 @@ import 'package:app_controller_client/src/model/validation_problem_details.dart'
 part 'serializers.g.dart';
 
 @SerializersFor([
+  ChatByRecipeMessageModel,
+  ChatByRecipePostRequestModel,
+  ChatByRecipePostResponseModel,
+  ChatByRecipeRoleModel,
   HealthCheckModel,
   HealthGetResponseModel,
   HealthServiceModel,
