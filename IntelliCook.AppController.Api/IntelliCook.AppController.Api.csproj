@@ -11,7 +11,7 @@
         <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="8.0.2"/>
         <PackageReference Include="Grpc.Net.ClientFactory" Version="2.66.0"/>
         <PackageReference Include="intellicook.auth.client" Version="2024.10.19.424"/>
-        <PackageReference Include="intellicook.recipesearch.client" Version="2024.10.29.635"/>
+        <PackageReference Include="intellicook.recipesearch.client" Version="2024.11.4.907"/>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.6"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
           <PrivateAssets>all</PrivateAssets>

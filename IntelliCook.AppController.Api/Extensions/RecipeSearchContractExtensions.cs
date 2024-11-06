@@ -1,4 +1,5 @@
 using IntelliCook.AppController.Api.Models.Health;
+using IntelliCook.AppController.Api.Models.RecipeSearch.ChatByRecipe;
 using IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
 using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipesByIngredients;
 using IntelliCook.RecipeSearch.Client;
@@ -69,6 +70,40 @@ public static class RecipeSearchContractExtensions
             Name = response.Name,
             Ingredients = response.Ingredients,
             Instructions = response.Instructions
+        };
+    }
+
+    public static ChatByRecipePostResponseModel ToPostResponseModel(
+        this ChatByRecipeResponse response
+    )
+    {
+        return new ChatByRecipePostResponseModel
+        {
+            Message = response.Message.ToMessageModel(),
+        };
+    }
+
+    public static ChatByRecipeMessageModel ToMessageModel(
+        this ChatByRecipeMessage message
+    )
+    {
+        return new ChatByRecipeMessageModel
+        {
+            Role = message.Role.ToRoleModel(),
+            Text = message.Text
+        };
+    }
+
+    public static ChatByRecipeRoleModel ToRoleModel(
+        this ChatByRecipeRole role
+    )
+    {
+        return role switch
+        {
+            ChatByRecipeRole.System => ChatByRecipeRoleModel.System,
+            ChatByRecipeRole.User => ChatByRecipeRoleModel.User,
+            ChatByRecipeRole.Assistant => ChatByRecipeRoleModel.Assistant,
+            _ => throw new ArgumentOutOfRangeException()
         };
     }
 }
