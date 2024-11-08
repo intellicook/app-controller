@@ -1,10 +1,9 @@
 using IntelliCook.AppController.Api.Extensions;
+using IntelliCook.AppController.Api.Models;
 using IntelliCook.Auth.Client;
 using IntelliCook.Auth.Contract.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProblemDetails = IntelliCook.AppController.Api.Models.ProblemDetails;
-using ValidationProblemDetails = IntelliCook.AppController.Api.Models.ValidationProblemDetails;
 
 namespace IntelliCook.AppController.Api.Controllers.User;
 
@@ -19,9 +18,9 @@ public class MeController(IAuthClient authClient) : ControllerBase
     /// </summary>
     [HttpGet]
     [ProducesResponseType(typeof(UserGetResponseModel), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetailsModel), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetailsModel), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Get()
     {
         var result = await authClient.GetUserMeAsync();
@@ -33,9 +32,9 @@ public class MeController(IAuthClient authClient) : ControllerBase
     /// </summary>
     [HttpPut]
     [ProducesResponseType(typeof(UserPutResponseModel), StatusCodes.Status204NoContent)]
-    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetailsModel), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetailsModel), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Put(UserPutRequestModel request)
     {
         var result = await authClient.PutUserMeAsync(request);
@@ -48,9 +47,9 @@ public class MeController(IAuthClient authClient) : ControllerBase
     [Route("Password")]
     [HttpPut]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetailsModel), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetailsModel), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> PutPassword(UserPasswordPutRequestModel request)
     {
         var result = await authClient.PutUserMePasswordAsync(request);
@@ -62,9 +61,9 @@ public class MeController(IAuthClient authClient) : ControllerBase
     /// </summary>
     [HttpDelete]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetailsModel), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetailsModel), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete()
     {
         var result = await authClient.DeleteUserMeAsync();

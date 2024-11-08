@@ -32,9 +32,11 @@ public class RecipeControllerTests(ClientFixture fixture)
             Email = "Email@Example.com"
         };
         var responseModel = new RecipeResponse();
+        responseModel.Id = id;
         responseModel.Name = "Name";
         responseModel.Ingredients.Add("Ingredient");
         responseModel.Instructions.Add("Instruction");
+        responseModel.Raw = "Raw";
 
         fixture.AuthClientMock
             .Setup(x => x.GetUserMeAsync())

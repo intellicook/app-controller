@@ -1,4 +1,5 @@
 using IntelliCook.AppController.Api.Models.Health;
+using IntelliCook.AppController.Api.Models.RecipeSearch.AddRecipes;
 using IntelliCook.AppController.Api.Models.RecipeSearch.ChatByRecipe;
 using IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
 using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipesByIngredients;
@@ -8,6 +9,8 @@ namespace IntelliCook.AppController.Api.Extensions;
 
 public static class RecipeSearchContractExtensions
 {
+    #region Health
+
     public static HealthStatusModel ToHealthStatusModel(this HealthStatus model)
     {
         return model switch
@@ -39,6 +42,10 @@ public static class RecipeSearchContractExtensions
         };
     }
 
+    #endregion
+
+    #region SearchRecipesByIngredients
+
     public static SearchRecipesByIngredientsPostResponseModel ToPostResponseModel(
         this SearchRecipesByIngredientsResponse response
     )
@@ -61,17 +68,27 @@ public static class RecipeSearchContractExtensions
         };
     }
 
+    #endregion
+
+    #region Recipe
+
     public static RecipeGetResponseModel ToGetResponseModel(
         this RecipeResponse response
     )
     {
         return new RecipeGetResponseModel
         {
+            Id = response.Id,
             Name = response.Name,
             Ingredients = response.Ingredients,
-            Instructions = response.Instructions
+            Instructions = response.Instructions,
+            Raw = response.Raw
         };
     }
+
+    #endregion
+
+    #region AddRecipes
 
     public static ChatByRecipePostResponseModel ToPostResponseModel(
         this ChatByRecipeResponse response
@@ -106,4 +123,34 @@ public static class RecipeSearchContractExtensions
             _ => throw new ArgumentOutOfRangeException()
         };
     }
+
+    #endregion
+
+    #region AddRecipes
+
+    public static AddRecipesPostResponseModel ToPostResponseModel(
+        this AddRecipesResponse response
+    )
+    {
+        return new AddRecipesPostResponseModel
+        {
+            Recipes = response.Recipes.Select(r => r.ToRecipeModel())
+        };
+    }
+
+    public static AddRecipesResponseRecipeModel ToRecipeModel(
+        this AddRecipesResponseRecipe recipe
+    )
+    {
+        return new AddRecipesResponseRecipeModel
+        {
+            Id = recipe.Id,
+            Name = recipe.Name,
+            Ingredients = recipe.Ingredients,
+            Instructions = recipe.Instructions,
+            Raw = recipe.Raw
+        };
+    }
+
+    #endregion
 }

@@ -37,9 +37,11 @@ public class RecipeControllerTests
             Email = "Example@Email.com"
         };
         var responseModel = new RecipeResponse();
+        responseModel.Id = id;
         responseModel.Name = "Name";
         responseModel.Ingredients.Add("Ingredient");
         responseModel.Instructions.Add("Instruction");
+        responseModel.Raw = "Raw";
 
         _authClientMock
             .Setup(x => x.GetUserMeAsync())

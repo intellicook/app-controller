@@ -1,6 +1,6 @@
 namespace IntelliCook.AppController.Api.Models;
 
-public class ProblemDetails
+public class ProblemDetailsModel
 {
     public new string? Type { get; set; }
 
@@ -15,7 +15,7 @@ public class ProblemDetails
     public new string? TraceId { get; set; }
 }
 
-public class ValidationProblemDetails : ProblemDetails
+public class ValidationProblemDetailsModel : ProblemDetailsModel
 {
     public IDictionary<string, ICollection<string>>? Errors { get; set; }
 }

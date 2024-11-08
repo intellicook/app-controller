@@ -1,11 +1,10 @@
 using IntelliCook.AppController.Api.Extensions;
+using IntelliCook.AppController.Api.Models;
 using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipesByIngredients;
 using IntelliCook.Auth.Client;
 using IntelliCook.RecipeSearch.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProblemDetails = IntelliCook.AppController.Api.Models.ProblemDetails;
-using ValidationProblemDetails = IntelliCook.AppController.Api.Models.ValidationProblemDetails;
 
 namespace IntelliCook.AppController.Api.Controllers.RecipeSearch;
 
@@ -23,9 +22,9 @@ public class SearchRecipesByIngredientsController(
     /// </summary>
     [HttpPost]
     [ProducesResponseType(typeof(SearchRecipesByIngredientsPostResponseModel), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetailsModel), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(void), StatusCodes.Status401Unauthorized)]
-    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetailsModel), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Post(SearchRecipesByIngredientsPostRequestModel request)
     {
         var userResult = await authClient.GetUserMeAsync();
