@@ -10,5 +10,5 @@ public class AddRecipesRequestRecipeModel
 
     [Required] public IEnumerable<string> Instructions { get; set; }
 
-    [Required] public string Raw { get; set; }
+    public string Raw { get; set; } = "";
 }
