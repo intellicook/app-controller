@@ -36,7 +36,7 @@ public class RpcExceptionHandlerMiddleware(
         context.Response.StatusCode = statusCode;
         context.Response.ContentType = "application/json";
 
-        var problemDetails = new ProblemDetails
+        var problemDetails = new ProblemDetailsModel
         {
             Title = Regex.Replace(ex.StatusCode.ToString(), "(\\B[A-Z])", " $1"),
             Status = statusCode,

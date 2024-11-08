@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
+namespace IntelliCook.AppController.Api.Models.RecipeSearch.AddRecipes;
 
-public class RecipeGetResponseModel
+public class AddRecipesResponseRecipeModel
 {
     [Required] public int Id { get; set; }
 

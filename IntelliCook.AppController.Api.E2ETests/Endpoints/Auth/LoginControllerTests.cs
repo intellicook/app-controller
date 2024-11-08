@@ -111,7 +111,7 @@ public class LoginControllerTests
         var content = await response.Content.ReadAsStringAsync();
         content.Should().NotBeNullOrEmpty();
 
-        var error = JsonSerializer.Deserialize<ValidationProblemDetails>(content, _fixture.SerializerOptions);
+        var error = JsonSerializer.Deserialize<ValidationProblemDetailsModel>(content, _fixture.SerializerOptions);
         error.Should().BeEquivalentTo(result.Error);
 
         _authClientMock.Verify(x => x.PostAuthLoginAsync(It.Is<LoginPostRequestModel>(r =>

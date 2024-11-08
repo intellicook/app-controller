@@ -1,9 +1,9 @@
 using IntelliCook.AppController.Api.Extensions;
+using IntelliCook.AppController.Api.Models;
 using IntelliCook.Auth.Client;
 using IntelliCook.Auth.Contract.Auth.Register;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ValidationProblemDetails = IntelliCook.AppController.Api.Models.ValidationProblemDetails;
 
 namespace IntelliCook.AppController.Api.Controllers.Auth;
 
@@ -18,7 +18,7 @@ public class RegisterController(IAuthClient authClient) : ControllerBase
     /// </summary>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(typeof(ValidationProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ValidationProblemDetailsModel), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Post(RegisterPostRequestModel request)
     {
         var result = await authClient.PostAuthRegisterAsync(request);
