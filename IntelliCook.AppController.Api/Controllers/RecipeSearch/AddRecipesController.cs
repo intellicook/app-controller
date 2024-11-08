@@ -21,7 +21,9 @@ public class AddRecipesController(
     /// <summary>
     ///     Add a list of recipes.
     /// </summary>
-    /// <permission cref="UserRoleModel.Admin">Only admins can add recipes.</permission>
+    /// <remarks>
+    ///     Only admins can add recipes.
+    /// </remarks>
     [HttpPost]
     [ProducesResponseType(typeof(AddRecipesPostResponseModel), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ValidationProblemDetailsModel), StatusCodes.Status400BadRequest)]
