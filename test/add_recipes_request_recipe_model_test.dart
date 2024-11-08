@@ -1,17 +1,12 @@
 import 'package:test/test.dart';
 import 'package:app_controller_client/app_controller_client.dart';
 
-// tests for RecipeGetResponseModel
+// tests for AddRecipesRequestRecipeModel
 void main() {
-  final instance = RecipeGetResponseModelBuilder();
+  final instance = AddRecipesRequestRecipeModelBuilder();
   // TODO add properties to the builder and call build()
 
-  group(RecipeGetResponseModel, () {
-    // int id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
+  group(AddRecipesRequestRecipeModel, () {
     // String name
     test('to test the property `name`', () async {
       // TODO

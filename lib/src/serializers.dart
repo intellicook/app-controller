@@ -14,17 +14,22 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:app_controller_client/src/date_serializer.dart';
 import 'package:app_controller_client/src/model/date.dart';
 
+import 'package:app_controller_client/src/model/add_recipes_post_request_model.dart';
+import 'package:app_controller_client/src/model/add_recipes_post_response_model.dart';
+import 'package:app_controller_client/src/model/add_recipes_request_recipe_model.dart';
+import 'package:app_controller_client/src/model/add_recipes_response_recipe_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_message_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_role_model.dart';
+import 'package:app_controller_client/src/model/forbidden_model.dart';
 import 'package:app_controller_client/src/model/health_check_model.dart';
 import 'package:app_controller_client/src/model/health_get_response_model.dart';
 import 'package:app_controller_client/src/model/health_service_model.dart';
 import 'package:app_controller_client/src/model/health_status_model.dart';
 import 'package:app_controller_client/src/model/login_post_request_model.dart';
 import 'package:app_controller_client/src/model/login_post_response_model.dart';
-import 'package:app_controller_client/src/model/problem_details.dart';
+import 'package:app_controller_client/src/model/problem_details_model.dart';
 import 'package:app_controller_client/src/model/recipe_get_response_model.dart';
 import 'package:app_controller_client/src/model/register_post_request_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_request_model.dart';
@@ -35,22 +40,27 @@ import 'package:app_controller_client/src/model/user_password_put_request_model.
 import 'package:app_controller_client/src/model/user_put_request_model.dart';
 import 'package:app_controller_client/src/model/user_put_response_model.dart';
 import 'package:app_controller_client/src/model/user_role_model.dart';
-import 'package:app_controller_client/src/model/validation_problem_details.dart';
+import 'package:app_controller_client/src/model/validation_problem_details_model.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
+  AddRecipesPostRequestModel,
+  AddRecipesPostResponseModel,
+  AddRecipesRequestRecipeModel,
+  AddRecipesResponseRecipeModel,
   ChatByRecipeMessageModel,
   ChatByRecipePostRequestModel,
   ChatByRecipePostResponseModel,
   ChatByRecipeRoleModel,
+  ForbiddenModel,
   HealthCheckModel,
   HealthGetResponseModel,
   HealthServiceModel,
   HealthStatusModel,
   LoginPostRequestModel,
   LoginPostResponseModel,
-  ProblemDetails,
+  ProblemDetailsModel,
   RecipeGetResponseModel,
   RegisterPostRequestModel,
   SearchRecipesByIngredientsPostRequestModel,
@@ -61,7 +71,7 @@ part 'serializers.g.dart';
   UserPutRequestModel,
   UserPutResponseModel,
   UserRoleModel,
-  ValidationProblemDetails,
+  ValidationProblemDetailsModel,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

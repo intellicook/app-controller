@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'problem_details.dart';
+part of 'validation_problem_details_model.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$ProblemDetails extends ProblemDetails {
+class _$ValidationProblemDetailsModel extends ValidationProblemDetailsModel {
   @override
   final String? type;
   @override
@@ -19,37 +19,43 @@ class _$ProblemDetails extends ProblemDetails {
   final String? instance;
   @override
   final String? traceId;
+  @override
+  final BuiltMap<String, BuiltList<String>>? errors;
 
-  factory _$ProblemDetails([void Function(ProblemDetailsBuilder)? updates]) =>
-      (new ProblemDetailsBuilder()..update(updates))._build();
+  factory _$ValidationProblemDetailsModel(
+          [void Function(ValidationProblemDetailsModelBuilder)? updates]) =>
+      (new ValidationProblemDetailsModelBuilder()..update(updates))._build();
 
-  _$ProblemDetails._(
+  _$ValidationProblemDetailsModel._(
       {this.type,
       this.title,
       this.status,
       this.detail,
       this.instance,
-      this.traceId})
+      this.traceId,
+      this.errors})
       : super._();
 
   @override
-  ProblemDetails rebuild(void Function(ProblemDetailsBuilder) updates) =>
+  ValidationProblemDetailsModel rebuild(
+          void Function(ValidationProblemDetailsModelBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProblemDetailsBuilder toBuilder() =>
-      new ProblemDetailsBuilder()..replace(this);
+  ValidationProblemDetailsModelBuilder toBuilder() =>
+      new ValidationProblemDetailsModelBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ProblemDetails &&
+    return other is ValidationProblemDetailsModel &&
         type == other.type &&
         title == other.title &&
         status == other.status &&
         detail == other.detail &&
         instance == other.instance &&
-        traceId == other.traceId;
+        traceId == other.traceId &&
+        errors == other.errors;
   }
 
   @override
@@ -61,26 +67,30 @@ class _$ProblemDetails extends ProblemDetails {
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jc(_$hash, instance.hashCode);
     _$hash = $jc(_$hash, traceId.hashCode);
+    _$hash = $jc(_$hash, errors.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'ProblemDetails')
+    return (newBuiltValueToStringHelper(r'ValidationProblemDetailsModel')
           ..add('type', type)
           ..add('title', title)
           ..add('status', status)
           ..add('detail', detail)
           ..add('instance', instance)
-          ..add('traceId', traceId))
+          ..add('traceId', traceId)
+          ..add('errors', errors))
         .toString();
   }
 }
 
-class ProblemDetailsBuilder
-    implements Builder<ProblemDetails, ProblemDetailsBuilder> {
-  _$ProblemDetails? _$v;
+class ValidationProblemDetailsModelBuilder
+    implements
+        Builder<ValidationProblemDetailsModel,
+            ValidationProblemDetailsModelBuilder> {
+  _$ValidationProblemDetailsModel? _$v;
 
   String? _type;
   String? get type => _$this._type;
@@ -106,11 +116,17 @@ class ProblemDetailsBuilder
   String? get traceId => _$this._traceId;
   set traceId(String? traceId) => _$this._traceId = traceId;
 
-  ProblemDetailsBuilder() {
-    ProblemDetails._defaults(this);
+  MapBuilder<String, BuiltList<String>>? _errors;
+  MapBuilder<String, BuiltList<String>> get errors =>
+      _$this._errors ??= new MapBuilder<String, BuiltList<String>>();
+  set errors(MapBuilder<String, BuiltList<String>>? errors) =>
+      _$this._errors = errors;
+
+  ValidationProblemDetailsModelBuilder() {
+    ValidationProblemDetailsModel._defaults(this);
   }
 
-  ProblemDetailsBuilder get _$this {
+  ValidationProblemDetailsModelBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _type = $v.type;
@@ -119,34 +135,49 @@ class ProblemDetailsBuilder
       _detail = $v.detail;
       _instance = $v.instance;
       _traceId = $v.traceId;
+      _errors = $v.errors?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(ProblemDetails other) {
+  void replace(ValidationProblemDetailsModel other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$ProblemDetails;
+    _$v = other as _$ValidationProblemDetailsModel;
   }
 
   @override
-  void update(void Function(ProblemDetailsBuilder)? updates) {
+  void update(void Function(ValidationProblemDetailsModelBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  ProblemDetails build() => _build();
+  ValidationProblemDetailsModel build() => _build();
 
-  _$ProblemDetails _build() {
-    final _$result = _$v ??
-        new _$ProblemDetails._(
-            type: type,
-            title: title,
-            status: status,
-            detail: detail,
-            instance: instance,
-            traceId: traceId);
+  _$ValidationProblemDetailsModel _build() {
+    _$ValidationProblemDetailsModel _$result;
+    try {
+      _$result = _$v ??
+          new _$ValidationProblemDetailsModel._(
+              type: type,
+              title: title,
+              status: status,
+              detail: detail,
+              instance: instance,
+              traceId: traceId,
+              errors: _errors?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'errors';
+        _errors?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'ValidationProblemDetailsModel', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

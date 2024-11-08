@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'recipe_get_response_model.dart';
+part of 'add_recipes_response_recipe_model.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$RecipeGetResponseModel extends RecipeGetResponseModel {
+class _$AddRecipesResponseRecipeModel extends AddRecipesResponseRecipeModel {
   @override
   final int id;
   @override
@@ -18,41 +18,42 @@ class _$RecipeGetResponseModel extends RecipeGetResponseModel {
   @override
   final String raw;
 
-  factory _$RecipeGetResponseModel(
-          [void Function(RecipeGetResponseModelBuilder)? updates]) =>
-      (new RecipeGetResponseModelBuilder()..update(updates))._build();
+  factory _$AddRecipesResponseRecipeModel(
+          [void Function(AddRecipesResponseRecipeModelBuilder)? updates]) =>
+      (new AddRecipesResponseRecipeModelBuilder()..update(updates))._build();
 
-  _$RecipeGetResponseModel._(
+  _$AddRecipesResponseRecipeModel._(
       {required this.id,
       required this.name,
       required this.ingredients,
       required this.instructions,
       required this.raw})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'RecipeGetResponseModel', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        name, r'RecipeGetResponseModel', 'name');
+        id, r'AddRecipesResponseRecipeModel', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        ingredients, r'RecipeGetResponseModel', 'ingredients');
+        name, r'AddRecipesResponseRecipeModel', 'name');
     BuiltValueNullFieldError.checkNotNull(
-        instructions, r'RecipeGetResponseModel', 'instructions');
+        ingredients, r'AddRecipesResponseRecipeModel', 'ingredients');
     BuiltValueNullFieldError.checkNotNull(
-        raw, r'RecipeGetResponseModel', 'raw');
+        instructions, r'AddRecipesResponseRecipeModel', 'instructions');
+    BuiltValueNullFieldError.checkNotNull(
+        raw, r'AddRecipesResponseRecipeModel', 'raw');
   }
 
   @override
-  RecipeGetResponseModel rebuild(
-          void Function(RecipeGetResponseModelBuilder) updates) =>
+  AddRecipesResponseRecipeModel rebuild(
+          void Function(AddRecipesResponseRecipeModelBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  RecipeGetResponseModelBuilder toBuilder() =>
-      new RecipeGetResponseModelBuilder()..replace(this);
+  AddRecipesResponseRecipeModelBuilder toBuilder() =>
+      new AddRecipesResponseRecipeModelBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is RecipeGetResponseModel &&
+    return other is AddRecipesResponseRecipeModel &&
         id == other.id &&
         name == other.name &&
         ingredients == other.ingredients &&
@@ -74,7 +75,7 @@ class _$RecipeGetResponseModel extends RecipeGetResponseModel {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'RecipeGetResponseModel')
+    return (newBuiltValueToStringHelper(r'AddRecipesResponseRecipeModel')
           ..add('id', id)
           ..add('name', name)
           ..add('ingredients', ingredients)
@@ -84,9 +85,11 @@ class _$RecipeGetResponseModel extends RecipeGetResponseModel {
   }
 }
 
-class RecipeGetResponseModelBuilder
-    implements Builder<RecipeGetResponseModel, RecipeGetResponseModelBuilder> {
-  _$RecipeGetResponseModel? _$v;
+class AddRecipesResponseRecipeModelBuilder
+    implements
+        Builder<AddRecipesResponseRecipeModel,
+            AddRecipesResponseRecipeModelBuilder> {
+  _$AddRecipesResponseRecipeModel? _$v;
 
   int? _id;
   int? get id => _$this._id;
@@ -112,11 +115,11 @@ class RecipeGetResponseModelBuilder
   String? get raw => _$this._raw;
   set raw(String? raw) => _$this._raw = raw;
 
-  RecipeGetResponseModelBuilder() {
-    RecipeGetResponseModel._defaults(this);
+  AddRecipesResponseRecipeModelBuilder() {
+    AddRecipesResponseRecipeModel._defaults(this);
   }
 
-  RecipeGetResponseModelBuilder get _$this {
+  AddRecipesResponseRecipeModelBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
@@ -130,32 +133,32 @@ class RecipeGetResponseModelBuilder
   }
 
   @override
-  void replace(RecipeGetResponseModel other) {
+  void replace(AddRecipesResponseRecipeModel other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$RecipeGetResponseModel;
+    _$v = other as _$AddRecipesResponseRecipeModel;
   }
 
   @override
-  void update(void Function(RecipeGetResponseModelBuilder)? updates) {
+  void update(void Function(AddRecipesResponseRecipeModelBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  RecipeGetResponseModel build() => _build();
+  AddRecipesResponseRecipeModel build() => _build();
 
-  _$RecipeGetResponseModel _build() {
-    _$RecipeGetResponseModel _$result;
+  _$AddRecipesResponseRecipeModel _build() {
+    _$AddRecipesResponseRecipeModel _$result;
     try {
       _$result = _$v ??
-          new _$RecipeGetResponseModel._(
+          new _$AddRecipesResponseRecipeModel._(
               id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'RecipeGetResponseModel', 'id'),
+                  id, r'AddRecipesResponseRecipeModel', 'id'),
               name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'RecipeGetResponseModel', 'name'),
+                  name, r'AddRecipesResponseRecipeModel', 'name'),
               ingredients: ingredients.build(),
               instructions: instructions.build(),
               raw: BuiltValueNullFieldError.checkNotNull(
-                  raw, r'RecipeGetResponseModel', 'raw'));
+                  raw, r'AddRecipesResponseRecipeModel', 'raw'));
     } catch (_) {
       late String _$failedField;
       try {
@@ -165,7 +168,7 @@ class RecipeGetResponseModelBuilder
         instructions.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            r'RecipeGetResponseModel', _$failedField, e.toString());
+            r'AddRecipesResponseRecipeModel', _$failedField, e.toString());
       }
       rethrow;
     }

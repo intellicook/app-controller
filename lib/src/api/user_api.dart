@@ -4,15 +4,16 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:app_controller_client/src/model/problem_details.dart';
+import 'package:app_controller_client/src/model/problem_details_model.dart';
 import 'package:app_controller_client/src/model/user_get_response_model.dart';
 import 'package:app_controller_client/src/model/user_password_put_request_model.dart';
 import 'package:app_controller_client/src/model/user_put_request_model.dart';
 import 'package:app_controller_client/src/model/user_put_response_model.dart';
-import 'package:app_controller_client/src/model/validation_problem_details.dart';
+import 'package:app_controller_client/src/model/validation_problem_details_model.dart';
 
 class UserApi {
 

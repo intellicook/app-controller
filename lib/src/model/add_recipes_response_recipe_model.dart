@@ -7,9 +7,9 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'recipe_get_response_model.g.dart';
+part 'add_recipes_response_recipe_model.g.dart';
 
-/// RecipeGetResponseModel
+/// AddRecipesResponseRecipeModel
 ///
 /// Properties:
 /// * [id] 
@@ -18,7 +18,7 @@ part 'recipe_get_response_model.g.dart';
 /// * [instructions] 
 /// * [raw] 
 @BuiltValue()
-abstract class RecipeGetResponseModel implements Built<RecipeGetResponseModel, RecipeGetResponseModelBuilder> {
+abstract class AddRecipesResponseRecipeModel implements Built<AddRecipesResponseRecipeModel, AddRecipesResponseRecipeModelBuilder> {
   @BuiltValueField(wireName: r'id')
   int get id;
 
@@ -34,27 +34,27 @@ abstract class RecipeGetResponseModel implements Built<RecipeGetResponseModel, R
   @BuiltValueField(wireName: r'raw')
   String get raw;
 
-  RecipeGetResponseModel._();
+  AddRecipesResponseRecipeModel._();
 
-  factory RecipeGetResponseModel([void updates(RecipeGetResponseModelBuilder b)]) = _$RecipeGetResponseModel;
+  factory AddRecipesResponseRecipeModel([void updates(AddRecipesResponseRecipeModelBuilder b)]) = _$AddRecipesResponseRecipeModel;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(RecipeGetResponseModelBuilder b) => b;
+  static void _defaults(AddRecipesResponseRecipeModelBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RecipeGetResponseModel> get serializer => _$RecipeGetResponseModelSerializer();
+  static Serializer<AddRecipesResponseRecipeModel> get serializer => _$AddRecipesResponseRecipeModelSerializer();
 }
 
-class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGetResponseModel> {
+class _$AddRecipesResponseRecipeModelSerializer implements PrimitiveSerializer<AddRecipesResponseRecipeModel> {
   @override
-  final Iterable<Type> types = const [RecipeGetResponseModel, _$RecipeGetResponseModel];
+  final Iterable<Type> types = const [AddRecipesResponseRecipeModel, _$AddRecipesResponseRecipeModel];
 
   @override
-  final String wireName = r'RecipeGetResponseModel';
+  final String wireName = r'AddRecipesResponseRecipeModel';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    RecipeGetResponseModel object, {
+    AddRecipesResponseRecipeModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'id';
@@ -87,7 +87,7 @@ class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGe
   @override
   Object serialize(
     Serializers serializers,
-    RecipeGetResponseModel object, {
+    AddRecipesResponseRecipeModel object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -98,7 +98,7 @@ class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGe
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required RecipeGetResponseModelBuilder result,
+    required AddRecipesResponseRecipeModelBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -149,12 +149,12 @@ class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGe
   }
 
   @override
-  RecipeGetResponseModel deserialize(
+  AddRecipesResponseRecipeModel deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = RecipeGetResponseModelBuilder();
+    final result = AddRecipesResponseRecipeModelBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

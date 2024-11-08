@@ -1,4 +1,4 @@
-# app_controller_client.model.RecipeGetResponseModel
+# app_controller_client.model.AddRecipesResponseRecipeModel
 
 ## Load the model package
 ```dart

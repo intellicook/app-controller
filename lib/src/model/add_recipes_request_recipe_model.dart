@@ -7,21 +7,17 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'recipe_get_response_model.g.dart';
+part 'add_recipes_request_recipe_model.g.dart';
 
-/// RecipeGetResponseModel
+/// AddRecipesRequestRecipeModel
 ///
 /// Properties:
-/// * [id] 
 /// * [name] 
 /// * [ingredients] 
 /// * [instructions] 
 /// * [raw] 
 @BuiltValue()
-abstract class RecipeGetResponseModel implements Built<RecipeGetResponseModel, RecipeGetResponseModelBuilder> {
-  @BuiltValueField(wireName: r'id')
-  int get id;
-
+abstract class AddRecipesRequestRecipeModel implements Built<AddRecipesRequestRecipeModel, AddRecipesRequestRecipeModelBuilder> {
   @BuiltValueField(wireName: r'name')
   String get name;
 
@@ -32,36 +28,31 @@ abstract class RecipeGetResponseModel implements Built<RecipeGetResponseModel, R
   BuiltList<String> get instructions;
 
   @BuiltValueField(wireName: r'raw')
-  String get raw;
+  String? get raw;
 
-  RecipeGetResponseModel._();
+  AddRecipesRequestRecipeModel._();
 
-  factory RecipeGetResponseModel([void updates(RecipeGetResponseModelBuilder b)]) = _$RecipeGetResponseModel;
+  factory AddRecipesRequestRecipeModel([void updates(AddRecipesRequestRecipeModelBuilder b)]) = _$AddRecipesRequestRecipeModel;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(RecipeGetResponseModelBuilder b) => b;
+  static void _defaults(AddRecipesRequestRecipeModelBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RecipeGetResponseModel> get serializer => _$RecipeGetResponseModelSerializer();
+  static Serializer<AddRecipesRequestRecipeModel> get serializer => _$AddRecipesRequestRecipeModelSerializer();
 }
 
-class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGetResponseModel> {
+class _$AddRecipesRequestRecipeModelSerializer implements PrimitiveSerializer<AddRecipesRequestRecipeModel> {
   @override
-  final Iterable<Type> types = const [RecipeGetResponseModel, _$RecipeGetResponseModel];
+  final Iterable<Type> types = const [AddRecipesRequestRecipeModel, _$AddRecipesRequestRecipeModel];
 
   @override
-  final String wireName = r'RecipeGetResponseModel';
+  final String wireName = r'AddRecipesRequestRecipeModel';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    RecipeGetResponseModel object, {
+    AddRecipesRequestRecipeModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(int),
-    );
     yield r'name';
     yield serializers.serialize(
       object.name,
@@ -77,17 +68,19 @@ class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGe
       object.instructions,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
-    yield r'raw';
-    yield serializers.serialize(
-      object.raw,
-      specifiedType: const FullType(String),
-    );
+    if (object.raw != null) {
+      yield r'raw';
+      yield serializers.serialize(
+        object.raw,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
   Object serialize(
     Serializers serializers,
-    RecipeGetResponseModel object, {
+    AddRecipesRequestRecipeModel object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -98,20 +91,13 @@ class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGe
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required RecipeGetResponseModelBuilder result,
+    required AddRecipesRequestRecipeModelBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.id = valueDes;
-          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
@@ -136,8 +122,9 @@ class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGe
         case r'raw':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.raw = valueDes;
           break;
         default:
@@ -149,12 +136,12 @@ class _$RecipeGetResponseModelSerializer implements PrimitiveSerializer<RecipeGe
   }
 
   @override
-  RecipeGetResponseModel deserialize(
+  AddRecipesRequestRecipeModel deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = RecipeGetResponseModelBuilder();
+    final result = AddRecipesRequestRecipeModelBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

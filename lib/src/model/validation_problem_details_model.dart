@@ -7,9 +7,9 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'validation_problem_details.g.dart';
+part 'validation_problem_details_model.g.dart';
 
-/// ValidationProblemDetails
+/// ValidationProblemDetailsModel
 ///
 /// Properties:
 /// * [type] 
@@ -20,7 +20,7 @@ part 'validation_problem_details.g.dart';
 /// * [traceId] 
 /// * [errors] 
 @BuiltValue()
-abstract class ValidationProblemDetails implements Built<ValidationProblemDetails, ValidationProblemDetailsBuilder> {
+abstract class ValidationProblemDetailsModel implements Built<ValidationProblemDetailsModel, ValidationProblemDetailsModelBuilder> {
   @BuiltValueField(wireName: r'type')
   String? get type;
 
@@ -42,27 +42,27 @@ abstract class ValidationProblemDetails implements Built<ValidationProblemDetail
   @BuiltValueField(wireName: r'errors')
   BuiltMap<String, BuiltList<String>>? get errors;
 
-  ValidationProblemDetails._();
+  ValidationProblemDetailsModel._();
 
-  factory ValidationProblemDetails([void updates(ValidationProblemDetailsBuilder b)]) = _$ValidationProblemDetails;
+  factory ValidationProblemDetailsModel([void updates(ValidationProblemDetailsModelBuilder b)]) = _$ValidationProblemDetailsModel;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ValidationProblemDetailsBuilder b) => b;
+  static void _defaults(ValidationProblemDetailsModelBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ValidationProblemDetails> get serializer => _$ValidationProblemDetailsSerializer();
+  static Serializer<ValidationProblemDetailsModel> get serializer => _$ValidationProblemDetailsModelSerializer();
 }
 
-class _$ValidationProblemDetailsSerializer implements PrimitiveSerializer<ValidationProblemDetails> {
+class _$ValidationProblemDetailsModelSerializer implements PrimitiveSerializer<ValidationProblemDetailsModel> {
   @override
-  final Iterable<Type> types = const [ValidationProblemDetails, _$ValidationProblemDetails];
+  final Iterable<Type> types = const [ValidationProblemDetailsModel, _$ValidationProblemDetailsModel];
 
   @override
-  final String wireName = r'ValidationProblemDetails';
+  final String wireName = r'ValidationProblemDetailsModel';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    ValidationProblemDetails object, {
+    ValidationProblemDetailsModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.type != null) {
@@ -119,7 +119,7 @@ class _$ValidationProblemDetailsSerializer implements PrimitiveSerializer<Valida
   @override
   Object serialize(
     Serializers serializers,
-    ValidationProblemDetails object, {
+    ValidationProblemDetailsModel object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -130,7 +130,7 @@ class _$ValidationProblemDetailsSerializer implements PrimitiveSerializer<Valida
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required ValidationProblemDetailsBuilder result,
+    required ValidationProblemDetailsModelBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -202,12 +202,12 @@ class _$ValidationProblemDetailsSerializer implements PrimitiveSerializer<Valida
   }
 
   @override
-  ValidationProblemDetails deserialize(
+  ValidationProblemDetailsModel deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = ValidationProblemDetailsBuilder();
+    final result = ValidationProblemDetailsModelBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

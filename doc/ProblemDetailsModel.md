@@ -1,4 +1,4 @@
-# app_controller_client.model.ValidationProblemDetails
+# app_controller_client.model.ProblemDetailsModel
 
 ## Load the model package
 ```dart
@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **detail** | **String** |  | [optional] 
 **instance** | **String** |  | [optional] 
 **traceId** | **String** |  | [optional] 
-**errors** | [**BuiltMap&lt;String, BuiltList&lt;String&gt;&gt;**](BuiltList.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

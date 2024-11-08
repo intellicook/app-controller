@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
 import 'package:app_controller_client/app_controller_client.dart';
 
-// tests for ValidationProblemDetails
+// tests for ProblemDetailsModel
 void main() {
-  final instance = ValidationProblemDetailsBuilder();
+  final instance = ProblemDetailsModelBuilder();
   // TODO add properties to the builder and call build()
 
-  group(ValidationProblemDetails, () {
+  group(ProblemDetailsModel, () {
     // String type
     test('to test the property `type`', () async {
       // TODO
@@ -34,11 +34,6 @@ void main() {
 
     // String traceId
     test('to test the property `traceId`', () async {
-      // TODO
-    });
-
-    // BuiltMap<String, BuiltList<String>> errors
-    test('to test the property `errors`', () async {
       // TODO
     });
 

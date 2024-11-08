@@ -6,9 +6,9 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'problem_details.g.dart';
+part 'problem_details_model.g.dart';
 
-/// ProblemDetails
+/// ProblemDetailsModel
 ///
 /// Properties:
 /// * [type] 
@@ -18,7 +18,7 @@ part 'problem_details.g.dart';
 /// * [instance] 
 /// * [traceId] 
 @BuiltValue()
-abstract class ProblemDetails implements Built<ProblemDetails, ProblemDetailsBuilder> {
+abstract class ProblemDetailsModel implements Built<ProblemDetailsModel, ProblemDetailsModelBuilder> {
   @BuiltValueField(wireName: r'type')
   String? get type;
 
@@ -37,27 +37,27 @@ abstract class ProblemDetails implements Built<ProblemDetails, ProblemDetailsBui
   @BuiltValueField(wireName: r'traceId')
   String? get traceId;
 
-  ProblemDetails._();
+  ProblemDetailsModel._();
 
-  factory ProblemDetails([void updates(ProblemDetailsBuilder b)]) = _$ProblemDetails;
+  factory ProblemDetailsModel([void updates(ProblemDetailsModelBuilder b)]) = _$ProblemDetailsModel;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ProblemDetailsBuilder b) => b;
+  static void _defaults(ProblemDetailsModelBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ProblemDetails> get serializer => _$ProblemDetailsSerializer();
+  static Serializer<ProblemDetailsModel> get serializer => _$ProblemDetailsModelSerializer();
 }
 
-class _$ProblemDetailsSerializer implements PrimitiveSerializer<ProblemDetails> {
+class _$ProblemDetailsModelSerializer implements PrimitiveSerializer<ProblemDetailsModel> {
   @override
-  final Iterable<Type> types = const [ProblemDetails, _$ProblemDetails];
+  final Iterable<Type> types = const [ProblemDetailsModel, _$ProblemDetailsModel];
 
   @override
-  final String wireName = r'ProblemDetails';
+  final String wireName = r'ProblemDetailsModel';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    ProblemDetails object, {
+    ProblemDetailsModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.type != null) {
@@ -107,7 +107,7 @@ class _$ProblemDetailsSerializer implements PrimitiveSerializer<ProblemDetails> 
   @override
   Object serialize(
     Serializers serializers,
-    ProblemDetails object, {
+    ProblemDetailsModel object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -118,7 +118,7 @@ class _$ProblemDetailsSerializer implements PrimitiveSerializer<ProblemDetails> 
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required ProblemDetailsBuilder result,
+    required ProblemDetailsModelBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -182,12 +182,12 @@ class _$ProblemDetailsSerializer implements PrimitiveSerializer<ProblemDetails> 
   }
 
   @override
-  ProblemDetails deserialize(
+  ProblemDetailsModel deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = ProblemDetailsBuilder();
+    final result = ProblemDetailsModelBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

@@ -7,6 +7,15 @@ void main() {
   final instance = AppControllerClient().getRecipeSearchApi();
 
   group(RecipeSearchApi, () {
+    // Add a list of recipes.
+    //
+    // Only admins can add recipes.
+    //
+    //Future<AddRecipesPostResponseModel> recipeSearchAddRecipesPost({ AddRecipesPostRequestModel addRecipesPostRequestModel }) async
+    test('test recipeSearchAddRecipesPost', () async {
+      // TODO
+    });
+
     // Chat about a specific recipe.
     //
     //Future<ChatByRecipePostResponseModel> recipeSearchChatByRecipePost({ ChatByRecipePostRequestModel chatByRecipePostRequestModel }) async

@@ -1,4 +1,4 @@
-# app_controller_client.model.ProblemDetails
+# app_controller_client.model.AddRecipesPostResponseModel
 
 ## Load the model package
 ```dart
@@ -8,12 +8,7 @@ import 'package:app_controller_client/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** |  | [optional] 
-**title** | **String** |  | [optional] 
-**status** | **int** |  | [optional] 
-**detail** | **String** |  | [optional] 
-**instance** | **String** |  | [optional] 
-**traceId** | **String** |  | [optional] 
+**recipes** | [**BuiltList&lt;AddRecipesResponseRecipeModel&gt;**](AddRecipesResponseRecipeModel.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

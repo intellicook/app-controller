@@ -4,13 +4,14 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:app_controller_client/src/model/login_post_request_model.dart';
 import 'package:app_controller_client/src/model/login_post_response_model.dart';
 import 'package:app_controller_client/src/model/register_post_request_model.dart';
-import 'package:app_controller_client/src/model/validation_problem_details.dart';
+import 'package:app_controller_client/src/model/validation_problem_details_model.dart';
 
 class AuthApi {
 

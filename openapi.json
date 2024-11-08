@@ -82,7 +82,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
                 }
               }
             }
@@ -119,6 +119,79 @@
                   "items": {
                     "$ref": "#/components/schemas/HealthGetResponseModel"
                   }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RecipeSearch/AddRecipes": {
+      "post": {
+        "tags": [
+          "RecipeSearch"
+        ],
+        "summary": "Add a list of recipes.",
+        "description": "Only admins can add recipes.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRecipesPostRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRecipesPostRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRecipesPostRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddRecipesPostResponseModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
                 }
               }
             }
@@ -167,7 +240,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
                 }
               }
             }
@@ -180,7 +253,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
                 }
               }
             }
@@ -224,7 +297,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
                 }
               }
             }
@@ -273,7 +346,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
                 }
               }
             }
@@ -286,7 +359,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
                 }
               }
             }
@@ -329,7 +402,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
                 }
               }
             }
@@ -342,7 +415,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
                 }
               }
             }
@@ -389,7 +462,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
                 }
               }
             }
@@ -402,7 +475,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
                 }
               }
             }
@@ -423,7 +496,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
                 }
               }
             }
@@ -436,7 +509,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
                 }
               }
             }
@@ -478,7 +551,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
                 }
               }
             }
@@ -491,7 +564,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
                 }
               }
             }
@@ -502,6 +575,104 @@
   },
   "components": {
     "schemas": {
+      "AddRecipesPostRequestModel": {
+        "required": [
+          "recipes"
+        ],
+        "type": "object",
+        "properties": {
+          "recipes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddRecipesRequestRecipeModel"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddRecipesPostResponseModel": {
+        "required": [
+          "recipes"
+        ],
+        "type": "object",
+        "properties": {
+          "recipes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddRecipesResponseRecipeModel"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddRecipesRequestRecipeModel": {
+        "required": [
+          "ingredients",
+          "instructions",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "instructions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "raw": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddRecipesResponseRecipeModel": {
+        "required": [
+          "id",
+          "ingredients",
+          "instructions",
+          "name",
+          "raw"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "instructions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "raw": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "ChatByRecipeMessageModel": {
         "required": [
           "role",
@@ -559,6 +730,19 @@
           "Assistant"
         ],
         "type": "string"
+      },
+      "ForbiddenModel": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       },
       "HealthCheckModel": {
         "required": [
@@ -646,7 +830,7 @@
         },
         "additionalProperties": false
       },
-      "ProblemDetails": {
+      "ProblemDetailsModel": {
         "type": "object",
         "properties": {
           "type": {
@@ -679,12 +863,18 @@
       },
       "RecipeGetResponseModel": {
         "required": [
+          "id",
           "ingredients",
           "instructions",
-          "name"
+          "name",
+          "raw"
         ],
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "name": {
             "minLength": 1,
             "type": "string"
@@ -700,6 +890,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "raw": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -895,7 +1089,7 @@
         ],
         "type": "string"
       },
-      "ValidationProblemDetails": {
+      "ValidationProblemDetailsModel": {
         "type": "object",
         "properties": {
           "type": {

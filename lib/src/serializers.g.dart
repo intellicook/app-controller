@@ -7,17 +7,22 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(AddRecipesPostRequestModel.serializer)
+      ..add(AddRecipesPostResponseModel.serializer)
+      ..add(AddRecipesRequestRecipeModel.serializer)
+      ..add(AddRecipesResponseRecipeModel.serializer)
       ..add(ChatByRecipeMessageModel.serializer)
       ..add(ChatByRecipePostRequestModel.serializer)
       ..add(ChatByRecipePostResponseModel.serializer)
       ..add(ChatByRecipeRoleModel.serializer)
+      ..add(ForbiddenModel.serializer)
       ..add(HealthCheckModel.serializer)
       ..add(HealthGetResponseModel.serializer)
       ..add(HealthServiceModel.serializer)
       ..add(HealthStatusModel.serializer)
       ..add(LoginPostRequestModel.serializer)
       ..add(LoginPostResponseModel.serializer)
-      ..add(ProblemDetails.serializer)
+      ..add(ProblemDetailsModel.serializer)
       ..add(RecipeGetResponseModel.serializer)
       ..add(RegisterPostRequestModel.serializer)
       ..add(SearchRecipesByIngredientsPostRequestModel.serializer)
@@ -28,7 +33,15 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UserPutRequestModel.serializer)
       ..add(UserPutResponseModel.serializer)
       ..add(UserRoleModel.serializer)
-      ..add(ValidationProblemDetails.serializer)
+      ..add(ValidationProblemDetailsModel.serializer)
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(AddRecipesRequestRecipeModel)]),
+          () => new ListBuilder<AddRecipesRequestRecipeModel>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(AddRecipesResponseRecipeModel)]),
+          () => new ListBuilder<AddRecipesResponseRecipeModel>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ChatByRecipeMessageModel)]),
@@ -40,6 +53,18 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(SearchRecipesByIngredientsRecipeModel)]),
           () => new ListBuilder<SearchRecipesByIngredientsRecipeModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
