@@ -1,6 +1,7 @@
 using IntelliCook.AppController.Api.Models.Health;
 using IntelliCook.AppController.Api.Models.RecipeSearch.AddRecipes;
 using IntelliCook.AppController.Api.Models.RecipeSearch.ChatByRecipe;
+using IntelliCook.AppController.Api.Models.RecipeSearch.FaissIndexThread;
 using IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
 using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipesByIngredients;
 using IntelliCook.RecipeSearch.Client;
@@ -88,7 +89,7 @@ public static class RecipeSearchContractExtensions
 
     #endregion
 
-    #region AddRecipes
+    #region ChatByRecipe
 
     public static ChatByRecipePostResponseModel ToPostResponseModel(
         this ChatByRecipeResponse response
@@ -149,6 +150,47 @@ public static class RecipeSearchContractExtensions
             Ingredients = recipe.Ingredients,
             Instructions = recipe.Instructions,
             Raw = recipe.Raw
+        };
+    }
+
+    #endregion
+
+    #region FaissIndexThread
+
+    public static FaissIndexThreadStatusModel ToFaissIndexThreadStatusModel(
+        this FaissIndexThreadStatus status
+    )
+    {
+        return status switch
+        {
+            FaissIndexThreadStatus.Uninitialized => FaissIndexThreadStatusModel.Uninitialized,
+            FaissIndexThreadStatus.InProgress => FaissIndexThreadStatusModel.InProgress,
+            FaissIndexThreadStatus.Failed => FaissIndexThreadStatusModel.Failed,
+            FaissIndexThreadStatus.Completed => FaissIndexThreadStatusModel.Completed,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
+    public static FaissIndexThreadArgsModel ToArgsModel(
+        this FaissIndexThreadArgs args
+    )
+    {
+        return new FaissIndexThreadArgsModel
+        {
+            Count = args.Count,
+            Model = args.Model,
+            Path = args.Path
+        };
+    }
+
+    public static FaissIndexThreadGetResponseModel ToGetResponseModel(
+        this FaissIndexThreadResponse response
+    )
+    {
+        return new FaissIndexThreadGetResponseModel
+        {
+            Status = response.Status.ToFaissIndexThreadStatusModel(),
+            Args = response.Args.ToArgsModel()
         };
     }
 
