@@ -34,14 +34,19 @@ public class SearchRecipesByIngredientsControllerTests(ClientFixture fixture)
         var request = new SearchRecipesByIngredientsPostRequestModel
         {
             Ingredients = new[] { "Ingredient" },
-            Limit = 1
+            Limit = 1,
+            IncludeDetail = true
         };
+        var responseDetail = new SearchRecipesByIngredientsRecipeDetail();
+        responseDetail.Ingredients.Add("Ingredient");
+        responseDetail.Instructions.Add("Instruction");
+        responseDetail.Raw = "Raw";
         var responseModel = new SearchRecipesByIngredientsResponse();
         responseModel.Recipes.Add(new SearchRecipesByIngredientsRecipe
         {
             Id = 1,
-            Distance = 0.5f,
-            Name = "Name"
+            Name = "Name",
+            Detail = responseDetail
         });
 
         fixture.AuthClientMock
@@ -54,7 +59,8 @@ public class SearchRecipesByIngredientsControllerTests(ClientFixture fixture)
                     r => r.Username == user.Username &&
                          r.Limit == request.Limit &&
                          r.Ingredients.Count == request.Ingredients.Count() &&
-                         r.Ingredients[0] == request.Ingredients.First()
+                         r.Ingredients[0] == request.Ingredients.First() &&
+                         r.IncludeDetail == request.IncludeDetail
                 ),
                 null, null, default
             ))
@@ -65,7 +71,6 @@ public class SearchRecipesByIngredientsControllerTests(ClientFixture fixture)
                 () => new Metadata(),
                 () => { }
             ));
-
 
         // Act
         var response =
@@ -95,13 +100,13 @@ public class SearchRecipesByIngredientsControllerTests(ClientFixture fixture)
         var request = new SearchRecipesByIngredientsPostRequestModel
         {
             Ingredients = new[] { "Ingredient" },
-            Limit = null
+            Limit = null,
+            IncludeDetail = false
         };
         var responseModel = new SearchRecipesByIngredientsResponse();
         responseModel.Recipes.Add(new SearchRecipesByIngredientsRecipe
         {
             Id = 1,
-            Distance = 0.5f,
             Name = "Name"
         });
 
@@ -115,7 +120,8 @@ public class SearchRecipesByIngredientsControllerTests(ClientFixture fixture)
                     r => r.Username == user.Username &&
                          !r.HasLimit &&
                          r.Ingredients.Count == request.Ingredients.Count() &&
-                         r.Ingredients[0] == request.Ingredients.First()
+                         r.Ingredients[0] == request.Ingredients.First() &&
+                         r.IncludeDetail == request.IncludeDetail
                 ),
                 null, null, default
             ))
@@ -127,6 +133,66 @@ public class SearchRecipesByIngredientsControllerTests(ClientFixture fixture)
                 () => { }
             ));
 
+        // Act
+        var response =
+            await fixture.Client.PostAsync(Path, JsonContent.Create(request, options: fixture.SerializerOptions));
+
+        // Assert
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        var content = await response.Content.ReadAsStringAsync();
+        content.Should().NotBeNullOrEmpty();
+
+        var result =
+            JsonSerializer.Deserialize<SearchRecipesByIngredientsPostResponseModel>(content, fixture.SerializerOptions);
+        result.Should().BeEquivalentTo(responseModel.ToPostResponseModel());
+    }
+
+    [Fact]
+    public async void Post_WhenIncludeDetailIsNull_DoesNotSetIncludeDetailAndReturnsSuccess()
+    {
+        // Arrange
+        var user = new UserGetResponseModel
+        {
+            Name = "Name",
+            Role = UserRoleModel.User,
+            Username = "Username",
+            Email = "Email@Example.com"
+        };
+        var request = new SearchRecipesByIngredientsPostRequestModel
+        {
+            Ingredients = new[] { "Ingredient" },
+            Limit = 1,
+            IncludeDetail = null
+        };
+        var responseModel = new SearchRecipesByIngredientsResponse();
+        responseModel.Recipes.Add(new SearchRecipesByIngredientsRecipe
+        {
+            Id = 1,
+            Name = "Name"
+        });
+
+        fixture.AuthClientMock
+            .Setup(x => x.GetUserMeAsync())
+            .ReturnsAsync(IAuthClient.Result<UserGetResponseModel>.FromValue(HttpStatusCode.OK, user));
+
+        fixture.RecipeSearchClientMock
+            .Setup(x => x.SearchRecipesByIngredientsAsync(
+                It.Is<SearchRecipesByIngredientsRequest>(
+                    r => r.Username == user.Username &&
+                         r.Limit == request.Limit &&
+                         r.Ingredients.Count == request.Ingredients.Count() &&
+                         r.Ingredients[0] == request.Ingredients.First() &&
+                         !r.HasIncludeDetail
+                ),
+                null, null, default
+            ))
+            .Returns(new AsyncUnaryCall<SearchRecipesByIngredientsResponse>(
+                Task.FromResult(responseModel),
+                Task.FromResult(new Metadata()),
+                () => Status.DefaultSuccess,
+                () => new Metadata(),
+                () => { }
+            ));
 
         // Act
         var response =
@@ -149,7 +215,8 @@ public class SearchRecipesByIngredientsControllerTests(ClientFixture fixture)
         var request = new SearchRecipesByIngredientsPostRequestModel
         {
             Ingredients = new[] { "Ingredient" },
-            Limit = 1
+            Limit = 1,
+            IncludeDetail = false
         };
 
         fixture.AuthClientMock

@@ -10,4 +10,6 @@ public class SearchRecipesByIngredientsPostRequestModel
 
     [Range(1, uint.MaxValue, ErrorMessage = "Limit must be a positive integer.")]
     public uint? Limit { get; set; }
+
+    public bool? IncludeDetail { get; set; }
 }

@@ -6,7 +6,7 @@ public class SearchRecipesByIngredientsRecipeModel
 {
     [Required] public int Id { get; set; }
 
-    [Required] public float Distance { get; set; }
-
     [Required] public string Name { get; set; }
+
+    public SearchRecipesByIngredientsRecipeDetailModel? Detail { get; set; }
 }
