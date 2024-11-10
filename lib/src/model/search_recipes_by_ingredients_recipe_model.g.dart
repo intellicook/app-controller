@@ -11,9 +11,9 @@ class _$SearchRecipesByIngredientsRecipeModel
   @override
   final int id;
   @override
-  final double distance;
-  @override
   final String name;
+  @override
+  final SearchRecipesByIngredientsRecipeDetailModel? detail;
 
   factory _$SearchRecipesByIngredientsRecipeModel(
           [void Function(SearchRecipesByIngredientsRecipeModelBuilder)?
@@ -22,12 +22,10 @@ class _$SearchRecipesByIngredientsRecipeModel
           ._build();
 
   _$SearchRecipesByIngredientsRecipeModel._(
-      {required this.id, required this.distance, required this.name})
+      {required this.id, required this.name, this.detail})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         id, r'SearchRecipesByIngredientsRecipeModel', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        distance, r'SearchRecipesByIngredientsRecipeModel', 'distance');
     BuiltValueNullFieldError.checkNotNull(
         name, r'SearchRecipesByIngredientsRecipeModel', 'name');
   }
@@ -47,16 +45,16 @@ class _$SearchRecipesByIngredientsRecipeModel
     if (identical(other, this)) return true;
     return other is SearchRecipesByIngredientsRecipeModel &&
         id == other.id &&
-        distance == other.distance &&
-        name == other.name;
+        name == other.name &&
+        detail == other.detail;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, distance.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -66,8 +64,8 @@ class _$SearchRecipesByIngredientsRecipeModel
     return (newBuiltValueToStringHelper(
             r'SearchRecipesByIngredientsRecipeModel')
           ..add('id', id)
-          ..add('distance', distance)
-          ..add('name', name))
+          ..add('name', name)
+          ..add('detail', detail))
         .toString();
   }
 }
@@ -82,13 +80,16 @@ class SearchRecipesByIngredientsRecipeModelBuilder
   int? get id => _$this._id;
   set id(int? id) => _$this._id = id;
 
-  double? _distance;
-  double? get distance => _$this._distance;
-  set distance(double? distance) => _$this._distance = distance;
-
   String? _name;
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
+
+  SearchRecipesByIngredientsRecipeDetailModelBuilder? _detail;
+  SearchRecipesByIngredientsRecipeDetailModelBuilder get detail =>
+      _$this._detail ??=
+          new SearchRecipesByIngredientsRecipeDetailModelBuilder();
+  set detail(SearchRecipesByIngredientsRecipeDetailModelBuilder? detail) =>
+      _$this._detail = detail;
 
   SearchRecipesByIngredientsRecipeModelBuilder() {
     SearchRecipesByIngredientsRecipeModel._defaults(this);
@@ -98,8 +99,8 @@ class SearchRecipesByIngredientsRecipeModelBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _distance = $v.distance;
       _name = $v.name;
+      _detail = $v.detail?.toBuilder();
       _$v = null;
     }
     return this;
@@ -121,14 +122,28 @@ class SearchRecipesByIngredientsRecipeModelBuilder
   SearchRecipesByIngredientsRecipeModel build() => _build();
 
   _$SearchRecipesByIngredientsRecipeModel _build() {
-    final _$result = _$v ??
-        new _$SearchRecipesByIngredientsRecipeModel._(
-            id: BuiltValueNullFieldError.checkNotNull(
-                id, r'SearchRecipesByIngredientsRecipeModel', 'id'),
-            distance: BuiltValueNullFieldError.checkNotNull(
-                distance, r'SearchRecipesByIngredientsRecipeModel', 'distance'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'SearchRecipesByIngredientsRecipeModel', 'name'));
+    _$SearchRecipesByIngredientsRecipeModel _$result;
+    try {
+      _$result = _$v ??
+          new _$SearchRecipesByIngredientsRecipeModel._(
+              id: BuiltValueNullFieldError.checkNotNull(
+                  id, r'SearchRecipesByIngredientsRecipeModel', 'id'),
+              name: BuiltValueNullFieldError.checkNotNull(
+                  name, r'SearchRecipesByIngredientsRecipeModel', 'name'),
+              detail: _detail?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'detail';
+        _detail?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'SearchRecipesByIngredientsRecipeModel',
+            _$failedField,
+            e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

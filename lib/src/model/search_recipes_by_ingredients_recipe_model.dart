@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:app_controller_client/src/model/search_recipes_by_ingredients_recipe_detail_model.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,18 +13,18 @@ part 'search_recipes_by_ingredients_recipe_model.g.dart';
 ///
 /// Properties:
 /// * [id] 
-/// * [distance] 
 /// * [name] 
+/// * [detail] 
 @BuiltValue()
 abstract class SearchRecipesByIngredientsRecipeModel implements Built<SearchRecipesByIngredientsRecipeModel, SearchRecipesByIngredientsRecipeModelBuilder> {
   @BuiltValueField(wireName: r'id')
   int get id;
 
-  @BuiltValueField(wireName: r'distance')
-  double get distance;
-
   @BuiltValueField(wireName: r'name')
   String get name;
+
+  @BuiltValueField(wireName: r'detail')
+  SearchRecipesByIngredientsRecipeDetailModel? get detail;
 
   SearchRecipesByIngredientsRecipeModel._();
 
@@ -53,16 +54,18 @@ class _$SearchRecipesByIngredientsRecipeModelSerializer implements PrimitiveSeri
       object.id,
       specifiedType: const FullType(int),
     );
-    yield r'distance';
-    yield serializers.serialize(
-      object.distance,
-      specifiedType: const FullType(double),
-    );
     yield r'name';
     yield serializers.serialize(
       object.name,
       specifiedType: const FullType(String),
     );
+    if (object.detail != null) {
+      yield r'detail';
+      yield serializers.serialize(
+        object.detail,
+        specifiedType: const FullType(SearchRecipesByIngredientsRecipeDetailModel),
+      );
+    }
   }
 
   @override
@@ -93,19 +96,19 @@ class _$SearchRecipesByIngredientsRecipeModelSerializer implements PrimitiveSeri
           ) as int;
           result.id = valueDes;
           break;
-        case r'distance':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(double),
-          ) as double;
-          result.distance = valueDes;
-          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
           result.name = valueDes;
+          break;
+        case r'detail':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(SearchRecipesByIngredientsRecipeDetailModel),
+          ) as SearchRecipesByIngredientsRecipeDetailModel;
+          result.detail.replace(valueDes);
           break;
         default:
           unhandled.add(key);

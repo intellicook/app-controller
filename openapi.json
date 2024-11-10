@@ -1126,6 +1126,10 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "includeDetail": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1145,9 +1149,35 @@
         },
         "additionalProperties": false
       },
+      "SearchRecipesByIngredientsRecipeDetailModel": {
+        "required": [
+          "ingredients",
+          "instructions",
+          "raw"
+        ],
+        "type": "object",
+        "properties": {
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "instructions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "raw": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "SearchRecipesByIngredientsRecipeModel": {
         "required": [
-          "distance",
           "id",
           "name"
         ],
@@ -1157,13 +1187,12 @@
             "type": "integer",
             "format": "int32"
           },
-          "distance": {
-            "type": "number",
-            "format": "float"
-          },
           "name": {
             "minLength": 1,
             "type": "string"
+          },
+          "detail": {
+            "$ref": "#/components/schemas/SearchRecipesByIngredientsRecipeDetailModel"
           }
         },
         "additionalProperties": false

@@ -29,6 +29,7 @@ doc/RecipeSearchApi.md
 doc/RegisterPostRequestModel.md
 doc/SearchRecipesByIngredientsPostRequestModel.md
 doc/SearchRecipesByIngredientsPostResponseModel.md
+doc/SearchRecipesByIngredientsRecipeDetailModel.md
 doc/SearchRecipesByIngredientsRecipeModel.md
 doc/TemporaryApi.md
 doc/UserApi.md
@@ -77,6 +78,7 @@ lib/src/model/recipe_get_response_model.dart
 lib/src/model/register_post_request_model.dart
 lib/src/model/search_recipes_by_ingredients_post_request_model.dart
 lib/src/model/search_recipes_by_ingredients_post_response_model.dart
+lib/src/model/search_recipes_by_ingredients_recipe_detail_model.dart
 lib/src/model/search_recipes_by_ingredients_recipe_model.dart
 lib/src/model/user_get_response_model.dart
 lib/src/model/user_password_put_request_model.dart
@@ -113,6 +115,7 @@ test/recipe_search_api_test.dart
 test/register_post_request_model_test.dart
 test/search_recipes_by_ingredients_post_request_model_test.dart
 test/search_recipes_by_ingredients_post_response_model_test.dart
+test/search_recipes_by_ingredients_recipe_detail_model_test.dart
 test/search_recipes_by_ingredients_recipe_model_test.dart
 test/temporary_api_test.dart
 test/user_api_test.dart

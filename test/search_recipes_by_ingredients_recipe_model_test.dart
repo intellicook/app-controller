@@ -12,13 +12,13 @@ void main() {
       // TODO
     });
 
-    // double distance
-    test('to test the property `distance`', () async {
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 
-    // String name
-    test('to test the property `name`', () async {
+    // SearchRecipesByIngredientsRecipeDetailModel detail
+    test('to test the property `detail`', () async {
       // TODO
     });
 

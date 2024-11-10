@@ -17,5 +17,10 @@ void main() {
       // TODO
     });
 
+    // bool includeDetail
+    test('to test the property `includeDetail`', () async {
+      // TODO
+    });
+
   });
 }

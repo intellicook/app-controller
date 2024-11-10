@@ -1,4 +1,4 @@
-# app_controller_client.model.SearchRecipesByIngredientsPostRequestModel
+# app_controller_client.model.SearchRecipesByIngredientsRecipeDetailModel
 
 ## Load the model package
 ```dart
@@ -9,8 +9,8 @@ import 'package:app_controller_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ingredients** | **BuiltList&lt;String&gt;** |  | 
-**limit** | **int** |  | [optional] 
-**includeDetail** | **bool** |  | [optional] 
+**instructions** | **BuiltList&lt;String&gt;** |  | 
+**raw** | **String** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

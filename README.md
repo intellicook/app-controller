@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
  - [RegisterPostRequestModel](doc/RegisterPostRequestModel.md)
  - [SearchRecipesByIngredientsPostRequestModel](doc/SearchRecipesByIngredientsPostRequestModel.md)
  - [SearchRecipesByIngredientsPostResponseModel](doc/SearchRecipesByIngredientsPostResponseModel.md)
+ - [SearchRecipesByIngredientsRecipeDetailModel](doc/SearchRecipesByIngredientsRecipeDetailModel.md)
  - [SearchRecipesByIngredientsRecipeModel](doc/SearchRecipesByIngredientsRecipeModel.md)
  - [UserGetResponseModel](doc/UserGetResponseModel.md)
  - [UserPasswordPutRequestModel](doc/UserPasswordPutRequestModel.md)

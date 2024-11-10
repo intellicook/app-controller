@@ -7,46 +7,46 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'search_recipes_by_ingredients_post_request_model.g.dart';
+part 'search_recipes_by_ingredients_recipe_detail_model.g.dart';
 
-/// SearchRecipesByIngredientsPostRequestModel
+/// SearchRecipesByIngredientsRecipeDetailModel
 ///
 /// Properties:
 /// * [ingredients] 
-/// * [limit] 
-/// * [includeDetail] 
+/// * [instructions] 
+/// * [raw] 
 @BuiltValue()
-abstract class SearchRecipesByIngredientsPostRequestModel implements Built<SearchRecipesByIngredientsPostRequestModel, SearchRecipesByIngredientsPostRequestModelBuilder> {
+abstract class SearchRecipesByIngredientsRecipeDetailModel implements Built<SearchRecipesByIngredientsRecipeDetailModel, SearchRecipesByIngredientsRecipeDetailModelBuilder> {
   @BuiltValueField(wireName: r'ingredients')
   BuiltList<String> get ingredients;
 
-  @BuiltValueField(wireName: r'limit')
-  int? get limit;
+  @BuiltValueField(wireName: r'instructions')
+  BuiltList<String> get instructions;
 
-  @BuiltValueField(wireName: r'includeDetail')
-  bool? get includeDetail;
+  @BuiltValueField(wireName: r'raw')
+  String get raw;
 
-  SearchRecipesByIngredientsPostRequestModel._();
+  SearchRecipesByIngredientsRecipeDetailModel._();
 
-  factory SearchRecipesByIngredientsPostRequestModel([void updates(SearchRecipesByIngredientsPostRequestModelBuilder b)]) = _$SearchRecipesByIngredientsPostRequestModel;
+  factory SearchRecipesByIngredientsRecipeDetailModel([void updates(SearchRecipesByIngredientsRecipeDetailModelBuilder b)]) = _$SearchRecipesByIngredientsRecipeDetailModel;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SearchRecipesByIngredientsPostRequestModelBuilder b) => b;
+  static void _defaults(SearchRecipesByIngredientsRecipeDetailModelBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchRecipesByIngredientsPostRequestModel> get serializer => _$SearchRecipesByIngredientsPostRequestModelSerializer();
+  static Serializer<SearchRecipesByIngredientsRecipeDetailModel> get serializer => _$SearchRecipesByIngredientsRecipeDetailModelSerializer();
 }
 
-class _$SearchRecipesByIngredientsPostRequestModelSerializer implements PrimitiveSerializer<SearchRecipesByIngredientsPostRequestModel> {
+class _$SearchRecipesByIngredientsRecipeDetailModelSerializer implements PrimitiveSerializer<SearchRecipesByIngredientsRecipeDetailModel> {
   @override
-  final Iterable<Type> types = const [SearchRecipesByIngredientsPostRequestModel, _$SearchRecipesByIngredientsPostRequestModel];
+  final Iterable<Type> types = const [SearchRecipesByIngredientsRecipeDetailModel, _$SearchRecipesByIngredientsRecipeDetailModel];
 
   @override
-  final String wireName = r'SearchRecipesByIngredientsPostRequestModel';
+  final String wireName = r'SearchRecipesByIngredientsRecipeDetailModel';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    SearchRecipesByIngredientsPostRequestModel object, {
+    SearchRecipesByIngredientsRecipeDetailModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'ingredients';
@@ -54,26 +54,22 @@ class _$SearchRecipesByIngredientsPostRequestModelSerializer implements Primitiv
       object.ingredients,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
-    if (object.limit != null) {
-      yield r'limit';
-      yield serializers.serialize(
-        object.limit,
-        specifiedType: const FullType.nullable(int),
-      );
-    }
-    if (object.includeDetail != null) {
-      yield r'includeDetail';
-      yield serializers.serialize(
-        object.includeDetail,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
+    yield r'instructions';
+    yield serializers.serialize(
+      object.instructions,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'raw';
+    yield serializers.serialize(
+      object.raw,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
   Object serialize(
     Serializers serializers,
-    SearchRecipesByIngredientsPostRequestModel object, {
+    SearchRecipesByIngredientsRecipeDetailModel object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -84,7 +80,7 @@ class _$SearchRecipesByIngredientsPostRequestModelSerializer implements Primitiv
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required SearchRecipesByIngredientsPostRequestModelBuilder result,
+    required SearchRecipesByIngredientsRecipeDetailModelBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -98,21 +94,19 @@ class _$SearchRecipesByIngredientsPostRequestModelSerializer implements Primitiv
           ) as BuiltList<String>;
           result.ingredients.replace(valueDes);
           break;
-        case r'limit':
+        case r'instructions':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(int),
-          ) as int?;
-          if (valueDes == null) continue;
-          result.limit = valueDes;
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.instructions.replace(valueDes);
           break;
-        case r'includeDetail':
+        case r'raw':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.includeDetail = valueDes;
+            specifiedType: const FullType(String),
+          ) as String;
+          result.raw = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -123,12 +117,12 @@ class _$SearchRecipesByIngredientsPostRequestModelSerializer implements Primitiv
   }
 
   @override
-  SearchRecipesByIngredientsPostRequestModel deserialize(
+  SearchRecipesByIngredientsRecipeDetailModel deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = SearchRecipesByIngredientsPostRequestModelBuilder();
+    final result = SearchRecipesByIngredientsRecipeDetailModelBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

@@ -12,6 +12,8 @@ class _$SearchRecipesByIngredientsPostRequestModel
   final BuiltList<String> ingredients;
   @override
   final int? limit;
+  @override
+  final bool? includeDetail;
 
   factory _$SearchRecipesByIngredientsPostRequestModel(
           [void Function(SearchRecipesByIngredientsPostRequestModelBuilder)?
@@ -20,7 +22,7 @@ class _$SearchRecipesByIngredientsPostRequestModel
           ._build();
 
   _$SearchRecipesByIngredientsPostRequestModel._(
-      {required this.ingredients, this.limit})
+      {required this.ingredients, this.limit, this.includeDetail})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(ingredients,
         r'SearchRecipesByIngredientsPostRequestModel', 'ingredients');
@@ -41,7 +43,8 @@ class _$SearchRecipesByIngredientsPostRequestModel
     if (identical(other, this)) return true;
     return other is SearchRecipesByIngredientsPostRequestModel &&
         ingredients == other.ingredients &&
-        limit == other.limit;
+        limit == other.limit &&
+        includeDetail == other.includeDetail;
   }
 
   @override
@@ -49,6 +52,7 @@ class _$SearchRecipesByIngredientsPostRequestModel
     var _$hash = 0;
     _$hash = $jc(_$hash, ingredients.hashCode);
     _$hash = $jc(_$hash, limit.hashCode);
+    _$hash = $jc(_$hash, includeDetail.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -58,7 +62,8 @@ class _$SearchRecipesByIngredientsPostRequestModel
     return (newBuiltValueToStringHelper(
             r'SearchRecipesByIngredientsPostRequestModel')
           ..add('ingredients', ingredients)
-          ..add('limit', limit))
+          ..add('limit', limit)
+          ..add('includeDetail', includeDetail))
         .toString();
   }
 }
@@ -79,6 +84,11 @@ class SearchRecipesByIngredientsPostRequestModelBuilder
   int? get limit => _$this._limit;
   set limit(int? limit) => _$this._limit = limit;
 
+  bool? _includeDetail;
+  bool? get includeDetail => _$this._includeDetail;
+  set includeDetail(bool? includeDetail) =>
+      _$this._includeDetail = includeDetail;
+
   SearchRecipesByIngredientsPostRequestModelBuilder() {
     SearchRecipesByIngredientsPostRequestModel._defaults(this);
   }
@@ -88,6 +98,7 @@ class SearchRecipesByIngredientsPostRequestModelBuilder
     if ($v != null) {
       _ingredients = $v.ingredients.toBuilder();
       _limit = $v.limit;
+      _includeDetail = $v.includeDetail;
       _$v = null;
     }
     return this;
@@ -114,7 +125,9 @@ class SearchRecipesByIngredientsPostRequestModelBuilder
     try {
       _$result = _$v ??
           new _$SearchRecipesByIngredientsPostRequestModel._(
-              ingredients: ingredients.build(), limit: limit);
+              ingredients: ingredients.build(),
+              limit: limit,
+              includeDetail: includeDetail);
     } catch (_) {
       late String _$failedField;
       try {
