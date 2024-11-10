@@ -40,14 +40,19 @@ public class SearchRecipesByIngredientsControllerTests
         var request = new SearchRecipesByIngredientsPostRequestModel
         {
             Ingredients = new[] { "Ingredient" },
-            Limit = 1
+            Limit = 1,
+            IncludeDetail = true
         };
+        var responseDetail = new SearchRecipesByIngredientsRecipeDetail();
+        responseDetail.Ingredients.Add("Ingredient");
+        responseDetail.Instructions.Add("Instruction");
+        responseDetail.Raw = "Raw";
         var responseModel = new SearchRecipesByIngredientsResponse();
         responseModel.Recipes.Add(new SearchRecipesByIngredientsRecipe
         {
             Id = 1,
-            Distance = 0.5f,
-            Name = "Name"
+            Name = "Name",
+            Detail = responseDetail
         });
 
         _authClientMock
@@ -60,7 +65,8 @@ public class SearchRecipesByIngredientsControllerTests
                     r => r.Username == user.Username &&
                          r.Limit == request.Limit &&
                          r.Ingredients.Count == request.Ingredients.Count() &&
-                         r.Ingredients[0] == request.Ingredients.First()
+                         r.Ingredients[0] == request.Ingredients.First() &&
+                         r.IncludeDetail == request.IncludeDetail
                 ),
                 null, null, default
             ))
@@ -98,13 +104,13 @@ public class SearchRecipesByIngredientsControllerTests
         var request = new SearchRecipesByIngredientsPostRequestModel
         {
             Ingredients = new[] { "Ingredient" },
-            Limit = null
+            Limit = null,
+            IncludeDetail = false
         };
         var responseModel = new SearchRecipesByIngredientsResponse();
         responseModel.Recipes.Add(new SearchRecipesByIngredientsRecipe
         {
             Id = 1,
-            Distance = 0.5f,
             Name = "Name"
         });
 
@@ -118,7 +124,8 @@ public class SearchRecipesByIngredientsControllerTests
                     r => r.Username == user.Username &&
                          !r.HasLimit &&
                          r.Ingredients.Count == request.Ingredients.Count() &&
-                         r.Ingredients[0] == request.Ingredients.First()
+                         r.Ingredients[0] == request.Ingredients.First() &&
+                         r.IncludeDetail == request.IncludeDetail
                 ),
                 null, null, default
             ))
@@ -130,6 +137,63 @@ public class SearchRecipesByIngredientsControllerTests
                 () => { }
             ));
 
+        // Act
+        var response =
+            await _searchRecipesByIngredientsController.Post(request);
+
+        // Assert
+        response.Should().BeEquivalentTo(new ObjectResult(responseModel.ToPostResponseModel())
+        {
+            StatusCode = (int)HttpStatusCode.OK
+        });
+    }
+
+    [Fact]
+    public async void Post_WhenIncludeDetailIsNull_DoesNotSetIncludeDetailAndReturnsSuccess()
+    {
+        // Arrange
+        var user = new UserGetResponseModel
+        {
+            Name = "Name",
+            Role = UserRoleModel.User,
+            Username = "Username",
+            Email = "Email@Example.com"
+        };
+        var request = new SearchRecipesByIngredientsPostRequestModel
+        {
+            Ingredients = new[] { "Ingredient" },
+            Limit = 1,
+            IncludeDetail = null
+        };
+        var responseModel = new SearchRecipesByIngredientsResponse();
+        responseModel.Recipes.Add(new SearchRecipesByIngredientsRecipe
+        {
+            Id = 1,
+            Name = "Name"
+        });
+
+        _authClientMock
+            .Setup(x => x.GetUserMeAsync())
+            .ReturnsAsync(IAuthClient.Result<UserGetResponseModel>.FromValue(HttpStatusCode.OK, user));
+
+        _recipeSearchClientMock
+            .Setup(x => x.SearchRecipesByIngredientsAsync(
+                It.Is<SearchRecipesByIngredientsRequest>(
+                    r => r.Username == user.Username &&
+                         r.Limit == request.Limit &&
+                         r.Ingredients.Count == request.Ingredients.Count() &&
+                         r.Ingredients[0] == request.Ingredients.First() &&
+                         !r.HasIncludeDetail
+                ),
+                null, null, default
+            ))
+            .Returns(new AsyncUnaryCall<SearchRecipesByIngredientsResponse>(
+                Task.FromResult(responseModel),
+                Task.FromResult(new Metadata()),
+                () => Status.DefaultSuccess,
+                () => new Metadata(),
+                () => { }
+            ));
 
         // Act
         var response =
@@ -149,7 +213,8 @@ public class SearchRecipesByIngredientsControllerTests
         var request = new SearchRecipesByIngredientsPostRequestModel
         {
             Ingredients = new[] { "Ingredient" },
-            Limit = 1
+            Limit = 1,
+            IncludeDetail = false
         };
 
         _authClientMock

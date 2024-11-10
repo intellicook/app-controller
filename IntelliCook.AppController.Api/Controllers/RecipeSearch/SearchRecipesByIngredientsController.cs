@@ -39,9 +39,14 @@ public class SearchRecipesByIngredientsController(
 
         rpcRequest.Username = user.Username;
 
-        if (request.Limit != null)
+        if (request.Limit is not null)
         {
             rpcRequest.Limit = request.Limit.Value;
+        }
+
+        if (request.IncludeDetail is not null)
+        {
+            rpcRequest.IncludeDetail = request.IncludeDetail.Value;
         }
 
         rpcRequest.Ingredients.AddRange(request.Ingredients);

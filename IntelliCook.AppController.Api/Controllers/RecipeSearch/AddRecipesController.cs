@@ -54,7 +54,11 @@ public class AddRecipesController(
             rpcRecipe.Name = recipe.Name;
             rpcRecipe.Ingredients.AddRange(recipe.Ingredients);
             rpcRecipe.Instructions.AddRange(recipe.Instructions);
-            rpcRecipe.Raw = recipe.Raw;
+
+            if (recipe.Raw is not null)
+            {
+                rpcRecipe.Raw = recipe.Raw;
+            }
 
             return rpcRecipe;
         }));

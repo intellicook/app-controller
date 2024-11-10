@@ -91,6 +91,76 @@ public class AddRecipesControllerTests(ClientFixture fixture)
     }
 
     [Fact]
+    public async void Post_WhenRawIsNull_DoesNotSetRawAndReturnsSuccess()
+    {
+        // Arrange
+        var user = new UserGetResponseModel
+        {
+            Name = "Name",
+            Role = UserRoleModel.Admin,
+            Username = "Username",
+            Email = "Email@Example.com"
+        };
+        var request = new AddRecipesPostRequestModel
+        {
+            Recipes = new[]
+            {
+                new AddRecipesRequestRecipeModel
+                {
+                    Name = "Name",
+                    Ingredients = new[] { "Ingredient" },
+                    Instructions = new[] { "Instruction" },
+                    Raw = null
+                }
+            }
+        };
+        var responseRecipe = new AddRecipesResponseRecipe();
+        responseRecipe.Id = 1;
+        responseRecipe.Name = request.Recipes.First().Name;
+        responseRecipe.Ingredients.AddRange(request.Recipes.First().Ingredients);
+        responseRecipe.Instructions.AddRange(request.Recipes.First().Instructions);
+        responseRecipe.Raw = "";
+        var responseModel = new AddRecipesResponse();
+        responseModel.Recipes.Add(responseRecipe);
+
+        fixture.AuthClientMock
+            .Setup(x => x.GetUserMeAsync())
+            .ReturnsAsync(IAuthClient.Result<UserGetResponseModel>.FromValue(HttpStatusCode.OK, user));
+
+        fixture.RecipeSearchClientMock
+            .Setup(x => x.AddRecipesAsync(
+                It.Is<AddRecipesRequest>(r =>
+                    r.Recipes.Count == responseModel.Recipes.Count &&
+                    r.Recipes.First().Name == request.Recipes.First().Name &&
+                    r.Recipes.First().Ingredients.Count == request.Recipes.First().Ingredients.Count() &&
+                    r.Recipes.First().Instructions.Count == request.Recipes.First().Instructions.Count() &&
+                    !r.Recipes.First().HasRaw
+                ),
+                null, null, default
+            ))
+            .Returns(new AsyncUnaryCall<AddRecipesResponse>(
+                Task.FromResult(responseModel),
+                Task.FromResult(new Metadata()),
+                () => Status.DefaultSuccess,
+                () => new Metadata(),
+                () => { }
+            ));
+
+        // Act
+        var response =
+            await fixture.Client.PostAsync(Path, JsonContent.Create(request, options: fixture.SerializerOptions));
+
+        // Assert
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        var content = await response.Content.ReadAsStringAsync();
+        content.Should().NotBeNullOrEmpty();
+
+        var result =
+            JsonSerializer.Deserialize<AddRecipesPostResponseModel>(content, fixture.SerializerOptions);
+        result.Should().BeEquivalentTo(responseModel.ToPostResponseModel());
+    }
+
+    [Fact]
     public async void Post_WhenUserIsNotAdmin_ReturnsForbidden()
     {
         // Arrange

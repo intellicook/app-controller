@@ -57,6 +57,18 @@ public static class RecipeSearchContractExtensions
         };
     }
 
+    public static SearchRecipesByIngredientsRecipeDetailModel ToRecipeDetailModel(
+        this SearchRecipesByIngredientsRecipeDetail recipe
+    )
+    {
+        return new SearchRecipesByIngredientsRecipeDetailModel
+        {
+            Ingredients = recipe.Ingredients,
+            Instructions = recipe.Instructions,
+            Raw = recipe.Raw
+        };
+    }
+
     public static SearchRecipesByIngredientsRecipeModel ToRecipeModel(
         this SearchRecipesByIngredientsRecipe recipe
     )
@@ -64,8 +76,8 @@ public static class RecipeSearchContractExtensions
         return new SearchRecipesByIngredientsRecipeModel
         {
             Id = recipe.Id,
-            Distance = recipe.Distance,
-            Name = recipe.Name
+            Name = recipe.Name,
+            Detail = recipe.Detail?.ToRecipeDetailModel()
         };
     }
 
