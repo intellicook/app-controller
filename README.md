@@ -70,6 +70,8 @@ Class | Method | HTTP request | Description
 [*HealthApi*](doc/HealthApi.md) | [**healthGet**](doc/HealthApi.md#healthget) | **GET** /Health | Checks the health of App Controller and its components.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchAddRecipesPost**](doc/RecipeSearchApi.md#recipesearchaddrecipespost) | **POST** /RecipeSearch/AddRecipes | Add a list of recipes.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchChatByRecipePost**](doc/RecipeSearchApi.md#recipesearchchatbyrecipepost) | **POST** /RecipeSearch/ChatByRecipe | Chat about a specific recipe.
+[*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchFaissIndexThreadGet**](doc/RecipeSearchApi.md#recipesearchfaissindexthreadget) | **GET** /RecipeSearch/FaissIndexThread | Get Faiss index thread status.
+[*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchInitFaissIndexPost**](doc/RecipeSearchApi.md#recipesearchinitfaissindexpost) | **POST** /RecipeSearch/InitFaissIndex | Initialize Faiss index.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchRecipeIdGet**](doc/RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchSearchRecipesByIngredientsPost**](doc/RecipeSearchApi.md#recipesearchsearchrecipesbyingredientspost) | **POST** /RecipeSearch/SearchRecipesByIngredients | Search recipes by ingredients.
 [*TemporaryApi*](doc/TemporaryApi.md) | [**apiTemporaryGet**](doc/TemporaryApi.md#apitemporaryget) | **GET** /Api/Temporary | Get method for temporary testing purposes.
@@ -89,11 +91,15 @@ Class | Method | HTTP request | Description
  - [ChatByRecipePostRequestModel](doc/ChatByRecipePostRequestModel.md)
  - [ChatByRecipePostResponseModel](doc/ChatByRecipePostResponseModel.md)
  - [ChatByRecipeRoleModel](doc/ChatByRecipeRoleModel.md)
+ - [FaissIndexThreadArgsModel](doc/FaissIndexThreadArgsModel.md)
+ - [FaissIndexThreadGetResponseModel](doc/FaissIndexThreadGetResponseModel.md)
+ - [FaissIndexThreadStatusModel](doc/FaissIndexThreadStatusModel.md)
  - [ForbiddenModel](doc/ForbiddenModel.md)
  - [HealthCheckModel](doc/HealthCheckModel.md)
  - [HealthGetResponseModel](doc/HealthGetResponseModel.md)
  - [HealthServiceModel](doc/HealthServiceModel.md)
  - [HealthStatusModel](doc/HealthStatusModel.md)
+ - [InitFaissIndexPostRequestModel](doc/InitFaissIndexPostRequestModel.md)
  - [LoginPostRequestModel](doc/LoginPostRequestModel.md)
  - [LoginPostResponseModel](doc/LoginPostResponseModel.md)
  - [ProblemDetailsModel](doc/ProblemDetailsModel.md)

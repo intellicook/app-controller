@@ -261,6 +261,116 @@
         }
       }
     },
+    "/RecipeSearch/FaissIndexThread": {
+      "get": {
+        "tags": [
+          "RecipeSearch"
+        ],
+        "summary": "Get Faiss index thread status.",
+        "description": "Only admins can initialize Faiss index.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FaissIndexThreadGetResponseModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RecipeSearch/InitFaissIndex": {
+      "post": {
+        "tags": [
+          "RecipeSearch"
+        ],
+        "summary": "Initialize Faiss index.",
+        "description": "Only admins can initialize Faiss index.\r\nThis process is asynchronous, you can check the status of the process using the FaissIndexThread endpoint.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InitFaissIndexPostRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InitFaissIndexPostRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InitFaissIndexPostRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenModel"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/RecipeSearch/Recipe/{id}": {
       "get": {
         "tags": [
@@ -731,6 +841,53 @@
         ],
         "type": "string"
       },
+      "FaissIndexThreadArgsModel": {
+        "required": [
+          "count",
+          "model",
+          "path"
+        ],
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "model": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FaissIndexThreadGetResponseModel": {
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/FaissIndexThreadStatusModel"
+          },
+          "args": {
+            "$ref": "#/components/schemas/FaissIndexThreadArgsModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FaissIndexThreadStatusModel": {
+        "enum": [
+          "Uninitialized",
+          "InProgress",
+          "Failed",
+          "Completed"
+        ],
+        "type": "string"
+      },
       "ForbiddenModel": {
         "required": [
           "message"
@@ -798,6 +955,23 @@
           "Unhealthy"
         ],
         "type": "string"
+      },
+      "InitFaissIndexPostRequestModel": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "Number of recipes in the database to index.",
+            "format": "int32",
+            "nullable": true
+          },
+          "path": {
+            "type": "string",
+            "description": "Path to the index file. It is suggested to leave this empty because it is a file path on the server and depends on the server configuration.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "LoginPostRequestModel": {
         "required": [

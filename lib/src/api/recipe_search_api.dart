@@ -13,7 +13,9 @@ import 'package:app_controller_client/src/model/add_recipes_post_request_model.d
 import 'package:app_controller_client/src/model/add_recipes_post_response_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
+import 'package:app_controller_client/src/model/faiss_index_thread_get_response_model.dart';
 import 'package:app_controller_client/src/model/forbidden_model.dart';
+import 'package:app_controller_client/src/model/init_faiss_index_post_request_model.dart';
 import 'package:app_controller_client/src/model/problem_details_model.dart';
 import 'package:app_controller_client/src/model/recipe_get_response_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_request_model.dart';
@@ -228,6 +230,158 @@ class RecipeSearchApi {
       statusMessage: _response.statusMessage,
       extra: _response.extra,
     );
+  }
+
+  /// Get Faiss index thread status.
+  /// Only admins can initialize Faiss index.
+  ///
+  /// Parameters:
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [FaissIndexThreadGetResponseModel] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<FaissIndexThreadGetResponseModel>> recipeSearchFaissIndexThreadGet({ 
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/RecipeSearch/FaissIndexThread';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    FaissIndexThreadGetResponseModel? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(FaissIndexThreadGetResponseModel),
+      ) as FaissIndexThreadGetResponseModel;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<FaissIndexThreadGetResponseModel>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Initialize Faiss index.
+  /// Only admins can initialize Faiss index.  This process is asynchronous, you can check the status of the process using the FaissIndexThread endpoint.
+  ///
+  /// Parameters:
+  /// * [initFaissIndexPostRequestModel] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> recipeSearchInitFaissIndexPost({ 
+    InitFaissIndexPostRequestModel? initFaissIndexPostRequestModel,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/RecipeSearch/InitFaissIndex';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'Bearer',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(InitFaissIndexPostRequestModel);
+      _bodyData = initFaissIndexPostRequestModel == null ? null : _serializers.serialize(initFaissIndexPostRequestModel, specifiedType: _type);
+
+    } catch(error, stackTrace) {
+      throw DioException(
+         requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
   }
 
   /// Get recipe by ID.

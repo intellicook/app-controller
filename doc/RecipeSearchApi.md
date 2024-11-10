@@ -11,6 +11,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**recipeSearchAddRecipesPost**](RecipeSearchApi.md#recipesearchaddrecipespost) | **POST** /RecipeSearch/AddRecipes | Add a list of recipes.
 [**recipeSearchChatByRecipePost**](RecipeSearchApi.md#recipesearchchatbyrecipepost) | **POST** /RecipeSearch/ChatByRecipe | Chat about a specific recipe.
+[**recipeSearchFaissIndexThreadGet**](RecipeSearchApi.md#recipesearchfaissindexthreadget) | **GET** /RecipeSearch/FaissIndexThread | Get Faiss index thread status.
+[**recipeSearchInitFaissIndexPost**](RecipeSearchApi.md#recipesearchinitfaissindexpost) | **POST** /RecipeSearch/InitFaissIndex | Initialize Faiss index.
 [**recipeSearchRecipeIdGet**](RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
 [**recipeSearchSearchRecipesByIngredientsPost**](RecipeSearchApi.md#recipesearchsearchrecipesbyingredientspost) | **POST** /RecipeSearch/SearchRecipesByIngredients | Search recipes by ingredients.
 
@@ -87,6 +89,87 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ChatByRecipePostResponseModel**](ChatByRecipePostResponseModel.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **recipeSearchFaissIndexThreadGet**
+> FaissIndexThreadGetResponseModel recipeSearchFaissIndexThreadGet()
+
+Get Faiss index thread status.
+
+Only admins can initialize Faiss index.
+
+### Example
+```dart
+import 'package:app_controller_client/api.dart';
+
+final api = AppControllerClient().getRecipeSearchApi();
+
+try {
+    final response = api.recipeSearchFaissIndexThreadGet();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling RecipeSearchApi->recipeSearchFaissIndexThreadGet: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FaissIndexThreadGetResponseModel**](FaissIndexThreadGetResponseModel.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **recipeSearchInitFaissIndexPost**
+> recipeSearchInitFaissIndexPost(initFaissIndexPostRequestModel)
+
+Initialize Faiss index.
+
+Only admins can initialize Faiss index.  This process is asynchronous, you can check the status of the process using the FaissIndexThread endpoint.
+
+### Example
+```dart
+import 'package:app_controller_client/api.dart';
+
+final api = AppControllerClient().getRecipeSearchApi();
+final InitFaissIndexPostRequestModel initFaissIndexPostRequestModel = ; // InitFaissIndexPostRequestModel | 
+
+try {
+    api.recipeSearchInitFaissIndexPost(initFaissIndexPostRequestModel);
+} catch on DioException (e) {
+    print('Exception when calling RecipeSearchApi->recipeSearchInitFaissIndexPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **initFaissIndexPostRequestModel** | [**InitFaissIndexPostRequestModel**](InitFaissIndexPostRequestModel.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

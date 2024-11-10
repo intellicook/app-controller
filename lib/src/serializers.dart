@@ -22,11 +22,15 @@ import 'package:app_controller_client/src/model/chat_by_recipe_message_model.dar
 import 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_role_model.dart';
+import 'package:app_controller_client/src/model/faiss_index_thread_args_model.dart';
+import 'package:app_controller_client/src/model/faiss_index_thread_get_response_model.dart';
+import 'package:app_controller_client/src/model/faiss_index_thread_status_model.dart';
 import 'package:app_controller_client/src/model/forbidden_model.dart';
 import 'package:app_controller_client/src/model/health_check_model.dart';
 import 'package:app_controller_client/src/model/health_get_response_model.dart';
 import 'package:app_controller_client/src/model/health_service_model.dart';
 import 'package:app_controller_client/src/model/health_status_model.dart';
+import 'package:app_controller_client/src/model/init_faiss_index_post_request_model.dart';
 import 'package:app_controller_client/src/model/login_post_request_model.dart';
 import 'package:app_controller_client/src/model/login_post_response_model.dart';
 import 'package:app_controller_client/src/model/problem_details_model.dart';
@@ -53,11 +57,15 @@ part 'serializers.g.dart';
   ChatByRecipePostRequestModel,
   ChatByRecipePostResponseModel,
   ChatByRecipeRoleModel,
+  FaissIndexThreadArgsModel,
+  FaissIndexThreadGetResponseModel,
+  FaissIndexThreadStatusModel,
   ForbiddenModel,
   HealthCheckModel,
   HealthGetResponseModel,
   HealthServiceModel,
   HealthStatusModel,
+  InitFaissIndexPostRequestModel,
   LoginPostRequestModel,
   LoginPostResponseModel,
   ProblemDetailsModel,
