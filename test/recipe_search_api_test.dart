@@ -48,10 +48,26 @@ void main() {
       // TODO
     });
 
+    // Reset all data in the recipe search service, use with caution.
+    //
+    // Only admins can reset data.
+    //
+    //Future recipeSearchResetDataDelete() async
+    test('test recipeSearchResetDataDelete', () async {
+      // TODO
+    });
+
     // Search recipes by ingredients.
     //
     //Future<SearchRecipesByIngredientsPostResponseModel> recipeSearchSearchRecipesByIngredientsPost({ SearchRecipesByIngredientsPostRequestModel searchRecipesByIngredientsPostRequestModel }) async
     test('test recipeSearchSearchRecipesByIngredientsPost', () async {
+      // TODO
+    });
+
+    // Search for recipes.
+    //
+    //Future<SearchRecipesPostResponseModel> recipeSearchSearchRecipesPost({ SearchRecipesPostRequestModel searchRecipesPostRequestModel }) async
+    test('test recipeSearchSearchRecipesPost', () async {
       // TODO
     });
 

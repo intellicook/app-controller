@@ -14,7 +14,9 @@ Method | HTTP request | Description
 [**recipeSearchFaissIndexThreadGet**](RecipeSearchApi.md#recipesearchfaissindexthreadget) | **GET** /RecipeSearch/FaissIndexThread | Get Faiss index thread status.
 [**recipeSearchInitFaissIndexPost**](RecipeSearchApi.md#recipesearchinitfaissindexpost) | **POST** /RecipeSearch/InitFaissIndex | Initialize Faiss index.
 [**recipeSearchRecipeIdGet**](RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
+[**recipeSearchResetDataDelete**](RecipeSearchApi.md#recipesearchresetdatadelete) | **DELETE** /RecipeSearch/ResetData | Reset all data in the recipe search service, use with caution.
 [**recipeSearchSearchRecipesByIngredientsPost**](RecipeSearchApi.md#recipesearchsearchrecipesbyingredientspost) | **POST** /RecipeSearch/SearchRecipesByIngredients | Search recipes by ingredients.
+[**recipeSearchSearchRecipesPost**](RecipeSearchApi.md#recipesearchsearchrecipespost) | **POST** /RecipeSearch/SearchRecipes | Search for recipes.
 
 
 # **recipeSearchAddRecipesPost**
@@ -223,6 +225,44 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **recipeSearchResetDataDelete**
+> recipeSearchResetDataDelete()
+
+Reset all data in the recipe search service, use with caution.
+
+Only admins can reset data.
+
+### Example
+```dart
+import 'package:app_controller_client/api.dart';
+
+final api = AppControllerClient().getRecipeSearchApi();
+
+try {
+    api.recipeSearchResetDataDelete();
+} catch on DioException (e) {
+    print('Exception when calling RecipeSearchApi->recipeSearchResetDataDelete: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **recipeSearchSearchRecipesByIngredientsPost**
 > SearchRecipesByIngredientsPostResponseModel recipeSearchSearchRecipesByIngredientsPost(searchRecipesByIngredientsPostRequestModel)
 
@@ -252,6 +292,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SearchRecipesByIngredientsPostResponseModel**](SearchRecipesByIngredientsPostResponseModel.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **recipeSearchSearchRecipesPost**
+> SearchRecipesPostResponseModel recipeSearchSearchRecipesPost(searchRecipesPostRequestModel)
+
+Search for recipes.
+
+### Example
+```dart
+import 'package:app_controller_client/api.dart';
+
+final api = AppControllerClient().getRecipeSearchApi();
+final SearchRecipesPostRequestModel searchRecipesPostRequestModel = ; // SearchRecipesPostRequestModel | 
+
+try {
+    final response = api.recipeSearchSearchRecipesPost(searchRecipesPostRequestModel);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling RecipeSearchApi->recipeSearchSearchRecipesPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchRecipesPostRequestModel** | [**SearchRecipesPostRequestModel**](SearchRecipesPostRequestModel.md)|  | [optional] 
+
+### Return type
+
+[**SearchRecipesPostResponseModel**](SearchRecipesPostResponseModel.md)
 
 ### Authorization
 

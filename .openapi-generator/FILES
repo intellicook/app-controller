@@ -31,6 +31,10 @@ doc/SearchRecipesByIngredientsPostRequestModel.md
 doc/SearchRecipesByIngredientsPostResponseModel.md
 doc/SearchRecipesByIngredientsRecipeDetailModel.md
 doc/SearchRecipesByIngredientsRecipeModel.md
+doc/SearchRecipesPostRequestModel.md
+doc/SearchRecipesPostResponseModel.md
+doc/SearchRecipesRecipeDetailModel.md
+doc/SearchRecipesRecipeModel.md
 doc/TemporaryApi.md
 doc/UserApi.md
 doc/UserGetResponseModel.md
@@ -80,6 +84,10 @@ lib/src/model/search_recipes_by_ingredients_post_request_model.dart
 lib/src/model/search_recipes_by_ingredients_post_response_model.dart
 lib/src/model/search_recipes_by_ingredients_recipe_detail_model.dart
 lib/src/model/search_recipes_by_ingredients_recipe_model.dart
+lib/src/model/search_recipes_post_request_model.dart
+lib/src/model/search_recipes_post_response_model.dart
+lib/src/model/search_recipes_recipe_detail_model.dart
+lib/src/model/search_recipes_recipe_model.dart
 lib/src/model/user_get_response_model.dart
 lib/src/model/user_password_put_request_model.dart
 lib/src/model/user_put_request_model.dart
@@ -117,6 +125,10 @@ test/search_recipes_by_ingredients_post_request_model_test.dart
 test/search_recipes_by_ingredients_post_response_model_test.dart
 test/search_recipes_by_ingredients_recipe_detail_model_test.dart
 test/search_recipes_by_ingredients_recipe_model_test.dart
+test/search_recipes_post_request_model_test.dart
+test/search_recipes_post_response_model_test.dart
+test/search_recipes_recipe_detail_model_test.dart
+test/search_recipes_recipe_model_test.dart
 test/temporary_api_test.dart
 test/user_api_test.dart
 test/user_get_response_model_test.dart

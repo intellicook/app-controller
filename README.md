@@ -73,7 +73,9 @@ Class | Method | HTTP request | Description
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchFaissIndexThreadGet**](doc/RecipeSearchApi.md#recipesearchfaissindexthreadget) | **GET** /RecipeSearch/FaissIndexThread | Get Faiss index thread status.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchInitFaissIndexPost**](doc/RecipeSearchApi.md#recipesearchinitfaissindexpost) | **POST** /RecipeSearch/InitFaissIndex | Initialize Faiss index.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchRecipeIdGet**](doc/RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
+[*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchResetDataDelete**](doc/RecipeSearchApi.md#recipesearchresetdatadelete) | **DELETE** /RecipeSearch/ResetData | Reset all data in the recipe search service, use with caution.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchSearchRecipesByIngredientsPost**](doc/RecipeSearchApi.md#recipesearchsearchrecipesbyingredientspost) | **POST** /RecipeSearch/SearchRecipesByIngredients | Search recipes by ingredients.
+[*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchSearchRecipesPost**](doc/RecipeSearchApi.md#recipesearchsearchrecipespost) | **POST** /RecipeSearch/SearchRecipes | Search for recipes.
 [*TemporaryApi*](doc/TemporaryApi.md) | [**apiTemporaryGet**](doc/TemporaryApi.md#apitemporaryget) | **GET** /Api/Temporary | Get method for temporary testing purposes.
 [*UserApi*](doc/UserApi.md) | [**userMeDelete**](doc/UserApi.md#usermedelete) | **DELETE** /User/Me | Deletes the current user.
 [*UserApi*](doc/UserApi.md) | [**userMeGet**](doc/UserApi.md#usermeget) | **GET** /User/Me | Gets the current user.
@@ -109,6 +111,10 @@ Class | Method | HTTP request | Description
  - [SearchRecipesByIngredientsPostResponseModel](doc/SearchRecipesByIngredientsPostResponseModel.md)
  - [SearchRecipesByIngredientsRecipeDetailModel](doc/SearchRecipesByIngredientsRecipeDetailModel.md)
  - [SearchRecipesByIngredientsRecipeModel](doc/SearchRecipesByIngredientsRecipeModel.md)
+ - [SearchRecipesPostRequestModel](doc/SearchRecipesPostRequestModel.md)
+ - [SearchRecipesPostResponseModel](doc/SearchRecipesPostResponseModel.md)
+ - [SearchRecipesRecipeDetailModel](doc/SearchRecipesRecipeDetailModel.md)
+ - [SearchRecipesRecipeModel](doc/SearchRecipesRecipeModel.md)
  - [UserGetResponseModel](doc/UserGetResponseModel.md)
  - [UserPasswordPutRequestModel](doc/UserPasswordPutRequestModel.md)
  - [UserPutRequestModel](doc/UserPutRequestModel.md)
