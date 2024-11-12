@@ -3,6 +3,7 @@ using IntelliCook.AppController.Api.Models.RecipeSearch.AddRecipes;
 using IntelliCook.AppController.Api.Models.RecipeSearch.ChatByRecipe;
 using IntelliCook.AppController.Api.Models.RecipeSearch.FaissIndexThread;
 using IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
+using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipes;
 using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipesByIngredients;
 using IntelliCook.RecipeSearch.Client;
 
@@ -77,6 +78,44 @@ public static class RecipeSearchContractExtensions
         {
             Id = recipe.Id,
             Name = recipe.Name,
+            Detail = recipe.Detail?.ToRecipeDetailModel()
+        };
+    }
+
+    #endregion
+
+    #region SearchRecipes
+
+    public static SearchRecipesPostResponseModel ToPostResponseModel(
+        this SearchRecipesResponse response
+    )
+    {
+        return new SearchRecipesPostResponseModel
+        {
+            Recipes = response.Recipes.Select(r => r.ToRecipeModel())
+        };
+    }
+
+    public static SearchRecipesRecipeDetailModel ToRecipeDetailModel(
+        this SearchRecipesRecipeDetail recipe
+    )
+    {
+        return new SearchRecipesRecipeDetailModel
+        {
+            Instructions = recipe.Instructions,
+            Raw = recipe.Raw
+        };
+    }
+
+    public static SearchRecipesRecipeModel ToRecipeModel(
+        this SearchRecipesRecipe recipe
+    )
+    {
+        return new SearchRecipesRecipeModel
+        {
+            Id = recipe.Id,
+            Name = recipe.Name,
+            Ingredients = recipe.Ingredients,
             Detail = recipe.Detail?.ToRecipeDetailModel()
         };
     }
