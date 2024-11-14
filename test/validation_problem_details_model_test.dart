@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(ValidationProblemDetailsModel, () {
+    // BuiltMap<String, BuiltList<String>> errors
+    test('to test the property `errors`', () async {
+      // TODO
+    });
+
     // String type
     test('to test the property `type`', () async {
       // TODO
@@ -34,11 +39,6 @@ void main() {
 
     // String traceId
     test('to test the property `traceId`', () async {
-      // TODO
-    });
-
-    // BuiltMap<String, BuiltList<String>> errors
-    test('to test the property `errors`', () async {
       // TODO
     });
 

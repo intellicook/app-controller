@@ -6,7 +6,29 @@ part of 'problem_details_model.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$ProblemDetailsModel extends ProblemDetailsModel {
+abstract class ProblemDetailsModelBuilder {
+  void replace(ProblemDetailsModel other);
+  void update(void Function(ProblemDetailsModelBuilder) updates);
+  String? get type;
+  set type(String? type);
+
+  String? get title;
+  set title(String? title);
+
+  int? get status;
+  set status(int? status);
+
+  String? get detail;
+  set detail(String? detail);
+
+  String? get instance;
+  set instance(String? instance);
+
+  String? get traceId;
+  set traceId(String? traceId);
+}
+
+class _$$ProblemDetailsModel extends $ProblemDetailsModel {
   @override
   final String? type;
   @override
@@ -20,11 +42,11 @@ class _$ProblemDetailsModel extends ProblemDetailsModel {
   @override
   final String? traceId;
 
-  factory _$ProblemDetailsModel(
-          [void Function(ProblemDetailsModelBuilder)? updates]) =>
-      (new ProblemDetailsModelBuilder()..update(updates))._build();
+  factory _$$ProblemDetailsModel(
+          [void Function($ProblemDetailsModelBuilder)? updates]) =>
+      (new $ProblemDetailsModelBuilder()..update(updates))._build();
 
-  _$ProblemDetailsModel._(
+  _$$ProblemDetailsModel._(
       {this.type,
       this.title,
       this.status,
@@ -34,18 +56,18 @@ class _$ProblemDetailsModel extends ProblemDetailsModel {
       : super._();
 
   @override
-  ProblemDetailsModel rebuild(
-          void Function(ProblemDetailsModelBuilder) updates) =>
+  $ProblemDetailsModel rebuild(
+          void Function($ProblemDetailsModelBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProblemDetailsModelBuilder toBuilder() =>
-      new ProblemDetailsModelBuilder()..replace(this);
+  $ProblemDetailsModelBuilder toBuilder() =>
+      new $ProblemDetailsModelBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ProblemDetailsModel &&
+    return other is $ProblemDetailsModel &&
         type == other.type &&
         title == other.title &&
         status == other.status &&
@@ -69,7 +91,7 @@ class _$ProblemDetailsModel extends ProblemDetailsModel {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'ProblemDetailsModel')
+    return (newBuiltValueToStringHelper(r'$ProblemDetailsModel')
           ..add('type', type)
           ..add('title', title)
           ..add('status', status)
@@ -80,39 +102,41 @@ class _$ProblemDetailsModel extends ProblemDetailsModel {
   }
 }
 
-class ProblemDetailsModelBuilder
-    implements Builder<ProblemDetailsModel, ProblemDetailsModelBuilder> {
-  _$ProblemDetailsModel? _$v;
+class $ProblemDetailsModelBuilder
+    implements
+        Builder<$ProblemDetailsModel, $ProblemDetailsModelBuilder>,
+        ProblemDetailsModelBuilder {
+  _$$ProblemDetailsModel? _$v;
 
   String? _type;
   String? get type => _$this._type;
-  set type(String? type) => _$this._type = type;
+  set type(covariant String? type) => _$this._type = type;
 
   String? _title;
   String? get title => _$this._title;
-  set title(String? title) => _$this._title = title;
+  set title(covariant String? title) => _$this._title = title;
 
   int? _status;
   int? get status => _$this._status;
-  set status(int? status) => _$this._status = status;
+  set status(covariant int? status) => _$this._status = status;
 
   String? _detail;
   String? get detail => _$this._detail;
-  set detail(String? detail) => _$this._detail = detail;
+  set detail(covariant String? detail) => _$this._detail = detail;
 
   String? _instance;
   String? get instance => _$this._instance;
-  set instance(String? instance) => _$this._instance = instance;
+  set instance(covariant String? instance) => _$this._instance = instance;
 
   String? _traceId;
   String? get traceId => _$this._traceId;
-  set traceId(String? traceId) => _$this._traceId = traceId;
+  set traceId(covariant String? traceId) => _$this._traceId = traceId;
 
-  ProblemDetailsModelBuilder() {
-    ProblemDetailsModel._defaults(this);
+  $ProblemDetailsModelBuilder() {
+    $ProblemDetailsModel._defaults(this);
   }
 
-  ProblemDetailsModelBuilder get _$this {
+  $ProblemDetailsModelBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _type = $v.type;
@@ -127,22 +151,22 @@ class ProblemDetailsModelBuilder
   }
 
   @override
-  void replace(ProblemDetailsModel other) {
+  void replace(covariant $ProblemDetailsModel other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$ProblemDetailsModel;
+    _$v = other as _$$ProblemDetailsModel;
   }
 
   @override
-  void update(void Function(ProblemDetailsModelBuilder)? updates) {
+  void update(void Function($ProblemDetailsModelBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  ProblemDetailsModel build() => _build();
+  $ProblemDetailsModel build() => _build();
 
-  _$ProblemDetailsModel _build() {
+  _$$ProblemDetailsModel _build() {
     final _$result = _$v ??
-        new _$ProblemDetailsModel._(
+        new _$$ProblemDetailsModel._(
             type: type,
             title: title,
             status: status,

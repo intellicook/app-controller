@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
 import 'package:app_controller_client/app_controller_client.dart';
 
-// tests for ProblemDetailsModel
+// tests for RecipeSearchAddRecipesPost404Response
 void main() {
-  //final instance = ProblemDetailsModelBuilder();
+  final instance = RecipeSearchAddRecipesPost404ResponseBuilder();
   // TODO add properties to the builder and call build()
 
-  group(ProblemDetailsModel, () {
+  group(RecipeSearchAddRecipesPost404Response, () {
     // String type
     test('to test the property `type`', () async {
       // TODO
@@ -34,6 +34,11 @@ void main() {
 
     // String traceId
     test('to test the property `traceId`', () async {
+      // TODO
+    });
+
+    // BuiltMap<String, BuiltList<String>> errors
+    test('to test the property `errors`', () async {
       // TODO
     });
 

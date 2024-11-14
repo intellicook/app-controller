@@ -11,6 +11,8 @@ doc/ChatByRecipeMessageModel.md
 doc/ChatByRecipePostRequestModel.md
 doc/ChatByRecipePostResponseModel.md
 doc/ChatByRecipeRoleModel.md
+doc/ChatByRecipeStreamContentModel.md
+doc/ChatByRecipeStreamHeaderModel.md
 doc/FaissIndexThreadArgsModel.md
 doc/FaissIndexThreadGetResponseModel.md
 doc/FaissIndexThreadStatusModel.md
@@ -25,7 +27,9 @@ doc/LoginPostRequestModel.md
 doc/LoginPostResponseModel.md
 doc/ProblemDetailsModel.md
 doc/RecipeGetResponseModel.md
+doc/RecipeSearchAddRecipesPost404Response.md
 doc/RecipeSearchApi.md
+doc/RecipeSearchChatByRecipeStreamPost200Response.md
 doc/RegisterPostRequestModel.md
 doc/SearchRecipesByIngredientsPostRequestModel.md
 doc/SearchRecipesByIngredientsPostResponseModel.md
@@ -65,6 +69,8 @@ lib/src/model/chat_by_recipe_message_model.dart
 lib/src/model/chat_by_recipe_post_request_model.dart
 lib/src/model/chat_by_recipe_post_response_model.dart
 lib/src/model/chat_by_recipe_role_model.dart
+lib/src/model/chat_by_recipe_stream_content_model.dart
+lib/src/model/chat_by_recipe_stream_header_model.dart
 lib/src/model/date.dart
 lib/src/model/faiss_index_thread_args_model.dart
 lib/src/model/faiss_index_thread_get_response_model.dart
@@ -79,6 +85,8 @@ lib/src/model/login_post_request_model.dart
 lib/src/model/login_post_response_model.dart
 lib/src/model/problem_details_model.dart
 lib/src/model/recipe_get_response_model.dart
+lib/src/model/recipe_search_add_recipes_post404_response.dart
+lib/src/model/recipe_search_chat_by_recipe_stream_post200_response.dart
 lib/src/model/register_post_request_model.dart
 lib/src/model/search_recipes_by_ingredients_post_request_model.dart
 lib/src/model/search_recipes_by_ingredients_post_response_model.dart
@@ -105,6 +113,8 @@ test/chat_by_recipe_message_model_test.dart
 test/chat_by_recipe_post_request_model_test.dart
 test/chat_by_recipe_post_response_model_test.dart
 test/chat_by_recipe_role_model_test.dart
+test/chat_by_recipe_stream_content_model_test.dart
+test/chat_by_recipe_stream_header_model_test.dart
 test/faiss_index_thread_args_model_test.dart
 test/faiss_index_thread_get_response_model_test.dart
 test/faiss_index_thread_status_model_test.dart
@@ -119,7 +129,9 @@ test/login_post_request_model_test.dart
 test/login_post_response_model_test.dart
 test/problem_details_model_test.dart
 test/recipe_get_response_model_test.dart
+test/recipe_search_add_recipes_post404_response_test.dart
 test/recipe_search_api_test.dart
+test/recipe_search_chat_by_recipe_stream_post200_response_test.dart
 test/register_post_request_model_test.dart
 test/search_recipes_by_ingredients_post_request_model_test.dart
 test/search_recipes_by_ingredients_post_response_model_test.dart

@@ -17,8 +17,8 @@ part 'problem_details_model.g.dart';
 /// * [detail] 
 /// * [instance] 
 /// * [traceId] 
-@BuiltValue()
-abstract class ProblemDetailsModel implements Built<ProblemDetailsModel, ProblemDetailsModelBuilder> {
+@BuiltValue(instantiable: false)
+abstract class ProblemDetailsModel  {
   @BuiltValueField(wireName: r'type')
   String? get type;
 
@@ -37,20 +37,13 @@ abstract class ProblemDetailsModel implements Built<ProblemDetailsModel, Problem
   @BuiltValueField(wireName: r'traceId')
   String? get traceId;
 
-  ProblemDetailsModel._();
-
-  factory ProblemDetailsModel([void updates(ProblemDetailsModelBuilder b)]) = _$ProblemDetailsModel;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ProblemDetailsModelBuilder b) => b;
-
   @BuiltValueSerializer(custom: true)
   static Serializer<ProblemDetailsModel> get serializer => _$ProblemDetailsModelSerializer();
 }
 
 class _$ProblemDetailsModelSerializer implements PrimitiveSerializer<ProblemDetailsModel> {
   @override
-  final Iterable<Type> types = const [ProblemDetailsModel, _$ProblemDetailsModel];
+  final Iterable<Type> types = const [ProblemDetailsModel];
 
   @override
   final String wireName = r'ProblemDetailsModel';
@@ -111,6 +104,46 @@ class _$ProblemDetailsModelSerializer implements PrimitiveSerializer<ProblemDeta
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+  }
+
+  @override
+  ProblemDetailsModel deserialize(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.deserialize(serialized, specifiedType: FullType($ProblemDetailsModel)) as $ProblemDetailsModel;
+  }
+}
+
+/// a concrete implementation of [ProblemDetailsModel], since [ProblemDetailsModel] is not instantiable
+@BuiltValue(instantiable: true)
+abstract class $ProblemDetailsModel implements ProblemDetailsModel, Built<$ProblemDetailsModel, $ProblemDetailsModelBuilder> {
+  $ProblemDetailsModel._();
+
+  factory $ProblemDetailsModel([void Function($ProblemDetailsModelBuilder)? updates]) = _$$ProblemDetailsModel;
+
+  @BuiltValueHook(initializeBuilder: true)
+  static void _defaults($ProblemDetailsModelBuilder b) => b;
+
+  @BuiltValueSerializer(custom: true)
+  static Serializer<$ProblemDetailsModel> get serializer => _$$ProblemDetailsModelSerializer();
+}
+
+class _$$ProblemDetailsModelSerializer implements PrimitiveSerializer<$ProblemDetailsModel> {
+  @override
+  final Iterable<Type> types = const [$ProblemDetailsModel, _$$ProblemDetailsModel];
+
+  @override
+  final String wireName = r'$ProblemDetailsModel';
+
+  @override
+  Object serialize(
+    Serializers serializers,
+    $ProblemDetailsModel object, {
+    FullType specifiedType = FullType.unspecified,
+  }) {
+    return serializers.serialize(object, specifiedType: FullType(ProblemDetailsModel))!;
   }
 
   void _deserializeProperties(
@@ -182,12 +215,12 @@ class _$ProblemDetailsModelSerializer implements PrimitiveSerializer<ProblemDeta
   }
 
   @override
-  ProblemDetailsModel deserialize(
+  $ProblemDetailsModel deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = ProblemDetailsModelBuilder();
+    final result = $ProblemDetailsModelBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

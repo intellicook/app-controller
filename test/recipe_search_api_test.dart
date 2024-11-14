@@ -23,6 +23,13 @@ void main() {
       // TODO
     });
 
+    // Chat about a specific recipe with streaming response.
+    //
+    //Future<RecipeSearchChatByRecipeStreamPost200Response> recipeSearchChatByRecipeStreamPost({ ChatByRecipePostRequestModel chatByRecipePostRequestModel }) async
+    test('test recipeSearchChatByRecipeStreamPost', () async {
+      // TODO
+    });
+
     // Get Faiss index thread status.
     //
     // Only admins can initialize Faiss index.

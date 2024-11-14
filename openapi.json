@@ -191,7 +191,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -253,7 +260,90 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RecipeSearch/ChatByRecipe/Stream": {
+      "post": {
+        "tags": [
+          "RecipeSearch"
+        ],
+        "summary": "Chat about a specific recipe with streaming response.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatByRecipePostRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatByRecipePostRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatByRecipePostRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ChatByRecipeStreamContentModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ChatByRecipeStreamHeaderModel"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -297,7 +387,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -363,7 +460,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -407,7 +511,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -444,7 +555,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -506,7 +624,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -568,7 +693,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -624,7 +756,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -684,7 +823,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -718,7 +864,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -773,7 +926,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProblemDetailsModel"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
                 }
               }
             }
@@ -932,6 +1092,10 @@
         },
         "additionalProperties": false
       },
+      "ChatByRecipePostStreamResponseModel": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "ChatByRecipeRoleModel": {
         "enum": [
           "System",
@@ -939,6 +1103,41 @@
           "Assistant"
         ],
         "type": "string"
+      },
+      "ChatByRecipeStreamContentModel": {
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatByRecipePostStreamResponseModel"
+          }
+        ],
+        "properties": {
+          "text": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChatByRecipeStreamHeaderModel": {
+        "required": [
+          "role"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatByRecipePostStreamResponseModel"
+          }
+        ],
+        "properties": {
+          "role": {
+            "$ref": "#/components/schemas/ChatByRecipeRoleModel"
+          }
+        },
+        "additionalProperties": false
       },
       "FaissIndexThreadArgsModel": {
         "required": [
@@ -1490,32 +1689,12 @@
       },
       "ValidationProblemDetailsModel": {
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ProblemDetailsModel"
+          }
+        ],
         "properties": {
-          "type": {
-            "type": "string",
-            "nullable": true
-          },
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "detail": {
-            "type": "string",
-            "nullable": true
-          },
-          "instance": {
-            "type": "string",
-            "nullable": true
-          },
-          "traceId": {
-            "type": "string",
-            "nullable": true
-          },
           "errors": {
             "type": "object",
             "additionalProperties": {

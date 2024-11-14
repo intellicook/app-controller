@@ -24,6 +24,8 @@ export 'package:app_controller_client/src/model/chat_by_recipe_message_model.dar
 export 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
 export 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
 export 'package:app_controller_client/src/model/chat_by_recipe_role_model.dart';
+export 'package:app_controller_client/src/model/chat_by_recipe_stream_content_model.dart';
+export 'package:app_controller_client/src/model/chat_by_recipe_stream_header_model.dart';
 export 'package:app_controller_client/src/model/faiss_index_thread_args_model.dart';
 export 'package:app_controller_client/src/model/faiss_index_thread_get_response_model.dart';
 export 'package:app_controller_client/src/model/faiss_index_thread_status_model.dart';
@@ -37,6 +39,8 @@ export 'package:app_controller_client/src/model/login_post_request_model.dart';
 export 'package:app_controller_client/src/model/login_post_response_model.dart';
 export 'package:app_controller_client/src/model/problem_details_model.dart';
 export 'package:app_controller_client/src/model/recipe_get_response_model.dart';
+export 'package:app_controller_client/src/model/recipe_search_add_recipes_post404_response.dart';
+export 'package:app_controller_client/src/model/recipe_search_chat_by_recipe_stream_post200_response.dart';
 export 'package:app_controller_client/src/model/register_post_request_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_request_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_response_model.dart';

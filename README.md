@@ -70,6 +70,7 @@ Class | Method | HTTP request | Description
 [*HealthApi*](doc/HealthApi.md) | [**healthGet**](doc/HealthApi.md#healthget) | **GET** /Health | Checks the health of App Controller and its components.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchAddRecipesPost**](doc/RecipeSearchApi.md#recipesearchaddrecipespost) | **POST** /RecipeSearch/AddRecipes | Add a list of recipes.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchChatByRecipePost**](doc/RecipeSearchApi.md#recipesearchchatbyrecipepost) | **POST** /RecipeSearch/ChatByRecipe | Chat about a specific recipe.
+[*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchChatByRecipeStreamPost**](doc/RecipeSearchApi.md#recipesearchchatbyrecipestreampost) | **POST** /RecipeSearch/ChatByRecipe/Stream | Chat about a specific recipe with streaming response.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchFaissIndexThreadGet**](doc/RecipeSearchApi.md#recipesearchfaissindexthreadget) | **GET** /RecipeSearch/FaissIndexThread | Get Faiss index thread status.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchInitFaissIndexPost**](doc/RecipeSearchApi.md#recipesearchinitfaissindexpost) | **POST** /RecipeSearch/InitFaissIndex | Initialize Faiss index.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchRecipeIdGet**](doc/RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
@@ -93,6 +94,8 @@ Class | Method | HTTP request | Description
  - [ChatByRecipePostRequestModel](doc/ChatByRecipePostRequestModel.md)
  - [ChatByRecipePostResponseModel](doc/ChatByRecipePostResponseModel.md)
  - [ChatByRecipeRoleModel](doc/ChatByRecipeRoleModel.md)
+ - [ChatByRecipeStreamContentModel](doc/ChatByRecipeStreamContentModel.md)
+ - [ChatByRecipeStreamHeaderModel](doc/ChatByRecipeStreamHeaderModel.md)
  - [FaissIndexThreadArgsModel](doc/FaissIndexThreadArgsModel.md)
  - [FaissIndexThreadGetResponseModel](doc/FaissIndexThreadGetResponseModel.md)
  - [FaissIndexThreadStatusModel](doc/FaissIndexThreadStatusModel.md)
@@ -106,6 +109,8 @@ Class | Method | HTTP request | Description
  - [LoginPostResponseModel](doc/LoginPostResponseModel.md)
  - [ProblemDetailsModel](doc/ProblemDetailsModel.md)
  - [RecipeGetResponseModel](doc/RecipeGetResponseModel.md)
+ - [RecipeSearchAddRecipesPost404Response](doc/RecipeSearchAddRecipesPost404Response.md)
+ - [RecipeSearchChatByRecipeStreamPost200Response](doc/RecipeSearchChatByRecipeStreamPost200Response.md)
  - [RegisterPostRequestModel](doc/RegisterPostRequestModel.md)
  - [SearchRecipesByIngredientsPostRequestModel](doc/SearchRecipesByIngredientsPostRequestModel.md)
  - [SearchRecipesByIngredientsPostResponseModel](doc/SearchRecipesByIngredientsPostResponseModel.md)

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**recipeSearchAddRecipesPost**](RecipeSearchApi.md#recipesearchaddrecipespost) | **POST** /RecipeSearch/AddRecipes | Add a list of recipes.
 [**recipeSearchChatByRecipePost**](RecipeSearchApi.md#recipesearchchatbyrecipepost) | **POST** /RecipeSearch/ChatByRecipe | Chat about a specific recipe.
+[**recipeSearchChatByRecipeStreamPost**](RecipeSearchApi.md#recipesearchchatbyrecipestreampost) | **POST** /RecipeSearch/ChatByRecipe/Stream | Chat about a specific recipe with streaming response.
 [**recipeSearchFaissIndexThreadGet**](RecipeSearchApi.md#recipesearchfaissindexthreadget) | **GET** /RecipeSearch/FaissIndexThread | Get Faiss index thread status.
 [**recipeSearchInitFaissIndexPost**](RecipeSearchApi.md#recipesearchinitfaissindexpost) | **POST** /RecipeSearch/InitFaissIndex | Initialize Faiss index.
 [**recipeSearchRecipeIdGet**](RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
@@ -100,6 +101,47 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/json, application/*+json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **recipeSearchChatByRecipeStreamPost**
+> RecipeSearchChatByRecipeStreamPost200Response recipeSearchChatByRecipeStreamPost(chatByRecipePostRequestModel)
+
+Chat about a specific recipe with streaming response.
+
+### Example
+```dart
+import 'package:app_controller_client/api.dart';
+
+final api = AppControllerClient().getRecipeSearchApi();
+final ChatByRecipePostRequestModel chatByRecipePostRequestModel = ; // ChatByRecipePostRequestModel | 
+
+try {
+    final response = api.recipeSearchChatByRecipeStreamPost(chatByRecipePostRequestModel);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling RecipeSearchApi->recipeSearchChatByRecipeStreamPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatByRecipePostRequestModel** | [**ChatByRecipePostRequestModel**](ChatByRecipePostRequestModel.md)|  | [optional] 
+
+### Return type
+
+[**RecipeSearchChatByRecipeStreamPost200Response**](RecipeSearchChatByRecipeStreamPost200Response.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
