@@ -169,9 +169,40 @@ public static class RecipeSearchContractExtensions
     {
         return role switch
         {
-            ChatByRecipeRole.System => ChatByRecipeRoleModel.System,
             ChatByRecipeRole.User => ChatByRecipeRoleModel.User,
             ChatByRecipeRole.Assistant => ChatByRecipeRoleModel.Assistant,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
+    public static ChatByRecipeStreamHeaderModel ToStreamHeaderModel(
+        this ChatByRecipeStreamHeader header
+    )
+    {
+        return new ChatByRecipeStreamHeaderModel
+        {
+            Role = header.Role.ToRoleModel()
+        };
+    }
+
+    public static ChatByRecipeStreamContentModel ToStreamContentModel(
+        this ChatByRecipeStreamContent content
+    )
+    {
+        return new ChatByRecipeStreamContentModel
+        {
+            Text = content.Text
+        };
+    }
+
+    public static ChatByRecipePostStreamResponseModel ToPostStreamResponseModel(
+        this ChatByRecipeStreamResponse response
+    )
+    {
+        return response.ResponseCase switch
+        {
+            ChatByRecipeStreamResponse.ResponseOneofCase.Header => response.Header.ToStreamHeaderModel(),
+            ChatByRecipeStreamResponse.ResponseOneofCase.Content => response.Content.ToStreamContentModel(),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
