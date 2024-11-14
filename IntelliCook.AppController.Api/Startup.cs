@@ -47,6 +47,8 @@ public class Startup
                 Description = ApiOptions.Description
             });
 
+            o.UseOneOfForPolymorphism();
+
             o.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
                 Name = "Bearer",
