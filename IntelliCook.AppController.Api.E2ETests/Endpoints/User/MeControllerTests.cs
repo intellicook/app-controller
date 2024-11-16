@@ -12,25 +12,9 @@ using System.Text.Json;
 namespace IntelliCook.AppController.Api.E2ETests.Endpoints.User;
 
 [Collection(nameof(ClientFixture))]
-public class MeControllerTests
+public class MeControllerTests(ClientFixture fixture)
 {
     private const string Path = "/User/Me";
-    private readonly HttpClient _client;
-    private readonly ClientFixture _fixture;
-    private readonly Mock<IAuthClient> _authClientMock = new();
-
-    public MeControllerTests(ClientFixture fixture)
-    {
-        _fixture = fixture;
-        _client = fixture.Factory.WithWebHostBuilder(builder =>
-        {
-            builder.ConfigureTestServices(services =>
-            {
-                _fixture.ConfigureDefaultTestServices(services);
-                services.AddScoped<IAuthClient>(_ => _authClientMock.Object);
-            });
-        }).CreateClient();
-    }
 
     #region Get
 
@@ -49,22 +33,24 @@ public class MeControllerTests
             HttpStatusCode.OK, responseModel
         );
 
-        _authClientMock
+        fixture.AuthClientMock
             .Setup(x => x.GetUserMeAsync())
             .ReturnsAsync(result);
 
+        fixture.AuthClientMock.Invocations.Clear();
+
         // Act
-        var response = await _client.GetAsync(Path);
+        var response = await fixture.Client.GetAsync(Path);
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
         var content = await response.Content.ReadAsStringAsync();
         content.Should().NotBeNullOrEmpty();
 
-        var error = JsonSerializer.Deserialize<UserGetResponseModel>(content, _fixture.SerializerOptions);
+        var error = JsonSerializer.Deserialize<UserGetResponseModel>(content, fixture.SerializerOptions);
         error.Should().BeEquivalentTo(result.Value);
 
-        _authClientMock.Verify(x => x.GetUserMeAsync(), Times.Once);
+        fixture.AuthClientMock.Verify(x => x.GetUserMeAsync(), Times.Once);
     }
 
     [Fact]
@@ -73,17 +59,19 @@ public class MeControllerTests
         // Arrange
         var result = IAuthClient.Result<UserGetResponseModel>.FromError(HttpStatusCode.BadRequest);
 
-        _authClientMock
+        fixture.AuthClientMock
             .Setup(x => x.GetUserMeAsync())
             .ReturnsAsync(result);
 
+        fixture.AuthClientMock.Invocations.Clear();
+
         // Act
-        var response = await _client.GetAsync(Path);
+        var response = await fixture.Client.GetAsync(Path);
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
 
-        _authClientMock.Verify(x => x.GetUserMeAsync(), Times.Once);
+        fixture.AuthClientMock.Verify(x => x.GetUserMeAsync(), Times.Once);
     }
 
     #endregion
@@ -108,7 +96,7 @@ public class MeControllerTests
             HttpStatusCode.OK, responseModel
         );
 
-        _authClientMock
+        fixture.AuthClientMock
             .Setup(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>
                 r.Name == request.Name &&
                 r.Username == request.Username &&
@@ -116,18 +104,21 @@ public class MeControllerTests
             )))
             .ReturnsAsync(result);
 
+        fixture.AuthClientMock.Invocations.Clear();
+
         // Act
-        var response = await _client.PutAsync(Path, JsonContent.Create(request, options: _fixture.SerializerOptions));
+        var response =
+            await fixture.Client.PutAsync(Path, JsonContent.Create(request, options: fixture.SerializerOptions));
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
         var content = await response.Content.ReadAsStringAsync();
         content.Should().NotBeNullOrEmpty();
 
-        var error = JsonSerializer.Deserialize<UserPutResponseModel>(content, _fixture.SerializerOptions);
+        var error = JsonSerializer.Deserialize<UserPutResponseModel>(content, fixture.SerializerOptions);
         error.Should().BeEquivalentTo(result.Value);
 
-        _authClientMock.Verify(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>
+        fixture.AuthClientMock.Verify(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>
             r.Name == request.Name &&
             r.Username == request.Username &&
             r.Email == request.Email
@@ -154,7 +145,7 @@ public class MeControllerTests
             }
         );
 
-        _authClientMock
+        fixture.AuthClientMock
             .Setup(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>
                 r.Name == request.Name &&
                 r.Username == request.Username &&
@@ -162,13 +153,16 @@ public class MeControllerTests
             )))
             .ReturnsAsync(result);
 
+        fixture.AuthClientMock.Invocations.Clear();
+
         // Act
-        var response = await _client.PutAsync(Path, JsonContent.Create(request, options: _fixture.SerializerOptions));
+        var response =
+            await fixture.Client.PutAsync(Path, JsonContent.Create(request, options: fixture.SerializerOptions));
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
 
-        _authClientMock.Verify(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>
+        fixture.AuthClientMock.Verify(x => x.PutUserMeAsync(It.Is<UserPutRequestModel>(r =>
             r.Name == request.Name &&
             r.Username == request.Username &&
             r.Email == request.Email
@@ -190,23 +184,25 @@ public class MeControllerTests
         };
         var result = IAuthClient.Result.FromValue(HttpStatusCode.NoContent);
 
-        _authClientMock
+        fixture.AuthClientMock
             .Setup(x => x.PutUserMePasswordAsync(It.Is<UserPasswordPutRequestModel>(r =>
                 r.OldPassword == request.OldPassword &&
                 r.NewPassword == request.NewPassword
             )))
             .ReturnsAsync(result);
 
+        fixture.AuthClientMock.Invocations.Clear();
+
         // Act
-        var response = await _client.PutAsync(
+        var response = await fixture.Client.PutAsync(
             $"{Path}/Password",
-            JsonContent.Create(request, options: _fixture.SerializerOptions)
+            JsonContent.Create(request, options: fixture.SerializerOptions)
         );
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
 
-        _authClientMock.Verify(x => x.PutUserMePasswordAsync(It.Is<UserPasswordPutRequestModel>(r =>
+        fixture.AuthClientMock.Verify(x => x.PutUserMePasswordAsync(It.Is<UserPasswordPutRequestModel>(r =>
             r.OldPassword == request.OldPassword &&
             r.NewPassword == request.NewPassword
         )), Times.Once);
@@ -228,23 +224,25 @@ public class MeControllerTests
             Detail = "Error"
         });
 
-        _authClientMock
+        fixture.AuthClientMock
             .Setup(x => x.PutUserMePasswordAsync(It.Is<UserPasswordPutRequestModel>(r =>
                 r.OldPassword == request.OldPassword &&
                 r.NewPassword == request.NewPassword
             )))
             .ReturnsAsync(result);
 
+        fixture.AuthClientMock.Invocations.Clear();
+
         // Act
-        var response = await _client.PutAsync(
+        var response = await fixture.Client.PutAsync(
             $"{Path}/Password",
-            JsonContent.Create(request, options: _fixture.SerializerOptions)
+            JsonContent.Create(request, options: fixture.SerializerOptions)
         );
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
 
-        _authClientMock.Verify(x => x.PutUserMePasswordAsync(It.Is<UserPasswordPutRequestModel>(r =>
+        fixture.AuthClientMock.Verify(x => x.PutUserMePasswordAsync(It.Is<UserPasswordPutRequestModel>(r =>
             r.OldPassword == request.OldPassword &&
             r.NewPassword == request.NewPassword
         )), Times.Once);
@@ -260,17 +258,19 @@ public class MeControllerTests
         // Arrange
         var result = IAuthClient.Result.FromValue(HttpStatusCode.NoContent);
 
-        _authClientMock
+        fixture.AuthClientMock
             .Setup(x => x.DeleteUserMeAsync())
             .ReturnsAsync(result);
 
+        fixture.AuthClientMock.Invocations.Clear();
+
         // Act
-        var response = await _client.DeleteAsync(Path);
+        var response = await fixture.Client.DeleteAsync(Path);
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
 
-        _authClientMock.Verify(x => x.DeleteUserMeAsync(), Times.Once);
+        fixture.AuthClientMock.Verify(x => x.DeleteUserMeAsync(), Times.Once);
     }
 
     [Fact]
@@ -284,17 +284,19 @@ public class MeControllerTests
             Detail = "Error"
         });
 
-        _authClientMock
+        fixture.AuthClientMock
             .Setup(x => x.DeleteUserMeAsync())
             .ReturnsAsync(result);
 
+        fixture.AuthClientMock.Invocations.Clear();
+
         // Act
-        var response = await _client.DeleteAsync(Path);
+        var response = await fixture.Client.DeleteAsync(Path);
 
         // Assert
         response.StatusCode.Should().Be(result.StatusCode);
 
-        _authClientMock.Verify(x => x.DeleteUserMeAsync(), Times.Once);
+        fixture.AuthClientMock.Verify(x => x.DeleteUserMeAsync(), Times.Once);
     }
 
     #endregion
