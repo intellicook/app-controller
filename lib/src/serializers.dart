@@ -18,6 +18,7 @@ import 'package:app_controller_client/src/model/add_recipes_post_request_model.d
 import 'package:app_controller_client/src/model/add_recipes_post_response_model.dart';
 import 'package:app_controller_client/src/model/add_recipes_request_recipe_model.dart';
 import 'package:app_controller_client/src/model/add_recipes_response_recipe_model.dart';
+import 'package:app_controller_client/src/model/admin_users_get404_response.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_message_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
@@ -37,7 +38,6 @@ import 'package:app_controller_client/src/model/login_post_request_model.dart';
 import 'package:app_controller_client/src/model/login_post_response_model.dart';
 import 'package:app_controller_client/src/model/problem_details_model.dart';
 import 'package:app_controller_client/src/model/recipe_get_response_model.dart';
-import 'package:app_controller_client/src/model/recipe_search_add_recipes_post404_response.dart';
 import 'package:app_controller_client/src/model/recipe_search_chat_by_recipe_stream_post200_response.dart';
 import 'package:app_controller_client/src/model/register_post_request_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_request_model.dart';
@@ -62,6 +62,7 @@ part 'serializers.g.dart';
   AddRecipesPostResponseModel,
   AddRecipesRequestRecipeModel,
   AddRecipesResponseRecipeModel,
+  AdminUsersGet404Response,
   ChatByRecipeMessageModel,
   ChatByRecipePostRequestModel,
   ChatByRecipePostResponseModel,
@@ -81,7 +82,6 @@ part 'serializers.g.dart';
   LoginPostResponseModel,
   ProblemDetailsModel,$ProblemDetailsModel,
   RecipeGetResponseModel,
-  RecipeSearchAddRecipesPost404Response,
   RecipeSearchChatByRecipeStreamPost200Response,
   RegisterPostRequestModel,
   SearchRecipesByIngredientsPostRequestModel,
@@ -103,6 +103,10 @@ Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(HealthGetResponseModel)]),
         () => ListBuilder<HealthGetResponseModel>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(UserGetResponseModel)]),
+        () => ListBuilder<UserGetResponseModel>(),
       )
       ..add(ProblemDetailsModel.serializer)
       ..add(const OneOfSerializer())

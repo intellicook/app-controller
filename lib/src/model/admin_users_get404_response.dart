@@ -10,9 +10,9 @@ import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
 
-part 'recipe_search_add_recipes_post404_response.g.dart';
+part 'admin_users_get404_response.g.dart';
 
-/// RecipeSearchAddRecipesPost404Response
+/// AdminUsersGet404Response
 ///
 /// Properties:
 /// * [type] 
@@ -23,31 +23,31 @@ part 'recipe_search_add_recipes_post404_response.g.dart';
 /// * [traceId] 
 /// * [errors] 
 @BuiltValue()
-abstract class RecipeSearchAddRecipesPost404Response implements Built<RecipeSearchAddRecipesPost404Response, RecipeSearchAddRecipesPost404ResponseBuilder> {
+abstract class AdminUsersGet404Response implements Built<AdminUsersGet404Response, AdminUsersGet404ResponseBuilder> {
   /// One Of [ProblemDetailsModel], [ValidationProblemDetailsModel]
   OneOf get oneOf;
 
-  RecipeSearchAddRecipesPost404Response._();
+  AdminUsersGet404Response._();
 
-  factory RecipeSearchAddRecipesPost404Response([void updates(RecipeSearchAddRecipesPost404ResponseBuilder b)]) = _$RecipeSearchAddRecipesPost404Response;
+  factory AdminUsersGet404Response([void updates(AdminUsersGet404ResponseBuilder b)]) = _$AdminUsersGet404Response;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(RecipeSearchAddRecipesPost404ResponseBuilder b) => b;
+  static void _defaults(AdminUsersGet404ResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RecipeSearchAddRecipesPost404Response> get serializer => _$RecipeSearchAddRecipesPost404ResponseSerializer();
+  static Serializer<AdminUsersGet404Response> get serializer => _$AdminUsersGet404ResponseSerializer();
 }
 
-class _$RecipeSearchAddRecipesPost404ResponseSerializer implements PrimitiveSerializer<RecipeSearchAddRecipesPost404Response> {
+class _$AdminUsersGet404ResponseSerializer implements PrimitiveSerializer<AdminUsersGet404Response> {
   @override
-  final Iterable<Type> types = const [RecipeSearchAddRecipesPost404Response, _$RecipeSearchAddRecipesPost404Response];
+  final Iterable<Type> types = const [AdminUsersGet404Response, _$AdminUsersGet404Response];
 
   @override
-  final String wireName = r'RecipeSearchAddRecipesPost404Response';
+  final String wireName = r'AdminUsersGet404Response';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    RecipeSearchAddRecipesPost404Response object, {
+    AdminUsersGet404Response object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
   }
@@ -55,7 +55,7 @@ class _$RecipeSearchAddRecipesPost404ResponseSerializer implements PrimitiveSeri
   @override
   Object serialize(
     Serializers serializers,
-    RecipeSearchAddRecipesPost404Response object, {
+    AdminUsersGet404Response object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
@@ -63,12 +63,12 @@ class _$RecipeSearchAddRecipesPost404ResponseSerializer implements PrimitiveSeri
   }
 
   @override
-  RecipeSearchAddRecipesPost404Response deserialize(
+  AdminUsersGet404Response deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = RecipeSearchAddRecipesPost404ResponseBuilder();
+    final result = AdminUsersGet404ResponseBuilder();
     Object? oneOfDataSrc;
     final targetType = const FullType(OneOf, [FullType(ProblemDetailsModel), FullType(ValidationProblemDetailsModel), ]);
     oneOfDataSrc = serialized;

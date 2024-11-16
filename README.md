@@ -47,14 +47,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:app_controller_client/app_controller_client.dart';
 
 
-final api = AppControllerClient().getAuthApi();
-final LoginPostRequestModel loginPostRequestModel = ; // LoginPostRequestModel | 
+final api = AppControllerClient().getAdminApi();
 
 try {
-    final response = await api.authLoginPost(loginPostRequestModel);
+    final response = await api.adminUsersGet();
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling AuthApi->authLoginPost: $e\n");
+    print("Exception when calling AdminApi->adminUsersGet: $e\n");
 }
 
 ```
@@ -65,6 +64,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*AdminApi*](doc/AdminApi.md) | [**adminUsersGet**](doc/AdminApi.md#adminusersget) | **GET** /Admin/Users | Gets a list of all users.
 [*AuthApi*](doc/AuthApi.md) | [**authLoginPost**](doc/AuthApi.md#authloginpost) | **POST** /Auth/Login | Logs in a user.
 [*AuthApi*](doc/AuthApi.md) | [**authRegisterPost**](doc/AuthApi.md#authregisterpost) | **POST** /Auth/Register | Registers a new user.
 [*HealthApi*](doc/HealthApi.md) | [**healthGet**](doc/HealthApi.md#healthget) | **GET** /Health | Checks the health of App Controller and its components.
@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
  - [AddRecipesPostResponseModel](doc/AddRecipesPostResponseModel.md)
  - [AddRecipesRequestRecipeModel](doc/AddRecipesRequestRecipeModel.md)
  - [AddRecipesResponseRecipeModel](doc/AddRecipesResponseRecipeModel.md)
+ - [AdminUsersGet404Response](doc/AdminUsersGet404Response.md)
  - [ChatByRecipeMessageModel](doc/ChatByRecipeMessageModel.md)
  - [ChatByRecipePostRequestModel](doc/ChatByRecipePostRequestModel.md)
  - [ChatByRecipePostResponseModel](doc/ChatByRecipePostResponseModel.md)
@@ -109,7 +110,6 @@ Class | Method | HTTP request | Description
  - [LoginPostResponseModel](doc/LoginPostResponseModel.md)
  - [ProblemDetailsModel](doc/ProblemDetailsModel.md)
  - [RecipeGetResponseModel](doc/RecipeGetResponseModel.md)
- - [RecipeSearchAddRecipesPost404Response](doc/RecipeSearchAddRecipesPost404Response.md)
  - [RecipeSearchChatByRecipeStreamPost200Response](doc/RecipeSearchChatByRecipeStreamPost200Response.md)
  - [RegisterPostRequestModel](doc/RegisterPostRequestModel.md)
  - [SearchRecipesByIngredientsPostRequestModel](doc/SearchRecipesByIngredientsPostRequestModel.md)

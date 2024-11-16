@@ -1,4 +1,4 @@
-# app_controller_client.model.RecipeSearchAddRecipesPost404Response
+# app_controller_client.model.AdminUsersGet404Response
 
 ## Load the model package
 ```dart

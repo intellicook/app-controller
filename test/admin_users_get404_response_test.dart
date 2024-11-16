@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
 import 'package:app_controller_client/app_controller_client.dart';
 
-// tests for RecipeSearchAddRecipesPost404Response
+// tests for AdminUsersGet404Response
 void main() {
-  final instance = RecipeSearchAddRecipesPost404ResponseBuilder();
+  final instance = AdminUsersGet404ResponseBuilder();
   // TODO add properties to the builder and call build()
 
-  group(RecipeSearchAddRecipesPost404Response, () {
+  group(AdminUsersGet404Response, () {
     // String type
     test('to test the property `type`', () async {
       // TODO
