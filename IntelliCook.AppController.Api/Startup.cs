@@ -15,6 +15,7 @@ public class Startup
     private ApiOptions ApiOptions { get; }
     private AuthOptions AuthOptions { get; }
     private RecipeSearchOptions RecipeSearchOptions { get; }
+    private IngredientRecognitionOptions IngredientRecognitionOptions { get; }
 
     public Startup(IConfiguration configuration)
     {
@@ -28,6 +29,7 @@ public class Startup
         ApiOptions = Configuration.GetAppControllerOptions<ApiOptions>();
         AuthOptions = Configuration.GetAppControllerOptions<AuthOptions>();
         RecipeSearchOptions = Configuration.GetAppControllerOptions<RecipeSearchOptions>();
+        IngredientRecognitionOptions = Configuration.GetAppControllerOptions<IngredientRecognitionOptions>();
     }
 
     public void ConfigureServices(IServiceCollection services)
@@ -81,6 +83,7 @@ public class Startup
         // Microservice clients
         services.AddAuthClient(AuthOptions);
         services.AddRecipeSearchClient(RecipeSearchOptions);
+        services.AddIngredientRecognitionClient(IngredientRecognitionOptions);
     }
 
     public void Configure(WebApplication app)

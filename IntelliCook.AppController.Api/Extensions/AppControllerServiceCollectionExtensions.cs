@@ -1,4 +1,5 @@
 using IntelliCook.AppController.Api.Options;
+using IntelliCook.IngredientRecognition.Client;
 using IntelliCook.RecipeSearch.Client;
 
 namespace IntelliCook.AppController.Api.Extensions;
@@ -21,6 +22,17 @@ public static class AppControllerServiceCollectionExtensions
     {
         services.AddOptions<RecipeSearchOptions>().Configure(o => o.BaseUrl = options.BaseUrl);
         services.AddGrpcClient<RecipeSearchService.RecipeSearchServiceClient>(o => o.Address = options.BaseUrl);
+        return services;
+    }
+
+    public static IServiceCollection AddIngredientRecognitionClient(
+        this IServiceCollection services,
+        IngredientRecognitionOptions options
+    )
+    {
+        services.AddOptions<IngredientRecognitionOptions>().Configure(o => o.BaseUrl = options.BaseUrl);
+        services.AddGrpcClient<IngredientRecognitionService.IngredientRecognitionServiceClient>(o =>
+            o.Address = options.BaseUrl);
         return services;
     }
 }
