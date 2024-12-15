@@ -68,6 +68,7 @@ Class | Method | HTTP request | Description
 [*AuthApi*](doc/AuthApi.md) | [**authLoginPost**](doc/AuthApi.md#authloginpost) | **POST** /Auth/Login | Logs in a user.
 [*AuthApi*](doc/AuthApi.md) | [**authRegisterPost**](doc/AuthApi.md#authregisterpost) | **POST** /Auth/Register | Registers a new user.
 [*HealthApi*](doc/HealthApi.md) | [**healthGet**](doc/HealthApi.md#healthget) | **GET** /Health | Checks the health of App Controller and its components.
+[*IngredientRecognitionApi*](doc/IngredientRecognitionApi.md) | [**ingredientRecognitionRecognizeIngredientsPost**](doc/IngredientRecognitionApi.md#ingredientrecognitionrecognizeingredientspost) | **POST** /IngredientRecognition/RecognizeIngredients | Recognize ingredients from image.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchAddRecipesPost**](doc/RecipeSearchApi.md#recipesearchaddrecipespost) | **POST** /RecipeSearch/AddRecipes | Add a list of recipes.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchChatByRecipePost**](doc/RecipeSearchApi.md#recipesearchchatbyrecipepost) | **POST** /RecipeSearch/ChatByRecipe | Chat about a specific recipe.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchChatByRecipeStreamPost**](doc/RecipeSearchApi.md#recipesearchchatbyrecipestreampost) | **POST** /RecipeSearch/ChatByRecipe/Stream | Chat about a specific recipe with streaming response.
@@ -111,6 +112,8 @@ Class | Method | HTTP request | Description
  - [ProblemDetailsModel](doc/ProblemDetailsModel.md)
  - [RecipeGetResponseModel](doc/RecipeGetResponseModel.md)
  - [RecipeSearchChatByRecipeStreamPost200Response](doc/RecipeSearchChatByRecipeStreamPost200Response.md)
+ - [RecognizeIngredientsIngredientModel](doc/RecognizeIngredientsIngredientModel.md)
+ - [RecognizeIngredientsPostResponseModel](doc/RecognizeIngredientsPostResponseModel.md)
  - [RegisterPostRequestModel](doc/RegisterPostRequestModel.md)
  - [SearchRecipesByIngredientsPostRequestModel](doc/SearchRecipesByIngredientsPostRequestModel.md)
  - [SearchRecipesByIngredientsPostResponseModel](doc/SearchRecipesByIngredientsPostResponseModel.md)

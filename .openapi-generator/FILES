@@ -24,6 +24,7 @@ doc/HealthCheckModel.md
 doc/HealthGetResponseModel.md
 doc/HealthServiceModel.md
 doc/HealthStatusModel.md
+doc/IngredientRecognitionApi.md
 doc/InitFaissIndexPostRequestModel.md
 doc/LoginPostRequestModel.md
 doc/LoginPostResponseModel.md
@@ -31,6 +32,8 @@ doc/ProblemDetailsModel.md
 doc/RecipeGetResponseModel.md
 doc/RecipeSearchApi.md
 doc/RecipeSearchChatByRecipeStreamPost200Response.md
+doc/RecognizeIngredientsIngredientModel.md
+doc/RecognizeIngredientsPostResponseModel.md
 doc/RegisterPostRequestModel.md
 doc/SearchRecipesByIngredientsPostRequestModel.md
 doc/SearchRecipesByIngredientsPostResponseModel.md
@@ -53,6 +56,7 @@ lib/src/api.dart
 lib/src/api/admin_api.dart
 lib/src/api/auth_api.dart
 lib/src/api/health_api.dart
+lib/src/api/ingredient_recognition_api.dart
 lib/src/api/recipe_search_api.dart
 lib/src/api/temporary_api.dart
 lib/src/api/user_api.dart
@@ -89,6 +93,8 @@ lib/src/model/login_post_response_model.dart
 lib/src/model/problem_details_model.dart
 lib/src/model/recipe_get_response_model.dart
 lib/src/model/recipe_search_chat_by_recipe_stream_post200_response.dart
+lib/src/model/recognize_ingredients_ingredient_model.dart
+lib/src/model/recognize_ingredients_post_response_model.dart
 lib/src/model/register_post_request_model.dart
 lib/src/model/search_recipes_by_ingredients_post_request_model.dart
 lib/src/model/search_recipes_by_ingredients_post_response_model.dart
@@ -128,6 +134,7 @@ test/health_check_model_test.dart
 test/health_get_response_model_test.dart
 test/health_service_model_test.dart
 test/health_status_model_test.dart
+test/ingredient_recognition_api_test.dart
 test/init_faiss_index_post_request_model_test.dart
 test/login_post_request_model_test.dart
 test/login_post_response_model_test.dart
@@ -135,6 +142,8 @@ test/problem_details_model_test.dart
 test/recipe_get_response_model_test.dart
 test/recipe_search_api_test.dart
 test/recipe_search_chat_by_recipe_stream_post200_response_test.dart
+test/recognize_ingredients_ingredient_model_test.dart
+test/recognize_ingredients_post_response_model_test.dart
 test/register_post_request_model_test.dart
 test/search_recipes_by_ingredients_post_request_model_test.dart
 test/search_recipes_by_ingredients_post_response_model_test.dart

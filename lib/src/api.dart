@@ -12,6 +12,7 @@ import 'package:app_controller_client/src/auth/oauth.dart';
 import 'package:app_controller_client/src/api/admin_api.dart';
 import 'package:app_controller_client/src/api/auth_api.dart';
 import 'package:app_controller_client/src/api/health_api.dart';
+import 'package:app_controller_client/src/api/ingredient_recognition_api.dart';
 import 'package:app_controller_client/src/api/recipe_search_api.dart';
 import 'package:app_controller_client/src/api/temporary_api.dart';
 import 'package:app_controller_client/src/api/user_api.dart';
@@ -86,6 +87,12 @@ class AppControllerClient {
   /// by doing that all interceptors will not be executed
   HealthApi getHealthApi() {
     return HealthApi(dio, serializers);
+  }
+
+  /// Get IngredientRecognitionApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  IngredientRecognitionApi getIngredientRecognitionApi() {
+    return IngredientRecognitionApi(dio, serializers);
   }
 
   /// Get RecipeSearchApi instance, base route and serializer can be overridden by a given but be careful,

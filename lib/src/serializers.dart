@@ -39,6 +39,8 @@ import 'package:app_controller_client/src/model/login_post_response_model.dart';
 import 'package:app_controller_client/src/model/problem_details_model.dart';
 import 'package:app_controller_client/src/model/recipe_get_response_model.dart';
 import 'package:app_controller_client/src/model/recipe_search_chat_by_recipe_stream_post200_response.dart';
+import 'package:app_controller_client/src/model/recognize_ingredients_ingredient_model.dart';
+import 'package:app_controller_client/src/model/recognize_ingredients_post_response_model.dart';
 import 'package:app_controller_client/src/model/register_post_request_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_request_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_response_model.dart';
@@ -83,6 +85,8 @@ part 'serializers.g.dart';
   ProblemDetailsModel,$ProblemDetailsModel,
   RecipeGetResponseModel,
   RecipeSearchChatByRecipeStreamPost200Response,
+  RecognizeIngredientsIngredientModel,
+  RecognizeIngredientsPostResponseModel,
   RegisterPostRequestModel,
   SearchRecipesByIngredientsPostRequestModel,
   SearchRecipesByIngredientsPostResponseModel,
