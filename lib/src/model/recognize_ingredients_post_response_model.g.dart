@@ -104,7 +104,8 @@ class RecognizeIngredientsPostResponseModelBuilder
     try {
       _$result = _$v ??
           new _$RecognizeIngredientsPostResponseModel._(
-              ingredients: ingredients.build());
+            ingredients: ingredients.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

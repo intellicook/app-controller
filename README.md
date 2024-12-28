@@ -119,6 +119,8 @@ Class | Method | HTTP request | Description
  - [SearchRecipesByIngredientsPostResponseModel](doc/SearchRecipesByIngredientsPostResponseModel.md)
  - [SearchRecipesByIngredientsRecipeDetailModel](doc/SearchRecipesByIngredientsRecipeDetailModel.md)
  - [SearchRecipesByIngredientsRecipeModel](doc/SearchRecipesByIngredientsRecipeModel.md)
+ - [SearchRecipesMatchFieldModel](doc/SearchRecipesMatchFieldModel.md)
+ - [SearchRecipesMatchModel](doc/SearchRecipesMatchModel.md)
  - [SearchRecipesPostRequestModel](doc/SearchRecipesPostRequestModel.md)
  - [SearchRecipesPostResponseModel](doc/SearchRecipesPostResponseModel.md)
  - [SearchRecipesRecipeDetailModel](doc/SearchRecipesRecipeDetailModel.md)

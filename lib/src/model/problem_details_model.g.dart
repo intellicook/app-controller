@@ -167,12 +167,13 @@ class $ProblemDetailsModelBuilder
   _$$ProblemDetailsModel _build() {
     final _$result = _$v ??
         new _$$ProblemDetailsModel._(
-            type: type,
-            title: title,
-            status: status,
-            detail: detail,
-            instance: instance,
-            traceId: traceId);
+          type: type,
+          title: title,
+          status: status,
+          detail: detail,
+          instance: instance,
+          traceId: traceId,
+        );
     replace(_$result);
     return _$result;
   }

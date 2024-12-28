@@ -93,7 +93,9 @@ class ChatByRecipePostResponseModelBuilder
     _$ChatByRecipePostResponseModel _$result;
     try {
       _$result = _$v ??
-          new _$ChatByRecipePostResponseModel._(message: message.build());
+          new _$ChatByRecipePostResponseModel._(
+            message: message.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

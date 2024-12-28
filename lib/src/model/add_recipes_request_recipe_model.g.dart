@@ -136,11 +136,12 @@ class AddRecipesRequestRecipeModelBuilder
     try {
       _$result = _$v ??
           new _$AddRecipesRequestRecipeModel._(
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'AddRecipesRequestRecipeModel', 'name'),
-              ingredients: ingredients.build(),
-              instructions: instructions.build(),
-              raw: raw);
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'AddRecipesRequestRecipeModel', 'name'),
+            ingredients: ingredients.build(),
+            instructions: instructions.build(),
+            raw: raw,
+          );
     } catch (_) {
       late String _$failedField;
       try {

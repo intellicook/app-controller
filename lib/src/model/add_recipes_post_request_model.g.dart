@@ -91,8 +91,10 @@ class AddRecipesPostRequestModelBuilder
   _$AddRecipesPostRequestModel _build() {
     _$AddRecipesPostRequestModel _$result;
     try {
-      _$result =
-          _$v ?? new _$AddRecipesPostRequestModel._(recipes: recipes.build());
+      _$result = _$v ??
+          new _$AddRecipesPostRequestModel._(
+            recipes: recipes.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

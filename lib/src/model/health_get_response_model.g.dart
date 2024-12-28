@@ -118,11 +118,12 @@ class HealthGetResponseModelBuilder
     try {
       _$result = _$v ??
           new _$HealthGetResponseModel._(
-              service: BuiltValueNullFieldError.checkNotNull(
-                  service, r'HealthGetResponseModel', 'service'),
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'HealthGetResponseModel', 'status'),
-              checks: checks.build());
+            service: BuiltValueNullFieldError.checkNotNull(
+                service, r'HealthGetResponseModel', 'service'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'HealthGetResponseModel', 'status'),
+            checks: checks.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

@@ -99,10 +99,11 @@ class HealthCheckModelBuilder
   _$HealthCheckModel _build() {
     final _$result = _$v ??
         new _$HealthCheckModel._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'HealthCheckModel', 'name'),
-            status: BuiltValueNullFieldError.checkNotNull(
-                status, r'HealthCheckModel', 'status'));
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'HealthCheckModel', 'name'),
+          status: BuiltValueNullFieldError.checkNotNull(
+              status, r'HealthCheckModel', 'status'),
+        );
     replace(_$result);
     return _$result;
   }

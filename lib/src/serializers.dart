@@ -46,6 +46,8 @@ import 'package:app_controller_client/src/model/search_recipes_by_ingredients_po
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_response_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_recipe_detail_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_by_ingredients_recipe_model.dart';
+import 'package:app_controller_client/src/model/search_recipes_match_field_model.dart';
+import 'package:app_controller_client/src/model/search_recipes_match_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_post_request_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_post_response_model.dart';
 import 'package:app_controller_client/src/model/search_recipes_recipe_detail_model.dart';
@@ -92,6 +94,8 @@ part 'serializers.g.dart';
   SearchRecipesByIngredientsPostResponseModel,
   SearchRecipesByIngredientsRecipeDetailModel,
   SearchRecipesByIngredientsRecipeModel,
+  SearchRecipesMatchFieldModel,
+  SearchRecipesMatchModel,
   SearchRecipesPostRequestModel,
   SearchRecipesPostResponseModel,
   SearchRecipesRecipeDetailModel,

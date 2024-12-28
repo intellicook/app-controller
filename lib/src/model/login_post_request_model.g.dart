@@ -102,10 +102,11 @@ class LoginPostRequestModelBuilder
   _$LoginPostRequestModel _build() {
     final _$result = _$v ??
         new _$LoginPostRequestModel._(
-            username: BuiltValueNullFieldError.checkNotNull(
-                username, r'LoginPostRequestModel', 'username'),
-            password: BuiltValueNullFieldError.checkNotNull(
-                password, r'LoginPostRequestModel', 'password'));
+          username: BuiltValueNullFieldError.checkNotNull(
+              username, r'LoginPostRequestModel', 'username'),
+          password: BuiltValueNullFieldError.checkNotNull(
+              password, r'LoginPostRequestModel', 'password'),
+        );
     replace(_$result);
     return _$result;
   }

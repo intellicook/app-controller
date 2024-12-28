@@ -89,8 +89,9 @@ class AdminUsersGet404ResponseBuilder
   _$AdminUsersGet404Response _build() {
     final _$result = _$v ??
         new _$AdminUsersGet404Response._(
-            oneOf: BuiltValueNullFieldError.checkNotNull(
-                oneOf, r'AdminUsersGet404Response', 'oneOf'));
+          oneOf: BuiltValueNullFieldError.checkNotNull(
+              oneOf, r'AdminUsersGet404Response', 'oneOf'),
+        );
     replace(_$result);
     return _$result;
   }

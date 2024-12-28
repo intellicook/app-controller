@@ -93,7 +93,9 @@ class SearchRecipesPostResponseModelBuilder
     _$SearchRecipesPostResponseModel _$result;
     try {
       _$result = _$v ??
-          new _$SearchRecipesPostResponseModel._(recipes: recipes.build());
+          new _$SearchRecipesPostResponseModel._(
+            recipes: recipes.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

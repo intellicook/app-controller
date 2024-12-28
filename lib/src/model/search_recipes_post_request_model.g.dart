@@ -128,10 +128,11 @@ class SearchRecipesPostRequestModelBuilder
     try {
       _$result = _$v ??
           new _$SearchRecipesPostRequestModel._(
-              ingredients: ingredients.build(),
-              page: page,
-              perPage: perPage,
-              includeDetail: includeDetail);
+            ingredients: ingredients.build(),
+            page: page,
+            perPage: perPage,
+            includeDetail: includeDetail,
+          );
     } catch (_) {
       late String _$failedField;
       try {

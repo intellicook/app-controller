@@ -86,8 +86,9 @@ class ForbiddenModelBuilder
   _$ForbiddenModel _build() {
     final _$result = _$v ??
         new _$ForbiddenModel._(
-            message: BuiltValueNullFieldError.checkNotNull(
-                message, r'ForbiddenModel', 'message'));
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'ForbiddenModel', 'message'),
+        );
     replace(_$result);
     return _$result;
   }

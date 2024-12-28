@@ -22,6 +22,11 @@ void main() {
       // TODO
     });
 
+    // BuiltList<SearchRecipesMatchModel> matches
+    test('to test the property `matches`', () async {
+      // TODO
+    });
+
     // SearchRecipesRecipeDetailModel detail
     test('to test the property `detail`', () async {
       // TODO

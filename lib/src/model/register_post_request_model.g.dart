@@ -131,14 +131,15 @@ class RegisterPostRequestModelBuilder
   _$RegisterPostRequestModel _build() {
     final _$result = _$v ??
         new _$RegisterPostRequestModel._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'RegisterPostRequestModel', 'name'),
-            username: BuiltValueNullFieldError.checkNotNull(
-                username, r'RegisterPostRequestModel', 'username'),
-            email: BuiltValueNullFieldError.checkNotNull(
-                email, r'RegisterPostRequestModel', 'email'),
-            password: BuiltValueNullFieldError.checkNotNull(
-                password, r'RegisterPostRequestModel', 'password'));
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'RegisterPostRequestModel', 'name'),
+          username: BuiltValueNullFieldError.checkNotNull(
+              username, r'RegisterPostRequestModel', 'username'),
+          email: BuiltValueNullFieldError.checkNotNull(
+              email, r'RegisterPostRequestModel', 'email'),
+          password: BuiltValueNullFieldError.checkNotNull(
+              password, r'RegisterPostRequestModel', 'password'),
+        );
     replace(_$result);
     return _$result;
   }

@@ -96,8 +96,11 @@ class InitFaissIndexPostRequestModelBuilder
   InitFaissIndexPostRequestModel build() => _build();
 
   _$InitFaissIndexPostRequestModel _build() {
-    final _$result =
-        _$v ?? new _$InitFaissIndexPostRequestModel._(count: count, path: path);
+    final _$result = _$v ??
+        new _$InitFaissIndexPostRequestModel._(
+          count: count,
+          path: path,
+        );
     replace(_$result);
     return _$result;
   }

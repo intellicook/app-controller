@@ -109,9 +109,10 @@ class SearchRecipesRecipeDetailModelBuilder
     try {
       _$result = _$v ??
           new _$SearchRecipesRecipeDetailModel._(
-              instructions: instructions.build(),
-              raw: BuiltValueNullFieldError.checkNotNull(
-                  raw, r'SearchRecipesRecipeDetailModel', 'raw'));
+            instructions: instructions.build(),
+            raw: BuiltValueNullFieldError.checkNotNull(
+                raw, r'SearchRecipesRecipeDetailModel', 'raw'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

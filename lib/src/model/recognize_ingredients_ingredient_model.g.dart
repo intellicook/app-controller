@@ -149,16 +149,17 @@ class RecognizeIngredientsIngredientModelBuilder
   _$RecognizeIngredientsIngredientModel _build() {
     final _$result = _$v ??
         new _$RecognizeIngredientsIngredientModel._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'RecognizeIngredientsIngredientModel', 'name'),
-            x: BuiltValueNullFieldError.checkNotNull(
-                x, r'RecognizeIngredientsIngredientModel', 'x'),
-            y: BuiltValueNullFieldError.checkNotNull(
-                y, r'RecognizeIngredientsIngredientModel', 'y'),
-            width: BuiltValueNullFieldError.checkNotNull(
-                width, r'RecognizeIngredientsIngredientModel', 'width'),
-            height: BuiltValueNullFieldError.checkNotNull(
-                height, r'RecognizeIngredientsIngredientModel', 'height'));
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'RecognizeIngredientsIngredientModel', 'name'),
+          x: BuiltValueNullFieldError.checkNotNull(
+              x, r'RecognizeIngredientsIngredientModel', 'x'),
+          y: BuiltValueNullFieldError.checkNotNull(
+              y, r'RecognizeIngredientsIngredientModel', 'y'),
+          width: BuiltValueNullFieldError.checkNotNull(
+              width, r'RecognizeIngredientsIngredientModel', 'width'),
+          height: BuiltValueNullFieldError.checkNotNull(
+              height, r'RecognizeIngredientsIngredientModel', 'height'),
+        );
     replace(_$result);
     return _$result;
   }

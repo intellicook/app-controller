@@ -50,6 +50,8 @@ export 'package:app_controller_client/src/model/search_recipes_by_ingredients_po
 export 'package:app_controller_client/src/model/search_recipes_by_ingredients_post_response_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_by_ingredients_recipe_detail_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_by_ingredients_recipe_model.dart';
+export 'package:app_controller_client/src/model/search_recipes_match_field_model.dart';
+export 'package:app_controller_client/src/model/search_recipes_match_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_post_request_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_post_response_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_recipe_detail_model.dart';

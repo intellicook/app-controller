@@ -130,14 +130,15 @@ class UserGetResponseModelBuilder
   _$UserGetResponseModel _build() {
     final _$result = _$v ??
         new _$UserGetResponseModel._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'UserGetResponseModel', 'name'),
-            role: BuiltValueNullFieldError.checkNotNull(
-                role, r'UserGetResponseModel', 'role'),
-            username: BuiltValueNullFieldError.checkNotNull(
-                username, r'UserGetResponseModel', 'username'),
-            email: BuiltValueNullFieldError.checkNotNull(
-                email, r'UserGetResponseModel', 'email'));
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'UserGetResponseModel', 'name'),
+          role: BuiltValueNullFieldError.checkNotNull(
+              role, r'UserGetResponseModel', 'role'),
+          username: BuiltValueNullFieldError.checkNotNull(
+              username, r'UserGetResponseModel', 'username'),
+          email: BuiltValueNullFieldError.checkNotNull(
+              email, r'UserGetResponseModel', 'email'),
+        );
     replace(_$result);
     return _$result;
   }

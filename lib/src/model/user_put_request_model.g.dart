@@ -114,12 +114,13 @@ class UserPutRequestModelBuilder
   _$UserPutRequestModel _build() {
     final _$result = _$v ??
         new _$UserPutRequestModel._(
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'UserPutRequestModel', 'name'),
-            username: BuiltValueNullFieldError.checkNotNull(
-                username, r'UserPutRequestModel', 'username'),
-            email: BuiltValueNullFieldError.checkNotNull(
-                email, r'UserPutRequestModel', 'email'));
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'UserPutRequestModel', 'name'),
+          username: BuiltValueNullFieldError.checkNotNull(
+              username, r'UserPutRequestModel', 'username'),
+          email: BuiltValueNullFieldError.checkNotNull(
+              email, r'UserPutRequestModel', 'email'),
+        );
     replace(_$result);
     return _$result;
   }

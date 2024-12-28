@@ -108,9 +108,10 @@ class ChatByRecipePostRequestModelBuilder
     try {
       _$result = _$v ??
           new _$ChatByRecipePostRequestModel._(
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'ChatByRecipePostRequestModel', 'id'),
-              messages: messages.build());
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'ChatByRecipePostRequestModel', 'id'),
+            messages: messages.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

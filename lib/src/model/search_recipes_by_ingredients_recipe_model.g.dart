@@ -126,11 +126,12 @@ class SearchRecipesByIngredientsRecipeModelBuilder
     try {
       _$result = _$v ??
           new _$SearchRecipesByIngredientsRecipeModel._(
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'SearchRecipesByIngredientsRecipeModel', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'SearchRecipesByIngredientsRecipeModel', 'name'),
-              detail: _detail?.build());
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'SearchRecipesByIngredientsRecipeModel', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'SearchRecipesByIngredientsRecipeModel', 'name'),
+            detail: _detail?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:app_controller_client/src/model/search_recipes_match_model.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:app_controller_client/src/model/search_recipes_recipe_detail_model.dart';
 import 'package:built_value/built_value.dart';
@@ -16,6 +17,7 @@ part 'search_recipes_recipe_model.g.dart';
 /// * [id] 
 /// * [name] 
 /// * [ingredients] 
+/// * [matches] 
 /// * [detail] 
 @BuiltValue()
 abstract class SearchRecipesRecipeModel implements Built<SearchRecipesRecipeModel, SearchRecipesRecipeModelBuilder> {
@@ -27,6 +29,9 @@ abstract class SearchRecipesRecipeModel implements Built<SearchRecipesRecipeMode
 
   @BuiltValueField(wireName: r'ingredients')
   BuiltList<String> get ingredients;
+
+  @BuiltValueField(wireName: r'matches')
+  BuiltList<SearchRecipesMatchModel> get matches;
 
   @BuiltValueField(wireName: r'detail')
   SearchRecipesRecipeDetailModel? get detail;
@@ -68,6 +73,11 @@ class _$SearchRecipesRecipeModelSerializer implements PrimitiveSerializer<Search
     yield serializers.serialize(
       object.ingredients,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'matches';
+    yield serializers.serialize(
+      object.matches,
+      specifiedType: const FullType(BuiltList, [FullType(SearchRecipesMatchModel)]),
     );
     if (object.detail != null) {
       yield r'detail';
@@ -119,6 +129,13 @@ class _$SearchRecipesRecipeModelSerializer implements PrimitiveSerializer<Search
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.ingredients.replace(valueDes);
+          break;
+        case r'matches':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(SearchRecipesMatchModel)]),
+          ) as BuiltList<SearchRecipesMatchModel>;
+          result.matches.replace(valueDes);
           break;
         case r'detail':
           final valueDes = serializers.deserialize(

@@ -151,14 +151,15 @@ class AddRecipesResponseRecipeModelBuilder
     try {
       _$result = _$v ??
           new _$AddRecipesResponseRecipeModel._(
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'AddRecipesResponseRecipeModel', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'AddRecipesResponseRecipeModel', 'name'),
-              ingredients: ingredients.build(),
-              instructions: instructions.build(),
-              raw: BuiltValueNullFieldError.checkNotNull(
-                  raw, r'AddRecipesResponseRecipeModel', 'raw'));
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'AddRecipesResponseRecipeModel', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'AddRecipesResponseRecipeModel', 'name'),
+            ingredients: ingredients.build(),
+            instructions: instructions.build(),
+            raw: BuiltValueNullFieldError.checkNotNull(
+                raw, r'AddRecipesResponseRecipeModel', 'raw'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

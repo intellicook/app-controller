@@ -125,9 +125,10 @@ class SearchRecipesByIngredientsPostRequestModelBuilder
     try {
       _$result = _$v ??
           new _$SearchRecipesByIngredientsPostRequestModel._(
-              ingredients: ingredients.build(),
-              limit: limit,
-              includeDetail: includeDetail);
+            ingredients: ingredients.build(),
+            limit: limit,
+            includeDetail: includeDetail,
+          );
     } catch (_) {
       late String _$failedField;
       try {

@@ -88,8 +88,9 @@ class UserPutResponseModelBuilder
   _$UserPutResponseModel _build() {
     final _$result = _$v ??
         new _$UserPutResponseModel._(
-            accessToken: BuiltValueNullFieldError.checkNotNull(
-                accessToken, r'UserPutResponseModel', 'accessToken'));
+          accessToken: BuiltValueNullFieldError.checkNotNull(
+              accessToken, r'UserPutResponseModel', 'accessToken'),
+        );
     replace(_$result);
     return _$result;
   }

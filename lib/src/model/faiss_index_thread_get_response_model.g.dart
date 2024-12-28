@@ -106,9 +106,10 @@ class FaissIndexThreadGetResponseModelBuilder
     try {
       _$result = _$v ??
           new _$FaissIndexThreadGetResponseModel._(
-              status: BuiltValueNullFieldError.checkNotNull(
-                  status, r'FaissIndexThreadGetResponseModel', 'status'),
-              args: _args?.build());
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'FaissIndexThreadGetResponseModel', 'status'),
+            args: _args?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {

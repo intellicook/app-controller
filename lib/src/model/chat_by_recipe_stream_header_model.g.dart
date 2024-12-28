@@ -90,8 +90,9 @@ class ChatByRecipeStreamHeaderModelBuilder
   _$ChatByRecipeStreamHeaderModel _build() {
     final _$result = _$v ??
         new _$ChatByRecipeStreamHeaderModel._(
-            role: BuiltValueNullFieldError.checkNotNull(
-                role, r'ChatByRecipeStreamHeaderModel', 'role'));
+          role: BuiltValueNullFieldError.checkNotNull(
+              role, r'ChatByRecipeStreamHeaderModel', 'role'),
+        );
     replace(_$result);
     return _$result;
   }

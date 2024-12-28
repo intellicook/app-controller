@@ -100,8 +100,9 @@ class RecipeSearchChatByRecipeStreamPost200ResponseBuilder
   _$RecipeSearchChatByRecipeStreamPost200Response _build() {
     final _$result = _$v ??
         new _$RecipeSearchChatByRecipeStreamPost200Response._(
-            oneOf: BuiltValueNullFieldError.checkNotNull(oneOf,
-                r'RecipeSearchChatByRecipeStreamPost200Response', 'oneOf'));
+          oneOf: BuiltValueNullFieldError.checkNotNull(
+              oneOf, r'RecipeSearchChatByRecipeStreamPost200Response', 'oneOf'),
+        );
     replace(_$result);
     return _$result;
   }

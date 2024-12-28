@@ -88,8 +88,9 @@ class LoginPostResponseModelBuilder
   _$LoginPostResponseModel _build() {
     final _$result = _$v ??
         new _$LoginPostResponseModel._(
-            accessToken: BuiltValueNullFieldError.checkNotNull(
-                accessToken, r'LoginPostResponseModel', 'accessToken'));
+          accessToken: BuiltValueNullFieldError.checkNotNull(
+              accessToken, r'LoginPostResponseModel', 'accessToken'),
+        );
     replace(_$result);
     return _$result;
   }

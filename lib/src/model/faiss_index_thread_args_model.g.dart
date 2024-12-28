@@ -116,12 +116,13 @@ class FaissIndexThreadArgsModelBuilder
   _$FaissIndexThreadArgsModel _build() {
     final _$result = _$v ??
         new _$FaissIndexThreadArgsModel._(
-            count: BuiltValueNullFieldError.checkNotNull(
-                count, r'FaissIndexThreadArgsModel', 'count'),
-            model: BuiltValueNullFieldError.checkNotNull(
-                model, r'FaissIndexThreadArgsModel', 'model'),
-            path: BuiltValueNullFieldError.checkNotNull(
-                path, r'FaissIndexThreadArgsModel', 'path'));
+          count: BuiltValueNullFieldError.checkNotNull(
+              count, r'FaissIndexThreadArgsModel', 'count'),
+          model: BuiltValueNullFieldError.checkNotNull(
+              model, r'FaissIndexThreadArgsModel', 'model'),
+          path: BuiltValueNullFieldError.checkNotNull(
+              path, r'FaissIndexThreadArgsModel', 'path'),
+        );
     replace(_$result);
     return _$result;
   }

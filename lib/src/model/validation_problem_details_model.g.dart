@@ -161,13 +161,14 @@ class ValidationProblemDetailsModelBuilder
     try {
       _$result = _$v ??
           new _$ValidationProblemDetailsModel._(
-              errors: _errors?.build(),
-              type: type,
-              title: title,
-              status: status,
-              detail: detail,
-              instance: instance,
-              traceId: traceId);
+            errors: _errors?.build(),
+            type: type,
+            title: title,
+            status: status,
+            detail: detail,
+            instance: instance,
+            traceId: traceId,
+          );
     } catch (_) {
       late String _$failedField;
       try {

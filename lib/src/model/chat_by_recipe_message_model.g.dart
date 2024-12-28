@@ -103,10 +103,11 @@ class ChatByRecipeMessageModelBuilder
   _$ChatByRecipeMessageModel _build() {
     final _$result = _$v ??
         new _$ChatByRecipeMessageModel._(
-            role: BuiltValueNullFieldError.checkNotNull(
-                role, r'ChatByRecipeMessageModel', 'role'),
-            text: BuiltValueNullFieldError.checkNotNull(
-                text, r'ChatByRecipeMessageModel', 'text'));
+          role: BuiltValueNullFieldError.checkNotNull(
+              role, r'ChatByRecipeMessageModel', 'role'),
+          text: BuiltValueNullFieldError.checkNotNull(
+              text, r'ChatByRecipeMessageModel', 'text'),
+        );
     replace(_$result);
     return _$result;
   }

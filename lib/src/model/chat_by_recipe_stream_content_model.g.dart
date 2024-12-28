@@ -90,8 +90,9 @@ class ChatByRecipeStreamContentModelBuilder
   _$ChatByRecipeStreamContentModel _build() {
     final _$result = _$v ??
         new _$ChatByRecipeStreamContentModel._(
-            text: BuiltValueNullFieldError.checkNotNull(
-                text, r'ChatByRecipeStreamContentModel', 'text'));
+          text: BuiltValueNullFieldError.checkNotNull(
+              text, r'ChatByRecipeStreamContentModel', 'text'),
+        );
     replace(_$result);
     return _$result;
   }

@@ -105,10 +105,11 @@ class UserPasswordPutRequestModelBuilder
   _$UserPasswordPutRequestModel _build() {
     final _$result = _$v ??
         new _$UserPasswordPutRequestModel._(
-            oldPassword: BuiltValueNullFieldError.checkNotNull(
-                oldPassword, r'UserPasswordPutRequestModel', 'oldPassword'),
-            newPassword: BuiltValueNullFieldError.checkNotNull(
-                newPassword, r'UserPasswordPutRequestModel', 'newPassword'));
+          oldPassword: BuiltValueNullFieldError.checkNotNull(
+              oldPassword, r'UserPasswordPutRequestModel', 'oldPassword'),
+          newPassword: BuiltValueNullFieldError.checkNotNull(
+              newPassword, r'UserPasswordPutRequestModel', 'newPassword'),
+        );
     replace(_$result);
     return _$result;
   }

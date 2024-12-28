@@ -148,14 +148,15 @@ class RecipeGetResponseModelBuilder
     try {
       _$result = _$v ??
           new _$RecipeGetResponseModel._(
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'RecipeGetResponseModel', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'RecipeGetResponseModel', 'name'),
-              ingredients: ingredients.build(),
-              instructions: instructions.build(),
-              raw: BuiltValueNullFieldError.checkNotNull(
-                  raw, r'RecipeGetResponseModel', 'raw'));
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'RecipeGetResponseModel', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'RecipeGetResponseModel', 'name'),
+            ingredients: ingredients.build(),
+            instructions: instructions.build(),
+            raw: BuiltValueNullFieldError.checkNotNull(
+                raw, r'RecipeGetResponseModel', 'raw'),
+          );
     } catch (_) {
       late String _$failedField;
       try {

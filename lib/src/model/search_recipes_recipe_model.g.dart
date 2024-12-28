@@ -14,6 +14,8 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
   @override
   final BuiltList<String> ingredients;
   @override
+  final BuiltList<SearchRecipesMatchModel> matches;
+  @override
   final SearchRecipesRecipeDetailModel? detail;
 
   factory _$SearchRecipesRecipeModel(
@@ -24,6 +26,7 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
       {required this.id,
       required this.name,
       required this.ingredients,
+      required this.matches,
       this.detail})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
@@ -32,6 +35,8 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
         name, r'SearchRecipesRecipeModel', 'name');
     BuiltValueNullFieldError.checkNotNull(
         ingredients, r'SearchRecipesRecipeModel', 'ingredients');
+    BuiltValueNullFieldError.checkNotNull(
+        matches, r'SearchRecipesRecipeModel', 'matches');
   }
 
   @override
@@ -50,6 +55,7 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
         id == other.id &&
         name == other.name &&
         ingredients == other.ingredients &&
+        matches == other.matches &&
         detail == other.detail;
   }
 
@@ -59,6 +65,7 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
     _$hash = $jc(_$hash, id.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, ingredients.hashCode);
+    _$hash = $jc(_$hash, matches.hashCode);
     _$hash = $jc(_$hash, detail.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -70,6 +77,7 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
           ..add('id', id)
           ..add('name', name)
           ..add('ingredients', ingredients)
+          ..add('matches', matches)
           ..add('detail', detail))
         .toString();
   }
@@ -94,6 +102,12 @@ class SearchRecipesRecipeModelBuilder
   set ingredients(ListBuilder<String>? ingredients) =>
       _$this._ingredients = ingredients;
 
+  ListBuilder<SearchRecipesMatchModel>? _matches;
+  ListBuilder<SearchRecipesMatchModel> get matches =>
+      _$this._matches ??= new ListBuilder<SearchRecipesMatchModel>();
+  set matches(ListBuilder<SearchRecipesMatchModel>? matches) =>
+      _$this._matches = matches;
+
   SearchRecipesRecipeDetailModelBuilder? _detail;
   SearchRecipesRecipeDetailModelBuilder get detail =>
       _$this._detail ??= new SearchRecipesRecipeDetailModelBuilder();
@@ -110,6 +124,7 @@ class SearchRecipesRecipeModelBuilder
       _id = $v.id;
       _name = $v.name;
       _ingredients = $v.ingredients.toBuilder();
+      _matches = $v.matches.toBuilder();
       _detail = $v.detail?.toBuilder();
       _$v = null;
     }
@@ -135,17 +150,21 @@ class SearchRecipesRecipeModelBuilder
     try {
       _$result = _$v ??
           new _$SearchRecipesRecipeModel._(
-              id: BuiltValueNullFieldError.checkNotNull(
-                  id, r'SearchRecipesRecipeModel', 'id'),
-              name: BuiltValueNullFieldError.checkNotNull(
-                  name, r'SearchRecipesRecipeModel', 'name'),
-              ingredients: ingredients.build(),
-              detail: _detail?.build());
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, r'SearchRecipesRecipeModel', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(
+                name, r'SearchRecipesRecipeModel', 'name'),
+            ingredients: ingredients.build(),
+            matches: matches.build(),
+            detail: _detail?.build(),
+          );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'ingredients';
         ingredients.build();
+        _$failedField = 'matches';
+        matches.build();
         _$failedField = 'detail';
         _detail?.build();
       } catch (e) {
