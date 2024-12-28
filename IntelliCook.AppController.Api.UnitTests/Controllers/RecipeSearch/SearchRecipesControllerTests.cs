@@ -47,10 +47,14 @@ public class SearchRecipesControllerTests
         var responseDetail = new SearchRecipesRecipeDetail();
         responseDetail.Instructions.Add("Instruction");
         responseDetail.Raw = "Raw";
+        var responseMatch = new SearchRecipesMatch();
+        responseMatch.Field = SearchRecipesMatchField.Name;
+        responseMatch.Tokens.Add("Token");
         var responseRecipe = new SearchRecipesRecipe();
         responseRecipe.Id = 1;
         responseRecipe.Name = "Name";
         responseRecipe.Ingredients.Add("Ingredient");
+        responseRecipe.Matches.Add(responseMatch);
         responseRecipe.Detail = responseDetail;
         var responseModel = new SearchRecipesResponse();
         responseModel.Recipes.Add(responseRecipe);
@@ -104,10 +108,14 @@ public class SearchRecipesControllerTests
         {
             Ingredients = new[] { "Ingredient" }
         };
+        var responseMatch = new SearchRecipesMatch();
+        responseMatch.Field = SearchRecipesMatchField.Name;
+        responseMatch.Tokens.Add("Token");
         var responseRecipe = new SearchRecipesRecipe();
         responseRecipe.Id = 1;
         responseRecipe.Name = "Name";
         responseRecipe.Ingredients.Add("Ingredient");
+        responseRecipe.Matches.Add(responseMatch);
         var responseModel = new SearchRecipesResponse();
         responseModel.Recipes.Add(responseRecipe);
 
