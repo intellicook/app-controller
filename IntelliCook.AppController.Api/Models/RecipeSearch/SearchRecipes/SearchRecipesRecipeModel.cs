@@ -10,5 +10,7 @@ public class SearchRecipesRecipeModel
 
     [Required] public IEnumerable<string> Ingredients { get; set; }
 
+    [Required] public IEnumerable<SearchRecipesMatchModel> Matches { get; set; }
+
     public SearchRecipesRecipeDetailModel? Detail { get; set; }
 }

@@ -116,7 +116,37 @@ public static class RecipeSearchContractExtensions
             Id = recipe.Id,
             Name = recipe.Name,
             Ingredients = recipe.Ingredients,
+            Matches = recipe.Matches.Select(m => m.ToMatchModel()),
             Detail = recipe.Detail?.ToRecipeDetailModel()
+        };
+    }
+
+    public static SearchRecipesMatchModel ToMatchModel(
+        this SearchRecipesMatch match
+    )
+    {
+        return new SearchRecipesMatchModel
+        {
+            Field = match.Field.ToFieldModel(),
+            Tokens = match.Tokens,
+            Index = match.Field switch
+            {
+                SearchRecipesMatchField.Name => null,
+                SearchRecipesMatchField.Ingredients => match.Index,
+                _ => throw new ArgumentOutOfRangeException()
+            }
+        };
+    }
+
+    public static SearchRecipesMatchFieldModel ToFieldModel(
+        this SearchRecipesMatchField field
+    )
+    {
+        return field switch
+        {
+            SearchRecipesMatchField.Name => SearchRecipesMatchFieldModel.Name,
+            SearchRecipesMatchField.Ingredients => SearchRecipesMatchFieldModel.Ingredients,
+            _ => throw new ArgumentOutOfRangeException()
         };
     }
 
