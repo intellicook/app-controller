@@ -144,7 +144,7 @@ public static class RecipeSearchContractExtensions
     {
         return field switch
         {
-            SearchRecipesMatchField.Name => SearchRecipesMatchFieldModel.Name,
+            SearchRecipesMatchField.Name => SearchRecipesMatchFieldModel.NameField,
             SearchRecipesMatchField.Ingredients => SearchRecipesMatchFieldModel.Ingredients,
             _ => throw new ArgumentOutOfRangeException()
         };
