@@ -1667,7 +1667,7 @@
       },
       "SearchRecipesMatchFieldModel": {
         "enum": [
-          "Name",
+          "NameField",
           "Ingredients"
         ],
         "type": "string"

@@ -11,8 +11,8 @@ part 'search_recipes_match_field_model.g.dart';
 
 class SearchRecipesMatchFieldModel extends EnumClass {
 
-  @BuiltValueEnumConst(wireName: r'Name')
-  static const SearchRecipesMatchFieldModel name = _$name;
+  @BuiltValueEnumConst(wireName: r'NameField')
+  static const SearchRecipesMatchFieldModel nameField = _$nameField;
   @BuiltValueEnumConst(wireName: r'Ingredients')
   static const SearchRecipesMatchFieldModel ingredients = _$ingredients;
 
