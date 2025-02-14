@@ -19,15 +19,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ChatByRecipeRoleModel.serializer)
       ..add(ChatByRecipeStreamContentModel.serializer)
       ..add(ChatByRecipeStreamHeaderModel.serializer)
-      ..add(FaissIndexThreadArgsModel.serializer)
-      ..add(FaissIndexThreadGetResponseModel.serializer)
-      ..add(FaissIndexThreadStatusModel.serializer)
       ..add(ForbiddenModel.serializer)
       ..add(HealthCheckModel.serializer)
       ..add(HealthGetResponseModel.serializer)
       ..add(HealthServiceModel.serializer)
       ..add(HealthStatusModel.serializer)
-      ..add(InitFaissIndexPostRequestModel.serializer)
       ..add(LoginPostRequestModel.serializer)
       ..add(LoginPostResponseModel.serializer)
       ..add(RecipeGetResponseModel.serializer)
@@ -35,10 +31,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(RecognizeIngredientsIngredientModel.serializer)
       ..add(RecognizeIngredientsPostResponseModel.serializer)
       ..add(RegisterPostRequestModel.serializer)
-      ..add(SearchRecipesByIngredientsPostRequestModel.serializer)
-      ..add(SearchRecipesByIngredientsPostResponseModel.serializer)
-      ..add(SearchRecipesByIngredientsRecipeDetailModel.serializer)
-      ..add(SearchRecipesByIngredientsRecipeModel.serializer)
       ..add(SearchRecipesMatchFieldModel.serializer)
       ..add(SearchRecipesMatchModel.serializer)
       ..add(SearchRecipesPostRequestModel.serializer)
@@ -71,10 +63,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
               const [const FullType(RecognizeIngredientsIngredientModel)]),
           () => new ListBuilder<RecognizeIngredientsIngredientModel>())
       ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(SearchRecipesByIngredientsRecipeModel)]),
-          () => new ListBuilder<SearchRecipesByIngredientsRecipeModel>())
-      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SearchRecipesRecipeModel)]),
           () => new ListBuilder<SearchRecipesRecipeModel>())
@@ -91,18 +79,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SearchRecipesMatchModel)]),
           () => new ListBuilder<SearchRecipesMatchModel>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

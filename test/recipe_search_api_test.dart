@@ -30,24 +30,6 @@ void main() {
       // TODO
     });
 
-    // Get Faiss index thread status.
-    //
-    // Only admins can initialize Faiss index.
-    //
-    //Future<FaissIndexThreadGetResponseModel> recipeSearchFaissIndexThreadGet() async
-    test('test recipeSearchFaissIndexThreadGet', () async {
-      // TODO
-    });
-
-    // Initialize Faiss index.
-    //
-    // Only admins can initialize Faiss index.  This process is asynchronous, you can check the status of the process using the FaissIndexThread endpoint.
-    //
-    //Future recipeSearchInitFaissIndexPost({ InitFaissIndexPostRequestModel initFaissIndexPostRequestModel }) async
-    test('test recipeSearchInitFaissIndexPost', () async {
-      // TODO
-    });
-
     // Get recipe by ID.
     //
     //Future<RecipeGetResponseModel> recipeSearchRecipeIdGet(int id) async
@@ -61,13 +43,6 @@ void main() {
     //
     //Future recipeSearchResetDataDelete() async
     test('test recipeSearchResetDataDelete', () async {
-      // TODO
-    });
-
-    // Search recipes by ingredients.
-    //
-    //Future<SearchRecipesByIngredientsPostResponseModel> recipeSearchSearchRecipesByIngredientsPost({ SearchRecipesByIngredientsPostRequestModel searchRecipesByIngredientsPostRequestModel }) async
-    test('test recipeSearchSearchRecipesByIngredientsPost', () async {
       // TODO
     });
 
