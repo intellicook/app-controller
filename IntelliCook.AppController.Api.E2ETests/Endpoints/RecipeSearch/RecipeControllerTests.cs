@@ -3,6 +3,7 @@ using Grpc.Core;
 using IntelliCook.AppController.Api.E2ETests.Fixtures;
 using IntelliCook.AppController.Api.Extensions;
 using IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
+using IntelliCook.AppController.Api.Models.RecipeSearch.RecipeNutrition;
 using IntelliCook.Auth.Client;
 using IntelliCook.Auth.Contract.User;
 using IntelliCook.RecipeSearch.Client;
@@ -33,10 +34,9 @@ public class RecipeControllerTests(ClientFixture fixture)
         };
         var responseModel = new RecipeResponse();
         responseModel.Id = id;
-        responseModel.Name = "Name";
-        responseModel.Ingredients.Add("Ingredient");
-        responseModel.Instructions.Add("Instruction");
-        responseModel.Raw = "Raw";
+        responseModel.Title = "Title";
+        responseModel.Description = "Description";
+        responseModel.Nutrition = new RecipeNutrition();
 
         fixture.AuthClientMock
             .Setup(x => x.GetUserMeAsync())

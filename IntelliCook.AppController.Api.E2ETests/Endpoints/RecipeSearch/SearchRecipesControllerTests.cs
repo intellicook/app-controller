@@ -39,15 +39,18 @@ public class SearchRecipesControllerTests(ClientFixture fixture)
             IncludeDetail = true
         };
         var responseDetail = new SearchRecipesRecipeDetail();
-        responseDetail.Instructions.Add("Instruction");
-        responseDetail.Raw = "Raw";
+        responseDetail.Directions.Add("Direction");
+        responseDetail.Nutrition = new RecipeNutrition();
+        responseDetail.Nutrition.Calories = RecipeNutritionValue.High;
+        responseDetail.Nutrition.Fat = RecipeNutritionValue.Medium;
+        responseDetail.Nutrition.Protein = RecipeNutritionValue.Low;
+        responseDetail.Nutrition.Carbs = RecipeNutritionValue.None;
         var responseMatch = new SearchRecipesMatch();
-        responseMatch.Field = SearchRecipesMatchField.Name;
+        responseMatch.Field = SearchRecipesMatchField.Title;
         responseMatch.Tokens.Add("Token");
         var responseRecipe = new SearchRecipesRecipe();
         responseRecipe.Id = 1;
-        responseRecipe.Name = "Name";
-        responseRecipe.Ingredients.Add("Ingredient");
+        responseRecipe.Title = "Title";
         responseRecipe.Matches.Add(responseMatch);
         responseRecipe.Detail = responseDetail;
         var responseModel = new SearchRecipesResponse();
@@ -107,13 +110,11 @@ public class SearchRecipesControllerTests(ClientFixture fixture)
             Ingredients = new[] { "Ingredient" }
         };
         var responseMatch = new SearchRecipesMatch();
-        responseMatch.Field = SearchRecipesMatchField.Name;
+        responseMatch.Field = SearchRecipesMatchField.Title;
         responseMatch.Tokens.Add("Token");
         var responseRecipe = new SearchRecipesRecipe();
         responseRecipe.Id = 1;
-        responseRecipe.Name = "Name";
-        responseRecipe.Ingredients.Add("Ingredient");
-        responseRecipe.Matches.Add(responseMatch);
+        responseRecipe.Title = "Title";
         var responseModel = new SearchRecipesResponse();
         responseModel.Recipes.Add(responseRecipe);
 
