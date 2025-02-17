@@ -4,6 +4,7 @@ README.md
 analysis_options.yaml
 doc/AddRecipesPostRequestModel.md
 doc/AddRecipesPostResponseModel.md
+doc/AddRecipesRecipeIngredientModel.md
 doc/AddRecipesRequestRecipeModel.md
 doc/AddRecipesResponseRecipeModel.md
 doc/AdminApi.md
@@ -26,6 +27,9 @@ doc/LoginPostRequestModel.md
 doc/LoginPostResponseModel.md
 doc/ProblemDetailsModel.md
 doc/RecipeGetResponseModel.md
+doc/RecipeNutritionModel.md
+doc/RecipeNutritionValueModel.md
+doc/RecipeRecipeIngredientModel.md
 doc/RecipeSearchApi.md
 doc/RecipeSearchChatByRecipeStreamPost200Response.md
 doc/RecognizeIngredientsIngredientModel.md
@@ -36,6 +40,7 @@ doc/SearchRecipesMatchModel.md
 doc/SearchRecipesPostRequestModel.md
 doc/SearchRecipesPostResponseModel.md
 doc/SearchRecipesRecipeDetailModel.md
+doc/SearchRecipesRecipeIngredientModel.md
 doc/SearchRecipesRecipeModel.md
 doc/TemporaryApi.md
 doc/UserApi.md
@@ -63,6 +68,7 @@ lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/add_recipes_post_request_model.dart
 lib/src/model/add_recipes_post_response_model.dart
+lib/src/model/add_recipes_recipe_ingredient_model.dart
 lib/src/model/add_recipes_request_recipe_model.dart
 lib/src/model/add_recipes_response_recipe_model.dart
 lib/src/model/admin_users_get404_response.dart
@@ -82,6 +88,9 @@ lib/src/model/login_post_request_model.dart
 lib/src/model/login_post_response_model.dart
 lib/src/model/problem_details_model.dart
 lib/src/model/recipe_get_response_model.dart
+lib/src/model/recipe_nutrition_model.dart
+lib/src/model/recipe_nutrition_value_model.dart
+lib/src/model/recipe_recipe_ingredient_model.dart
 lib/src/model/recipe_search_chat_by_recipe_stream_post200_response.dart
 lib/src/model/recognize_ingredients_ingredient_model.dart
 lib/src/model/recognize_ingredients_post_response_model.dart
@@ -91,6 +100,7 @@ lib/src/model/search_recipes_match_model.dart
 lib/src/model/search_recipes_post_request_model.dart
 lib/src/model/search_recipes_post_response_model.dart
 lib/src/model/search_recipes_recipe_detail_model.dart
+lib/src/model/search_recipes_recipe_ingredient_model.dart
 lib/src/model/search_recipes_recipe_model.dart
 lib/src/model/user_get_response_model.dart
 lib/src/model/user_password_put_request_model.dart
@@ -102,6 +112,7 @@ lib/src/serializers.dart
 pubspec.yaml
 test/add_recipes_post_request_model_test.dart
 test/add_recipes_post_response_model_test.dart
+test/add_recipes_recipe_ingredient_model_test.dart
 test/add_recipes_request_recipe_model_test.dart
 test/add_recipes_response_recipe_model_test.dart
 test/admin_api_test.dart
@@ -124,6 +135,9 @@ test/login_post_request_model_test.dart
 test/login_post_response_model_test.dart
 test/problem_details_model_test.dart
 test/recipe_get_response_model_test.dart
+test/recipe_nutrition_model_test.dart
+test/recipe_nutrition_value_model_test.dart
+test/recipe_recipe_ingredient_model_test.dart
 test/recipe_search_api_test.dart
 test/recipe_search_chat_by_recipe_stream_post200_response_test.dart
 test/recognize_ingredients_ingredient_model_test.dart
@@ -134,6 +148,7 @@ test/search_recipes_match_model_test.dart
 test/search_recipes_post_request_model_test.dart
 test/search_recipes_post_response_model_test.dart
 test/search_recipes_recipe_detail_model_test.dart
+test/search_recipes_recipe_ingredient_model_test.dart
 test/search_recipes_recipe_model_test.dart
 test/temporary_api_test.dart
 test/user_api_test.dart

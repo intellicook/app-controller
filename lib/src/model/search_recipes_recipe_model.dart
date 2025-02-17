@@ -6,6 +6,7 @@
 import 'package:app_controller_client/src/model/search_recipes_match_model.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:app_controller_client/src/model/search_recipes_recipe_detail_model.dart';
+import 'package:app_controller_client/src/model/search_recipes_recipe_ingredient_model.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -15,7 +16,8 @@ part 'search_recipes_recipe_model.g.dart';
 ///
 /// Properties:
 /// * [id] 
-/// * [name] 
+/// * [title] 
+/// * [description] 
 /// * [ingredients] 
 /// * [matches] 
 /// * [detail] 
@@ -24,11 +26,14 @@ abstract class SearchRecipesRecipeModel implements Built<SearchRecipesRecipeMode
   @BuiltValueField(wireName: r'id')
   int get id;
 
-  @BuiltValueField(wireName: r'name')
-  String get name;
+  @BuiltValueField(wireName: r'title')
+  String get title;
+
+  @BuiltValueField(wireName: r'description')
+  String get description;
 
   @BuiltValueField(wireName: r'ingredients')
-  BuiltList<String> get ingredients;
+  BuiltList<SearchRecipesRecipeIngredientModel> get ingredients;
 
   @BuiltValueField(wireName: r'matches')
   BuiltList<SearchRecipesMatchModel> get matches;
@@ -64,15 +69,20 @@ class _$SearchRecipesRecipeModelSerializer implements PrimitiveSerializer<Search
       object.id,
       specifiedType: const FullType(int),
     );
-    yield r'name';
+    yield r'title';
     yield serializers.serialize(
-      object.name,
+      object.title,
+      specifiedType: const FullType(String),
+    );
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
       specifiedType: const FullType(String),
     );
     yield r'ingredients';
     yield serializers.serialize(
       object.ingredients,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
+      specifiedType: const FullType(BuiltList, [FullType(SearchRecipesRecipeIngredientModel)]),
     );
     yield r'matches';
     yield serializers.serialize(
@@ -116,18 +126,25 @@ class _$SearchRecipesRecipeModelSerializer implements PrimitiveSerializer<Search
           ) as int;
           result.id = valueDes;
           break;
-        case r'name':
+        case r'title':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.name = valueDes;
+          result.title = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
           break;
         case r'ingredients':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType(BuiltList, [FullType(SearchRecipesRecipeIngredientModel)]),
+          ) as BuiltList<SearchRecipesRecipeIngredientModel>;
           result.ingredients.replace(valueDes);
           break;
         case r'matches':

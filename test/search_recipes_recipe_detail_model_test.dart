@@ -7,13 +7,23 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(SearchRecipesRecipeDetailModel, () {
-    // BuiltList<String> instructions
-    test('to test the property `instructions`', () async {
+    // BuiltList<String> directions
+    test('to test the property `directions`', () async {
       // TODO
     });
 
-    // String raw
-    test('to test the property `raw`', () async {
+    // BuiltList<String> tips
+    test('to test the property `tips`', () async {
+      // TODO
+    });
+
+    // BuiltList<String> utensils
+    test('to test the property `utensils`', () async {
+      // TODO
+    });
+
+    // RecipeNutritionModel nutrition
+    test('to test the property `nutrition`', () async {
       // TODO
     });
 

@@ -20,7 +20,7 @@ part 'search_recipes_match_model.g.dart';
 abstract class SearchRecipesMatchModel implements Built<SearchRecipesMatchModel, SearchRecipesMatchModelBuilder> {
   @BuiltValueField(wireName: r'field')
   SearchRecipesMatchFieldModel get field;
-  // enum fieldEnum {  NameField,  Ingredients,  };
+  // enum fieldEnum {  Title,  Description,  Ingredients,  };
 
   @BuiltValueField(wireName: r'tokens')
   BuiltList<String> get tokens;

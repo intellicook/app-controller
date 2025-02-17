@@ -12,12 +12,17 @@ void main() {
       // TODO
     });
 
-    // String name
-    test('to test the property `name`', () async {
+    // String title
+    test('to test the property `title`', () async {
       // TODO
     });
 
-    // BuiltList<String> ingredients
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // BuiltList<SearchRecipesRecipeIngredientModel> ingredients
     test('to test the property `ingredients`', () async {
       // TODO
     });

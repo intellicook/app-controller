@@ -3,6 +3,8 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:app_controller_client/src/model/add_recipes_recipe_ingredient_model.dart';
+import 'package:app_controller_client/src/model/recipe_nutrition_model.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -12,23 +14,35 @@ part 'add_recipes_request_recipe_model.g.dart';
 /// AddRecipesRequestRecipeModel
 ///
 /// Properties:
-/// * [name] 
+/// * [title] 
+/// * [description] 
 /// * [ingredients] 
-/// * [instructions] 
-/// * [raw] 
+/// * [directions] 
+/// * [tips] 
+/// * [utensils] 
+/// * [nutrition] 
 @BuiltValue()
 abstract class AddRecipesRequestRecipeModel implements Built<AddRecipesRequestRecipeModel, AddRecipesRequestRecipeModelBuilder> {
-  @BuiltValueField(wireName: r'name')
-  String get name;
+  @BuiltValueField(wireName: r'title')
+  String get title;
+
+  @BuiltValueField(wireName: r'description')
+  String get description;
 
   @BuiltValueField(wireName: r'ingredients')
-  BuiltList<String> get ingredients;
+  BuiltList<AddRecipesRecipeIngredientModel> get ingredients;
 
-  @BuiltValueField(wireName: r'instructions')
-  BuiltList<String> get instructions;
+  @BuiltValueField(wireName: r'directions')
+  BuiltList<String> get directions;
 
-  @BuiltValueField(wireName: r'raw')
-  String? get raw;
+  @BuiltValueField(wireName: r'tips')
+  BuiltList<String> get tips;
+
+  @BuiltValueField(wireName: r'utensils')
+  BuiltList<String> get utensils;
+
+  @BuiltValueField(wireName: r'nutrition')
+  RecipeNutritionModel get nutrition;
 
   AddRecipesRequestRecipeModel._();
 
@@ -53,28 +67,41 @@ class _$AddRecipesRequestRecipeModelSerializer implements PrimitiveSerializer<Ad
     AddRecipesRequestRecipeModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'name';
+    yield r'title';
     yield serializers.serialize(
-      object.name,
+      object.title,
+      specifiedType: const FullType(String),
+    );
+    yield r'description';
+    yield serializers.serialize(
+      object.description,
       specifiedType: const FullType(String),
     );
     yield r'ingredients';
     yield serializers.serialize(
       object.ingredients,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
+      specifiedType: const FullType(BuiltList, [FullType(AddRecipesRecipeIngredientModel)]),
     );
-    yield r'instructions';
+    yield r'directions';
     yield serializers.serialize(
-      object.instructions,
+      object.directions,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
-    if (object.raw != null) {
-      yield r'raw';
-      yield serializers.serialize(
-        object.raw,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
+    yield r'tips';
+    yield serializers.serialize(
+      object.tips,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'utensils';
+    yield serializers.serialize(
+      object.utensils,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'nutrition';
+    yield serializers.serialize(
+      object.nutrition,
+      specifiedType: const FullType(RecipeNutritionModel),
+    );
   }
 
   @override
@@ -98,34 +125,54 @@ class _$AddRecipesRequestRecipeModelSerializer implements PrimitiveSerializer<Ad
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'name':
+        case r'title':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.name = valueDes;
+          result.title = valueDes;
+          break;
+        case r'description':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.description = valueDes;
           break;
         case r'ingredients':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(String)]),
-          ) as BuiltList<String>;
+            specifiedType: const FullType(BuiltList, [FullType(AddRecipesRecipeIngredientModel)]),
+          ) as BuiltList<AddRecipesRecipeIngredientModel>;
           result.ingredients.replace(valueDes);
           break;
-        case r'instructions':
+        case r'directions':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
-          result.instructions.replace(valueDes);
+          result.directions.replace(valueDes);
           break;
-        case r'raw':
+        case r'tips':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.raw = valueDes;
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.tips.replace(valueDes);
+          break;
+        case r'utensils':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.utensils.replace(valueDes);
+          break;
+        case r'nutrition':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(RecipeNutritionModel),
+          ) as RecipeNutritionModel;
+          result.nutrition.replace(valueDes);
           break;
         default:
           unhandled.add(key);

@@ -10,13 +10,19 @@ class _$RecipeGetResponseModel extends RecipeGetResponseModel {
   @override
   final int id;
   @override
-  final String name;
+  final String title;
   @override
-  final BuiltList<String> ingredients;
+  final String description;
   @override
-  final BuiltList<String> instructions;
+  final BuiltList<RecipeRecipeIngredientModel> ingredients;
   @override
-  final String raw;
+  final BuiltList<String> directions;
+  @override
+  final BuiltList<String> tips;
+  @override
+  final BuiltList<String> utensils;
+  @override
+  final RecipeNutritionModel nutrition;
 
   factory _$RecipeGetResponseModel(
           [void Function(RecipeGetResponseModelBuilder)? updates]) =>
@@ -24,20 +30,29 @@ class _$RecipeGetResponseModel extends RecipeGetResponseModel {
 
   _$RecipeGetResponseModel._(
       {required this.id,
-      required this.name,
+      required this.title,
+      required this.description,
       required this.ingredients,
-      required this.instructions,
-      required this.raw})
+      required this.directions,
+      required this.tips,
+      required this.utensils,
+      required this.nutrition})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'RecipeGetResponseModel', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        name, r'RecipeGetResponseModel', 'name');
+        title, r'RecipeGetResponseModel', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'RecipeGetResponseModel', 'description');
     BuiltValueNullFieldError.checkNotNull(
         ingredients, r'RecipeGetResponseModel', 'ingredients');
     BuiltValueNullFieldError.checkNotNull(
-        instructions, r'RecipeGetResponseModel', 'instructions');
+        directions, r'RecipeGetResponseModel', 'directions');
     BuiltValueNullFieldError.checkNotNull(
-        raw, r'RecipeGetResponseModel', 'raw');
+        tips, r'RecipeGetResponseModel', 'tips');
+    BuiltValueNullFieldError.checkNotNull(
+        utensils, r'RecipeGetResponseModel', 'utensils');
+    BuiltValueNullFieldError.checkNotNull(
+        nutrition, r'RecipeGetResponseModel', 'nutrition');
   }
 
   @override
@@ -54,20 +69,26 @@ class _$RecipeGetResponseModel extends RecipeGetResponseModel {
     if (identical(other, this)) return true;
     return other is RecipeGetResponseModel &&
         id == other.id &&
-        name == other.name &&
+        title == other.title &&
+        description == other.description &&
         ingredients == other.ingredients &&
-        instructions == other.instructions &&
-        raw == other.raw;
+        directions == other.directions &&
+        tips == other.tips &&
+        utensils == other.utensils &&
+        nutrition == other.nutrition;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, ingredients.hashCode);
-    _$hash = $jc(_$hash, instructions.hashCode);
-    _$hash = $jc(_$hash, raw.hashCode);
+    _$hash = $jc(_$hash, directions.hashCode);
+    _$hash = $jc(_$hash, tips.hashCode);
+    _$hash = $jc(_$hash, utensils.hashCode);
+    _$hash = $jc(_$hash, nutrition.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -76,10 +97,13 @@ class _$RecipeGetResponseModel extends RecipeGetResponseModel {
   String toString() {
     return (newBuiltValueToStringHelper(r'RecipeGetResponseModel')
           ..add('id', id)
-          ..add('name', name)
+          ..add('title', title)
+          ..add('description', description)
           ..add('ingredients', ingredients)
-          ..add('instructions', instructions)
-          ..add('raw', raw))
+          ..add('directions', directions)
+          ..add('tips', tips)
+          ..add('utensils', utensils)
+          ..add('nutrition', nutrition))
         .toString();
   }
 }
@@ -92,25 +116,40 @@ class RecipeGetResponseModelBuilder
   int? get id => _$this._id;
   set id(int? id) => _$this._id = id;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  ListBuilder<String>? _ingredients;
-  ListBuilder<String> get ingredients =>
-      _$this._ingredients ??= new ListBuilder<String>();
-  set ingredients(ListBuilder<String>? ingredients) =>
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
+  ListBuilder<RecipeRecipeIngredientModel>? _ingredients;
+  ListBuilder<RecipeRecipeIngredientModel> get ingredients =>
+      _$this._ingredients ??= new ListBuilder<RecipeRecipeIngredientModel>();
+  set ingredients(ListBuilder<RecipeRecipeIngredientModel>? ingredients) =>
       _$this._ingredients = ingredients;
 
-  ListBuilder<String>? _instructions;
-  ListBuilder<String> get instructions =>
-      _$this._instructions ??= new ListBuilder<String>();
-  set instructions(ListBuilder<String>? instructions) =>
-      _$this._instructions = instructions;
+  ListBuilder<String>? _directions;
+  ListBuilder<String> get directions =>
+      _$this._directions ??= new ListBuilder<String>();
+  set directions(ListBuilder<String>? directions) =>
+      _$this._directions = directions;
 
-  String? _raw;
-  String? get raw => _$this._raw;
-  set raw(String? raw) => _$this._raw = raw;
+  ListBuilder<String>? _tips;
+  ListBuilder<String> get tips => _$this._tips ??= new ListBuilder<String>();
+  set tips(ListBuilder<String>? tips) => _$this._tips = tips;
+
+  ListBuilder<String>? _utensils;
+  ListBuilder<String> get utensils =>
+      _$this._utensils ??= new ListBuilder<String>();
+  set utensils(ListBuilder<String>? utensils) => _$this._utensils = utensils;
+
+  RecipeNutritionModelBuilder? _nutrition;
+  RecipeNutritionModelBuilder get nutrition =>
+      _$this._nutrition ??= new RecipeNutritionModelBuilder();
+  set nutrition(RecipeNutritionModelBuilder? nutrition) =>
+      _$this._nutrition = nutrition;
 
   RecipeGetResponseModelBuilder() {
     RecipeGetResponseModel._defaults(this);
@@ -120,10 +159,13 @@ class RecipeGetResponseModelBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _name = $v.name;
+      _title = $v.title;
+      _description = $v.description;
       _ingredients = $v.ingredients.toBuilder();
-      _instructions = $v.instructions.toBuilder();
-      _raw = $v.raw;
+      _directions = $v.directions.toBuilder();
+      _tips = $v.tips.toBuilder();
+      _utensils = $v.utensils.toBuilder();
+      _nutrition = $v.nutrition.toBuilder();
       _$v = null;
     }
     return this;
@@ -150,20 +192,29 @@ class RecipeGetResponseModelBuilder
           new _$RecipeGetResponseModel._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'RecipeGetResponseModel', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'RecipeGetResponseModel', 'name'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, r'RecipeGetResponseModel', 'title'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'RecipeGetResponseModel', 'description'),
             ingredients: ingredients.build(),
-            instructions: instructions.build(),
-            raw: BuiltValueNullFieldError.checkNotNull(
-                raw, r'RecipeGetResponseModel', 'raw'),
+            directions: directions.build(),
+            tips: tips.build(),
+            utensils: utensils.build(),
+            nutrition: nutrition.build(),
           );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'ingredients';
         ingredients.build();
-        _$failedField = 'instructions';
-        instructions.build();
+        _$failedField = 'directions';
+        directions.build();
+        _$failedField = 'tips';
+        tips.build();
+        _$failedField = 'utensils';
+        utensils.build();
+        _$failedField = 'nutrition';
+        nutrition.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'RecipeGetResponseModel', _$failedField, e.toString());

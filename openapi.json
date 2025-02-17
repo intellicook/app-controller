@@ -903,10 +903,8 @@
         },
         "additionalProperties": false
       },
-      "AddRecipesRequestRecipeModel": {
+      "AddRecipesRecipeIngredientModel": {
         "required": [
-          "ingredients",
-          "instructions",
           "name"
         ],
         "type": "object",
@@ -915,32 +913,78 @@
             "minLength": 1,
             "type": "string"
           },
-          "ingredients": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "quantity": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
           },
-          "instructions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "raw": {
+          "unit": {
             "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
+      "AddRecipesRequestRecipeModel": {
+        "required": [
+          "description",
+          "directions",
+          "ingredients",
+          "nutrition",
+          "tips",
+          "title",
+          "utensils"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddRecipesRecipeIngredientModel"
+            }
+          },
+          "directions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tips": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "utensils": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nutrition": {
+            "$ref": "#/components/schemas/RecipeNutritionModel"
+          }
+        },
+        "additionalProperties": false
+      },
       "AddRecipesResponseRecipeModel": {
         "required": [
+          "description",
+          "directions",
           "id",
           "ingredients",
-          "instructions",
-          "name",
-          "raw"
+          "nutrition",
+          "tips",
+          "title",
+          "utensils"
         ],
         "type": "object",
         "properties": {
@@ -948,25 +992,40 @@
             "type": "integer",
             "format": "int32"
           },
-          "name": {
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
             "minLength": 1,
             "type": "string"
           },
           "ingredients": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/AddRecipesRecipeIngredientModel"
             }
           },
-          "instructions": {
+          "directions": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "raw": {
-            "minLength": 1,
-            "type": "string"
+          "tips": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "utensils": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nutrition": {
+            "$ref": "#/components/schemas/RecipeNutritionModel"
           }
         },
         "additionalProperties": false
@@ -1200,11 +1259,14 @@
       },
       "RecipeGetResponseModel": {
         "required": [
+          "description",
+          "directions",
           "id",
           "ingredients",
-          "instructions",
-          "name",
-          "raw"
+          "nutrition",
+          "tips",
+          "title",
+          "utensils"
         ],
         "type": "object",
         "properties": {
@@ -1212,25 +1274,95 @@
             "type": "integer",
             "format": "int32"
           },
-          "name": {
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
             "minLength": 1,
             "type": "string"
           },
           "ingredients": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/RecipeRecipeIngredientModel"
             }
           },
-          "instructions": {
+          "directions": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "raw": {
+          "tips": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "utensils": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nutrition": {
+            "$ref": "#/components/schemas/RecipeNutritionModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RecipeNutritionModel": {
+        "required": [
+          "calories",
+          "carbs",
+          "fat",
+          "protein"
+        ],
+        "type": "object",
+        "properties": {
+          "calories": {
+            "$ref": "#/components/schemas/RecipeNutritionValueModel"
+          },
+          "fat": {
+            "$ref": "#/components/schemas/RecipeNutritionValueModel"
+          },
+          "protein": {
+            "$ref": "#/components/schemas/RecipeNutritionValueModel"
+          },
+          "carbs": {
+            "$ref": "#/components/schemas/RecipeNutritionValueModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RecipeNutritionValueModel": {
+        "enum": [
+          "High",
+          "Medium",
+          "Low",
+          "None"
+        ],
+        "type": "string"
+      },
+      "RecipeRecipeIngredientModel": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
             "minLength": 1,
             "type": "string"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1320,7 +1452,8 @@
       },
       "SearchRecipesMatchFieldModel": {
         "enum": [
-          "NameField",
+          "Title",
+          "Description",
           "Ingredients"
         ],
         "type": "string"
@@ -1400,30 +1533,66 @@
       },
       "SearchRecipesRecipeDetailModel": {
         "required": [
-          "instructions",
-          "raw"
+          "directions",
+          "nutrition",
+          "tips",
+          "utensils"
         ],
         "type": "object",
         "properties": {
-          "instructions": {
+          "directions": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "raw": {
+          "tips": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "utensils": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "nutrition": {
+            "$ref": "#/components/schemas/RecipeNutritionModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SearchRecipesRecipeIngredientModel": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
             "minLength": 1,
             "type": "string"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "unit": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
       "SearchRecipesRecipeModel": {
         "required": [
+          "description",
           "id",
           "ingredients",
           "matches",
-          "name"
+          "title"
         ],
         "type": "object",
         "properties": {
@@ -1431,14 +1600,18 @@
             "type": "integer",
             "format": "int32"
           },
-          "name": {
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
             "minLength": 1,
             "type": "string"
           },
           "ingredients": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/SearchRecipesRecipeIngredientModel"
             }
           },
           "matches": {

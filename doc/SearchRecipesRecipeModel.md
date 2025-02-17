@@ -9,8 +9,9 @@ import 'package:app_controller_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
-**name** | **String** |  | 
-**ingredients** | **BuiltList&lt;String&gt;** |  | 
+**title** | **String** |  | 
+**description** | **String** |  | 
+**ingredients** | [**BuiltList&lt;SearchRecipesRecipeIngredientModel&gt;**](SearchRecipesRecipeIngredientModel.md) |  | 
 **matches** | [**BuiltList&lt;SearchRecipesMatchModel&gt;**](SearchRecipesMatchModel.md) |  | 
 **detail** | [**SearchRecipesRecipeDetailModel**](SearchRecipesRecipeDetailModel.md) |  | [optional] 
 

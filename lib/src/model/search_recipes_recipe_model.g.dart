@@ -10,9 +10,11 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
   @override
   final int id;
   @override
-  final String name;
+  final String title;
   @override
-  final BuiltList<String> ingredients;
+  final String description;
+  @override
+  final BuiltList<SearchRecipesRecipeIngredientModel> ingredients;
   @override
   final BuiltList<SearchRecipesMatchModel> matches;
   @override
@@ -24,7 +26,8 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
 
   _$SearchRecipesRecipeModel._(
       {required this.id,
-      required this.name,
+      required this.title,
+      required this.description,
       required this.ingredients,
       required this.matches,
       this.detail})
@@ -32,7 +35,9 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
     BuiltValueNullFieldError.checkNotNull(
         id, r'SearchRecipesRecipeModel', 'id');
     BuiltValueNullFieldError.checkNotNull(
-        name, r'SearchRecipesRecipeModel', 'name');
+        title, r'SearchRecipesRecipeModel', 'title');
+    BuiltValueNullFieldError.checkNotNull(
+        description, r'SearchRecipesRecipeModel', 'description');
     BuiltValueNullFieldError.checkNotNull(
         ingredients, r'SearchRecipesRecipeModel', 'ingredients');
     BuiltValueNullFieldError.checkNotNull(
@@ -53,7 +58,8 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
     if (identical(other, this)) return true;
     return other is SearchRecipesRecipeModel &&
         id == other.id &&
-        name == other.name &&
+        title == other.title &&
+        description == other.description &&
         ingredients == other.ingredients &&
         matches == other.matches &&
         detail == other.detail;
@@ -63,7 +69,8 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, id.hashCode);
-    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
     _$hash = $jc(_$hash, ingredients.hashCode);
     _$hash = $jc(_$hash, matches.hashCode);
     _$hash = $jc(_$hash, detail.hashCode);
@@ -75,7 +82,8 @@ class _$SearchRecipesRecipeModel extends SearchRecipesRecipeModel {
   String toString() {
     return (newBuiltValueToStringHelper(r'SearchRecipesRecipeModel')
           ..add('id', id)
-          ..add('name', name)
+          ..add('title', title)
+          ..add('description', description)
           ..add('ingredients', ingredients)
           ..add('matches', matches)
           ..add('detail', detail))
@@ -92,14 +100,20 @@ class SearchRecipesRecipeModelBuilder
   int? get id => _$this._id;
   set id(int? id) => _$this._id = id;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
+  String? _title;
+  String? get title => _$this._title;
+  set title(String? title) => _$this._title = title;
 
-  ListBuilder<String>? _ingredients;
-  ListBuilder<String> get ingredients =>
-      _$this._ingredients ??= new ListBuilder<String>();
-  set ingredients(ListBuilder<String>? ingredients) =>
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
+  ListBuilder<SearchRecipesRecipeIngredientModel>? _ingredients;
+  ListBuilder<SearchRecipesRecipeIngredientModel> get ingredients =>
+      _$this._ingredients ??=
+          new ListBuilder<SearchRecipesRecipeIngredientModel>();
+  set ingredients(
+          ListBuilder<SearchRecipesRecipeIngredientModel>? ingredients) =>
       _$this._ingredients = ingredients;
 
   ListBuilder<SearchRecipesMatchModel>? _matches;
@@ -122,7 +136,8 @@ class SearchRecipesRecipeModelBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _name = $v.name;
+      _title = $v.title;
+      _description = $v.description;
       _ingredients = $v.ingredients.toBuilder();
       _matches = $v.matches.toBuilder();
       _detail = $v.detail?.toBuilder();
@@ -152,8 +167,10 @@ class SearchRecipesRecipeModelBuilder
           new _$SearchRecipesRecipeModel._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'SearchRecipesRecipeModel', 'id'),
-            name: BuiltValueNullFieldError.checkNotNull(
-                name, r'SearchRecipesRecipeModel', 'name'),
+            title: BuiltValueNullFieldError.checkNotNull(
+                title, r'SearchRecipesRecipeModel', 'title'),
+            description: BuiltValueNullFieldError.checkNotNull(
+                description, r'SearchRecipesRecipeModel', 'description'),
             ingredients: ingredients.build(),
             matches: matches.build(),
             detail: _detail?.build(),

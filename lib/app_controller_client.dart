@@ -20,6 +20,7 @@ export 'package:app_controller_client/src/api/user_api.dart';
 
 export 'package:app_controller_client/src/model/add_recipes_post_request_model.dart';
 export 'package:app_controller_client/src/model/add_recipes_post_response_model.dart';
+export 'package:app_controller_client/src/model/add_recipes_recipe_ingredient_model.dart';
 export 'package:app_controller_client/src/model/add_recipes_request_recipe_model.dart';
 export 'package:app_controller_client/src/model/add_recipes_response_recipe_model.dart';
 export 'package:app_controller_client/src/model/admin_users_get404_response.dart';
@@ -38,6 +39,9 @@ export 'package:app_controller_client/src/model/login_post_request_model.dart';
 export 'package:app_controller_client/src/model/login_post_response_model.dart';
 export 'package:app_controller_client/src/model/problem_details_model.dart';
 export 'package:app_controller_client/src/model/recipe_get_response_model.dart';
+export 'package:app_controller_client/src/model/recipe_nutrition_model.dart';
+export 'package:app_controller_client/src/model/recipe_nutrition_value_model.dart';
+export 'package:app_controller_client/src/model/recipe_recipe_ingredient_model.dart';
 export 'package:app_controller_client/src/model/recipe_search_chat_by_recipe_stream_post200_response.dart';
 export 'package:app_controller_client/src/model/recognize_ingredients_ingredient_model.dart';
 export 'package:app_controller_client/src/model/recognize_ingredients_post_response_model.dart';
@@ -47,6 +51,7 @@ export 'package:app_controller_client/src/model/search_recipes_match_model.dart'
 export 'package:app_controller_client/src/model/search_recipes_post_request_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_post_response_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_recipe_detail_model.dart';
+export 'package:app_controller_client/src/model/search_recipes_recipe_ingredient_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_recipe_model.dart';
 export 'package:app_controller_client/src/model/user_get_response_model.dart';
 export 'package:app_controller_client/src/model/user_password_put_request_model.dart';

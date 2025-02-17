@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:app_controller_client/src/model/recipe_nutrition_model.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -12,15 +13,23 @@ part 'search_recipes_recipe_detail_model.g.dart';
 /// SearchRecipesRecipeDetailModel
 ///
 /// Properties:
-/// * [instructions] 
-/// * [raw] 
+/// * [directions] 
+/// * [tips] 
+/// * [utensils] 
+/// * [nutrition] 
 @BuiltValue()
 abstract class SearchRecipesRecipeDetailModel implements Built<SearchRecipesRecipeDetailModel, SearchRecipesRecipeDetailModelBuilder> {
-  @BuiltValueField(wireName: r'instructions')
-  BuiltList<String> get instructions;
+  @BuiltValueField(wireName: r'directions')
+  BuiltList<String> get directions;
 
-  @BuiltValueField(wireName: r'raw')
-  String get raw;
+  @BuiltValueField(wireName: r'tips')
+  BuiltList<String> get tips;
+
+  @BuiltValueField(wireName: r'utensils')
+  BuiltList<String> get utensils;
+
+  @BuiltValueField(wireName: r'nutrition')
+  RecipeNutritionModel get nutrition;
 
   SearchRecipesRecipeDetailModel._();
 
@@ -45,15 +54,25 @@ class _$SearchRecipesRecipeDetailModelSerializer implements PrimitiveSerializer<
     SearchRecipesRecipeDetailModel object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'instructions';
+    yield r'directions';
     yield serializers.serialize(
-      object.instructions,
+      object.directions,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
-    yield r'raw';
+    yield r'tips';
     yield serializers.serialize(
-      object.raw,
-      specifiedType: const FullType(String),
+      object.tips,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'utensils';
+    yield serializers.serialize(
+      object.utensils,
+      specifiedType: const FullType(BuiltList, [FullType(String)]),
+    );
+    yield r'nutrition';
+    yield serializers.serialize(
+      object.nutrition,
+      specifiedType: const FullType(RecipeNutritionModel),
     );
   }
 
@@ -78,19 +97,33 @@ class _$SearchRecipesRecipeDetailModelSerializer implements PrimitiveSerializer<
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'instructions':
+        case r'directions':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
-          result.instructions.replace(valueDes);
+          result.directions.replace(valueDes);
           break;
-        case r'raw':
+        case r'tips':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.raw = valueDes;
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.tips.replace(valueDes);
+          break;
+        case r'utensils':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.utensils.replace(valueDes);
+          break;
+        case r'nutrition':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(RecipeNutritionModel),
+          ) as RecipeNutritionModel;
+          result.nutrition.replace(valueDes);
           break;
         default:
           unhandled.add(key);

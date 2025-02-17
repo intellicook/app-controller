@@ -10,6 +10,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add($ProblemDetailsModel.serializer)
       ..add(AddRecipesPostRequestModel.serializer)
       ..add(AddRecipesPostResponseModel.serializer)
+      ..add(AddRecipesRecipeIngredientModel.serializer)
       ..add(AddRecipesRequestRecipeModel.serializer)
       ..add(AddRecipesResponseRecipeModel.serializer)
       ..add(AdminUsersGet404Response.serializer)
@@ -27,6 +28,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(LoginPostRequestModel.serializer)
       ..add(LoginPostResponseModel.serializer)
       ..add(RecipeGetResponseModel.serializer)
+      ..add(RecipeNutritionModel.serializer)
+      ..add(RecipeNutritionValueModel.serializer)
+      ..add(RecipeRecipeIngredientModel.serializer)
       ..add(RecipeSearchChatByRecipeStreamPost200Response.serializer)
       ..add(RecognizeIngredientsIngredientModel.serializer)
       ..add(RecognizeIngredientsPostResponseModel.serializer)
@@ -36,6 +40,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(SearchRecipesPostRequestModel.serializer)
       ..add(SearchRecipesPostResponseModel.serializer)
       ..add(SearchRecipesRecipeDetailModel.serializer)
+      ..add(SearchRecipesRecipeIngredientModel.serializer)
       ..add(SearchRecipesRecipeModel.serializer)
       ..add(UserGetResponseModel.serializer)
       ..add(UserPasswordPutRequestModel.serializer)
@@ -43,6 +48,32 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UserPutResponseModel.serializer)
       ..add(UserRoleModel.serializer)
       ..add(ValidationProblemDetailsModel.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(AddRecipesRecipeIngredientModel)]),
+          () => new ListBuilder<AddRecipesRecipeIngredientModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(AddRecipesRecipeIngredientModel)]),
+          () => new ListBuilder<AddRecipesRecipeIngredientModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(AddRecipesRequestRecipeModel)]),
@@ -59,32 +90,34 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(HealthCheckModel)]),
           () => new ListBuilder<HealthCheckModel>())
       ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(RecipeRecipeIngredientModel)]),
+          () => new ListBuilder<RecipeRecipeIngredientModel>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(RecognizeIngredientsIngredientModel)]),
           () => new ListBuilder<RecognizeIngredientsIngredientModel>())
       ..addBuilderFactory(
-          const FullType(
-              BuiltList, const [const FullType(SearchRecipesRecipeModel)]),
-          () => new ListBuilder<SearchRecipesRecipeModel>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          const FullType(BuiltList,
+              const [const FullType(SearchRecipesRecipeIngredientModel)]),
+          () => new ListBuilder<SearchRecipesRecipeIngredientModel>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SearchRecipesMatchModel)]),
           () => new ListBuilder<SearchRecipesMatchModel>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          const FullType(
+              BuiltList, const [const FullType(SearchRecipesRecipeModel)]),
+          () => new ListBuilder<SearchRecipesRecipeModel>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())
