@@ -1,10 +1,9 @@
 using IntelliCook.AppController.Api.Models.Health;
 using IntelliCook.AppController.Api.Models.RecipeSearch.AddRecipes;
 using IntelliCook.AppController.Api.Models.RecipeSearch.ChatByRecipe;
-using IntelliCook.AppController.Api.Models.RecipeSearch.FaissIndexThread;
 using IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
+using IntelliCook.AppController.Api.Models.RecipeSearch.RecipeNutrition;
 using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipes;
-using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipesByIngredients;
 using IntelliCook.RecipeSearch.Client;
 
 namespace IntelliCook.AppController.Api.Extensions;
@@ -46,43 +45,36 @@ public static class RecipeSearchContractExtensions
 
     #endregion
 
-    #region SearchRecipesByIngredients
+    #region RecipeNutrion
 
-    public static SearchRecipesByIngredientsPostResponseModel ToPostResponseModel(
-        this SearchRecipesByIngredientsResponse response
+    public static RecipeNutritionModel ToRecipeNutritionModel(
+        this RecipeNutrition nutrition
     )
     {
-        return new SearchRecipesByIngredientsPostResponseModel
+        return new RecipeNutritionModel
         {
-            Recipes = response.Recipes.Select(r => r.ToRecipeModel())
+            Calories = nutrition.Calories.ToRecipeNutritionValueModel(),
+            Fat = nutrition.Fat.ToRecipeNutritionValueModel(),
+            Protein = nutrition.Protein.ToRecipeNutritionValueModel(),
+            Carbs = nutrition.Carbs.ToRecipeNutritionValueModel()
         };
     }
 
-    public static SearchRecipesByIngredientsRecipeDetailModel ToRecipeDetailModel(
-        this SearchRecipesByIngredientsRecipeDetail recipe
+    public static RecipeNutritionValueModel ToRecipeNutritionValueModel(
+        this RecipeNutritionValue value
     )
     {
-        return new SearchRecipesByIngredientsRecipeDetailModel
+        return value switch
         {
-            Ingredients = recipe.Ingredients,
-            Instructions = recipe.Instructions,
-            Raw = recipe.Raw
+            RecipeNutritionValue.High => RecipeNutritionValueModel.High,
+            RecipeNutritionValue.Medium => RecipeNutritionValueModel.Medium,
+            RecipeNutritionValue.Low => RecipeNutritionValueModel.Low,
+            RecipeNutritionValue.None => RecipeNutritionValueModel.None,
+            _ => throw new ArgumentOutOfRangeException()
         };
     }
 
-    public static SearchRecipesByIngredientsRecipeModel ToRecipeModel(
-        this SearchRecipesByIngredientsRecipe recipe
-    )
-    {
-        return new SearchRecipesByIngredientsRecipeModel
-        {
-            Id = recipe.Id,
-            Name = recipe.Name,
-            Detail = recipe.Detail?.ToRecipeDetailModel()
-        };
-    }
-
-    #endregion
+    #endregion RecipeNutrion
 
     #region SearchRecipes
 
@@ -102,8 +94,10 @@ public static class RecipeSearchContractExtensions
     {
         return new SearchRecipesRecipeDetailModel
         {
-            Instructions = recipe.Instructions,
-            Raw = recipe.Raw
+            Directions = recipe.Directions,
+            Tips = recipe.Tips,
+            Utensils = recipe.Utensils,
+            Nutrition = recipe.Nutrition.ToRecipeNutritionModel()
         };
     }
 
@@ -114,10 +108,23 @@ public static class RecipeSearchContractExtensions
         return new SearchRecipesRecipeModel
         {
             Id = recipe.Id,
-            Name = recipe.Name,
-            Ingredients = recipe.Ingredients,
+            Title = recipe.Title,
+            Description = recipe.Description,
+            Ingredients = recipe.Ingredients.Select(i => i.ToRecipeIngredientModel()),
             Matches = recipe.Matches.Select(m => m.ToMatchModel()),
             Detail = recipe.Detail?.ToRecipeDetailModel()
+        };
+    }
+
+    public static SearchRecipesRecipeIngredientModel ToRecipeIngredientModel(
+        this SearchRecipesRecipeIngredient ingredient
+    )
+    {
+        return new SearchRecipesRecipeIngredientModel
+        {
+            Name = ingredient.Name,
+            Quantity = ingredient.Quantity,
+            Unit = ingredient.Unit
         };
     }
 
@@ -131,7 +138,8 @@ public static class RecipeSearchContractExtensions
             Tokens = match.Tokens,
             Index = match.Field switch
             {
-                SearchRecipesMatchField.Name => null,
+                SearchRecipesMatchField.Title => null,
+                SearchRecipesMatchField.Description => null,
                 SearchRecipesMatchField.Ingredients => match.Index,
                 _ => throw new ArgumentOutOfRangeException()
             }
@@ -144,7 +152,8 @@ public static class RecipeSearchContractExtensions
     {
         return field switch
         {
-            SearchRecipesMatchField.Name => SearchRecipesMatchFieldModel.NameField,
+            SearchRecipesMatchField.Title => SearchRecipesMatchFieldModel.Title,
+            SearchRecipesMatchField.Description => SearchRecipesMatchFieldModel.Description,
             SearchRecipesMatchField.Ingredients => SearchRecipesMatchFieldModel.Ingredients,
             _ => throw new ArgumentOutOfRangeException()
         };
@@ -161,10 +170,25 @@ public static class RecipeSearchContractExtensions
         return new RecipeGetResponseModel
         {
             Id = response.Id,
-            Name = response.Name,
-            Ingredients = response.Ingredients,
-            Instructions = response.Instructions,
-            Raw = response.Raw
+            Title = response.Title,
+            Description = response.Description,
+            Ingredients = response.Ingredients.Select(i => i.ToRecipeIngredientModel()),
+            Directions = response.Directions,
+            Tips = response.Tips,
+            Utensils = response.Utensils,
+            Nutrition = response.Nutrition.ToRecipeNutritionModel()
+        };
+    }
+
+    public static RecipeRecipeIngredientModel ToRecipeIngredientModel(
+        this RecipeRecipeIngredient ingredient
+    )
+    {
+        return new RecipeRecipeIngredientModel
+        {
+            Name = ingredient.Name,
+            Quantity = ingredient.Quantity,
+            Unit = ingredient.Unit
         };
     }
 
@@ -258,51 +282,25 @@ public static class RecipeSearchContractExtensions
         return new AddRecipesResponseRecipeModel
         {
             Id = recipe.Id,
-            Name = recipe.Name,
-            Ingredients = recipe.Ingredients,
-            Instructions = recipe.Instructions,
-            Raw = recipe.Raw
+            Title = recipe.Title,
+            Description = recipe.Description,
+            Ingredients = recipe.Ingredients.Select(i => i.ToRecipeIngredientModel()),
+            Directions = recipe.Directions,
+            Tips = recipe.Tips,
+            Utensils = recipe.Utensils,
+            Nutrition = recipe.Nutrition.ToRecipeNutritionModel()
         };
     }
 
-    #endregion
-
-    #region FaissIndexThread
-
-    public static FaissIndexThreadStatusModel ToFaissIndexThreadStatusModel(
-        this FaissIndexThreadStatus status
+    public static AddRecipesRecipeIngredientModel ToRecipeIngredientModel(
+        this AddRecipesRecipeIngredient ingredient
     )
     {
-        return status switch
+        return new AddRecipesRecipeIngredientModel
         {
-            FaissIndexThreadStatus.Uninitialized => FaissIndexThreadStatusModel.Uninitialized,
-            FaissIndexThreadStatus.InProgress => FaissIndexThreadStatusModel.InProgress,
-            FaissIndexThreadStatus.Failed => FaissIndexThreadStatusModel.Failed,
-            FaissIndexThreadStatus.Completed => FaissIndexThreadStatusModel.Completed,
-            _ => throw new ArgumentOutOfRangeException()
-        };
-    }
-
-    public static FaissIndexThreadArgsModel ToArgsModel(
-        this FaissIndexThreadArgs args
-    )
-    {
-        return new FaissIndexThreadArgsModel
-        {
-            Count = args.Count,
-            Model = args.Model,
-            Path = args.Path
-        };
-    }
-
-    public static FaissIndexThreadGetResponseModel ToGetResponseModel(
-        this FaissIndexThreadResponse response
-    )
-    {
-        return new FaissIndexThreadGetResponseModel
-        {
-            Status = response.Status.ToFaissIndexThreadStatusModel(),
-            Args = response.Args.ToArgsModel()
+            Name = ingredient.Name,
+            Quantity = ingredient.Quantity,
+            Unit = ingredient.Unit
         };
     }
 

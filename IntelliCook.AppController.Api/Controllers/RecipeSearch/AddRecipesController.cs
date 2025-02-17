@@ -1,6 +1,7 @@
 using IntelliCook.AppController.Api.Extensions;
 using IntelliCook.AppController.Api.Models;
 using IntelliCook.AppController.Api.Models.RecipeSearch.AddRecipes;
+using IntelliCook.AppController.Api.Models.RecipeSearch.RecipeNutrition;
 using IntelliCook.Auth.Client;
 using IntelliCook.Auth.Contract.User;
 using IntelliCook.RecipeSearch.Client;
@@ -51,14 +52,33 @@ public class AddRecipesController(
         {
             var rpcRecipe = new AddRecipesRequestRecipe();
 
-            rpcRecipe.Name = recipe.Name;
-            rpcRecipe.Ingredients.AddRange(recipe.Ingredients);
-            rpcRecipe.Instructions.AddRange(recipe.Instructions);
-
-            if (recipe.Raw is not null)
+            rpcRecipe.Title = recipe.Title;
+            rpcRecipe.Ingredients.AddRange(recipe.Ingredients.Select(i =>
             {
-                rpcRecipe.Raw = recipe.Raw;
-            }
+                var rpcIngredient = new AddRecipesRecipeIngredient();
+
+                rpcIngredient.Name = i.Name;
+
+                if (i.Quantity is not null)
+                {
+                    rpcIngredient.Quantity = i.Quantity.Value;
+                }
+
+                if (i.Unit is not null)
+                {
+                    rpcIngredient.Unit = i.Unit;
+                }
+
+                return rpcIngredient;
+            }));
+            rpcRecipe.Directions.AddRange(recipe.Directions);
+            rpcRecipe.Tips.AddRange(recipe.Tips);
+            rpcRecipe.Utensils.AddRange(recipe.Utensils);
+            rpcRecipe.Nutrition = new RecipeNutrition();
+            rpcRecipe.Nutrition.Calories = ToNutritionValue(recipe.Nutrition.Calories);
+            rpcRecipe.Nutrition.Fat = ToNutritionValue(recipe.Nutrition.Fat);
+            rpcRecipe.Nutrition.Protein = ToNutritionValue(recipe.Nutrition.Protein);
+            rpcRecipe.Nutrition.Carbs = ToNutritionValue(recipe.Nutrition.Carbs);
 
             return rpcRecipe;
         }));
@@ -66,4 +86,22 @@ public class AddRecipesController(
         var result = await recipeSearchClient.AddRecipesAsync(rpcRequest);
         return Ok(result.ToPostResponseModel());
     }
+
+    #region RecipeNutritionValue Conversion
+
+    public static RecipeNutritionValue ToNutritionValue(
+        RecipeNutritionValueModel nutritionValue
+    )
+    {
+        return nutritionValue switch
+        {
+            RecipeNutritionValueModel.High => RecipeNutritionValue.High,
+            RecipeNutritionValueModel.Medium => RecipeNutritionValue.Medium,
+            RecipeNutritionValueModel.Low => RecipeNutritionValue.Low,
+            RecipeNutritionValueModel.None => RecipeNutritionValue.None,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
+    #endregion RecipeNutritionValue Conversion
 }

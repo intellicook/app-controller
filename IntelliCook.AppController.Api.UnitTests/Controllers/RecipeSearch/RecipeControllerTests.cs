@@ -38,10 +38,12 @@ public class RecipeControllerTests
         };
         var responseModel = new RecipeResponse();
         responseModel.Id = id;
-        responseModel.Name = "Name";
-        responseModel.Ingredients.Add("Ingredient");
-        responseModel.Instructions.Add("Instruction");
-        responseModel.Raw = "Raw";
+        responseModel.Title = "Title";
+        responseModel.Nutrition = new RecipeNutrition();
+        responseModel.Nutrition.Calories = RecipeNutritionValue.High;
+        responseModel.Nutrition.Fat = RecipeNutritionValue.Medium;
+        responseModel.Nutrition.Protein = RecipeNutritionValue.Low;
+        responseModel.Nutrition.Carbs = RecipeNutritionValue.None;
 
         _authClientMock
             .Setup(x => x.GetUserMeAsync())
