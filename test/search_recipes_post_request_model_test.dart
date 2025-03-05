@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    // String extraTerms
+    test('to test the property `extraTerms`', () async {
+      // TODO
+    });
+
     // int page
     test('to test the property `page`', () async {
       // TODO

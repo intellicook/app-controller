@@ -1495,6 +1495,10 @@
               "type": "string"
             }
           },
+          "extraTerms": {
+            "type": "string",
+            "nullable": true
+          },
           "page": {
             "maximum": 4294967295,
             "minimum": 1,

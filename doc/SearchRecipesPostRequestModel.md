@@ -9,6 +9,7 @@ import 'package:app_controller_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ingredients** | **BuiltList&lt;String&gt;** |  | 
+**extraTerms** | **String** |  | [optional] 
 **page** | **int** |  | [optional] 
 **perPage** | **int** |  | [optional] 
 **includeDetail** | **bool** |  | [optional] 

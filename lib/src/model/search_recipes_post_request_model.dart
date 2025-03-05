@@ -13,6 +13,7 @@ part 'search_recipes_post_request_model.g.dart';
 ///
 /// Properties:
 /// * [ingredients] 
+/// * [extraTerms] 
 /// * [page] 
 /// * [perPage] 
 /// * [includeDetail] 
@@ -20,6 +21,9 @@ part 'search_recipes_post_request_model.g.dart';
 abstract class SearchRecipesPostRequestModel implements Built<SearchRecipesPostRequestModel, SearchRecipesPostRequestModelBuilder> {
   @BuiltValueField(wireName: r'ingredients')
   BuiltList<String> get ingredients;
+
+  @BuiltValueField(wireName: r'extraTerms')
+  String? get extraTerms;
 
   @BuiltValueField(wireName: r'page')
   int? get page;
@@ -58,6 +62,13 @@ class _$SearchRecipesPostRequestModelSerializer implements PrimitiveSerializer<S
       object.ingredients,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
+    if (object.extraTerms != null) {
+      yield r'extraTerms';
+      yield serializers.serialize(
+        object.extraTerms,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
     if (object.page != null) {
       yield r'page';
       yield serializers.serialize(
@@ -108,6 +119,14 @@ class _$SearchRecipesPostRequestModelSerializer implements PrimitiveSerializer<S
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.ingredients.replace(valueDes);
+          break;
+        case r'extraTerms':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.extraTerms = valueDes;
           break;
         case r'page':
           final valueDes = serializers.deserialize(
