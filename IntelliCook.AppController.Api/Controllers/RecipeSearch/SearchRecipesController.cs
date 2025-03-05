@@ -39,6 +39,11 @@ public class SearchRecipesController(
 
         rpcRequest.Username = user.Username;
 
+        if (request.ExtraTerms is not null)
+        {
+            rpcRequest.ExtraTerms = request.ExtraTerms;
+        }
+
         if (request.Page is not null)
         {
             rpcRequest.Page = request.Page.Value;

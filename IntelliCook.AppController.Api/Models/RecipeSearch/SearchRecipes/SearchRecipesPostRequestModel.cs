@@ -8,6 +8,8 @@ public class SearchRecipesPostRequestModel
     [MinLength(1, ErrorMessage = "Ingredients cannot be empty.")]
     public IEnumerable<string> Ingredients { get; set; }
 
+    public string? ExtraTerms { get; set; }
+
     [Range(1, uint.MaxValue, ErrorMessage = "Page must be a positive integer.")]
     public uint? Page { get; set; }
 
