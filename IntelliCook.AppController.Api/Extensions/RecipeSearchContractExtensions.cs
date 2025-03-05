@@ -4,6 +4,8 @@ using IntelliCook.AppController.Api.Models.RecipeSearch.ChatByRecipe;
 using IntelliCook.AppController.Api.Models.RecipeSearch.Recipe;
 using IntelliCook.AppController.Api.Models.RecipeSearch.RecipeNutrition;
 using IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipes;
+using IntelliCook.AppController.Api.Models.RecipeSearch.SetUserProfile;
+using IntelliCook.AppController.Api.Models.RecipeSearch.UserProfile;
 using IntelliCook.RecipeSearch.Client;
 
 namespace IntelliCook.AppController.Api.Extensions;
@@ -301,6 +303,51 @@ public static class RecipeSearchContractExtensions
             Name = ingredient.Name,
             Quantity = ingredient.Quantity,
             Unit = ingredient.Unit
+        };
+    }
+
+    #endregion
+
+    #region SetUserProfile
+
+    public static SetUserProfilePostResponseModel ToPostResponseModel(
+        this SetUserProfileResponse response
+    )
+    {
+        return new SetUserProfilePostResponseModel
+        {
+            VeggieIdentity = response.VeggieIdentity.ToUserProfileVeggieIdentityModel(),
+            Prefer = response.Prefer,
+            Dislike = response.Dislike
+        };
+    }
+
+    #endregion
+
+    #region UserProfile
+
+    public static UserProfileGetResponseModel ToGetResponseModel(
+        this UserProfileResponse response
+    )
+    {
+        return new UserProfileGetResponseModel
+        {
+            VeggieIdentity = response.VeggieIdentity.ToUserProfileVeggieIdentityModel(),
+            Prefer = response.Prefer,
+            Dislike = response.Dislike
+        };
+    }
+
+    public static UserProfileVeggieIdentityModel ToUserProfileVeggieIdentityModel(
+        this UserProfileVeggieIdentity identity
+    )
+    {
+        return identity switch
+        {
+            UserProfileVeggieIdentity.None => UserProfileVeggieIdentityModel.None,
+            UserProfileVeggieIdentity.Vegetarian => UserProfileVeggieIdentityModel.Vegetarian,
+            UserProfileVeggieIdentity.Vegan => UserProfileVeggieIdentityModel.Vegan,
+            _ => throw new ArgumentOutOfRangeException()
         };
     }
 
