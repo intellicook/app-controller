@@ -53,6 +53,7 @@ public class AddRecipesController(
             var rpcRecipe = new AddRecipesRequestRecipe();
 
             rpcRecipe.Title = recipe.Title;
+            rpcRecipe.Description = recipe.Description;
             rpcRecipe.Ingredients.AddRange(recipe.Ingredients.Select(i =>
             {
                 var rpcIngredient = new AddRecipesRecipeIngredient();
