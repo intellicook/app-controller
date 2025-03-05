@@ -75,6 +75,8 @@ Class | Method | HTTP request | Description
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchRecipeIdGet**](doc/RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchResetDataDelete**](doc/RecipeSearchApi.md#recipesearchresetdatadelete) | **DELETE** /RecipeSearch/ResetData | Reset all data in the recipe search service, use with caution.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchSearchRecipesPost**](doc/RecipeSearchApi.md#recipesearchsearchrecipespost) | **POST** /RecipeSearch/SearchRecipes | Search for recipes.
+[*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchSetUserProfilePost**](doc/RecipeSearchApi.md#recipesearchsetuserprofilepost) | **POST** /RecipeSearch/SetUserProfile | Set user profile.
+[*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchUserProfileGet**](doc/RecipeSearchApi.md#recipesearchuserprofileget) | **GET** /RecipeSearch/UserProfile | Get user profile.
 [*TemporaryApi*](doc/TemporaryApi.md) | [**apiTemporaryGet**](doc/TemporaryApi.md#apitemporaryget) | **GET** /Api/Temporary | Get method for temporary testing purposes.
 [*UserApi*](doc/UserApi.md) | [**userMeDelete**](doc/UserApi.md#usermedelete) | **DELETE** /User/Me | Deletes the current user.
 [*UserApi*](doc/UserApi.md) | [**userMeGet**](doc/UserApi.md#usermeget) | **GET** /User/Me | Gets the current user.
@@ -119,8 +121,12 @@ Class | Method | HTTP request | Description
  - [SearchRecipesRecipeDetailModel](doc/SearchRecipesRecipeDetailModel.md)
  - [SearchRecipesRecipeIngredientModel](doc/SearchRecipesRecipeIngredientModel.md)
  - [SearchRecipesRecipeModel](doc/SearchRecipesRecipeModel.md)
+ - [SetUserProfilePostRequestModel](doc/SetUserProfilePostRequestModel.md)
+ - [SetUserProfilePostResponseModel](doc/SetUserProfilePostResponseModel.md)
  - [UserGetResponseModel](doc/UserGetResponseModel.md)
  - [UserPasswordPutRequestModel](doc/UserPasswordPutRequestModel.md)
+ - [UserProfileGetResponseModel](doc/UserProfileGetResponseModel.md)
+ - [UserProfileVeggieIdentityModel](doc/UserProfileVeggieIdentityModel.md)
  - [UserPutRequestModel](doc/UserPutRequestModel.md)
  - [UserPutResponseModel](doc/UserPutResponseModel.md)
  - [UserRoleModel](doc/UserRoleModel.md)

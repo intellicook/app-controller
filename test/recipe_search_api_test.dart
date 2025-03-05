@@ -53,5 +53,19 @@ void main() {
       // TODO
     });
 
+    // Set user profile.
+    //
+    //Future<SetUserProfilePostResponseModel> recipeSearchSetUserProfilePost({ SetUserProfilePostRequestModel setUserProfilePostRequestModel }) async
+    test('test recipeSearchSetUserProfilePost', () async {
+      // TODO
+    });
+
+    // Get user profile.
+    //
+    //Future<UserProfileGetResponseModel> recipeSearchUserProfileGet() async
+    test('test recipeSearchUserProfileGet', () async {
+      // TODO
+    });
+
   });
 }

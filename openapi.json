@@ -637,6 +637,115 @@
         }
       }
     },
+    "/RecipeSearch/SetUserProfile": {
+      "post": {
+        "tags": [
+          "RecipeSearch"
+        ],
+        "summary": "Set user profile.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUserProfilePostRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUserProfilePostRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetUserProfilePostRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetUserProfilePostResponseModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/RecipeSearch/UserProfile": {
+      "get": {
+        "tags": [
+          "RecipeSearch"
+        ],
+        "summary": "Get user profile.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileGetResponseModel"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ProblemDetailsModel"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ValidationProblemDetailsModel"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Api/Temporary": {
       "get": {
         "tags": [
@@ -1630,6 +1739,58 @@
         },
         "additionalProperties": false
       },
+      "SetUserProfilePostRequestModel": {
+        "required": [
+          "dislike",
+          "prefer",
+          "veggieIdentity"
+        ],
+        "type": "object",
+        "properties": {
+          "veggieIdentity": {
+            "$ref": "#/components/schemas/UserProfileVeggieIdentityModel"
+          },
+          "prefer": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dislike": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SetUserProfilePostResponseModel": {
+        "required": [
+          "dislike",
+          "prefer",
+          "veggieIdentity"
+        ],
+        "type": "object",
+        "properties": {
+          "veggieIdentity": {
+            "$ref": "#/components/schemas/UserProfileVeggieIdentityModel"
+          },
+          "prefer": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dislike": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
       "UserGetResponseModel": {
         "required": [
           "email",
@@ -1675,6 +1836,40 @@
           }
         },
         "additionalProperties": false
+      },
+      "UserProfileGetResponseModel": {
+        "required": [
+          "dislike",
+          "prefer",
+          "veggieIdentity"
+        ],
+        "type": "object",
+        "properties": {
+          "veggieIdentity": {
+            "$ref": "#/components/schemas/UserProfileVeggieIdentityModel"
+          },
+          "prefer": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dislike": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserProfileVeggieIdentityModel": {
+        "enum": [
+          "None",
+          "Vegetarian",
+          "Vegan"
+        ],
+        "type": "string"
       },
       "UserPutRequestModel": {
         "required": [

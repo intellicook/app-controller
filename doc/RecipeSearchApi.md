@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**recipeSearchRecipeIdGet**](RecipeSearchApi.md#recipesearchrecipeidget) | **GET** /RecipeSearch/Recipe/{id} | Get recipe by ID.
 [**recipeSearchResetDataDelete**](RecipeSearchApi.md#recipesearchresetdatadelete) | **DELETE** /RecipeSearch/ResetData | Reset all data in the recipe search service, use with caution.
 [**recipeSearchSearchRecipesPost**](RecipeSearchApi.md#recipesearchsearchrecipespost) | **POST** /RecipeSearch/SearchRecipes | Search for recipes.
+[**recipeSearchSetUserProfilePost**](RecipeSearchApi.md#recipesearchsetuserprofilepost) | **POST** /RecipeSearch/SetUserProfile | Set user profile.
+[**recipeSearchUserProfileGet**](RecipeSearchApi.md#recipesearchuserprofileget) | **GET** /RecipeSearch/UserProfile | Get user profile.
 
 
 # **recipeSearchAddRecipesPost**
@@ -258,6 +260,84 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **recipeSearchSetUserProfilePost**
+> SetUserProfilePostResponseModel recipeSearchSetUserProfilePost(setUserProfilePostRequestModel)
+
+Set user profile.
+
+### Example
+```dart
+import 'package:app_controller_client/api.dart';
+
+final api = AppControllerClient().getRecipeSearchApi();
+final SetUserProfilePostRequestModel setUserProfilePostRequestModel = ; // SetUserProfilePostRequestModel | 
+
+try {
+    final response = api.recipeSearchSetUserProfilePost(setUserProfilePostRequestModel);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling RecipeSearchApi->recipeSearchSetUserProfilePost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **setUserProfilePostRequestModel** | [**SetUserProfilePostRequestModel**](SetUserProfilePostRequestModel.md)|  | [optional] 
+
+### Return type
+
+[**SetUserProfilePostResponseModel**](SetUserProfilePostResponseModel.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **recipeSearchUserProfileGet**
+> UserProfileGetResponseModel recipeSearchUserProfileGet()
+
+Get user profile.
+
+### Example
+```dart
+import 'package:app_controller_client/api.dart';
+
+final api = AppControllerClient().getRecipeSearchApi();
+
+try {
+    final response = api.recipeSearchUserProfileGet();
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling RecipeSearchApi->recipeSearchUserProfileGet: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**UserProfileGetResponseModel**](UserProfileGetResponseModel.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

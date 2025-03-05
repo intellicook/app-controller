@@ -53,8 +53,12 @@ export 'package:app_controller_client/src/model/search_recipes_post_response_mod
 export 'package:app_controller_client/src/model/search_recipes_recipe_detail_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_recipe_ingredient_model.dart';
 export 'package:app_controller_client/src/model/search_recipes_recipe_model.dart';
+export 'package:app_controller_client/src/model/set_user_profile_post_request_model.dart';
+export 'package:app_controller_client/src/model/set_user_profile_post_response_model.dart';
 export 'package:app_controller_client/src/model/user_get_response_model.dart';
 export 'package:app_controller_client/src/model/user_password_put_request_model.dart';
+export 'package:app_controller_client/src/model/user_profile_get_response_model.dart';
+export 'package:app_controller_client/src/model/user_profile_veggie_identity_model.dart';
 export 'package:app_controller_client/src/model/user_put_request_model.dart';
 export 'package:app_controller_client/src/model/user_put_response_model.dart';
 export 'package:app_controller_client/src/model/user_role_model.dart';
