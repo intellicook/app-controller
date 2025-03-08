@@ -1,8 +1,9 @@
+using IntelliCook.AppController.Api.Models.RecipeSearch.ChatByRecipe;
 using System.ComponentModel.DataAnnotations;
 
 namespace IntelliCook.AppController.Api.Models.RecipeSearch.SearchRecipes;
 
-public class SearchRecipesPostRequestModel
+public class SearchRecipesPostRequestModel : ChatByRecipeFunctionCallModel
 {
     [Required]
     [MinLength(1, ErrorMessage = "Ingredients cannot be empty.")]

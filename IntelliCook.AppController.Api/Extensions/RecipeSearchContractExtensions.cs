@@ -205,6 +205,7 @@ public static class RecipeSearchContractExtensions
         return new ChatByRecipePostResponseModel
         {
             Message = response.Message.ToMessageModel(),
+            FunctionCall = response.FunctionCall?.ToFunctionCallModel()
         };
     }
 
@@ -259,6 +260,27 @@ public static class RecipeSearchContractExtensions
         {
             ChatByRecipeStreamResponse.ResponseOneofCase.Header => response.Header.ToStreamHeaderModel(),
             ChatByRecipeStreamResponse.ResponseOneofCase.Content => response.Content.ToStreamContentModel(),
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
+    public static ChatByRecipeFunctionCallModel ToFunctionCallModel(
+        this ChatByRecipeFunctionCall call
+    )
+    {
+        return call.FunctionCallCase switch
+        {
+            ChatByRecipeFunctionCall.FunctionCallOneofCase.SetUserProfile => new SetUserProfilePostRequestModel()
+            {
+                VeggieIdentity = call.SetUserProfile.VeggieIdentity.ToUserProfileVeggieIdentityModel(),
+                Prefer = call.SetUserProfile.Prefer,
+                Dislike = call.SetUserProfile.Dislike
+            },
+            ChatByRecipeFunctionCall.FunctionCallOneofCase.SearchRecipes => new SearchRecipesPostRequestModel()
+            {
+                Ingredients = call.SearchRecipes.Ingredients,
+                ExtraTerms = call.SearchRecipes.ExtraTerms,
+            },
             _ => throw new ArgumentOutOfRangeException()
         };
     }
