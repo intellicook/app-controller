@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
  - [ChatByRecipeMessageModel](doc/ChatByRecipeMessageModel.md)
  - [ChatByRecipePostRequestModel](doc/ChatByRecipePostRequestModel.md)
  - [ChatByRecipePostResponseModel](doc/ChatByRecipePostResponseModel.md)
+ - [ChatByRecipePostResponseModelFunctionCall](doc/ChatByRecipePostResponseModelFunctionCall.md)
  - [ChatByRecipeRoleModel](doc/ChatByRecipeRoleModel.md)
  - [ChatByRecipeStreamContentModel](doc/ChatByRecipeStreamContentModel.md)
  - [ChatByRecipeStreamHeaderModel](doc/ChatByRecipeStreamHeaderModel.md)

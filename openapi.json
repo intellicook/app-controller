@@ -1139,6 +1139,10 @@
         },
         "additionalProperties": false
       },
+      "ChatByRecipeFunctionCallModel": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "ChatByRecipeMessageModel": {
         "required": [
           "role",
@@ -1185,6 +1189,17 @@
         "properties": {
           "message": {
             "$ref": "#/components/schemas/ChatByRecipeMessageModel"
+          },
+          "functionCall": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SetUserProfilePostRequestModel"
+              },
+              {
+                "$ref": "#/components/schemas/SearchRecipesPostRequestModel"
+              }
+            ],
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1596,6 +1611,11 @@
           "ingredients"
         ],
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatByRecipeFunctionCallModel"
+          }
+        ],
         "properties": {
           "ingredients": {
             "minItems": 1,
@@ -1746,6 +1766,11 @@
           "veggieIdentity"
         ],
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ChatByRecipeFunctionCallModel"
+          }
+        ],
         "properties": {
           "veggieIdentity": {
             "$ref": "#/components/schemas/UserProfileVeggieIdentityModel"

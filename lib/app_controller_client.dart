@@ -27,6 +27,7 @@ export 'package:app_controller_client/src/model/admin_users_get404_response.dart
 export 'package:app_controller_client/src/model/chat_by_recipe_message_model.dart';
 export 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
 export 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
+export 'package:app_controller_client/src/model/chat_by_recipe_post_response_model_function_call.dart';
 export 'package:app_controller_client/src/model/chat_by_recipe_role_model.dart';
 export 'package:app_controller_client/src/model/chat_by_recipe_stream_content_model.dart';
 export 'package:app_controller_client/src/model/chat_by_recipe_stream_header_model.dart';

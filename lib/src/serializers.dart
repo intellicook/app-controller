@@ -23,6 +23,7 @@ import 'package:app_controller_client/src/model/admin_users_get404_response.dart
 import 'package:app_controller_client/src/model/chat_by_recipe_message_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_request_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_post_response_model.dart';
+import 'package:app_controller_client/src/model/chat_by_recipe_post_response_model_function_call.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_role_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_stream_content_model.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_stream_header_model.dart';
@@ -72,6 +73,7 @@ part 'serializers.g.dart';
   ChatByRecipeMessageModel,
   ChatByRecipePostRequestModel,
   ChatByRecipePostResponseModel,
+  ChatByRecipePostResponseModelFunctionCall,
   ChatByRecipeRoleModel,
   ChatByRecipeStreamContentModel,
   ChatByRecipeStreamHeaderModel,

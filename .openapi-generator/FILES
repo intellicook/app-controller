@@ -13,6 +13,7 @@ doc/AuthApi.md
 doc/ChatByRecipeMessageModel.md
 doc/ChatByRecipePostRequestModel.md
 doc/ChatByRecipePostResponseModel.md
+doc/ChatByRecipePostResponseModelFunctionCall.md
 doc/ChatByRecipeRoleModel.md
 doc/ChatByRecipeStreamContentModel.md
 doc/ChatByRecipeStreamHeaderModel.md
@@ -79,6 +80,7 @@ lib/src/model/admin_users_get404_response.dart
 lib/src/model/chat_by_recipe_message_model.dart
 lib/src/model/chat_by_recipe_post_request_model.dart
 lib/src/model/chat_by_recipe_post_response_model.dart
+lib/src/model/chat_by_recipe_post_response_model_function_call.dart
 lib/src/model/chat_by_recipe_role_model.dart
 lib/src/model/chat_by_recipe_stream_content_model.dart
 lib/src/model/chat_by_recipe_stream_header_model.dart
@@ -128,6 +130,7 @@ test/admin_users_get404_response_test.dart
 test/auth_api_test.dart
 test/chat_by_recipe_message_model_test.dart
 test/chat_by_recipe_post_request_model_test.dart
+test/chat_by_recipe_post_response_model_function_call_test.dart
 test/chat_by_recipe_post_response_model_test.dart
 test/chat_by_recipe_role_model_test.dart
 test/chat_by_recipe_stream_content_model_test.dart

@@ -12,5 +12,10 @@ void main() {
       // TODO
     });
 
+    // ChatByRecipePostResponseModelFunctionCall functionCall
+    test('to test the property `functionCall`', () async {
+      // TODO
+    });
+
   });
 }

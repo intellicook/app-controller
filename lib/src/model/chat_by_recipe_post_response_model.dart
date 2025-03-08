@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:app_controller_client/src/model/chat_by_recipe_post_response_model_function_call.dart';
 import 'package:app_controller_client/src/model/chat_by_recipe_message_model.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -13,10 +14,14 @@ part 'chat_by_recipe_post_response_model.g.dart';
 ///
 /// Properties:
 /// * [message] 
+/// * [functionCall] 
 @BuiltValue()
 abstract class ChatByRecipePostResponseModel implements Built<ChatByRecipePostResponseModel, ChatByRecipePostResponseModelBuilder> {
   @BuiltValueField(wireName: r'message')
   ChatByRecipeMessageModel get message;
+
+  @BuiltValueField(wireName: r'functionCall')
+  ChatByRecipePostResponseModelFunctionCall? get functionCall;
 
   ChatByRecipePostResponseModel._();
 
@@ -46,6 +51,13 @@ class _$ChatByRecipePostResponseModelSerializer implements PrimitiveSerializer<C
       object.message,
       specifiedType: const FullType(ChatByRecipeMessageModel),
     );
+    if (object.functionCall != null) {
+      yield r'functionCall';
+      yield serializers.serialize(
+        object.functionCall,
+        specifiedType: const FullType.nullable(ChatByRecipePostResponseModelFunctionCall),
+      );
+    }
   }
 
   @override
@@ -75,6 +87,14 @@ class _$ChatByRecipePostResponseModelSerializer implements PrimitiveSerializer<C
             specifiedType: const FullType(ChatByRecipeMessageModel),
           ) as ChatByRecipeMessageModel;
           result.message.replace(valueDes);
+          break;
+        case r'functionCall':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(ChatByRecipePostResponseModelFunctionCall),
+          ) as ChatByRecipePostResponseModelFunctionCall?;
+          if (valueDes == null) continue;
+          result.functionCall.replace(valueDes);
           break;
         default:
           unhandled.add(key);
