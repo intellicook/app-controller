@@ -69,6 +69,7 @@ Class | Method | HTTP request | Description
 [*AuthApi*](doc/AuthApi.md) | [**authRegisterPost**](doc/AuthApi.md#authregisterpost) | **POST** /Auth/Register | Registers a new user.
 [*HealthApi*](doc/HealthApi.md) | [**healthGet**](doc/HealthApi.md#healthget) | **GET** /Health | Checks the health of App Controller and its components.
 [*IngredientRecognitionApi*](doc/IngredientRecognitionApi.md) | [**ingredientRecognitionRecognizeIngredientsPost**](doc/IngredientRecognitionApi.md#ingredientrecognitionrecognizeingredientspost) | **POST** /IngredientRecognition/RecognizeIngredients | Recognize ingredients from image.
+[*IngredientRecognitionApi*](doc/IngredientRecognitionApi.md) | [**ingredientRecognitionSelectIngredientPost**](doc/IngredientRecognitionApi.md#ingredientrecognitionselectingredientpost) | **POST** /IngredientRecognition/SelectIngredient | Select ingredient from image.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchAddRecipesPost**](doc/RecipeSearchApi.md#recipesearchaddrecipespost) | **POST** /RecipeSearch/AddRecipes | Add a list of recipes.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchChatByRecipePost**](doc/RecipeSearchApi.md#recipesearchchatbyrecipepost) | **POST** /RecipeSearch/ChatByRecipe | Chat about a specific recipe.
 [*RecipeSearchApi*](doc/RecipeSearchApi.md) | [**recipeSearchChatByRecipeStreamPost**](doc/RecipeSearchApi.md#recipesearchchatbyrecipestreampost) | **POST** /RecipeSearch/ChatByRecipe/Stream | Chat about a specific recipe with streaming response.

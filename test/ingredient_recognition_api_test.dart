@@ -14,5 +14,12 @@ void main() {
       // TODO
     });
 
+    // Select ingredient from image.
+    //
+    //Future<Uint8List> ingredientRecognitionSelectIngredientPost(MultipartFile image, int X, int Y) async
+    test('test ingredientRecognitionSelectIngredientPost', () async {
+      // TODO
+    });
+
   });
 }
